@@ -1,4 +1,4 @@
-package calculate.controller;
+package calculateCheck.controller;
 
 import java.io.IOException;
 
@@ -9,12 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/homett/payment")
-public class CalculateController extends HttpServlet {
+@WebServlet("/calculate/check")
+public class CalculateCreateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-	 System.out.println("test");
- }	
+
+		System.out.println("testing!");
+		
+	}
+
 }
