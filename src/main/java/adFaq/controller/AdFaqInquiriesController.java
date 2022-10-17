@@ -1,4 +1,4 @@
-package adFaqInquiresController;
+package adFaq.controller;
 
 import java.io.IOException;
 
@@ -17,6 +17,7 @@ public class AdFaqInquiriesController extends HttpServlet {
 
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("HI");
 		System.out.println("HI");
 	}
 }
