@@ -16,6 +16,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 	  System.out.println("Hello Test Code ");
 	  System.out.println("Hello Test Code ");//추가
+	  System.out.println("Hello Test Code2222 ");//추가
 	  
   
   }
