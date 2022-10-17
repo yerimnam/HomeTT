@@ -1,4 +1,4 @@
-package adFaqInquiresController;
+package adFaq.service.face;
 
 import java.io.IOException;
 
@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdFaqInquiriesController
+ * Servlet implementation class AdFaqInquiriesService
  */
-@WebServlet("/ad/faq")
-public class AdFaqInquiriesController extends HttpServlet {
+@WebServlet("/AdFaqInquiriesService")
+public class AdFaqInquiriesService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("HI");
+		
+		System.out.println("HI2");
 	}
 }
