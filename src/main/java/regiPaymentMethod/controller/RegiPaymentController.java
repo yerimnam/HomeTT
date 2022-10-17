@@ -15,6 +15,8 @@ public class RegiPaymentController extends HttpServlet {
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	  System.out.println("Hello Test Code ");
+	  System.out.println("Hello Test Code ");//추가
+	  
   
   }
 }
