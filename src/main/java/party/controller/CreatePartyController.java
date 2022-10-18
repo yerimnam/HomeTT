@@ -1,4 +1,4 @@
-package user.controller;
+package party.controller;
 
 import java.io.IOException;
 
@@ -9,18 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-//@WebServlet("/user/editprofile")
-public class EditProfileController extends HttpServlet {
+@WebServlet("/homett/createparty")
+public class CreatePartyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		System.out.println("/homett/createparty - doget() TEST");
+		
+		
+		
+		
+		
+		
+		
+		
 	}
-	
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	}
-	
 }

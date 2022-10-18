@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/user/join")
+//@WebServlet("/user/join")
 public class JoinController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

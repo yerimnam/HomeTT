@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CouponController
  */
-@WebServlet("/homett/mypage")
+//@WebServlet("/homett/mypage")
 public class CouponController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 @Override

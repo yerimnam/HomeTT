@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/user/type")
+//@WebServlet("/user/type")
 public class TypeTransformController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

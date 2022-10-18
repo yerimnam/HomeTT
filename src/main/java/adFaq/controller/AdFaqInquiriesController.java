@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdFaqInquiriesController
  */
-@WebServlet("/ad/faq")
+//@WebServlet("/ad/faq")
 public class AdFaqInquiriesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
