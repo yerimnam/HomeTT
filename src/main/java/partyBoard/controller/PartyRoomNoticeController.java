@@ -1,4 +1,4 @@
-package coupon.controller;
+package partyBoard.controller;
 
 import java.io.IOException;
 
@@ -8,17 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class CouponController
- */
-@WebServlet("/homett/mypage")
-public class CouponController extends HttpServlet {
+@WebServlet("/homett/setnotice")
+public class PartyRoomNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 @Override
+	
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		 System.out.println("test");
-		 System.out.println("test");//추가했다용
-	 }
+		System.out.println("/homett/setnotice [GET]");
+		
+	}
 
 }
