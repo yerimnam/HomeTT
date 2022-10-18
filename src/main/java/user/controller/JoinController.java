@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/user/join")
+@WebServlet("/homett/join")
 public class JoinController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("/homett/join");
+	
 	}
 	
 	
