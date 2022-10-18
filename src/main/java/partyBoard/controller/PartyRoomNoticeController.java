@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/homett/roomboard")
-public class PartyRoomBoardController extends HttpServlet {
+@WebServlet("/homett/setnotice")
+public class PartyRoomNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("PartyRoomBoard - GET TEST");
+		System.out.println("/homett/setnotice [GET]");
+		
 	}
 
 }

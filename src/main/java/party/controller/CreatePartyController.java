@@ -18,8 +18,8 @@ public class CreatePartyController extends HttpServlet {
 		
 		System.out.println("/homett/createparty - doget() TEST");
 		
-		
-		
+		//jsp 뷰 지정
+		req.getRequestDispatcher("/WEB-INF/party/createparty.jsp").forward(req, resp);
 		
 		
 		
