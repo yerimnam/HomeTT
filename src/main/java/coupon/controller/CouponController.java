@@ -18,6 +18,7 @@ public class CouponController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		 System.out.println("test");
+		 System.out.println("test");//추가했다용
 	 }
 
 }
