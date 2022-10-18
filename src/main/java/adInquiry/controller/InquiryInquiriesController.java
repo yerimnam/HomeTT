@@ -1,4 +1,4 @@
-package adFaq.controller;
+package adInquiry.controller;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdFaqInquiriesController
  */
-@WebServlet("/ad/faq")
-public class AdFaqInquiriesController extends HttpServlet {
+@WebServlet("/homett/inquirylist")
+public class InquiryInquiriesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
