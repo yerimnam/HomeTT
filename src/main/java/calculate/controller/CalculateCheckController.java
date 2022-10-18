@@ -8,15 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class CalculateController
- */
-@WebServlet("/homett/payment")
-public class CalculateController extends HttpServlet {
+@WebServlet("/homett/calculatecheck")
+public class CalculateCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- @Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("[TEST] CalculateCheck testing!");
+	}
 
-	 System.out.println("test");
- }	
 }
