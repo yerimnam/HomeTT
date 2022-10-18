@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PaymentController
  */
-@WebServlet("/homett/payment")
+@WebServlet("/homett/pay")
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

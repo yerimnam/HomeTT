@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CouponController
  */
-@WebServlet("/homett/mypage")
-public class CouponController extends HttpServlet {
+@WebServlet("/homett/couponlist")
+public class CouponListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
