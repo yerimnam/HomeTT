@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/category/list")
+@WebServlet("/homett/categorylist")
 public class CategoryListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
