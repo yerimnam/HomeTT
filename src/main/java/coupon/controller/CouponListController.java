@@ -1,4 +1,4 @@
-package user.controller;
+package coupon.controller;
 
 import java.io.IOException;
 
@@ -8,19 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/homett/login")
-public class UserLoginController extends HttpServlet {
+/**
+ * Servlet implementation class CouponController
+ */
+@WebServlet("/homett/couponlist")
+public class CouponListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	
-	@Override
+	 @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	}
-	
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	}
-	
+
+		 System.out.println("test");
+		 System.out.println("test");//추가했다용
+	 }
+
 }
