@@ -14,7 +14,7 @@ public class DailyStatisticsController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/admin/statistics/daily/dailystatistics.jsp").forward(req, resp);;
+		req.getRequestDispatcher("/WEB-INF/admin/statistics/dailystatistics.jsp").forward(req, resp);;
 	}
 	
 }
