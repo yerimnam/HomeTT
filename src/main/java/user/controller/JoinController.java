@@ -35,8 +35,9 @@ public class JoinController extends HttpServlet {
 		//요청 데이터의 한글 인코딩 방식 지정하기 : UTF-8
 		req.setCharacterEncoding("UTF-8");
 
-		//회원가입 전달파라미터 추출하기
+		//회원가입 전달파라미터 가져오기
 		Member member = userService.getJoinParam(req);
+		
 		//잘들어오는지 확인
 		System.out.println("MemberController doPost() - member : " + member);
 
