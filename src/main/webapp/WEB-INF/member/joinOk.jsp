@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-test
+
+<h1>회원가입을 축하드립니다</h1>
+
+<a href="<%=request.getContextPath() %>/homett/join">회원가입 하러가기</a>
 
 </body>
 </html>
