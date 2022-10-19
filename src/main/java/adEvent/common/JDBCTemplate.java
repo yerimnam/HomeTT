@@ -1,4 +1,4 @@
-package common;
+package adEvent.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,25 +9,25 @@ import java.sql.Statement;
 
 public class JDBCTemplate {
 
-	// OJDBC 드라이버
+	//OJDBC 드라이버
 	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
 	
-	// DB연결 정보
+	//DB연결 정보
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String USERNAME = "scott";
-	private static final String PASSWORD = "tiger";
-	
+	private static final String USERNAME = "homett";
+	private static final String PASSWORD = "1234";
+
 	//private 생성자
-	private JDBCTemplate() {}
+	private JDBCTemplate() { }
 	
 	//DB연결 객체
 	private static Connection conn;
 	
 	//Connection객체 반환 메소드 - 싱글톤패턴 적용
 	public static Connection getConnection() {
-		
+
 		//첫 DB연결일 때만 수행
-		if ( conn == null ) {
+		if( conn == null ) {
 			
 			try {
 				//드라이버 로드
@@ -43,18 +43,18 @@ public class JDBCTemplate {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
+			}			
 			
 		}
-		
+				
 		//DB연결 객체 반환
 		return conn;
 	}
-
+	
 	//Connection 객체 닫기
 	public static void close(Connection conn) {
 		try {
-			if(conn!=null && !conn.isClosed()) conn.close();
+			if(conn!=null && !conn.isClosed())	conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -63,7 +63,7 @@ public class JDBCTemplate {
 	//Statement 객체 닫기
 	public static void close(Statement st) {
 		try {
-			if(st!=null && !st.isClosed()) st.close();
+			if(st!=null && !st.isClosed())	st.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -72,7 +72,7 @@ public class JDBCTemplate {
 	//PreparedStatement 객체 닫기
 	public static void close(PreparedStatement ps) {
 		try {
-			if(ps!=null && !ps.isClosed()) ps.close();
+			if(ps!=null && !ps.isClosed())	ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +81,7 @@ public class JDBCTemplate {
 	//ResultSet 객체 닫기
 	public static void close(ResultSet rs) {
 		try {
-			if(rs!=null && !rs.isClosed()) rs.close();
+			if(rs!=null && !rs.isClosed())	rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -90,7 +90,7 @@ public class JDBCTemplate {
 	//commit 수행
 	public static void commit(Connection conn) {
 		try {
-			if(conn!=null && !conn.isClosed()) conn.commit();
+			if(conn!=null && !conn.isClosed())	conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +99,7 @@ public class JDBCTemplate {
 	//rollback 수행
 	public static void rollback(Connection conn) {
 		try {
-			if(conn!=null && !conn.isClosed()) conn.rollback();
+			if(conn!=null && !conn.isClosed())	conn.rollback();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

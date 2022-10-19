@@ -1,5 +1,5 @@
 package adFaq.dto;
 
-public class EventBoard {
+public class EventFaq {
 
 }
