@@ -26,10 +26,11 @@ public class CreatePartyCheckController extends HttpServlet {
 		// 생성한 파티방 목록 조회
 		List<PartyCheck> crePartyList = createPartyCheckservice.getList();
 		
-		
+		// 테스트
+		for(PartyCheck p : crePartyList)	System.out.println(p);
 		
 		// View 지정 및 응답
-		req.getRequestDispatcher("/WEB-INF/mypage/inpartycheck.jsp");
+		req.getRequestDispatcher("/WEB-INF/mypage/inpartycheck.jsp").forward(req, resp);
 		
 		
 		

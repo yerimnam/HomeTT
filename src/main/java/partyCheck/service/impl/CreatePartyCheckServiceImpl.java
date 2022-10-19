@@ -15,10 +15,11 @@ public class CreatePartyCheckServiceImpl implements CreatePartyCheckService {
 	
 	@Override
 	public List<PartyCheck> getList() {
-		System.out.println("CreatePartyService getList()");
-
+		System.out.println("CreatePartyCheck getList()");
 		
 		return createPartyCheckDao.selectAll(JDBCTemplate.getConnection());
 	}
+	
+	
 
 }
