@@ -35,7 +35,7 @@ td {
 }
 #couponarea {
 	border: 1px solid black;
-	margin-top:210px;
+	margin-top:20px;
 	margin-bottom: 70px;
 	text-align: center;
 }
