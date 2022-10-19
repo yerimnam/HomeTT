@@ -15,5 +15,19 @@ public class CreatePartyController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/createparty - doget() TEST");
+		
+		
+		
+		//jsp 뷰 지정
+		req.getRequestDispatcher("/WEB-INF/party/createParty.jsp").forward(req, resp);
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		//누르면 결제 창으로 들어가게
+		req.getRequestDispatcher("/WEB-INF/party/pay.jsp").forward(req, resp);
 	}
 }
