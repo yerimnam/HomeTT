@@ -2,8 +2,6 @@ package admin.admindetails.dto;
 
 public class Admin {
 	private int adminNo;
-	private int statiNo;
-	private int reportNo;
 	private String adminId;
 	private String adminPw;
 	private String adminName;
@@ -15,12 +13,10 @@ public class Admin {
 	
 	public Admin() {}
 	
-	public Admin(int adminNo, int statiNo, int reportNo, String adminId, String adminPw, String adminName,
+	public Admin(int adminNo, String adminId, String adminPw, String adminName,
 			String adminEmail, String adminPhone, String adminTeam, String adminPosition, String adminProfile) {
 		super();
 		this.adminNo = adminNo;
-		this.statiNo = statiNo;
-		this.reportNo = reportNo;
 		this.adminId = adminId;
 		this.adminPw = adminPw;
 		this.adminName = adminName;
@@ -33,7 +29,7 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [adminNo=" + adminNo + ", statiNo=" + statiNo + ", reportNo=" + reportNo + ", adminId=" + adminId
+		return "Admin [adminNo=" + adminNo + ", adminId=" + adminId
 				+ ", adminPw=" + adminPw + ", adminName=" + adminName + ", adminEmail=" + adminEmail + ", adminPhone="
 				+ adminPhone + ", adminTeam=" + adminTeam + ", adminPosition=" + adminPosition + ", adminProfile="
 				+ adminProfile + "]";
@@ -45,22 +41,6 @@ public class Admin {
 
 	public void setAdminNo(int adminNo) {
 		this.adminNo = adminNo;
-	}
-
-	public int getStatiNo() {
-		return statiNo;
-	}
-
-	public void setStatiNo(int statiNo) {
-		this.statiNo = statiNo;
-	}
-
-	public int getReportNo() {
-		return reportNo;
-	}
-
-	public void setReportNo(int reportNo) {
-		this.reportNo = reportNo;
 	}
 
 	public String getAdminId() {
