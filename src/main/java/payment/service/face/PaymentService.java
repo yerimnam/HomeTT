@@ -1,7 +1,11 @@
 package payment.service.face;
 
 
+import java.util.List;
+
+import coupon.dto.Coupon;
 import party.dto.Party;
+
 import user.dto.Member;
 
 public interface PaymentService {
@@ -21,5 +25,23 @@ public interface PaymentService {
 	 */
 
 	Party getpartyNo(int partyno);
+	
+	/**
+	 * 보유한 쿠폰 정보 조회
+	 * @param userno -유저 넘버
+	 * @return -조회한 쿠폰 정보 반환 
+	 */
+	
+	List<Coupon> getCouponInfo(int userno);
+	
+	/**
+	 * 
+	 * @param userno
+	 * @return 회원이 가진 쿠폰 수 반환
+	 */
+	int getcntCoupon(int userno);
+	
+	
+
 
 }

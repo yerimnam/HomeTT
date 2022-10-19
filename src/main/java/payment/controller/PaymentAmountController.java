@@ -1,6 +1,7 @@
 package payment.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import coupon.dto.Coupon;
 import party.dto.Party;
-import payment.dto.Payment;
+
 import payment.service.face.PaymentService;
 import payment.service.impl.PaymentServiceImpl;
+
 import user.dto.Member;
 
 //결제 하기 눌렀을 때 보여줄 정보 
@@ -47,15 +50,26 @@ public class PaymentAmountController extends HttpServlet {
 		//로그인한 사람의 정보 조회
 		
 		Member user = paymentService.getuserinfo(userno);
+		
 		//결제하기 위한 파티 정보 조회 
-		Party partyinfo = paymentService.getpartyNo(partyno);
+		Party partyInfo = paymentService.getpartyNo(partyno);
+		
+		//보유 쿠폰 조회하기 
+		List<Coupon> couponInfo = paymentService.getCouponInfo(userno);
+		
+		//보유 쿠폰 수 -mypage로 코드 옮기기
+		int cntCoupon = paymentService.getcntCoupon(userno);
+	
 		
 		//테스트 콘솔 출력 
 //		System.out.println(user);
 //		System.out.println(partyinfo);
-		
+	
 		req.setAttribute("userinfo", user);
-		req.setAttribute("partyinfo", partyinfo);
+		req.setAttribute("partyinfo", partyInfo);
+		req.setAttribute("couponinfo",couponInfo );
+		req.setAttribute("cntCoupon",cntCoupon );
+	
 		//총 계산 금액 -jsp에서 구현하면 될듯..!
 //		Payment paymentAmount = paymentService.calPaymentAmount(user);
 		

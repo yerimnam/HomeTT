@@ -1,9 +1,12 @@
+<%@page import="java.util.List"%>
+<%@page import="coupon.dto.Coupon"%>
 <%@page import="party.dto.Party"%>
 <%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <% Member member = (Member)request.getAttribute("userinfo");%>
    <% Party party = (Party)request.getAttribute("partyinfo");  %>
+   <%List< Coupon> coupon = (List)request.getAttribute("couponinfo"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +21,7 @@ body {
 }
 
 
-table, input{
+table, #couponarea{
 	width: 1000px;
 	height: 200px;
 	border: 1px solid black;
@@ -29,6 +32,12 @@ td {
 	text-align: center;	
 	
 
+}
+#couponarea {
+	border: 1px solid black;
+	margin-top:210px;
+	margin-bottom: 70px;
+	text-align: center;
 }
 
 </style>
@@ -48,8 +57,10 @@ td {
 <h1>결제 정보</h1>
 <hr>
 
+<form  action="/homett/payment" method="post">
 <div>
 <h3> 주문 /결제 </h3>
+
 
 <table id="payinfo" >
 	
@@ -72,19 +83,17 @@ td {
 </table>
 </div>
 
-<div>
-<h3>쿠폰 및 포인트</h3>
-	<table id="point_coupon" >
-	<tr>
-		<th>보유 포인트</th>
-		<td>보유 포인트</td>
-	</tr>
-	<tr>
-		<th>쿠폰</th>
-		<td>쿠폰</td>
-	</tr>
+<h3 style="margin-top:70px;">쿠폰</h3>
+<div id="couponarea">
 
-	</table>
+<h2>사용가능 쿠폰</h2>
+		
+		
+	<% for(int i =0; i<coupon.size();i++) { %>
+	<input type="checkbox" name="useCoupon" value="useCoupone"	>
+		<%=coupon.get(i).getCouponUsable() %>
+		
+		<%} %>
 
 </div>
 
@@ -92,13 +101,23 @@ td {
 <div>
 
 <h3>총 결제 금액</h3>
-	<input type="text" id="payment" >
+	<table id="pay">
+		<% int totalPayment = party.getPaymentAmount();
+		%>
+		<tr>
+		<th><%=totalPayment %>원</th>
+		</tr>
+	</table>
 
 </div>
 
+</form>
+
+
+
 <div>
 	<button type="button" id="btnpay">결제하기</button>
-	<button type="button" id="btnpointcharge">포인트 충전하기</button>
+	<button type="button" id="btncancel">취소하기</button>
 
 
 </div>

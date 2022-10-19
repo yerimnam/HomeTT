@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import common.JDBCTemplate;
+import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dao.face.PaymentDao;
-import payment.dto.Payment;
+
 import user.dto.Member;
 
 
@@ -20,7 +23,7 @@ public class PaymentDaoImpl implements PaymentDao {
 	
 	@Override
 	public Member selectUserInfo(Connection conn, int userno) {
-		
+		System.out.println("SelectuserInf- start");
 		String sql ="";
 		sql +="SELECT user_no,user_id,user_name";
 		sql +=" FROM member";
@@ -47,17 +50,18 @@ public class PaymentDaoImpl implements PaymentDao {
 			e.printStackTrace();
 		} finally {
 			
-			JDBCTemplate.close(ps);
 			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 			
 		}
 		 
 				
+		System.out.println("SelectuserInf- end");
 		return  userinfo;
 	}
 	 @Override
 	public Party selectPartyInfo(Connection conn, int partyno) {
-
+		 System.out.println("selectPartyInfo-start");
 		 String sql ="";
 		 sql +="SELECT party_no,user_no,paymentAmount,party_name,party_leader";
 		 sql +=" FROM party";
@@ -85,13 +89,88 @@ public class PaymentDaoImpl implements PaymentDao {
 		 } catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(ps);
 			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 			
 		}
 		 
 		 
 		 
+		 System.out.println("selectPartyInfo-end");
 		 return party;
 	}
+	 
+	 @Override
+	public List<Coupon> selectCouponInfo(Connection conn, int userno) {
+		 System.out.println("selectCoupontINfo-start");
+		 String sql ="";
+		 sql +="SELECT coupon_no,user_no,coupon_name,coupon_usable";
+		 sql +=" FROM coupon";
+		 sql +=" WHERE user_no = ?";
+		 
+		 
+		 List<Coupon> couponList = new ArrayList<>();
+		 
+		 try {
+			ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, userno);
+		 
+			rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				Coupon coupon = new Coupon();
+				coupon.setCouponNo(rs.getInt("coupon_no"));
+				coupon.setUserNo(rs.getInt("user_no"));
+				coupon.setCouponUsable(rs.getInt("coupon_usable"));
+				
+			couponList.add(coupon);	
+				
+			}
+		 } catch (SQLException e) {
+			e.printStackTrace();
+		 }finally {
+			 JDBCTemplate.close(rs);
+			 JDBCTemplate.close(ps);
+		 }
+		 
+		 
+		 
+		 System.out.println("selectCoupontINfo-end");
+		 return couponList;
+	}
+	 
+	 @Override
+	public int cntCoupon(Connection conn, int userno) {
+		 System.out.println("cntCoupont-Start");
+		 String sql="";
+		 sql +="SELECT count(*) cnt FROM coupon ";
+		 sql +=" WHERE user_no = ?" ;
+		 
+		 int count = 0;
+		 
+		 try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, userno);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				count = rs.getInt("cnt");
+				
+			}
+			
+		 } catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		 
+		 
+		 System.out.println("cntCoupont-end");
+		 return count;
+			
+	 }
 }
