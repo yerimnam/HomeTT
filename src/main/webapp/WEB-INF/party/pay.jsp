@@ -92,6 +92,13 @@ td {
 
 </div>
 
+<div>
+	<button type="button" id="btnpay">결제하기</button>
+	<button type="button" id="btnpointcharge">포인트 충전하기</button>
+
+
+</div>
+
 <footer>
 
 사업자 정보 

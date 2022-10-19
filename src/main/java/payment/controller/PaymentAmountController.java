@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import member.dto.Member;
+import party.dto.Party;
 import payment.dto.Payment;
 import payment.service.face.PaymentService;
 import payment.service.impl.PaymentServiceImpl;
+import user.dto.Member;
 
-
+//결제 하기 눌렀을 때 보여줄 정보 
 @WebServlet("/homett/payamount")
 public class PaymentAmountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +27,8 @@ public class PaymentAmountController extends HttpServlet {
 	//파티 가입하기 누르면 나오는 창 ->결제정보도 숨겨야하므로  post로 함
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		
 		System.out.println("/homett/payamount - 결제 창");
 	
@@ -35,16 +37,22 @@ public class PaymentAmountController extends HttpServlet {
 		HttpSession session =req.getSession();
 		//테스트 데이터
 		session.setAttribute("userNo", 1);
+		session.setAttribute("partyNo", 1);
 		
 		
 		//실제 코드 // session 은 Strin g..
 		int userno = (int) session.getAttribute("userNo");
+		int partyno  = (int)session.getAttribute("partyNo");
 		
 		//로그인한 사람의 정보 조회
 		
-		Payment user = paymentService.getuserinfo(userno);
-	
+		Member user = paymentService.getuserinfo(userno);
+		//결제하기 위한 파티 정보 조회 
+		Party partyinfo = paymentService.getpartyNo(partyno);
 		
+		
+		//총 계산 금액 -jsp에서 구현하면 될듯..!
+//		Payment paymentAmount = paymentService.calPaymentAmount(user);
 		
 		
 		
@@ -54,5 +62,5 @@ public class PaymentAmountController extends HttpServlet {
 		
 	
 
-	
+	//결제 버튼 눌렀을 때 doPOST로 보내기
 }
