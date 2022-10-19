@@ -7,20 +7,52 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.dto.Member;
+import payment.dto.Payment;
+import payment.service.face.PaymentService;
+import payment.service.impl.PaymentServiceImpl;
 
 
 @WebServlet("/homett/payamount")
 public class PaymentAmountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-		//결제 창
-	//파티 가입하기 누르면 나오는 창 
+	
+	//서비스 객체
+	PaymentService paymentService = new PaymentServiceImpl();
+	
+	//결제 창
+	//파티 가입하기 누르면 나오는 창 ->결제정보도 숨겨야하므로  post로 함
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		System.out.println("/homett/payamount - 결제 창");
+	
+		//세션 형성  ->세션에서 id get->속성으로 넣기
+
+		HttpSession session =req.getSession();
+		//테스트 데이터
+		session.setAttribute("userNo", 1);
+		
+		
+		//실제 코드 // session 은 Strin g..
+		int userno = (int) session.getAttribute("userNo");
+		
+		//로그인한 사람의 정보 조회
+		
+		Payment user = paymentService.getuserinfo(userno);
 	
 		
 		
+		
+		
 		req.getRequestDispatcher("/WEB-INF/party/pay.jsp").forward(req, resp);
+		
 	}
+		
+	
+
 	
 }

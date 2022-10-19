@@ -7,7 +7,11 @@
 <title>결제하기</title>
 <style type="text/css">
 
+body {
 
+	width: 1000px;
+	margin:0 auto;
+}
 
 
 table, input{
@@ -29,6 +33,12 @@ td {
 
 
 </head>
+
+
+<header>
+
+	HOME TT
+</header>
 <body>
 
 <h1>결제 정보</h1>
@@ -41,9 +51,9 @@ td {
 	
 	<tr>
 			<th>파티이름</th>
-			<th>파티장</th>
-			<th>파티 만료일</th>
-			<th>모집 인원</th>
+			<th>회원 아이디</th>
+			<th>파티장 </th>
+			<th>파티 만료 기간</th>
 			<th>참여 금액</th>
 	</tr>
 	<tr>
@@ -81,6 +91,12 @@ td {
 	<input type="text" id="payment" >
 
 </div>
+
+<footer>
+
+사업자 정보 
+
+</footer>
 
 </body>
 </html>

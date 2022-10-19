@@ -1,4 +1,4 @@
-package user.controller;
+package member.controller;
 
 import java.io.IOException;
 
@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/homett/searchpw")
-public class SearchPwController extends HttpServlet {
+@WebServlet("/homett/dropuser")
+public class DropUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	 
@@ -23,5 +22,4 @@ public class SearchPwController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	}
 	
-
 }
