@@ -15,7 +15,7 @@ public class Member {
 	private int userPhone;
 	private Date joinDate;
 	private int partyNo;
-
+ 
 	public Member() {}
 
 	public Member(int userNo, String paymentMethod, int masterNo, String userId, String userPw, String userName,

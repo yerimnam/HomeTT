@@ -18,7 +18,7 @@ public class SecedeMember {
 	private Date joinDate;
 	private int partyNo;
 	 
-	
+	 
 	public SecedeMember() {}
 
 
