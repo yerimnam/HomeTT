@@ -39,6 +39,8 @@ public class PaymentDaoImpl implements PaymentDao {
 			 //조회 결과 처리 
 			 while(rs.next()) {
 				 userinfo.setUserNo(rs.getInt("user_no"));
+				 userinfo.setUserId(rs.getString("user_id"));
+				 userinfo.setUserName(rs.getString("user_name"));
 			 }
 		
 		} catch (SQLException e) {
@@ -57,9 +59,9 @@ public class PaymentDaoImpl implements PaymentDao {
 	public Party selectPartyInfo(Connection conn, int partyno) {
 
 		 String sql ="";
-		 sql +="SELECT party_no,paymentAmount,party_endDate,party_name";
+		 sql +="SELECT party_no,user_no,paymentAmount,party_name,party_leader";
 		 sql +=" FROM party";
-		 sql +=" WHERE partyno =?";
+		 sql +=" WHERE party_no =?";
 		 
 		 Party party = new Party();
 		 
@@ -74,9 +76,10 @@ public class PaymentDaoImpl implements PaymentDao {
 			while(rs.next()) {
 				
 				party.setPartyNo(rs.getInt("party_no"));
+				party.setUserNo(rs.getInt("user_no"));
 				party.setPaymentAmount(rs.getInt("paymentAmount"));
-				party.setPartyEndDate(rs.getDate("party_endDate"));
 				party.setPartyName(rs.getString("party_name"));
+				party.setPartyLeader(rs.getString("party_leader"));
 			}
 		 
 		 } catch (SQLException e) {

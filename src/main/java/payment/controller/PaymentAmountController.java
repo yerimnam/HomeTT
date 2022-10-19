@@ -36,12 +36,12 @@ public class PaymentAmountController extends HttpServlet {
 
 		HttpSession session =req.getSession();
 		//테스트 데이터
-		session.setAttribute("userNo", 1);
+		session.setAttribute("user_no", 2);
 		session.setAttribute("partyNo", 1);
 		
 		
 		//실제 코드 // session 은 Strin g..
-		int userno = (int) session.getAttribute("userNo");
+		int userno = (int) session.getAttribute("user_no");
 		int partyno  = (int)session.getAttribute("partyNo");
 		
 		//로그인한 사람의 정보 조회
@@ -50,7 +50,12 @@ public class PaymentAmountController extends HttpServlet {
 		//결제하기 위한 파티 정보 조회 
 		Party partyinfo = paymentService.getpartyNo(partyno);
 		
+		//테스트 콘솔 출력 
+//		System.out.println(user);
+//		System.out.println(partyinfo);
 		
+		req.setAttribute("userinfo", user);
+		req.setAttribute("partyinfo", partyinfo);
 		//총 계산 금액 -jsp에서 구현하면 될듯..!
 //		Payment paymentAmount = paymentService.calPaymentAmount(user);
 		

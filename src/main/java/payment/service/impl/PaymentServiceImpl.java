@@ -4,7 +4,7 @@ import common.JDBCTemplate;
 import party.dto.Party;
 import payment.dao.face.PaymentDao;
 import payment.dao.impl.PaymentDaoImpl;
-import payment.dto.Payment;
+
 import payment.service.face.PaymentService;
 import user.dto.Member;
 

@@ -1,5 +1,9 @@
+<%@page import="party.dto.Party"%>
+<%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <% Member member = (Member)request.getAttribute("userinfo");%>
+   <% Party party = (Party)request.getAttribute("partyinfo");  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,18 +54,18 @@ td {
 <table id="payinfo" >
 	
 	<tr>
-			<th>파티이름</th>
 			<th>회원 아이디</th>
+			<th>회원 이름</th>
+			<th>파티이름</th>
 			<th>파티장 </th>
-			<th>파티 만료 기간</th>
 			<th>참여 금액</th>
 	</tr>
 	<tr>
-		<td>파티이름</td>
-		<td>파티장</td>
-		<td>파티 만료일</td>
-		<td>모집 인원</td>
-		<td>참여 금액</td>
+		<td><%=member.getUserId() %></td>
+		<td><%=member.getUserName() %></td>
+		<td><%=party.getPartyName() %></td>
+		<td><%=party.getPartyLeader() %></td>
+		<td><%=party.getPaymentAmount() %> 원</td>
 		
 	</tr>
 
