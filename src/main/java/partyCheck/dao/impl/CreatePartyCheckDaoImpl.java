@@ -7,6 +7,7 @@ import partyCheck.dao.face.CreatePartyCheckDao;
 import partyCheck.dto.PartyCheck;
 
 public class CreatePartyCheckDaoImpl implements CreatePartyCheckDao {
+	
 
 	@Override
 	public List<PartyCheck> selectAll(Connection connection) {

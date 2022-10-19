@@ -12,7 +12,7 @@ import user.dto.Member;
 
 public class UserDaoImpl implements UserDao {
 
-
+ 
 	private PreparedStatement ps = null; //SQL수행 객체
 	private ResultSet rs = null; //결과 집합 객체
 

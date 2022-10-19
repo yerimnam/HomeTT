@@ -6,7 +6,7 @@ import java.sql.Date;
 import user.dto.Member;
 
 public interface UserDao {
-
+ 
 	/**
 	 * member_seq의 nextuserno을 조회한다
 	 * 
