@@ -11,14 +11,6 @@ import partyCheck.service.face.CreatePartyCheckService;
 public class CreatePartyCheckServiceImpl implements CreatePartyCheckService {
 
 	// DAO 객체 생성
-	private CreatePartyCheckDao createPartyCheckDao = new CreatePartyCheckDaoImpl();
 	
-	@Override
-	public List<PartyCheck> getList() {
-		System.out.println("CreatePartyService getList()");
-
-		
-		return createPartyCheckDao.selectAll(JDBCTemplate.getConnection());
-	}
 
 }
