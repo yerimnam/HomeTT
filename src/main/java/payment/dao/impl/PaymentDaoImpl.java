@@ -122,6 +122,7 @@ public class PaymentDaoImpl implements PaymentDao {
 				Coupon coupon = new Coupon();
 				coupon.setCouponNo(rs.getInt("coupon_no"));
 				coupon.setUserNo(rs.getInt("user_no"));
+				coupon.setCouponName(rs.getString("coupon_name"));
 				coupon.setCouponUsable(rs.getInt("coupon_usable"));
 				
 			couponList.add(coupon);	
@@ -173,4 +174,5 @@ public class PaymentDaoImpl implements PaymentDao {
 		 return count;
 			
 	 }
+	 
 }

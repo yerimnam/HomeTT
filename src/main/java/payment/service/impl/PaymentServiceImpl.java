@@ -1,5 +1,6 @@
 package payment.service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import common.JDBCTemplate;
@@ -36,5 +37,13 @@ public class PaymentServiceImpl implements PaymentService {
 	public int getcntCoupon(int userno) {
 		return paymentDao.cntCoupon(JDBCTemplate.getConnection(),userno);
 	}
+	
+	@Override
+	public int calCoupon(List<Coupon> couponInfo) {
 
+	
+		
+		
+		return 0;
+	}
 }
