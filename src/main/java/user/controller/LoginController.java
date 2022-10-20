@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import user.dto.Member;
 import user.service.face.UserService;
@@ -22,7 +23,7 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/login [GET]");
-		
+
 		req.getRequestDispatcher("/WEB-INF/member/login.jsp").forward(req, resp);
 
 	}
@@ -31,7 +32,7 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/login [POST]");
-		
+
 		//요청 데이터의 한글 인코딩 방식 지정하기 : UTF-8
 		req.setCharacterEncoding("UTF-8");
 
@@ -40,12 +41,27 @@ public class LoginController extends HttpServlet {
 
 		//잘들어오는지 확인
 		System.out.println("MemberController doPost() - member : " + member);
-		
+
 		//로그인 인증
 		boolean loginTF = userService.login(member);
 
-		
-		req.getRequestDispatcher("/WEB-INF/member/login.jsp").forward(req, resp);
+		//로그인 인증 성공
+		if( loginTF ) {
+
+			//로그인 사용자 정보 조회
+			member = userService.loginInfo(member);
+
+			//세션정보 객체
+			HttpSession session = req.getSession();
+
+			session.setAttribute("login", loginTF);
+			session.setAttribute("masterNo", member.getMasterNo());
+			session.setAttribute("userId", member.getUserId());
+			session.setAttribute("userNick", member.getUserNick());
+
+		}
+
+		resp.sendRedirect("./main");
 	}
 
 }

@@ -9,10 +9,23 @@
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-
 <script type="text/javascript">
 $(document).ready(function() {
 	
+// 	$("form").submit(function(){
+// 		console.log("submit event")
+		
+// 		//유효성 검증 후 submit
+// 		if( validate() ) {
+			
+// 			$(this).submit();
+// 		}
+// 		//submit 중단시키기(새로고침 되는거 방지)
+// 		alert("회원정보를 전부 입력해주세요")
+// 		return false;
+// 	})
+	
+
 	//아이디 입력창에 포커스주기
 	$("input").eq(0).focus()
 	
@@ -23,40 +36,39 @@ $(document).ready(function() {
 		}
 	})
 	
-	//로그인 버튼
+	//회원가입 버튼
 	$("#btnLogin").click(function() {
 		$(this).parents("form").submit();
 	})
 	
+	
 })
+
 </script>
 
 </head>
 <body>
-
-<h1>회원가입</h1>
+<h1>로그인</h1>
 <hr>
 
 <form action="/homett/login" method="post">
 
 	<div>
-		<label for="userid">아이디</label>
-		<input type="text" id="userid" name="userid" placeholder="아이디">
+		<label for="userid">아이디</label> <input type="text" id="userid" name="userid" placeholder="아이디">
 	</div>
-	
+
 	<div>
-		<label for="userpw">비밀번호</label>
-		<input type="text" id="userpw" name="userpw">
+		<label for="userpw">비밀번호</label> <input type="text" id="userpw" name="userpw">
 	</div>
 
 	<div>
 		<button type="button" id="btnLogin">로그인</button>
 	</div>
-	
+
 	<div>
 		<button type="button" id="kakaoLogin">카카오 로그인</button>
 	</div>
-	
+
 </form>
 
 </body>
