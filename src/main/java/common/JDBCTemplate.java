@@ -14,8 +14,14 @@ public class JDBCTemplate {
 	
 	// DB연결 정보
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+<<<<<<< HEAD
 	private static final String USERNAME = "hometest";
 	private static final String PASSWORD = "123";
+=======
+
+	private static final String USERNAME = "HomeTT";
+	private static final String PASSWORD = "1234";
+>>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
 	
 	//private 생성자
 	private JDBCTemplate() {}
