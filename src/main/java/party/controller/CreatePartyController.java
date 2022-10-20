@@ -7,10 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import party.dto.Party;
 import party.service.face.CreatePartyService;
 import party.service.impl.CreatePartyServiceImpl;
+import user.dto.Member;
 
 @WebServlet("/homett/createparty")
 public class CreatePartyController extends HttpServlet {
@@ -26,6 +28,11 @@ public class CreatePartyController extends HttpServlet {
 		
 		//jsp 뷰 지정
 		req.getRequestDispatcher("/WEB-INF/party/createParty.jsp").forward(req, resp);
+		
+		
+		//세션 객체 party 세션 객체 생성해서 저장하고(setAttribute)
+		HttpSession session = req.getSession();
+		
 		
 	}
 	
@@ -46,8 +53,12 @@ public class CreatePartyController extends HttpServlet {
 		Party result = createpartyService.create(party);
 		System.out.println("CreatePartyController doPost() - result : " + result);
 		
+	
 		//JSP View 객체 전달하기
 		req.setAttribute("result", result);
+		
+		//member (userId 값 불러오기getAttribute)
+		Member member = (Member)req.getAttribute("userinfo");
 		
 		
 		//누르면 결제 창으로 들어가게
