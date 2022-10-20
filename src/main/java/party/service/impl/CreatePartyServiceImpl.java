@@ -17,15 +17,18 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 	private CreatePartyDao createpartyDao = new CreatePartyDaoImpl();
 	
 	@Override
-	public Party setCreateParty(HttpServletRequest req) {
+	public Party getCreateParty(HttpServletRequest req) {
 		
 		Party party = new Party();
 		
-//		party.setPartyNo ( Integer.parseInt(req.getParameter("partyno")) );
-		party.setPartyKind ( req.getParameter("PartyKind") );
-		party.setPartyRule ( req.getParameter("PartyRule ") );
-		party.setPartyName ( req.getParameter("PartyName") );
-//		party.setPartyLeader ( req.getParameter("party_leader") );
+//		party.setPartyKind ( req.getParameter("partykind") );
+		party.setPartyRule ( req.getParameter("partyrule ") );
+		party.setPartyName ( req.getParameter("partyname") );
+		party.setPartyLeader ( req.getParameter("partyleader") );
+		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
+		party.setPartyCreDate(null);
+		party.setPartyEndDate(null);
+//		party.setUserNo( Integer.parseInt(req.getParameter("UserNo")));	//userno를 가져와야 하는디...
 		
 		return party;
 	}

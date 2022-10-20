@@ -14,7 +14,7 @@ public interface CreatePartyService {
 	 * @param req - 요청 정보 객체
 	 * @return Party - 생성된 파티 정보 객체
 	 */
-	public Party setCreateParty(HttpServletRequest req);
+	public Party getCreateParty(HttpServletRequest req);
 
 	
 	/**

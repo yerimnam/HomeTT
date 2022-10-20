@@ -49,7 +49,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		
 		//작성할 값 전부 적어야 함
 		String sql ="";
-		sql += "INSERT INTO party ( PARTY_NO, PARTY_NAME, PARTY_KIND, PARTY_RULE)";
+		sql += "INSERT INTO party ( PARTY_NO, PARTY_NAME, PARTY_RULE , PARTY_MEMBER)";
 		sql += " VALUES (?, ?, ?, ?)";
 		
 		int result = 0;
@@ -62,6 +62,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			ps.setString(2, party.getPartyName());
 			ps.setString(3, party.getPartyKind());
 			ps.setString(4, party.getPartyRule());
+			ps.setInt(5, party.getPartyMember());
 
 			result = ps.executeUpdate();
 			

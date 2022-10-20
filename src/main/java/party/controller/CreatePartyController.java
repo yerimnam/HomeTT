@@ -38,7 +38,7 @@ public class CreatePartyController extends HttpServlet {
 
 		
 		//파티 생성 전달 파라미터 추출
-		Party party = createpartyService.setCreateParty(req);
+		Party party = createpartyService.getCreateParty(req);
 		
 		System.out.println("CreatePartyController doPost() - party : " + party);
 		
