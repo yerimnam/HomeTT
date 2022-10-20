@@ -17,6 +17,7 @@ public class JDBCTemplate {
 
 	private static final String USERNAME = "HomeTT";
 	private static final String PASSWORD = "1234";
+
 	
 	//private 생성자
 	private JDBCTemplate() {}
