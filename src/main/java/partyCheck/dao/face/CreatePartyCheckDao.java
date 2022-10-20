@@ -7,11 +7,6 @@ import partyCheck.dto.PartyCheck;
 
 public interface CreatePartyCheckDao {
 
-	/**
-	 * 
-	 * @param connection
-	 * @return
-	 */
-	List<PartyCheck> selectAll(Connection connection);
+	
 
 }
