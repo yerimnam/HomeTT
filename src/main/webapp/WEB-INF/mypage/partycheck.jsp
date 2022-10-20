@@ -32,7 +32,7 @@
 
 .situation {
 	display: flex;
-	padding-top: 100px;
+	padding-top: 20px;
 	padding-left: 200px;
 }
 
@@ -67,18 +67,18 @@ li {
 <% for(int i = 0; i < partyList.size(); i++) { %>
 <div id="party">
 	<ul>
-		<div style="border: 1px solid #000; text-align: center; margin-top: 5px;">
+		<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 			<%=partyList.get(i).getPartyKind() %>
 		</div>
 		<div style="text-align: center; margin: 5px; margin-top: 15px;">
 			<%=partyList.get(i).getPartyName() %>
 		</div>
-		<hr>
+		<hr style="height: 1px; background-color: black;">
 		<li>파티장 : <%=partyList.get(i).getPartyLeader() %></li>
 		<li>파티 만료일 : <%=partyList.get(i).getPartyEnddate() %></li>
 		<li>모집 인원 : <%=partyList.get(i).getPartyMember() %></li>
-		<hr>
-		<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %></li>
+		<hr style="height: 1px; background-color: black;">
+		<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %> 원</li>
 	</ul>
 </div>
 <% } %>
@@ -93,6 +93,7 @@ li {
 	</ul>
 </div>
 <hr>
+
 
 <div class="situation">
 참여중인 파티
