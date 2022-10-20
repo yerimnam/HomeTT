@@ -31,49 +31,7 @@ public class PaymentCalController extends HttpServlet {
 
 
 		  System.out.println("/homett/paymentcal [POST}");
-//		  HttpSession session =req.getSession();
-//		//테스트 데이터
-//			session.setAttribute("user_no", 2);
-////			session.setAttribute("partyNo", 1);
-//			
-//			
-//			//실제 코드 // session 은 Strin g..
-////			int userno = (int) session.getAttribute("user_no");
-//			int partyno  = (int)session.getAttribute("partyNo");
-//			
-//			//로그인한 사람의 정보 조회
-//			
-//			
-//			//결제하기 위한 파티 정보 조회 
-//			Party partyInfo = paymentService.getpartyNo(partyno);
-//			
-//			//보유 쿠폰 조회하기 
-//		  
-//		  
-//		  
-//		  //쿠폰 번호 값이 담긴 list 
-//		  String[] list = req.getParameterValues("couponval[]");
-////		  for( String s : list )	System.out.println(s);
-////		  
-////		  System.out.println(list[0]);
-////
-////		  
-////		  
-////		  //사용하려고 체크한 쿠폰 번호
-////		  int couponNo = Integer.parseInt(list[0]);
-////		  
-//		  //DB에서 쿠폰 금액 조회 (coupon_no 이용)
-//		  //금액 계산 해서 반환하는 서비스 메소드 작성 (호출)
-//		  //	-> 반환값은 req.setAttribute
-//
-////			//보유 쿠폰 조회하기 
-////			List<Coupon> couponInfo = paymentService.getCouponInfo(userno);
-////			
-////			int couponValue = paymentService.calCoupon(couponInfo);
-////
-////		  
-//		  req.setAttribute("payval", partyInfo);
-//		  req.setAttribute("couponval", list);
+
 //		  
 		  
 		  req.getRequestDispatcher("/WEB-INF/party/paymodule.jsp").forward(req, resp);
