@@ -21,31 +21,42 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		
 		Party party = new Party();
 		
-		party.setPartyKind ( req.getParameter("party_kind") );
-		party.setPartyRule ( req.getParameter("party_rule") );
-		party.setPartyName ( req.getParameter("party_name") );
-		party.setPartyLeader ( req.getParameter("party_leader") );
-
+//		party.setPartyNo ( Integer.parseInt(req.getParameter("partyno")) );
+		party.setPartyKind ( req.getParameter("PartyKind") );
+		party.setPartyRule ( req.getParameter("PartyRule ") );
+		party.setPartyName ( req.getParameter("PartyName") );
+//		party.setPartyLeader ( req.getParameter("party_leader") );
 		
 		return party;
 	}
+	
 
 	@Override
 	public Party create(Party party) {
 		
+		//DB 연결 객체
 		Connection conn = JDBCTemplate.getConnection();
 		
-		//seq의 nextval 조회하기
-		int next = createpartyDao.selectNextUserno(conn);
-		System.out.println("CreateParty create() - next : " + next);
+		//party_seq의 nextval(nextpartyno) 조회하기
+		int next = createpartyDao.selectNextPartyno(conn);
+		System.out.println("CreatePartyService create() - next : " + next);
 		
 		//조회디ㅗㄴ enxtval party객체 저장하기
+		party.setPartyNo(next);
+		System.out.println("CreatePartyService create() - next : " + party);
+		
+		//완성된 party객체 DB에 삽ㅇㅂ
 		int result = createpartyDao.insert(conn, party);
 		
-		if( result > 0 ) {
+		System.out.println("CreatePartyService create() - 끝 ");
+
+		
+		//결과 처리하기 - 트랜잭션 관리
+		if( result > 0 ) {	//DB 삽입 성공
 			JDBCTemplate.commit(conn);
 			return party;
-		} else {
+			
+		} else { //삽입 실패
 			JDBCTemplate.rollback(conn);
 			return null;
 		}

@@ -36,15 +36,17 @@
 <label for="partyname">파티명</label>
 <input type="text" id="partyname" name="partyname"><br>
 
-<label for="memberselect">모집 멤버</label>
-<input type="number" id="memberselect"> <br>
+<label for="partyname">파티종류</label>
+<input type="text" id="ottsh" name="partyott"><br>
+<!-- <label for="memberselect">모집 멤버</label> -->
+<!-- <input type="number" id="memberselect"> <br> -->
 <!-- <button type="button" id="btnnext" onclick="">다음</button><Br> -->
 </div><br><br>
 
 <div style="border: 2px solid black;">
-<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
-<input type="date" id="shareperiod" name="startDate">
-<input type="date" id="shareperiod" name="endDate">
+<!-- <label for="shareperiod"><a href="">계정 공유 기간</a></label><br> -->
+<!-- <input type="date" id="shareperiod" name="startDate"> -->
+<!-- <input type="date" id="shareperiod" name="endDate"> -->
 
 <!-- <button type="button" id="btnperiod" onclick="">확인</button> -->
 

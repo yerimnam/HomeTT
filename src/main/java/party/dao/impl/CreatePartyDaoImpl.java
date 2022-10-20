@@ -15,12 +15,12 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 	private ResultSet rs;
 
 	@Override
-	public int selectNextUserno(Connection conn) {
+	public int selectNextPartyno(Connection conn) {
 		
 		String sql = "SELECT party_seq.nextval FROM dual";
 		
 		//시퀀스 nextval 저장할 변수
-		int nextval = 0;
+		int nextpartyno = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -28,7 +28,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			
 			rs.next();
 			
-			nextval = rs.getInt(1);
+			nextpartyno = rs.getInt(1);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			JDBCTemplate.close(ps);
 		}
 	
-		return nextval;
+		return nextpartyno;
 	}
 	
 	@Override
@@ -45,12 +45,14 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		System.out.println("CreatePartyDaoImpl insert() - 시작");
 		
 		
-		//insert 쿼리 작성하기 
+		//insert 쿼리 작성하기
+		
+		//작성할 값 전부 적어야 함
 		String sql ="";
-		sql += "INSERT INTO party ( party_no, paty_name, party_kind, party_rule)";
+		sql += "INSERT INTO party ( PARTY_NO, PARTY_NAME, PARTY_KIND, PARTY_RULE)";
 		sql += " VALUES (?, ?, ?, ?)";
 		
-		int res = 0;
+		int result = 0;
 		
 		try {
 			
@@ -61,7 +63,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			ps.setString(3, party.getPartyKind());
 			ps.setString(4, party.getPartyRule());
 
-			res = ps.executeUpdate();
+			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -69,15 +71,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			JDBCTemplate.close(ps);
 		}
 		System.out.println("CreatePartyDaoImpl insert() - 끝");
-		return res;
+		return result;
 	}
 
-
-
-
-
-
-
-	
 
 }

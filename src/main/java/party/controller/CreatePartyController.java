@@ -17,6 +17,7 @@ public class CreatePartyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
+	//서비스 객체
 	private CreatePartyService createpartyService = new CreatePartyServiceImpl();
 	
 	@Override
@@ -32,7 +33,7 @@ public class CreatePartyController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/createparty [POST]");
 		
-		//요청데이터 한글 인코딩 방식 지정하기
+		//요청데이터 한글 인코딩 방식 지정하기 : UTF-8
 		req.setCharacterEncoding("UTF-8");
 
 		
