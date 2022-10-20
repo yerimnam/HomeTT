@@ -25,7 +25,13 @@ public class WishListCheckController extends HttpServlet {
 		System.out.println("/homett/wishcheck [GET]");
 		
 		// 찜 목록 전체 조회
-		List<WishListCheck> partyList = wishListCheckservice.getList();
+		List<WishListCheck> wishList = wishListCheckservice.getList();
+		
+		// [TEST] 조회결과 확인
+		for(WishListCheck w : wishList)	System.out.println(w);
+		
+		// 조회결과를 MODEL값 전달
+		req.setAttribute("wishList", wishList);
 		
 		req.getRequestDispatcher("/WEB-INF/mypage/wishlist.jsp").forward(req, resp);
 	}
