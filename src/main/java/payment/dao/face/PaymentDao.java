@@ -50,6 +50,8 @@ public interface PaymentDao {
 	 * @return 회원이 보유한 쿠폰의 수 반환
 	 */
 	public int cntCoupon(Connection conn, int userno);
+
+	
 	
 
 }
