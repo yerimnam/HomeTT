@@ -66,7 +66,7 @@ li {
 <div class="container">
 <% for(int i = 0; i < partyList.size(); i++) { %>
 <div id="party">
-	<ul>
+	<ul><a herf
 		<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 			<%=partyList.get(i).getPartyKind() %>
 		</div>
