@@ -2,6 +2,7 @@ package party.dto;
 
 import java.util.Date;
 
+
 public class Party {
 	
 	    private int partyNo;
@@ -193,9 +194,4 @@ public class Party {
 	   public void setPartyNotice(String partyNotice) {
 	      this.partyNotice = partyNotice;
 	   }
-	      
-	      
-
-
-
 }
