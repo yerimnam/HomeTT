@@ -2,8 +2,8 @@ package party.dto;
 
 import java.util.Date;
 
-public class Party {
 
+public class Party {
 	
 	    private int partyNo;
 	      private int userNo;

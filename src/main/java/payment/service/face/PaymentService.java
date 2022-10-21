@@ -42,6 +42,18 @@ public interface PaymentService {
 	int getcntCoupon(int userno);
 	
 	
+	
+	/**
+	 * 쿠폰 값 계산하기
+	 * @param couponInfo -쿠폰 정보
+	 * @return 쿠폰 값 반환
+	 */
+	int calCoupon(List<Coupon> couponInfo);
+	
+	
+	
+	
+	
 
 
 }
