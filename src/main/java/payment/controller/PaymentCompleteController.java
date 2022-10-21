@@ -34,6 +34,6 @@ public class PaymentCompleteController extends HttpServlet {
 
 //		  
 		  
-		  req.getRequestDispatcher("/WEB-INF/party/paymodule.jsp").forward(req, resp);
+		  req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);
 	}
 }

@@ -61,8 +61,8 @@ public class PaymentAmountController extends HttpServlet {
 			
 				req.setAttribute("userinfo", user);
 				req.setAttribute("partyinfo", partyInfo);
-				req.setAttribute("couponinfo",couponInfo );
-				req.setAttribute("cntCoupon",cntCoupon );
+//				req.setAttribute("couponinfo",couponInfo );
+//				req.setAttribute("cntCoupon",cntCoupon );
 			
 				
 		  
