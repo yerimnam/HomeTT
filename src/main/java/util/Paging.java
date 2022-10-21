@@ -46,7 +46,7 @@ public class Paging {
 
 		//기본값 설정
 		if(curPage == 0)		setCurPage(1); //첫 페이지를 기본 페이지로 설정한다
-		if(listCount == 0)		setListCount(10); //화면에 보여질 게시글 수를 10개로 기본 설정한다
+		if(listCount == 0)		setListCount(4); //화면에 보여질 게시글 수를 10개로 기본 설정한다
 		if(pageCount == 0)		setPageCount(10); //화면에 보여질 페이지 수를 10개로 기본 설정한다
 		
 		//-----------------------------------------------------------
@@ -56,7 +56,7 @@ public class Paging {
 
 		//총 페이지 수 보정
 		//	-> 마지막 페이지에 보여질 게시글 수가 listCount보다 작을 때 보여질 1페이지 추가하기
-		if( totalPage % listCount > 0 )	totalPage++;
+		if( totalCount % listCount > 0 )	totalPage++;
 
 		//총 페이지 수 보정
 		//	-> 요청 페이지가 마지막 페이지 번호보다 클 때 마지막 페이지 번호로 고정하기
