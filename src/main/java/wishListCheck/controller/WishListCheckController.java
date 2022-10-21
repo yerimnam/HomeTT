@@ -22,6 +22,7 @@ public class WishListCheckController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		System.out.println("/homett/wishcheck [GET]");
 		
 		// 찜 목록 전체 조회

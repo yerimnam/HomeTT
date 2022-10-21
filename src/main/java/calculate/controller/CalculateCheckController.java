@@ -27,8 +27,13 @@ public class CalculateCheckController extends HttpServlet {
 		// 정산 내역 목록 전체 조회
 		List<Calculate> calculateList = calculateCheckService.getList();
 		
+		// [TEST] 조회결과 확인
+		for(Calculate c : calculateList)	System.out.println(c);
 		
-		
+		// 조회결과 MODEL값 전달
+		req.setAttribute("calculateList", calculateList);
+			
+		// View 지정
 		req.getRequestDispatcher("/WEB-INF/mypage/calculatecheck.jsp").forward(req, resp);
 	}
 
