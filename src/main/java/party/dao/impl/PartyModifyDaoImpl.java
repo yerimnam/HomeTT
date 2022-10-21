@@ -17,7 +17,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 	private PreparedStatement ps; // SQL수행 객체
 	private ResultSet rs; // SQL 조회 결과 객체
 
-	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	//시퀀스 설정
 	@Override
 	public int selectNextUserno(Connection conn, Party party) {
 		String sql = "SELECT party_seq.nextval FROM dual";
