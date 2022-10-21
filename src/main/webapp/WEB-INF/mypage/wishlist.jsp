@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>wish list check</title>
 </head>
 <body>
 
-<h1>월별 통계</h1>
+<h1>찜 목록 조회</h1>
+<hr>
 
 </body>
 </html>

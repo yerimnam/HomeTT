@@ -8,7 +8,5 @@
 </head>
 <body>
 
-<h1>월별 통계</h1>
-
 </body>
 </html>
