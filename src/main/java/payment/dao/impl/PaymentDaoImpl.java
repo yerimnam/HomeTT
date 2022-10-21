@@ -11,7 +11,7 @@ import common.JDBCTemplate;
 import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dao.face.PaymentDao;
-
+import payment.dto.Payment;
 import user.dto.Member;
 
 
@@ -103,78 +103,36 @@ public class PaymentDaoImpl implements PaymentDao {
 	}
 	 
 	 @Override
-	public List<Coupon> selectCouponInfo(Connection conn, int userno) {
-		 System.out.println("selectCoupontINfo-start");
+	public int insertPayment(Connection conn, Payment payment) {
+		 System.out.println("insertPayment -start");
 		 String sql ="";
-		 sql +="SELECT coupon_no,user_no,coupon_name,coupon_usable";
-		 sql +=" FROM coupon";
-		 sql +=" WHERE user_no = ?";
+		 sql +="INSERT INTO payment (pay_no,user_no,paymentmethod,party_no,payment_amount";
+		 sql +=" values(?,?,?,?,?)";
 		 
-		 
-		 List<Coupon> couponList = new ArrayList<>();
-		 
-		 try {
-			ps = conn.prepareStatement(sql);
-
-			ps.setInt(1, userno);
-		 
-			rs= ps.executeQuery();
-			
-			while(rs.next()) {
-				Coupon coupon = new Coupon();
-				coupon.setCouponNo(rs.getInt("coupon_no"));
-				coupon.setUserNo(rs.getInt("user_no"));
-				coupon.setCouponName(rs.getString("coupon_name"));
-				coupon.setCouponUsable(rs.getInt("coupon_usable"));
-				
-			couponList.add(coupon);	
-				
-			}
-		 } catch (SQLException e) {
-			e.printStackTrace();
-		 }finally {
-			 JDBCTemplate.close(rs);
-			 JDBCTemplate.close(ps);
-		 }
-		 
-		 
-		 
-		 System.out.println("selectCoupontINfo-end");
-		 return couponList;
-	}
-	 
-	 @Override
-	public int cntCoupon(Connection conn, int userno) {
-		 System.out.println("cntCoupont-Start");
-		 String sql="";
-		 sql +="SELECT count(*) cnt FROM coupon ";
-		 sql +=" WHERE user_no = ?" ;
-		 
-		 int count = 0;
+		 //insert 결과 변수
+		 int result = 0;
 		 
 		 try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, userno);
-			rs = ps.executeQuery();
 			
-			while(rs.next()) {
-				
-				count = rs.getInt("cnt");
-				
-			}
+			ps.setInt(1,payment.getPayNo() );
+			ps.setInt(2, payment.getUserNo());
+			ps.setString(3, payment.getPaymentMethod());
+			ps.setInt(4, payment.getPartyNo());
+			ps.setInt(5,payment.getPaymentAmount());
 			
-		 } catch (SQLException e) {
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
-			
 		}
-		 
-		 
-		 System.out.println("cntCoupont-end");
-		 return count;
-			
-	 }
+		 System.out.println("insert-payment-end");
+		return result;
+	}
+	 
+
 	 
 }
