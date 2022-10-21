@@ -3,9 +3,11 @@ package payment.service.face;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import coupon.dto.Coupon;
 import party.dto.Party;
-
+import payment.dto.Payment;
 import user.dto.Member;
 
 public interface PaymentService {
@@ -26,29 +28,27 @@ public interface PaymentService {
 
 	Party getpartyNo(int partyno);
 	
-	/**
-	 * 보유한 쿠폰 정보 조회
-	 * @param userno -유저 넘버
-	 * @return -조회한 쿠폰 정보 반환 
-	 */
-	
-	List<Coupon> getCouponInfo(int userno);
 	
 	/**
-	 * 
-	 * @param userno
-	 * @return 회원이 가진 쿠폰 수 반환
+	 * ajax가 전달한 파라미터 추출하기
+	 * @param req -파라미터
+	 * @return -전달한 정보 반환 
 	 */
-	int getcntCoupon(int userno);
-	
-	
+	Payment getParam(HttpServletRequest req);
 	
 	/**
-	 * 쿠폰 값 계산하기
-	 * @param couponInfo -쿠폰 정보
-	 * @return 쿠폰 값 반환
+	 * 전달한 정보로 insert하기 
+	 * @param req -파라미터
+	 * @return -저장된 payment dto 정보 
 	 */
-	int calCoupon(List<Coupon> couponInfo);
+	
+	Payment setPayment(Payment payment);
+	
+	
+	
+	
+	
+	
 	
 	
 	
