@@ -29,11 +29,6 @@ public class CreatePartyController extends HttpServlet {
 		//jsp 뷰 지정
 		req.getRequestDispatcher("/WEB-INF/party/createParty.jsp").forward(req, resp);
 		
-		
-		//세션 객체 party 세션 객체 생성해서 저장하고(setAttribute)
-		HttpSession session = req.getSession();
-		
-		
 	}
 	
 	@Override
@@ -44,6 +39,7 @@ public class CreatePartyController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 
 		
+		
 		//파티 생성 전달 파라미터 추출
 		Party party = createpartyService.getCreateParty(req);
 		
@@ -53,12 +49,17 @@ public class CreatePartyController extends HttpServlet {
 		Party result = createpartyService.create(party);
 		System.out.println("CreatePartyController doPost() - result : " + result);
 		
-	
-		//JSP View 객체 전달하기
-		req.setAttribute("result", result);
+		//세션 객체 party 세션 객체 생성해서 저장하고(setAttribute)
+		HttpSession session = req.getSession();
+		
 		
 		//member (userId 값 불러오기getAttribute)
 		Member member = (Member)req.getAttribute("userinfo");
+//		Member userid = (Member)req.getAttribute("userId");
+		
+	
+		//JSP View 객체 전달하기
+		req.setAttribute("result", result);
 		
 		
 		//누르면 결제 창으로 들어가게
