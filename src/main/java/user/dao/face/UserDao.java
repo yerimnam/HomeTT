@@ -49,10 +49,39 @@ public interface UserDao {
 	 * @param member - 조회할 userid를 가진 객체
 	 * @return Member - 조회된 회원 정보
 	 */
-	public Member selectLoginInfo(Connection connection, Member member);
+	public Member selectLoginInfo(Connection conn, Member member);
 
 
 
 //	---------------------------------로그인 끝 -----------------------------------
 		
+//	--------------------------------- 아이디 찾기 시작 -----------------------------------
+	
+	/**
+	 * 
+	 * username, useremail을 이용해 id알아내기
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param member - 조회할 name, email 가진 객체
+	 * @return Member - 조회된 id
+	 */
+	public Member getMemberId(Connection conn, Member member);
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+

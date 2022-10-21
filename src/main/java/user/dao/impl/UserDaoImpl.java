@@ -170,6 +170,46 @@ public class UserDaoImpl implements UserDao {
 	
 //	---------------------------------로그인 끝 -----------------------------------
 	
+//	---------------------------------아이디찾기 시작 -----------------------------------
+	
+	
+	@Override
+	public Member getMemberId(Connection conn, Member member) {
+		System.out.println("UserDao getMemberId() - 시작");
+		
+		String sql = "";
+		sql += "SELECT user_id FROM member";
+		sql += " WHERE user_name = ?";
+		sql += " AND user_email = ?";
+		
+		Member result = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserName());
+			ps.setString(2, member.getUserEmail());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = new Member();
+				
+				result.setUserId( rs.getString("user_id") );
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		System.out.println("UserDao getMemberId() - 끝");
+		return result;
+	}
+	
+	
+	
 }
 
 

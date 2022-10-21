@@ -74,14 +74,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Member getLoginParam(HttpServletRequest req) {
 
-		System.out.println("getLoginParam join() -  시작");
+		System.out.println("MemberService getLoginParam() -  시작");
 		
 		Member member = new Member();
 
 		member.setUserId( req.getParameter("userid") );
 		member.setUserPw( req.getParameter("userpw") );
 
-		System.out.println("getLoginParam join() -  끝");
+		System.out.println("MemberService getLoginParam() -  끝");
 		return member;
 
 	}
@@ -90,14 +90,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean login(Member member) {
 
-		System.out.println("getLoginParam login() -  시작");
+		System.out.println("MemberService login() -  시작");
 		
 		//로그인 인증 성공
 		if( userDao.selectLoginIdPw(conn, member) > 0 ) {
 			return true;
 		}
 
-		System.out.println("getLoginParam login() -  끝");
+		System.out.println("MemberService login() -  끝");
 		//로그인 인증 실패
 		return false;
 		
@@ -114,10 +114,16 @@ public class UserServiceImpl implements UserService {
 
 	//	---------------------------------로그인 끝 -----------------------------------
 
+	//	--------------------------------- 아이디찾기 시작 -----------------------------------
 
 
+	@Override
+	public Member searchId(Member member) {
+		System.out.println("MemberService searchId() -  시작");
+		return userDao.getMemberId(conn, member);
+		
+	}
 }
-
 
 
 
