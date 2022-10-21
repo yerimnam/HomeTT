@@ -25,7 +25,7 @@ public class PaymentDaoImpl implements PaymentDao {
 	public Member selectUserInfo(Connection conn, int userno) {
 		System.out.println("SelectuserInf- start");
 		String sql ="";
-		sql +="SELECT user_no,user_id,user_name";
+		sql +="SELECT user_no,user_id,user_name,user_email,user_phone";
 		sql +=" FROM member";
 		sql +=" WHERE user_no =?";
 		
@@ -44,6 +44,8 @@ public class PaymentDaoImpl implements PaymentDao {
 				 userinfo.setUserNo(rs.getInt("user_no"));
 				 userinfo.setUserId(rs.getString("user_id"));
 				 userinfo.setUserName(rs.getString("user_name"));
+				 userinfo.setUserEmail(rs.getString("user_email"));
+				 userinfo.setUserPhone(rs.getInt("user_phone"));
 			 }
 		
 		} catch (SQLException e) {

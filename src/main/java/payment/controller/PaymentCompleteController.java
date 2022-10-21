@@ -20,8 +20,8 @@ import user.dto.Member;
 /**
  * Servlet implementation class PaymentCalController
  */
-@WebServlet("/homett/paymodule")
-public class PaymentCalController extends HttpServlet {
+@WebServlet("/homett/paycomplete")
+public class PaymentCompleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	//서비스 객체
