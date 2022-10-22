@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Payment {
 
-	private int payNo;
+	private String payNo;
 	private int userNo;
 	private int couponNo;
 	private String paymentMethod;
@@ -26,7 +26,7 @@ public class Payment {
 	
 	public Payment() {}
 
-	public Payment(int payNo, int userNo, int couponNo, String paymentMethod, String userId, String userName,
+	public Payment(String payNo, int userNo, int couponNo, String paymentMethod, String userId, String userName,
 			int userCardNo, String userCardCom, int paymentAmount, Date paymentDate, String bankAccount, String bank,
 			Date expirtyM, Date expirtyY, int payCode, int pointUse, int couponUse, String partyName, int partyNo) {
 		super();
@@ -50,8 +50,6 @@ public class Payment {
 		this.partyName = partyName;
 		this.partyNo = partyNo;
 	}
-	
-	
 
 	@Override
 	public String toString() {
@@ -63,11 +61,11 @@ public class Payment {
 				+ ", partyName=" + partyName + ", partyNo=" + partyNo + "]";
 	}
 
-	public int getPayNo() {
+	public String getPayNo() {
 		return payNo;
 	}
 
-	public void setPayNo(int payNo) {
+	public void setPayNo(String payNo) {
 		this.payNo = payNo;
 	}
 
@@ -214,7 +212,6 @@ public class Payment {
 	public void setPartyNo(int partyNo) {
 		this.partyNo = partyNo;
 	}
-
 
 
 

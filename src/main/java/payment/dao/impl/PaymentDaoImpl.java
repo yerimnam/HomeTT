@@ -103,7 +103,7 @@ public class PaymentDaoImpl implements PaymentDao {
 	}
 	 
 	 @Override
-	public int insertPayment(Connection conn, Payment payment) {
+	public int insertPayment(Connection conn, List<Payment> returnData) {
 		 System.out.println("insertPayment -start");
 		 String sql ="";
 		 sql +="INSERT INTO payment (pay_no,user_no,paymentmethod,party_no,payment_amount";
@@ -115,13 +115,14 @@ public class PaymentDaoImpl implements PaymentDao {
 		 try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1,payment.getPayNo() );
-			ps.setInt(2, payment.getUserNo());
-			ps.setString(3, payment.getPaymentMethod());
-			ps.setInt(4, payment.getPartyNo());
-			ps.setInt(5,payment.getPaymentAmount());
+			ps.setString(1,returnData.get(0).getPayNo() );
+			ps.setInt(2, returnData.get(1).getPaymentAmount());
+			ps.setInt(3, returnData.get(2).getPartyNo());
+			ps.setString(4, returnData.get(3).getPaymentMethod());
+			ps.setInt(5,returnData.get(4).getUserNo());
 			
 			
+			//나중에 이름, 이메일 연락처 추가하
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {

@@ -66,11 +66,12 @@ public class PaymentAmountController extends HttpServlet {
 	  @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		  System.out.println("/homett/payamount [POST}");
+		  System.out.println("/homett/payamount [POST]");
 		  
 
-		 
-		  req.getRequestDispatcher("/WEB-INF/party/paymodule.jsp").forward(req, resp);
+	
+		  
+		  req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);
 		  
 	  }
 	}

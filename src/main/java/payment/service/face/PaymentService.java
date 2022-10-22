@@ -2,6 +2,7 @@ package payment.service.face;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,7 +35,12 @@ public interface PaymentService {
 	 * @param req -파라미터
 	 * @return -전달한 정보 반환 
 	 */
-	Payment getParam(HttpServletRequest req);
+	List<Payment> getData(HttpServletRequest req);
+
+	
+	
+	
+//	Payment getParam(HttpServletRequest req);
 	
 	/**
 	 * 전달한 정보로 insert하기 
@@ -42,7 +48,13 @@ public interface PaymentService {
 	 * @return -저장된 payment dto 정보 
 	 */
 	
-	Payment setPayment(Payment payment);
+	Payment setPayment(List<Payment> returnData);
+	
+	
+	
+	
+	
+	
 	
 	
 	

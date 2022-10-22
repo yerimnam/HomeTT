@@ -34,26 +34,26 @@ body {
 
 <div>
 <span>이름 : </span>
-<span><%=paycomplete.getUserName() %>
+<%-- <span><%=paycomplete.get %> --%>
 </span>
 </div>
 
 <div>
 
 <span>결제일자 : </span>
-<span><%=paycomplete.getPaymentDate() %></span>
+<%-- <span><%=paycomplete.getPaymentDate() %></span> --%>
 
 </div>
 
 
 <div>
 	<span>결제 내용 </span>
-	<span> <%=paycomplete.getPartyName() %></span>
+<%-- 	<span> <%=paycomplete.getPartyName() %></span> --%>
 </div>
 
 <div>
 	<span>결제 금액</span>
-	<span><%=paycomplete.getPaymentAmount() %></span>
+<%-- 	<span><%=paycomplete.getPaymentAmount() %></span> --%>
 </div>
 
 <button type="button">메인으로</button>

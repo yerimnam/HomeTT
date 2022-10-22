@@ -2,6 +2,7 @@ package payment.dao.face;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import coupon.dto.Coupon;
 import party.dto.Party;
@@ -25,10 +26,8 @@ public interface PaymentDao {
 	 * 파티 정보 조회하기
 	 * 
 	 * @param connection -DB연결
-	 * @param partyno -파티 번호
 	 * @return Party 파티 정보 조회 결과 
 	 */
-
 	public Party selectPartyInfo(Connection conn, int partyno);
 
 	
@@ -39,7 +38,9 @@ public interface PaymentDao {
 	 * @return 인서트 결과
 	 */
 	
-	public int insertPayment(Connection conn, Payment payment);
+
+	public int insertPayment(Connection conn, List<Payment> returnData);
+
 
 	
 	
