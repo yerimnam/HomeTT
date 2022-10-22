@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class WishListController
- */
 @WebServlet("/homett/wishlist")
 public class WishListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +16,7 @@ public class WishListController extends HttpServlet {
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
 			System.out.println("/homett/wishlist [GET]");
+			
 		}
 
 }

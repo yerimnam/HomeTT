@@ -22,11 +22,11 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		
 		Party party = new Party();
 		
-		party.setPartyKind ( req.getParameter("partykind") );
+//		party.setPartyKind ( req.getParameter("partykind") );
 		party.setPartyRule ( req.getParameter("partyrule ") );
 		party.setPartyName ( req.getParameter("partyname") );
 		party.setPartyLeader ( req.getParameter("partyleader") );
-//		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
+		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
 //		party.setPartyCreDate(null);
 //		party.setPartyEndDate(null);
 		
@@ -41,6 +41,7 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//party_seq의 nextval(nextpartyno) 조회하기
+		
 		int next = createpartyDao.selectNextPartyno(conn);
 		System.out.println("CreatePartyService create() - next : " + next);
 		
@@ -68,15 +69,9 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 
 
 	@Override
-	public Member getmember(HttpServletRequest req) {
-		
-		Member userinfo = new Member();
-		
-//		userinfo.setUserNo( Integer.parseInt(req.getParameter("userno")) );
-		userinfo.setUserId( req.getParameter("userid"));
-		userinfo.setUserName( req.getParameter("username"));
-		
-		return userinfo;
+	public Member getuserinfo(int userno) {
+	
+		return createpartyDao.selectUserinfo(JDBCTemplate.getConnection(),userno);
 	}
 
 }

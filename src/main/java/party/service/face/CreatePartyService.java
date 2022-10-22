@@ -28,11 +28,12 @@ public interface CreatePartyService {
 
 
 	/**
-	 * 멤버 dto 가져오기
-	 * @param req - 요청 정보 객체
-	 * @return - 멤버 dto 데이터 가져오기
+	 * 세션에서 얻은 유저 넘버로 유저 정보 가져 오기
+	 * 
+	 * @param userno 유저 넘버
+	 * @return   조회한 유저정보 반환
 	 */
-	public Member getmember(HttpServletRequest req);
+	public Member getuserinfo(int userno);
 	
 	
 }

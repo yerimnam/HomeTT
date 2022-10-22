@@ -25,7 +25,7 @@ public interface CreatePartyDao {
 	 * @param userno
 	 * @return
 	 */
-	Member selectUser(Connection conn, int userno);
+	Member selectUserinfo(Connection conn, int userno);
 	
 	
 	

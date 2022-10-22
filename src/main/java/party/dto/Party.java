@@ -7,7 +7,7 @@ public class Party {
 	
 	    private int partyNo;
 	      private int userNo;
-	      private int partyCano;
+	      private int partyCano;	//DB에서 지움
 	      private String partyKind;
 	      private String partyRule;
 	      private int paymentAmount;
@@ -18,7 +18,7 @@ public class Party {
 	      private Date partyEndDate;
 	      private String partyName;
 	      private String partyLeader;
-	      private String partyMbrInfo;
+	      private String partyMbrInfo; 	//DB에서 지움
 	      private String ottId;
 	      private String ottPw;
 	      private String partyNotice;

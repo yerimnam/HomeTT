@@ -81,7 +81,6 @@ $(document).ready(function() {
 
 </div>
 
-<hr>
 
 <div class="partyinfo" id="nf">
 
@@ -97,8 +96,19 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext">다음</button><Br>
+<!-- <button type="button" id="btnnext">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -116,8 +126,19 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -134,8 +155,19 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -152,8 +184,19 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -171,8 +214,19 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -190,8 +244,19 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -209,29 +274,24 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
-</div>
-
-<hr>
-
-<div style="border: 2px solid black;" class="optionbox">
 
 <div>
 <label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
-<input type="date" id="shareperiod" name="startDate">
-<!-- <input type="date" id="shareperiod" name="endDate"> -->
+<input type="date" id="shareperiod" name="endtDate">
 </div>
-
-<!-- <button type="button" id="btnperiod" onclick="">확인</button> -->
-
 
 <div>
 <label for="partyrule">계정 공유 규칙</label><br>
 <textarea id="partyrule" name="partyrule"> </textarea>
 </div>
 
-<!-- <button type="button" id="btnrule" onclick="">확인</button> -->
+</div>
+
+<hr>
+
+
 </div>
 
 <br>

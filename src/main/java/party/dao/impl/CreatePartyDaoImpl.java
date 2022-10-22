@@ -12,9 +12,11 @@ import user.dto.Member;
 
 public class CreatePartyDaoImpl implements CreatePartyDao {
 	
-	private PreparedStatement ps;
-	private ResultSet rs;
+	private PreparedStatement ps;	//sql 수행할 객체
+	private ResultSet rs;	//조회 결과 객체
 
+	
+	//시퀀스 설정하기
 	@Override
 	public int selectNextPartyno(Connection conn) {
 		
@@ -24,7 +26,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		int nextpartyno = 0;
 		
 		try {
-			ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);	
+			
 			rs = ps.executeQuery();
 			
 			rs.next();
@@ -42,17 +45,17 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 	}
 	
 	@Override
-	public Member selectUser(Connection conn, int userno) {
+	public Member selectUserinfo(Connection conn, int userno) {
 		System.out.println("CreatePartyDaoImpl selectUser() - 시작");
 		
 		String sql ="";
 		sql +="SELECT";
 		sql +=" user_id,user_name";
 		sql +=" FROM member";
-//		sql +=" WHERE user_no =?";
+		sql +=" WHERE user_no =?";
 		
 		//조회 결과 저장 객체  
-		Member member = new Member();
+		Member userinfo = new Member();
 		try {
 			
 			//sql수행 객체 생성
@@ -63,9 +66,9 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			 
 			 //조회 결과 처리 
 			 while(rs.next()) {
-//				 member.setUserNo(rs.getInt("user_no"));
-				 member.setUserId(rs.getString("user_id"));
-				 member.setUserName(rs.getString("user_name"));
+				 userinfo.setUserNo(rs.getInt("user_no"));
+				 userinfo.setUserId(rs.getString("user_id"));
+				 userinfo.setUserName(rs.getString("user_name"));
 			 }
 		
 		} catch (SQLException e) {
@@ -78,7 +81,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		}
 		
 		System.out.println("CreatePartyDaoImpl selectUser() - 끝");
-		return  member;
+		return  userinfo;
 	}
 	
 	
@@ -90,8 +93,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		//작성할 값 전부 적어야 함
 		String sql ="";
 		sql += "INSERT INTO party";
-		sql	+= " ( PARTY_NO, PARTY_NAME, PARTY_KIND, PARTY_RULE )";
-		sql += " VALUES ( party_seq.nextval, ?, ?, ? )";
+		sql	+= " ( party_no, party_name, party_kind, party_rule, party_member )";
+		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ? )";
 		
 		int result = 0;
 		
