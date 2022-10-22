@@ -26,16 +26,16 @@ $(document).ready(function() {
  
 })
 
-$(document).readt(function() {
-	 $("#btnnext").click(function() {
+// $(document).readt(function() {
+// 	 $("#btnnext").click(function() {
 
-		 $(".optionbox").hide()
+// 		 $(".optionbox").hide()
 		 
-		 var c2 = $(this).attr("class")
-		 $("#"+c2).show()
-	 })
+// 		 var c2 = $(this).attr("class")
+// 		 $("#"+c2).show()
+// 	 })
 	
-})
+// })
 
 </script>
 
@@ -44,9 +44,7 @@ $(document).readt(function() {
 	display: none;
 }
 
-.optionbox {
-	display: none;
-}
+
 </style>
 </head>
 <body>
@@ -65,13 +63,13 @@ $(document).readt(function() {
 </label>
 
 <ul id="ottMenu">
-	<li><a class="nf">넷플릭스</a></li>
-	<li><a class="df">디즈니 플러스</a></li>
-	<li><a class="tv">티빙</a></li>
-	<li><a class="ap">애플</a></li>
-	<li><a class="wv">웨이브</a></li>
-	<li><a class="wa">왓챠</a></li>
-	<li><a class="la">라프텔</a></li>
+	<li><a class="nf" name="partykind">넷플릭스</a></li>
+	<li><a class="df" name="partykind">디즈니 플러스</a></li>
+	<li><a class="tv" name="partykind">티빙</a></li>
+	<li><a class="ap" name="partykind">애플</a></li>
+	<li><a class="wv" name="partykind">웨이브</a></li>
+	<li><a class="wa" name="partykind">왓챠</a></li>
+	<li><a class="la" name="partykind">라프텔</a></li>
 <!-- 	<li><a href="" >넷플릭스</a></li> -->
 <!-- 	<li><a href="">디즈니 플러스</a></li> -->
 <!-- 	<li><a href="">티빙</a></li> -->

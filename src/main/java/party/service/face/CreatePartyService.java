@@ -3,6 +3,7 @@ package party.service.face;
 import javax.servlet.http.HttpServletRequest;
 
 import party.dto.Party;
+import user.dto.Member;
 
 
 public interface CreatePartyService {
@@ -24,6 +25,14 @@ public interface CreatePartyService {
 	 * @return - DB에 삽입된 파티 정보
 	 */
 	public Party create(Party party);
+
+
+	/**
+	 * 멤버 dto 가져오기
+	 * @param req - 요청 정보 객체
+	 * @return - 멤버 dto 데이터 가져오기
+	 */
+	public Member getmember(HttpServletRequest req);
 	
 	
 }

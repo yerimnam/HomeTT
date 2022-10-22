@@ -9,6 +9,7 @@ import party.dao.face.CreatePartyDao;
 import party.dao.impl.CreatePartyDaoImpl;
 import party.dto.Party;
 import party.service.face.CreatePartyService;
+import user.dto.Member;
 
 
 public class CreatePartyServiceImpl implements CreatePartyService {
@@ -25,10 +26,9 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		party.setPartyRule ( req.getParameter("partyrule ") );
 		party.setPartyName ( req.getParameter("partyname") );
 		party.setPartyLeader ( req.getParameter("partyleader") );
-		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
-		party.setPartyCreDate(null);
-		party.setPartyEndDate(null);
-//		party.setUserNo( Integer.parseInt(req.getParameter("UserNo")));	//userno를 가져와야 하는디...
+//		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
+//		party.setPartyCreDate(null);
+//		party.setPartyEndDate(null);
 		
 		return party;
 	}
@@ -64,6 +64,19 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 			return null;
 		}
 		
+	}
+
+
+	@Override
+	public Member getmember(HttpServletRequest req) {
+		
+		Member userinfo = new Member();
+		
+//		userinfo.setUserNo( Integer.parseInt(req.getParameter("userno")) );
+		userinfo.setUserId( req.getParameter("userid"));
+		userinfo.setUserName( req.getParameter("username"));
+		
+		return userinfo;
 	}
 
 }

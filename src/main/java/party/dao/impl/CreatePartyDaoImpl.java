@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import common.JDBCTemplate;
 import party.dao.face.CreatePartyDao;
 import party.dto.Party;
+import user.dto.Member;
 
 public class CreatePartyDaoImpl implements CreatePartyDao {
 	
@@ -41,29 +42,70 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 	}
 	
 	@Override
+	public Member selectUser(Connection conn, int userno) {
+		System.out.println("CreatePartyDaoImpl selectUser() - 시작");
+		
+		String sql ="";
+		sql +="SELECT";
+		sql +=" user_id,user_name";
+		sql +=" FROM member";
+//		sql +=" WHERE user_no =?";
+		
+		//조회 결과 저장 객체  
+		Member member = new Member();
+		try {
+			
+			//sql수행 객체 생성
+			 ps = conn.prepareStatement(sql);
+			 ps.setInt(1, userno);
+			 //수행 결과 저장
+			 rs = ps.executeQuery();
+			 
+			 //조회 결과 처리 
+			 while(rs.next()) {
+//				 member.setUserNo(rs.getInt("user_no"));
+				 member.setUserId(rs.getString("user_id"));
+				 member.setUserName(rs.getString("user_name"));
+			 }
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		System.out.println("CreatePartyDaoImpl selectUser() - 끝");
+		return  member;
+	}
+	
+	
+	@Override
 	public int insert(Connection conn, Party party) {
 		System.out.println("CreatePartyDaoImpl insert() - 시작");
 		
 		
-		//insert 쿼리 작성하기
-		
 		//작성할 값 전부 적어야 함
 		String sql ="";
-		sql += "INSERT INTO party ( PARTY_NO, PARTY_NAME, PARTY_RULE , PARTY_MEMBER)";
-		sql += " VALUES (?, ?, ?, ?)";
+		sql += "INSERT INTO party";
+		sql	+= " ( PARTY_NO, PARTY_NAME, PARTY_KIND, PARTY_RULE )";
+		sql += " VALUES ( party_seq.nextval, ?, ?, ? )";
 		
 		int result = 0;
 		
 		try {
 			
+			//sql 수행 객체 생성
 			ps= conn.prepareStatement(sql);
 			
-			ps.setInt(1, party.getPartyNo());
-			ps.setString(2, party.getPartyName());
-			ps.setString(3, party.getPartyKind());
-			ps.setString(4, party.getPartyRule());
-			ps.setInt(5, party.getPartyMember());
+			ps.setString(1, party.getPartyName());
+			ps.setString(2, party.getPartyKind());
+			ps.setString(3, party.getPartyRule());
+			ps.setInt(4, party.getPartyMember());
 
+			//수행 결과 저장
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -74,6 +116,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		System.out.println("CreatePartyDaoImpl insert() - 끝");
 		return result;
 	}
+
 
 
 }

@@ -49,13 +49,22 @@ public class CreatePartyController extends HttpServlet {
 		Party result = createpartyService.create(party);
 		System.out.println("CreatePartyController doPost() - result : " + result);
 		
-		//세션 객체 party 세션 객체 생성해서 저장하고(setAttribute)
+		
+		
+		Member member = createpartyService.getmember(req);
+		
+//		System.out.println("CreatePartyController doPost() - member : " + userinfo);
+		
+		
+		//세션 객체 생성
 		HttpSession session = req.getSession();
 		
+		//여기에도 setAttribute를 해야 하는건지,,
 		
-		//member (userId 값 불러오기getAttribute)
-		Member member = (Member)req.getAttribute("userinfo");
-//		Member userid = (Member)req.getAttribute("userId");
+		
+//		Member member = (Member)req.getAttribute("...?");
+		
+//		member.getUserId;
 		
 	
 		//JSP View 객체 전달하기
