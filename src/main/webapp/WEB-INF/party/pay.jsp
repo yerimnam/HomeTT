@@ -31,14 +31,14 @@
      IMP.request_pay({ // param
          pg: "html5_inicis",
          pay_method: "card",
-         merchant_uid : 'merchant_' + new Date().getTime(),
+         merchant_uid : "<%=party.getPartyNo()%>_" +  new Date().getTime(),
           name: "HomeTT",
+          
          buyer_email: "<%=member.getUserEmail()%>",
          buyer_name: "<%=member.getUserName()%>",
          amount: <%=party.getPaymentAmount()%>,
          buyer_tel: "<%=member.getUserPhone()%>"
 <%--          user_no:<%=member.getUserNo()%>, --%>
-<%--          party_no: <%=party.getPartyNo() %> --%>
      
      },function (rsp) { // callback
     	 
@@ -60,7 +60,7 @@
                      imp_uid: rsp.imp_uid, //결제번호
                      merchant_uid: rsp.merchant_uid,  //주문번호
                      paid_amount : rsp.amount,  //결제 금액
-//                      party_no : rsp.party_no, //파티 넘버
+                     party_no : rsp.party_no, //파티 넘버
                 	 pay_method: rsp.pay_method, //결제수단
 //                 	 user_no: rsp.user_no,//유저 번호
                 	 user_email: rsp.buyer_email, //이메일
