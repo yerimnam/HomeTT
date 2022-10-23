@@ -18,7 +18,6 @@ import javax.websocket.SendResult;
 
 import com.google.gson.Gson;
 
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dto.Payment;
 import payment.service.face.PaymentService;
@@ -76,13 +75,12 @@ public class PaymentCompleteController extends HttpServlet {
 		  
 		  
 		  //파라미터 정보 추출 
-//		  Payment payment = paymentService.getParam(req);
-		  List<Payment>returnData = paymentService.getData (req);
-		  System.out.println(returnData);
-		  
+//		  LIST<PAYMENT>RETURNDATA = PAYMENTSERVICE.GETDATA (REQ);
+//		  SYSTEM.OUT.PRINTLN(RETURNDATA);
+//		  
 		  //리턴 데이터를 DTO 에 저장
 		  
-//		  Payment returnData= paymentService.getParam(req);
+		  Payment returnData= paymentService.getParam(req);
 		  
 		 //추출한 값으로 insert하기
 		  Payment payinsert = paymentService.setPayment(returnData);

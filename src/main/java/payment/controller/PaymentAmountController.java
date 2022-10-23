@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dto.Payment;
 import payment.service.face.PaymentService;

@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dto.Payment;
 import user.dto.Member;
@@ -35,12 +34,12 @@ public interface PaymentService {
 	 * @param req -파라미터
 	 * @return -전달한 정보 반환 
 	 */
-	List<Payment> getData(HttpServletRequest req);
+//	List<Payment> getData(HttpServletRequest req);
 
 	
 	
 	
-//	Payment getParam(HttpServletRequest req);
+	Payment getParam(HttpServletRequest req);
 	
 	/**
 	 * 전달한 정보로 insert하기 
@@ -48,7 +47,7 @@ public interface PaymentService {
 	 * @return -저장된 payment dto 정보 
 	 */
 	
-	Payment setPayment(List<Payment> returnData);
+	Payment setPayment(Payment returnData);
 	
 	
 	

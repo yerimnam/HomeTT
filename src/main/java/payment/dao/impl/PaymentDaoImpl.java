@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.JDBCTemplate;
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dao.face.PaymentDao;
 import payment.dto.Payment;
@@ -103,11 +102,11 @@ public class PaymentDaoImpl implements PaymentDao {
 	}
 	 
 	 @Override
-	public int insertPayment(Connection conn, List<Payment> returnData) {
+	public int insertPayment(Connection conn, Payment returnData) {
 		 System.out.println("insertPayment -start");
 		 String sql ="";
-		 sql +="INSERT INTO payment (pay_no,user_no,paymentmethod,party_no,payment_amount";
-		 sql +=" values(?,?,?,?,?)";
+		 sql +="INSERT INTO payment (pay_no,oder_no,user_no,party_no,paymentmethod,payment_amount";
+		 sql +=" values(?,?,?,?,?,?)";
 		 
 		 //insert 결과 변수
 		 int result = 0;
@@ -115,14 +114,16 @@ public class PaymentDaoImpl implements PaymentDao {
 		 try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1,returnData.get(0).getPayNo() );
-			ps.setInt(2, returnData.get(1).getPaymentAmount());
-			ps.setInt(3, returnData.get(2).getPartyNo());
-			ps.setString(4, returnData.get(3).getPaymentMethod());
-			ps.setInt(5,returnData.get(4).getUserNo());
+			ps.setString(1, returnData.getPayNo());
+			ps.setString(2, returnData.getOrderNo());
+			ps.setInt(3, returnData.getUserNo());
+			ps.setInt(4, returnData.getPartyNo());
+			ps.setString(5, returnData.getPaymentMethod());
+			ps.setInt(6, returnData.getPaymentAmount());
 			
+			//
 			
-			//나중에 이름, 이메일 연락처 추가하
+			//나중에 카드번호,.카드 유효기간 카드사 ,넣는 코드 작성하기 
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dto.Payment;
 import user.dto.Member;
@@ -39,7 +38,7 @@ public interface PaymentDao {
 	 */
 	
 
-	public int insertPayment(Connection conn, List<Payment> returnData);
+	public int insertPayment(Connection conn, Payment returnData);
 
 
 	
