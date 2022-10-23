@@ -1,8 +1,6 @@
 package user.service.impl;
 
 import java.sql.Connection;
-import java.time.LocalDate;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,8 +15,11 @@ public class UserServiceImpl implements UserService {
 	//DAO 객체
 	private UserDao userDao = new UserDaoImpl();
 
-	LocalDate now = LocalDate.now();
-	  
+	//DB연결 객체
+	Connection conn = JDBCTemplate.getConnection();
+
+	//	---------------------------------회원가입 시작 -----------------------------------
+
 	@Override
 	public Member getJoinParam(HttpServletRequest req) {
 		Member member = new Member();
@@ -29,19 +30,16 @@ public class UserServiceImpl implements UserService {
 		member.setUserNick( req.getParameter("usernick") );
 		member.setUserEmail( req.getParameter("useremail") );
 		member.setUserPhone( Integer.parseInt(req.getParameter("userphone")) );
-//		member.setMasterNo( Integer.parseInt(req.getParameter("masterno")) );
-		
+
 		return member;
-		
+
 	}
 
 
 	@Override
 	public Member join(Member member) {
 		System.out.println("UserService join() -  시작");
-
-		//DB연결 객체
-		Connection conn = JDBCTemplate.getConnection();
+		
 
 		//member_seq의 nextval을 조회한다
 		int next = userDao.selectNextUserno(conn);
@@ -50,7 +48,7 @@ public class UserServiceImpl implements UserService {
 		//조회된 nextval을 member객체에 저장한다
 		member.setUserNo(next);
 		System.out.println("MemberService join() - next : " + member);
-		
+
 
 		//완성된 member객체를 DB에 삽입
 		int result = userDao.insert(conn, member);
@@ -66,12 +64,66 @@ public class UserServiceImpl implements UserService {
 			JDBCTemplate.rollback(conn);
 			return null;
 		}
+	}
 
+
+	//	---------------------------------회원가입 끝 -----------------------------------
+
+	//	---------------------------------로그인 시작 -----------------------------------
+
+	@Override
+	public Member getLoginParam(HttpServletRequest req) {
+
+		System.out.println("MemberService getLoginParam() -  시작");
+		
+		Member member = new Member();
+
+		member.setUserId( req.getParameter("userid") );
+		member.setUserPw( req.getParameter("userpw") );
+
+		System.out.println("MemberService getLoginParam() -  끝");
+		return member;
 
 	}
 
-}
 
+	@Override
+	public boolean login(Member member) {
+
+		System.out.println("MemberService login() -  시작");
+		
+		//로그인 인증 성공
+		if( userDao.selectLoginIdPw(conn, member) > 0 ) {
+			return true;
+		}
+
+		System.out.println("MemberService login() -  끝");
+		//로그인 인증 실패
+		return false;
+		
+		
+	}
+	
+	
+	@Override
+	public Member loginInfo(Member member) {
+		return userDao.selectLoginInfo(conn, member);
+	}
+
+
+
+	//	---------------------------------로그인 끝 -----------------------------------
+
+	//	--------------------------------- 아이디찾기 시작 -----------------------------------
+
+
+	@Override
+	public Member searchId(Member member) {
+		System.out.println("MemberService searchId() -  시작");
+		return userDao.getMemberId(conn, member);
+		
+	}
+}
 
 
 

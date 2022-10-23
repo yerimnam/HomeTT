@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<h1>회원가입을 축하드립니다</h1>
+<h1>로그인 성공</h1>
 
-<a href="<%=request.getContextPath() %>/homett/login">로그인 하러가기</a>
-
+<!-- onclick="location.href='./member/logout'" -->
+<button class="logOutBtn">로그아웃</button>
 </body>
 </html>
