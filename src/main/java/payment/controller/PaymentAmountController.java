@@ -48,24 +48,12 @@ public class PaymentAmountController extends HttpServlet {
 				//결제하기 위한 파티 정보 조회 
 				Party partyInfo = paymentService.getpartyNo(partyno);
 				
-				//보유 쿠폰 조회하기 
-				List<Coupon> couponInfo = paymentService.getCouponInfo(userno);
-				
-				//보유 쿠폰 수 -mypage로 코드 옮기기
-				int cntCoupon = paymentService.getcntCoupon(userno);
-			
-				
 				//테스트 콘솔 출력 
 //				System.out.println(user);
 //				System.out.println(partyinfo);
 			
 				req.setAttribute("userinfo", user);
 				req.setAttribute("partyinfo", partyInfo);
-				req.setAttribute("couponinfo",couponInfo );
-				req.setAttribute("cntCoupon",cntCoupon );
-			
-				
-		  
 		  
 		req.getRequestDispatcher("/WEB-INF/party/pay.jsp").forward(req, resp);
 
