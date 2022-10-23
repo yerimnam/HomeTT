@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>파티 가입 화면</h1>
+<hr>
 
 </body>
 </html>

@@ -24,14 +24,9 @@ public class PartyRoomBoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/roomboard [GET]");
 		
+		
 		//게시글 전체 조회
 		List<PartyBoard> partyBoardList = partyRoomBoardService.getBrList();
-		
-		//계정공유기간, 인원수
-		List<PartyBoard> headList = partyRoomBoardService.getheadList();
-		
-		req.setAttribute("headList", headList);
-		
 		
 		
 		//조회결과를 MODEL값 전달
@@ -47,7 +42,18 @@ public class PartyRoomBoardController extends HttpServlet {
 		
 		//전달 파라미터 한글 인코딩 처리
 		req.setCharacterEncoding("UTF-8");
-				
+		
+		//전달파라미터를 PartyBoard DTO에 객체 저장하기 - partyRoomBoardService이용
+		PartyBoard partyBoard = partyRoomBoardService.getParam(req);
+		System.out.println("PartyRoomBoardController doPost() - partyBoard : " + partyBoard);
+		
+		//전달 파라미터를 저장한 DTO객체를 DB에 입력한다 - PartyRoomBoardService이용
+		
+		//JSP View에 객체 전달하기
+		req.setAttribute("partyBoard", partyBoard);
+		
+		//JSP에 객체 전달
+		req.getRequestDispatcher("/WEB-INF/party/partyRoomBoard.jsp").forward(req, resp);		
 	}
 
 }
