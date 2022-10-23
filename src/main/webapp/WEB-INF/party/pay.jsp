@@ -1,13 +1,11 @@
 <%@page import="javax.naming.Context"%>
 <%@page import="java.util.List"%>
-<%@page import="coupon.dto.Coupon"%>
 <%@page import="party.dto.Party"%>
 <%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <% Member member = (Member)request.getAttribute("userinfo");%>
    <% Party party = (Party)request.getAttribute("partyinfo");  %>
-   <%List< Coupon> coupon = (List)request.getAttribute("couponinfo"); %>
 <!DOCTYPE html>
 <html>
 <head>
