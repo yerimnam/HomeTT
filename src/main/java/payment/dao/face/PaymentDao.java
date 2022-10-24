@@ -2,10 +2,10 @@ package payment.dao.face;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
-import coupon.dto.Coupon;
 import party.dto.Party;
-
+import payment.dto.Payment;
 import user.dto.Member;
 
 
@@ -25,31 +25,31 @@ public interface PaymentDao {
 	 * 파티 정보 조회하기
 	 * 
 	 * @param connection -DB연결
-	 * @param partyno -파티 번호
 	 * @return Party 파티 정보 조회 결과 
 	 */
-
 	public Party selectPartyInfo(Connection conn, int partyno);
 
+	
 	/**
-	 * 쿠폰 정보 조회하기 
-	 * 
+	 * DTO 정보를 DB에 삽입 
 	 * @param conn -DB연결
-	 * @param userno -유저번호
-	 * @return -쿠폰 정보 조회 결과 
+	 * @param payment - DTO 정보 
+	 * @return 인서트 결과
 	 */
 	
-	
-	public List<Coupon> selectCouponInfo(Connection conn, int userno);
+
+	public int insertPayment(Connection conn, Payment returnData);
 
 	
 	/**
-	 * 
-	 * @param conn DB연결
-	 * @param userno
-	 * @return 회원이 보유한 쿠폰의 수 반환
+	 * 인서트 된 정보 조회해오기
+	 * @param conn -DB 연결
+	 * @return
 	 */
-	public int cntCoupon(Connection conn, int userno);
+	public Payment selectpayresult(Connection conn, Payment payinsert);
+
+
+	
 	
 
 }
