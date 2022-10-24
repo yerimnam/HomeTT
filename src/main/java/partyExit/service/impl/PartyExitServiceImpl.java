@@ -14,7 +14,7 @@ public class PartyExitServiceImpl implements PartyExitService {
 	public PartyExit getPartyNo(HttpServletRequest req) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	} 
 
 	@Override
 	public void delete(PartyExit partyexit) {
