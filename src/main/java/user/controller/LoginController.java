@@ -24,6 +24,9 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/login [GET]");
 
+		System.out.println("세션 삭제");
+		req.getSession().invalidate();
+		
 		req.getRequestDispatcher("/WEB-INF/member/login.jsp").forward(req, resp);
 
 	}

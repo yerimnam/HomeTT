@@ -1,9 +1,12 @@
+<%@page import="user.dto.MailOk"%>
 <%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%	Member member = (Member) request.getAttribute("member"); %>
+<% MailOk ranNum = (MailOk) request.getAttribute("ranNum"); %>
     
+
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	
 	$("#btnCalc").click(function() {
 		console.log("#btnCalc 클릭")
 
@@ -23,20 +25,93 @@ $(document).ready(function() {
 			, url: "/homett/searchidpw"		//요청 URL
 			, data: {		//요청 파라미터
 				name : $("#username").val()	
-				, email : $("#useremail").val()	
+				, email : $("#useremail").val()
 			}
 		, dataType: "html"		//응답 데이터 형식
 		, success: function( res ) {
 			console.log("AJAX 성공")
+			$("#okHide").css('display', 'block')
+			$("#btnCalc").css('display','none')
+			alert("회원님의 이메일로 인증번호를 발송하였습니다");
+// 			console.log(ranNum)
+			
 			
 		}
 		, error: function() {
 			console.log("AJAX 실패")
+			alert("이름과 이메일이 일치하지 않습니다");
+			$("#username").val("")
+			$("#username").focus()
 			
 		}			
 			
 		})
 	})
+	
+	
+	
+	$("#remail").click(function() {
+		console.log("#remail 클릭")
+
+		$.ajax({
+			type:"post"			//요청 메소드
+			, url: "/homett/searchidpw"		//요청 URL
+			, data: {		//요청 파라미터
+				name : $("#username").val()	
+				, email : $("#useremail").val()
+			}
+		, dataType: "html"		//응답 데이터 형식
+		, success: function( res ) {
+			console.log("AJAX 성공")
+			alert("인증메일을 재전송 하였습니다");
+// 			console.log(ranNum)
+			
+			
+		}
+		, error: function() {
+			console.log("AJAX 실패")
+			alert("이름과 이메일이 일치하지 않습니다");
+			$("#username").val("")
+			$("#username").focus()
+			
+		}			
+			
+		})
+	})
+	
+	
+	
+	$("#mailchk").click(function() {
+		console.log("#mailchk 클릭")
+
+		$.ajax({
+			type:"post"			//요청 메소드
+			, url: "/homett/emailok"		//요청 URL
+			, data: {		//요청 파라미터
+				mailOk : $("#emailOk").val()	
+			}
+		, dataType: "html"		//응답 데이터 형식
+		, success: function( res ) {
+			console.log("AJAX 성공")
+			 window.location.href='/homett/emailok';
+			
+		}
+		, error: function() {
+			console.log("AJAX 실패")
+			alert("인증번호가 일치하지 않습니다");
+			
+		}			
+			
+		})
+	})
+	
+	
+	 
+	
+	
+	
+	
+	
 })
 </script>
 
@@ -58,13 +133,14 @@ $(document).ready(function() {
 		<input type="text" id="useremail"name="useremail">
 	</div>
 	
-	<div style=" display: none">
+	<div id="okHide" style=" display: none">
 		<label for="emailOk">인증번호 확인</label>
-		<input type="text" id="emailOk"name="emailOk">
+		<input type="text" id="emailOk"name="emailOk"><button id="remail">재전송</button>
+		<button id="mailchk">인증 확인</button>
 	</div>
 	
 	
-	<button id="btnCalc">아이디 찾기</button>
+	<button id="btnCalc" style="display:block">아이디 찾기</button>
 
 <!-- </form> -->
 

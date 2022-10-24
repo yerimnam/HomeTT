@@ -1,7 +1,6 @@
 package user.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -188,7 +187,7 @@ public class UserDaoImpl implements UserDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, member.getUserName());
 			ps.setString(2, member.getUserEmail());
-			
+			 
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {

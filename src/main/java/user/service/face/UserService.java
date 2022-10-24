@@ -3,6 +3,7 @@ package user.service.face;
 import javax.servlet.http.HttpServletRequest;
 
 import user.dto.Member;
+import user.dto.MailOk;
 
 public interface UserService {
 	
@@ -68,6 +69,24 @@ public interface UserService {
 	 * @return Member - 조회된 회원 정보
 	 */
 	public Member searchId(Member member);
+
+
+	/**
+	 * 랜덤 난수 가져오기
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return - String - 메일로 보낼 랜덤 난수
+	 */
+	public MailOk sendMailRandomNum(HttpServletRequest req);
+
+
+	public MailOk MailOkChk(HttpServletRequest req);
+
+
+
+
+
+
 
 
 
