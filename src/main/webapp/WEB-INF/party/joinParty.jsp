@@ -9,6 +9,7 @@
 <body>
 <h1>파티 가입 화면</h1>
 <hr>
+<button>확인</button>
 
 </body>
 </html>

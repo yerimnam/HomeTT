@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import partyBoard.dto.PartyBoard;
 import partyBoard.service.face.PartyRoomBoardService;
 import partyBoard.service.impl.PartyRoomBoardServiceImpl;
+import util.PbPaging;
 
 @WebServlet("/homett/roomboard")
 public class PartyRoomBoardController extends HttpServlet {
@@ -24,9 +25,18 @@ public class PartyRoomBoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/roomboard [GET]");
 		
+		// 전달파라미터에서 현재 페이징 객체 계산하기
+		PbPaging paging = partyRoomBoardService.getBrPaging(req);
+		System.out.println("[Test]" + paging);
+		
+		//페이징 객체를 MODEL값 전달
+		req.setAttribute("paging", paging);
 		
 		//게시글 전체 조회
-		List<PartyBoard> partyBoardList = partyRoomBoardService.getBrList();
+//		List<PartyBoard> partyBoardList = partyRoomBoardService.getBrList();
+
+		//파티게시판 전체 조회
+		List<PartyBoard> partyBoardList = partyRoomBoardService.getBrList(paging);
 		
 		
 		//조회결과를 MODEL값 전달

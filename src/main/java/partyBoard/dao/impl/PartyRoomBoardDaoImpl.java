@@ -10,6 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import partyBoard.dao.face.PartyRoomBoardDao;
 import partyBoard.dto.PartyBoard;
+import util.PbPaging;
 
 public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 
@@ -47,7 +48,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		// SQL작성
 		String sql = "";
 		sql += "SELECT";
-		sql += "	party_boardno, party_boardwriter, party_boardtitle";
+		sql += "	party_boardNo, party_boardwriter, party_boardtitle";
 		sql += " FROM party_board";
 //		sql += " ORDER BY party_boardNo";
 
@@ -61,7 +62,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 			while (rs.next()) {
 				PartyBoard pb = new PartyBoard();
 
-				pb.setUserNo(rs.getInt("party_boardNo"));
+				pb.setPartyBoardNo(rs.getInt("party_boardNo"));
 				pb.setPartyBoardWriter(rs.getString("party_boardwriter"));
 				pb.setPartyBoardTitle(rs.getString("party_boardtitle"));
 
@@ -78,6 +79,50 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		return partyBoardList;
 	}
 
+	@Override
+	public List<PartyBoard> selectAllBr(Connection conn, PbPaging paging) {
+
+		// SQL작성
+		String sql = "";
+		sql += "SELECT * FROM(";
+		sql += "   SELECT rownum rnum, PB.* FROM(";
+		sql += "         SELECT";
+		sql += "            party_boardNo, party_boardWriter, party_boardtitle";
+		sql += "         FROM party_board";
+		sql += "    )PB";
+		sql += "  )party_board";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		// 결과 저장할 List
+		List<PartyBoard> partyBoardList = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+
+			//여기 페이지를 안넣어서 안보였었ㅇ므 ㅜㅜㅜ
+			ps.setInt(1, paging.getStartNo());
+			ps.setInt(2, paging.getEndNo());
+			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
+
+			while (rs.next()) {
+				PartyBoard pb = new PartyBoard();
+
+				pb.setPartyBoardNo(rs.getInt("party_boardNo"));
+				pb.setPartyBoardWriter(rs.getString("party_boardWriter"));
+				pb.setPartyBoardTitle(rs.getString("party_boardtitle"));
+
+				partyBoardList.add(pb);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		System.out.println("PartyRoomBoardDao selectBrAll() - 끝");
+		return partyBoardList;
+	}
 
 	@Override
 	public int insert(Connection conn, PartyBoard partyBoard) {
@@ -133,5 +178,30 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		return nextBoardno;
 	}
 
+	@Override
+	public int selectPbAll(Connection conn) {
+		String sql = "";
+		sql += "SELECT count(*) cnt FROM party_board";
+
+		// 총 파티방 수 변수
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql); // SQL수행 객체
+			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
+
+			while (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		// 최종 결과 반환
+		return count;
+	}
 
 }

@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- SweetAlert2 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<!-- SweetAlert2 --> 
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
 
 
 
@@ -24,38 +24,38 @@
 
 <script type="text/javascript">
 
-$(function(){
+// $(function(){
 	
-	$('.part-title, .part-contents').not('.heart-area').on('click',function(e) {
-	    swal({
-	    	//여기에 파티 정보가 나오게했음 좋겠다
-	    title: "해당 파티에 가입하시겠습니까?", 
-	    type: "warning",
-	    confirmButtonText: "가입",
-	    showCancelButton: true
-	    })
-	      .then((result) => {
-	      if (result.value) {
+// 	$('.part-title, .part-contents').not('.heart-area').on('click',function(e) {
+// 	    swal({
+// 	    	//여기에 파티 정보가 나오게했음 좋겠다
+// 	    title: "해당 파티에 가입하시겠습니까?", 
+// 	    type: "warning",
+// 	    confirmButtonText: "가입",
+// 	    showCancelButton: true
+// 	    })
+// 	      .then((result) => {
+// 	      if (result.value) {
 	    	  
-			  window.location = '/homett/joinparty';
+// 			  window.location = '/homett/joinparty';
 	      
-	      //목록으로 라고 글자를 넣어도 안바뀐다
-	      } else if (result.dismiss === 'cancel') {
-	          swal(
-	            'Cancelled',
-	            'Your stay here :)',
-	            'error'
-	          )
-	      }
-	    })
-	});
+// 	      //목록으로 라고 글자를 넣어도 안바뀐다
+// 	      } else if (result.dismiss === 'cancel') {
+// 	          swal(
+// 	            'Cancelled',
+// 	            'Your stay here :)',
+// 	            'error'
+// 	          )
+// 	      }
+// 	    })
+// 	});
 	
-	$(document).on('click', '.heart', function(){
-		// 하트 상태 DB 저장
-		$(this).toggleClass('on off');
-	});
+// 	$(document).on('click', '.heart', function(){
+// 		// 하트 상태 DB 저장
+// 		$(this).toggleClass('on off');
+// 	});
 
-});
+// });
 
 
 
@@ -192,6 +192,8 @@ a.heart {
 					<hr>
 				</div>
 				<ul class="part-contents">
+					
+					<li><a href="./partyroomdetail?partyRoomNo=<%=partyList.get(i).getPartyRoomNo()%>">파티방 번호 : <%=partyList.get(i).getPartyRoomNo() %></a></li>
 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>

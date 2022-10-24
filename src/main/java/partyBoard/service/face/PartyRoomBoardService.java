@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import partyBoard.dto.PartyBoard;
+import util.PbPaging;
 
 public interface PartyRoomBoardService {
 
@@ -15,10 +16,23 @@ public interface PartyRoomBoardService {
 	 */
 	public List<PartyBoard> getBrList();
 
-
+	/**
+	 * 파티게시판 페이징 목록 조회
+	 * 
+	 * @param paging - 페이징 정보 객체
+	 * @return List<PartyBoard> - 파티방 전체 조회 목록
+	 */
+	public List<PartyBoard> getBrList(PbPaging paging);
 	
 	
 	
+	/**
+	 * 파티게시판 페이징 객체 생성
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Paging - 페이징 계산이 완료된 객체
+	 */
+	public PbPaging getBrPaging(HttpServletRequest req);
 	
 	
 	/**
@@ -34,6 +48,18 @@ public interface PartyRoomBoardService {
 
 
 	public PartyBoard write(HttpServletRequest req);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

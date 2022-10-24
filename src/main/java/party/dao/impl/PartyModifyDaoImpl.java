@@ -49,7 +49,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 		// SQL작성
 		String sql = "";
 		sql += "SELECT";
-		sql += "	party_no, party_kind, party_name, party_leader, party_creDate";
+		sql += "	party_no, ,party_room_no, party_kind, party_name, party_leader, party_creDate";
 		sql += "	, party_endDate, party_period, party_member, paymentAmount";
 		sql += " FROM party";
 		sql += " ORDER BY party_no ASC";
@@ -65,6 +65,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 				Party p = new Party();
 				
 				p.setPartyNo(rs.getInt("party_no"));
+				p.setPartyRoomNo(rs.getInt("party_room_no"));
 				p.setPartyKind(rs.getString("party_kind"));
 				p.setPartyName(rs.getString("party_name"));
 				p.setPartyLeader(rs.getString("party_leader"));
@@ -98,7 +99,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 		sql += "SELECT * FROM(";    
 		sql += "	SELECT rownum rnum, P.* FROM(";
 		sql += "			SELECT";
-		sql += "				party_no, party_kind, party_name, party_leader, party_creDate";      
+		sql += "				party_no, party_room_no, party_kind, party_name, party_leader, party_creDate";      
 		sql += "					, party_endDate, party_period, party_member, paymentAmount";
 		sql += "	        FROM party";
 		sql += " 		    ORDER BY party_no ASC";
@@ -120,7 +121,9 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 				Party p = new Party(); //조회 결과 행 저장 DTO객체
 				
 				p.setPartyNo(rs.getInt("party_no"));
+				p.setPartyRoomNo(rs.getInt("party_room_no"));
 				p.setPartyKind(rs.getString("party_kind"));
+				p.setPartyName(rs.getString("party_name"));
 				p.setPartyLeader(rs.getString("party_leader"));
 				p.setPartyCreDate(rs.getDate("party_creDate"));
 				p.setPartyEndDate(rs.getDate("party_endDate"));
@@ -167,6 +170,56 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 		}
 		// 최종 결과 반환
 		return count;
+	}
+
+	@Override
+	public Party selectPartyByPartyRoomNo(Connection conn, Party partyRoomNo) {
+
+		String sql = "";
+		sql += "SELECT";
+		sql += "	party_no, party_kind, party_name, party_room_no, party_leader";
+		sql += "	, party_creDate, party_endDate, party_period, party_member, paymentAmount";
+		sql += " FROM party";
+		sql += " WHERE party_room_no = ?";
+		
+		
+		Party party = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, partyRoomNo.getPartyRoomNo());
+			
+			System.out.println(sql);
+			System.out.println( partyRoomNo.getPartyRoomNo());
+			
+			System.out.println(ps);
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next()) {
+				party = new Party();
+				
+				party.setPartyNo(rs.getInt("party_no"));
+				party.setPartyKind(rs.getString("party_kind"));
+				party.setPartyName(rs.getString("party_name"));
+				party.setPartyRoomNo(rs.getInt("party_room_no"));
+				party.setPartyLeader(rs.getString("party_leader"));
+				party.setPartyCreDate(rs.getDate("party_creDate"));
+				party.setPartyEndDate(rs.getDate("party_endDate"));
+				party.setPartyPeriod(rs.getDate("party_period"));
+				party.setPartyMember(rs.getInt("party_member"));
+				party.setPaymentAmount(rs.getInt("paymentAmount"));
+
+				System.out.println(rs);
+				System.out.println("party" + party);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return party;
 	}
 
 

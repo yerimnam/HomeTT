@@ -10,6 +10,7 @@ import partyBoard.dao.face.PartyRoomBoardDao;
 import partyBoard.dao.impl.PartyRoomBoardDaoImpl;
 import partyBoard.dto.PartyBoard;
 import partyBoard.service.face.PartyRoomBoardService;
+import util.PbPaging;
 
 public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
@@ -24,6 +25,33 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
 		// DB조회 결과 반환
 		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection());
+	}
+
+	
+	@Override
+	public List<PartyBoard> getBrList(PbPaging paging) {
+		
+		
+		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(), paging);
+	}
+	
+	
+	@Override
+	public PbPaging getBrPaging(HttpServletRequest req) {
+		// 총 게시글 수 조회하기
+		int totalCount = partyRoomBoardDao.selectPbAll(JDBCTemplate.getConnection());
+
+		// 전달파라미터 curPage 추출하기
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// Paging객체 생성
+		PbPaging paging = new PbPaging(totalCount, curPage);
+
+		return paging;
 	}
 	
 	@Override
@@ -63,6 +91,8 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
 		}
 	}
+
+
 
 
 

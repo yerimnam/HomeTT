@@ -90,11 +90,17 @@ button:hover {
 	padding: 5px;
 }
 
+
 .noData {
 	margin: 30px;
 	text-align: center;
 }
 
+#btn-d{
+	border: 0 none;
+	background: inherit;
+	
+}
 .search-area {
 	display: flex;
 	flex-wrap: wrap;
@@ -188,13 +194,79 @@ textarea {
 				<tr>
 					<td><%=partyBoardList.get(i).getPartyBoardNo()%></td>
 					<td><%=partyBoardList.get(i).getPartyBoardWriter()%></td>
-					<td><%=partyBoardList.get(i).getPartyBoardTitle()%></td>
+					<td><%=partyBoardList.get(i).getPartyBoardTitle()%><button id="btn-d">❌</button></td>
 				</tr>
 
 				<%
 				}
 				%>
 			</table>
+		</div>
+		<div class="text-center">
+			<ul class="pagination">
+
+				<%--첫 페이지로 이동 --%>
+				<%
+				if (paging.getCurPage() != 1) {
+				%>
+				<li><a href="./roomboard">&larr;처음</a></li>
+				<%
+				}
+				%>
+
+
+
+				<%--이전 페이지로 이동 --%>
+				<%
+				if (paging.getCurPage() != 1) {
+				%>
+				<li><a href="./roomboard?curPage=<%=paging.getCurPage() - 1%>">&lt;</a></li>
+				<%
+				}
+				%>
+
+
+
+				<%--페이지 번호 리스트 --%>
+				<%
+				for (int i = paging.getStartPage(); i <= paging.getEndPage(); i++) {
+				%>
+
+				<%
+				if (i == paging.getCurPage()) {
+				%>
+				<li class="active"><a href="./roomboard?curPage=<%=i%>"><%=i%></a></li>
+				<%
+				} else {
+				%>
+				<li><a href="./roomboard?curPage=<%=i%>"><%=i%></a></li>
+				<%
+				}
+				%>
+				<%
+				}
+				%>
+
+
+				<%--다음 페이지로 이동 --%>
+				<%
+				if (paging.getCurPage() != paging.getTotalPage()) {
+				%>
+				<li><a href="./roomboard?curPage=<%=paging.getCurPage() + 1%>">&gt;</a></li>
+				<%
+				}
+				%>
+
+
+				<%--마지막 페이지로 이동 --%>
+				<%
+				if (paging.getCurPage() != paging.getTotalPage()) {
+				%>
+				<li><a href="./roomboard?curPage=<%=paging.getTotalPage()%>">&rarr;끝</a></li>
+				<%
+				}
+				%>
+			</ul>
 		</div>
 
 
@@ -221,7 +293,7 @@ textarea {
 		<div class="manage-area">
 			<div class="manage-top">
 				<h3>📌게시글 관리</h3>
-				<button class="p-btn">파티탈퇴</button>
+				<button class="p-btn" onclick="showPrompt()">파티탈퇴</button>
 			</div>
 			<div class="manage-body">
 				<div class="write-area">
@@ -244,6 +316,8 @@ textarea {
 		<%-- 글번호 : <%=partyBoardList.get(i).getPartyBoardNo() %> --%>
 
 	</div>
+
+
 
 </body>
 <script type="text/javascript">
@@ -277,5 +351,28 @@ textarea {
 		});
 
 	}
+	
+</script>
+
+<script type="text/javascript">
+
+
+function showPrompt(){
+	console.log("-----prompt-----")
+	var res = prompt("탈퇴를 원하시면 비밀번호를 입력하세요")
+	
+	console.log("반환값" , res)
+	
+	if( res == null ) {
+		console.log("취소 선택")
+		
+	} else if( res == '' ) {
+		console.log("입력값없이 확인 선택")
+		
+	} else {
+		console.log("입력값 >>", res)
+	}
+	
+}
 </script>
 </html>

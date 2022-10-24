@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import partyBoard.dto.PartyBoard;
+import util.PbPaging;
 
 public interface PartyRoomBoardDao {
 
@@ -19,6 +20,16 @@ public interface PartyRoomBoardDao {
 	public int selectNextUserno(Connection conn, PartyBoard partyBoard);
 
 	/**
+	 * 게시글 테이블 페이징 목록 조회
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param paging - 페이징 정보 객체
+	 * @return List<PartyBoard> - 테이블 페이징 목록 조회 결과
+	 */
+	public List<PartyBoard> selectAllBr(Connection conn, PbPaging paging);
+	
+
+	/**
 	 * 전달된 파라미터 값을 테이블에 삽입한다
 	 * 
 	 * @param conn - DB 연결 객체 
@@ -29,13 +40,15 @@ public interface PartyRoomBoardDao {
 
 	public int selectNextBoardno(Connection conn);
 
-//	/**
-//	 * 총 파티게시판 글 조회
-//	 * 
-//	 * @param conn - DB연결 객체
-//	 * @return int - 테이블의 전체 행 수
-//	 */
-//	public int selectPbAll(Connection conn);
+	/**
+	 * 총 파티게시글 조회
+	 * 
+	 * @param conn - DB연결 객체
+	 * @return int - 테이블의 전체 행 수
+	 */
+	public int selectPbAll(Connection conn);
+
+
 
 
 	
