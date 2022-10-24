@@ -2,10 +2,10 @@ package payment.service.face;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dto.Payment;
 import user.dto.Member;
@@ -34,6 +34,11 @@ public interface PaymentService {
 	 * @param req -파라미터
 	 * @return -전달한 정보 반환 
 	 */
+//	List<Payment> getData(HttpServletRequest req);
+
+	
+	
+	
 	Payment getParam(HttpServletRequest req);
 	
 	/**
@@ -42,7 +47,22 @@ public interface PaymentService {
 	 * @return -저장된 payment dto 정보 
 	 */
 	
-	Payment setPayment(Payment payment);
+	Payment setPayment(Payment returnData);
+	
+	/**
+	 * 
+	 * 인서트 된 결과 조회해오기
+	 * @param payinsert -인서트 된 결과
+	 * @return
+	 */
+	
+	Payment getresult(Payment payinsert);
+	
+	
+	
+	
+	
+	
 	
 	
 	
