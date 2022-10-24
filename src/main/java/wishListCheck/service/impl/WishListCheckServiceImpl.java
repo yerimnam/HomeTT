@@ -18,6 +18,7 @@ public class WishListCheckServiceImpl implements WishListCheckService {
 		System.out.println("wishListCheckService getList() - start");
 		
 		System.out.println("wishListCheckService getList() - end");
+		
 		return wishListCheckDao.selectAll(JDBCTemplate.getConnection());
 	}
 

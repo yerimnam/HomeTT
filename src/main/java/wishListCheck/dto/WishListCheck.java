@@ -13,11 +13,14 @@ public class WishListCheck {
 	private Date partyEnddate;
 	private int userNo;
 	private int partyNo;
+	private String partyKind;
+	private int partyMember;
+	private int paymentamount;
 	
 	public WishListCheck() {}
 
 	public WishListCheck(int wishNo, int partyCano, int boardCano, String partyLeader, String partyName,
-			Date partyCredate, Date partyEnddate, int userNo, int partyNo) {
+			Date partyCredate, Date partyEnddate, int userNo, int partyNo, String partyKind, int partyMember, int paymentamount) {
 		super();
 		this.wishNo = wishNo;
 		this.partyCano = partyCano;
@@ -28,13 +31,19 @@ public class WishListCheck {
 		this.partyEnddate = partyEnddate;
 		this.userNo = userNo;
 		this.partyNo = partyNo;
+		this.partyKind = partyKind;
+		this.partyMember = partyMember;
+		this.paymentamount = paymentamount;
 	}
+
+
 
 	@Override
 	public String toString() {
 		return "WishListCheck [wishNo=" + wishNo + ", partyCano=" + partyCano + ", boardCano=" + boardCano
 				+ ", partyLeader=" + partyLeader + ", partyName=" + partyName + ", partyCredate=" + partyCredate
-				+ ", partyEnddate=" + partyEnddate + ", userNo=" + userNo + ", partyNo=" + partyNo + "]";
+				+ ", partyEnddate=" + partyEnddate + ", userNo=" + userNo + ", partyNo=" + partyNo + ", partyKind="
+				+ partyKind + ", partyMember=" + partyMember + ", paymentamount=" + paymentamount + "]";
 	}
 
 	public int getWishNo() {
@@ -57,12 +66,28 @@ public class WishListCheck {
 		return boardCano;
 	}
 
+	public int getPaymentamount() {
+		return paymentamount;
+	}
+
+	public void setPaymentamount(int paymentamount) {
+		this.paymentamount = paymentamount;
+	}
+
 	public void setBoardCano(int boardCano) {
 		this.boardCano = boardCano;
 	}
 
 	public String getPartyLeader() {
 		return partyLeader;
+	}
+
+	public int getPartyMember() {
+		return partyMember;
+	}
+
+	public void setPartyMember(int partyMember) {
+		this.partyMember = partyMember;
 	}
 
 	public void setPartyLeader(String partyLeader) {
@@ -108,7 +133,13 @@ public class WishListCheck {
 	public void setPartyNo(int partyNo) {
 		this.partyNo = partyNo;
 	}
-	
-	
+
+	public String getPartyKind() {
+		return partyKind;
+	}
+
+	public void setPartyKind(String partyKind) {
+		this.partyKind = partyKind;
+	}
 	
 }
