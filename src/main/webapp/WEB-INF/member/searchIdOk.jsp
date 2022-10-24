@@ -20,7 +20,7 @@
 
 <br>
 <button class="btn" onclick="location.href='/homett/login'">로그인</button>
-<button class="btn" onclick="">비밀번호 찾기</button>
+<button class="btn" onclick="location.href='/homett/searchpw'">비밀번호 찾기</button>
 
 </body>
 </html>

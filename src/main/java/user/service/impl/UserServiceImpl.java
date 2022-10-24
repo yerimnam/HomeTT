@@ -1,6 +1,7 @@
 package user.service.impl;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.Random;
 
@@ -14,11 +15,14 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import common.JDBCTemplate;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import user.dao.face.UserDao;
 import user.dao.impl.UserDaoImpl;
+import user.dto.MailSmsOk;
 import user.dto.Member;
-import user.dto.MailOk;
 import user.service.face.UserService;
 
 public class UserServiceImpl implements UserService {
@@ -137,9 +141,9 @@ public class UserServiceImpl implements UserService {
 	
 	
 	@Override
-	public MailOk sendMailRandomNum(HttpServletRequest req) {
+	public MailSmsOk sendMailRandomNum(HttpServletRequest req) {
 		
-		MailOk RanNum = new MailOk();
+		MailSmsOk RanNum = new MailSmsOk();
 		
 		Random random = new Random();		//랜덤 함수 선언
 		int createNum = 0;  			//1자리 난수
@@ -152,7 +156,7 @@ public class UserServiceImpl implements UserService {
 			createNum = random.nextInt(9);		//0부터 9까지 올 수 있는 1자리 난수 생성
 			ranNum =  Integer.toString(createNum);  //1자리 난수를 String으로 형변환
 			resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
-	}	
+		}	
 		
 		
 		String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
@@ -169,6 +173,7 @@ public class UserServiceImpl implements UserService {
 	            protected PasswordAuthentication getPasswordAuthentication() {
 	                return new PasswordAuthentication(user, password);
 	            }
+	            
 	        });
 	        
 	        try {
@@ -198,9 +203,9 @@ public class UserServiceImpl implements UserService {
 	
 	
 	@Override
-	public MailOk MailOkChk(HttpServletRequest req) {
+	public MailSmsOk MailOkChk(HttpServletRequest req) {
 		
-		MailOk mailOk = new MailOk();
+		MailSmsOk mailOk = new MailSmsOk();
 		HttpSession session = req.getSession();
 		
 //		mailOk.setInputOk( req.getParameter("mailOk") );
@@ -226,7 +231,114 @@ public class UserServiceImpl implements UserService {
 		
 		
 	}
+	
+	
+//	--------------------------------- 아이디찾기 끝 -----------------------------------
 
+//	--------------------------------- 비밀번호찾기 시작 -----------------------------------
+	
+	@Override
+	public Member searchPw(Member member) {
+		System.out.println("MemberService searchPw() -  시작");
+		return userDao.getIdNamePhone(conn, member);
+		
+	}
+	
+	
+	@Override
+	public MailSmsOk sendSmsRandomNum(HttpServletRequest req) {
+
+	Member member = new Member();
+	MailSmsOk RanNum = new MailSmsOk();
+	HttpSession session = req.getSession();
+	
+	Random random = new Random();		//랜덤 함수 선언
+	int createNum = 0;  			//1자리 난수
+	String ranNum = ""; 			//1자리 난수 형변환 변수
+    	int letter    = 6;			//난수 자릿수:6
+	String resultNum = "";  		//결과 난수
+	
+	for (int i=0; i<letter; i++) { 
+        		
+		createNum = random.nextInt(9);		//0부터 9까지 올 수 있는 1자리 난수 생성
+		ranNum =  Integer.toString(createNum);  //1자리 난수를 String으로 형변환
+		resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
+	}	
+	
+	 RanNum.setRanNum( resultNum );
+	
+	String api_key = "NCSJRBFEKEKSCM0W";
+    String api_secret = "M2RBGRE1LFLGGNZWUAW4MNBNCMVRZH7Y";
+    net.nurigo.java_sdk.api.Message coolsms = new net.nurigo.java_sdk.api.Message(api_key, api_secret);
+
+    // 4 params(to, from, type, text) are mandatory. must be filled
+    HashMap<String, String> params = new HashMap<String, String>();
+    params.put("to", "0" + session.getAttribute("userphone"));	// 수신전화번호
+    params.put("from", "01093425749");	// 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+    params.put("type", "SMS");
+    params.put("text", "HomeTT 인증번호 [" + resultNum +"]을 입력해주세요.");
+    params.put("app_version", "test app 1.2"); // application name and version
+
+    try {
+      JSONObject obj = (JSONObject) coolsms.send(params);
+      System.out.println(obj.toString());
+    } catch (CoolsmsException e) {
+      System.out.println(e.getMessage());
+      System.out.println(e.getCode());
+    }
+    return RanNum;
+	
+	} 
+	
+	
+	@Override
+	public MailSmsOk SmsOkChk(HttpServletRequest req) {
+		
+		MailSmsOk mailOk = new MailSmsOk();
+		HttpSession session = req.getSession();
+		
+//		mailOk.setInputOk( req.getParameter("mailOk") );
+		
+		//인증번호 작성한거 확인 잘나오는지 확인
+		System.out.println("MemberService login() -   InputOk : " + req.getParameter("smsOk") );
+		System.out.println("MemberService login() -   RanNum : " + session.getAttribute("rannum") );
+		
+		
+		if( !session.getAttribute("rannum").equals(req.getParameter("smsOk")) ) {
+//			req.getRequestDispatcher("/WEB-INF/member/searchIdOk.jsp").forward(req, resp);
+			System.out.println("둘이 같지 않을때");
+			
+			return null;
+			
+		} else {
+			System.out.println("둘이 같을때");
+			
+			mailOk.setResultChk("1");
+			return mailOk ;
+		}
+		
+	}
+	
+	
+	@Override
+	public Member UpdatePw(Member member) {
+		//DB연결 객체
+		Connection conn = JDBCTemplate.getConnection();
+				
+		//비밀번호 변경
+		if( userDao.UpdatePwDao(conn, member) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+				
+		//조회된 게시글 리턴
+		return member;
+	}
+	
+	
+	 
+//	--------------------------------- 비밀번호찾기 끝 -----------------------------------
 }
 
 

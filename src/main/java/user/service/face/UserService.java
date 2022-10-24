@@ -3,7 +3,7 @@ package user.service.face;
 import javax.servlet.http.HttpServletRequest;
 
 import user.dto.Member;
-import user.dto.MailOk;
+import user.dto.MailSmsOk;
 
 public interface UserService {
 	
@@ -72,17 +72,64 @@ public interface UserService {
 
 
 	/**
-	 * 랜덤 난수 가져오기
+	 * 랜덤 난수 이메일로 보내고 가져오기
 	 * 
 	 * @param req - 요청 정보 객체
-	 * @return - String - 메일로 보낼 랜덤 난수
+	 * @return MailOk - 메일로 보낼 랜덤 난수
 	 */
-	public MailOk sendMailRandomNum(HttpServletRequest req);
+	public MailSmsOk sendMailRandomNum(HttpServletRequest req);
 
 
-	public MailOk MailOkChk(HttpServletRequest req);
+	/**
+	 * 메일 인증 처리
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return MailOk -  resultChk 정보 ( 1 : 성공, 2 : 실패 )
+	 */
+	public MailSmsOk MailOkChk(HttpServletRequest req);
+	
+	
+//	--------------------------------- 아이디찾기 끝 -----------------------------------	
+	
+//	--------------------------------- 비밀번호찾기 시작 -----------------------------------
+	
+	
+	/**
+	 * 유저 정보 가져오기
+	 * 
+	 * @param member - 조회할 회원 정보
+	 * @return Member - 조회된 회원 정보
+	 */
+	public Member searchPw(Member member);
+
+	/**
+	 * 랜덤 난수 이메일로 보내고 가져오기
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return MailOk - 메일로 보낼 랜덤 난수
+	 */
+	public MailSmsOk sendSmsRandomNum(HttpServletRequest req);
 
 
+	
+	/**
+	 * 문자 인증 처리
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return MailOk -  resultChk 정보 ( 1 : 성공, 2 : 실패 )
+	 */
+	public MailSmsOk SmsOkChk(HttpServletRequest req);
+
+
+	/**
+	 * 전달된 userphone를 이용하여 비밀번호를 변경한다
+	 * 
+	 * @param member - 조회할 객체 
+	 * @return Member - 조회된 게시글 정보
+	 */
+	public Member UpdatePw(Member member);
+
+//	--------------------------------- 비밀번호찾기 끝 -----------------------------------
 
 
 

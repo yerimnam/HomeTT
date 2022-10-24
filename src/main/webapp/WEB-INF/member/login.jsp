@@ -132,7 +132,8 @@ li{
 </form>
 
 	<button class="btn" id="btnJoin" onclick="location.href='/homett/join'">회원가입</button>
-	<a href="/homett/searchidpw" class="btn" id="btnJoin">아이디 I 비밀번호 찾기</a><br>
+	<a href="/homett/searchid" class="btn" id="btnJoin">아이디 찾기</a> I
+	<a href="/homett/searchpw" class="btn" id="btnJoin">비밀번호 찾기</a><br>
 	<button class="btn" id="btnJoin" onclick="location.href='/homett/main'">메인페이지</button><br><br>
 <a href="javascript:kakaoLogin();"><img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" alt="카카오계정 로그인" width="20%" height="20%"/></a>
 <a href="javascript:kakaoLogout();">로그아웃</a>

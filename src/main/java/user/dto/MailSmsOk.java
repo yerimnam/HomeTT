@@ -1,14 +1,14 @@
 package user.dto;
 
-public class MailOk {
+public class MailSmsOk {
 
 	private String ranNum;
 	private String inputOk;
 	private String resultChk;
 	
-	public MailOk() {}
+	public MailSmsOk() {}
 
-	public MailOk(String ranNum, String inputOk, String resultChk) {
+	public MailSmsOk(String ranNum, String inputOk, String resultChk) {
 		super();
 		this.ranNum = ranNum;
 		this.inputOk = inputOk;

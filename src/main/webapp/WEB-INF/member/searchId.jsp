@@ -1,9 +1,9 @@
-<%@page import="user.dto.MailOk"%>
+<%@page import="user.dto.MailSmsOk"%>
 <%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% MailOk ranNum = (MailOk) request.getAttribute("ranNum"); %>
+<% MailSmsOk ranNum = (MailSmsOk) request.getAttribute("ranNum"); %>
     
 
   
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type:"post"			//요청 메소드
-			, url: "/homett/searchidpw"		//요청 URL
+			, url: "/homett/searchid"		//요청 URL
 			, data: {		//요청 파라미터
 				name : $("#username").val()	
 				, email : $("#useremail").val()
@@ -39,8 +39,7 @@ $(document).ready(function() {
 		}
 		, error: function() {
 			console.log("AJAX 실패")
-			alert("이름과 이메일이 일치하지 않습니다");
-			$("#username").val("")
+			alert("입력하신 회원정보가 일치하지 않습니다");
 			$("#username").focus()
 			
 		}			
@@ -48,14 +47,12 @@ $(document).ready(function() {
 		})
 	})
 	
-	
-	
 	$("#remail").click(function() {
 		console.log("#remail 클릭")
 
 		$.ajax({
 			type:"post"			//요청 메소드
-			, url: "/homett/searchidpw"		//요청 URL
+			, url: "/homett/searchid"		//요청 URL
 			, data: {		//요청 파라미터
 				name : $("#username").val()	
 				, email : $("#useremail").val()
@@ -69,11 +66,7 @@ $(document).ready(function() {
 			
 		}
 		, error: function() {
-			console.log("AJAX 실패")
-			alert("이름과 이메일이 일치하지 않습니다");
-			$("#username").val("")
-			$("#username").focus()
-			
+			console.log("AJAX 실패")			
 		}			
 			
 		})
@@ -86,7 +79,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type:"post"			//요청 메소드
-			, url: "/homett/emailok"		//요청 URL
+			, url: "/homett/emailok"	//요청 URL
 			, data: {		//요청 파라미터
 				mailOk : $("#emailOk").val()	
 			}
@@ -98,18 +91,13 @@ $(document).ready(function() {
 		}
 		, error: function() {
 			console.log("AJAX 실패")
-			alert("인증번호가 일치하지 않습니다");
-			
+			alert("입력하신 인증번호가 일치하지 않습니다");
 		}			
 			
 		})
 	})
 	
-	
-	 
-	
-	
-	
+
 	
 	
 })
@@ -120,8 +108,7 @@ $(document).ready(function() {
 </head>
 <body>
 
-<!-- 여기 꺼서 그러는거 같은데 그래서 껐는데.. -->
-<!-- <form action="/homett/searchidpw" method="post" id="loginform"> -->
+<h2>아이디 찾기</h2>
 
 	<div>
 		<label for="username">이름</label>
@@ -142,7 +129,7 @@ $(document).ready(function() {
 	
 	<button id="btnCalc" style="display:block">아이디 찾기</button>
 
-<!-- </form> -->
+
 
 </body>
 </html>

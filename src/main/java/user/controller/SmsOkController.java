@@ -9,43 +9,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import user.dto.MailSmsOk;
-import user.dto.Member;
 import user.service.face.UserService;
 import user.service.impl.UserServiceImpl;
 
-
-
-@WebServlet("/homett/emailok")
-public class EmailOkController extends HttpServlet {
+@WebServlet("/homett/smsok")
+public class SmsOkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private UserService userService = new UserServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/emailok [GET]");
+		System.out.println("/homett/smsok [GET]");
 		
-		req.getRequestDispatcher("/WEB-INF/member/searchIdOk.jsp").forward(req, resp);
+		resp.sendRedirect("./updatepw");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		System.out.println("/homett/smsok [POST]");
+		
 		req.setCharacterEncoding("UTF-8");
 		
-		
-		MailSmsOk result = userService.MailOkChk(req);
+		MailSmsOk result = userService.SmsOkChk(req);
 		
 		System.out.println("result : " + result);
 		
 		result.getResultChk();  //getResultChk 안에 값이 담겨있다면 인증이 됬다는거
-		
-		
-
-		
-	
 	
 	}
 	
-
+	
 }
