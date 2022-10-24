@@ -1,8 +1,11 @@
+<%@page import="util.PbPaging"%>
 <%@page import="payment.dto.Payment"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <% List<Payment> paymentList = (List)request.getAttribute("paymentList"); %>
+ 
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +22,28 @@
 
 <script type="text/javascript">
 
+// $(document).ready(function(){
 
-
-$(function(){
+// 	$("#btnchkpay").click(function(){
 	
-	$("#btnchkpay").on("click",chkpaymentlist);
+// // 		$("#paymnetlist").submit();
+// 		$(this).parents("form").submit();
+// 		console.log($("#paymentlist").val());
+		
+// 	})
 	
-})
+	
+	
+	
+	
+// });
 
+
+// $(function(){
+	
+// 	$("#btnchkpay").on("click",chkpaymentlist);
+	
+// })
 
 function chkpaymentlist(){
 	
@@ -57,7 +74,7 @@ function chkpaymentlist(){
 	
 }
 
-	
+
 
 
 
@@ -92,22 +109,13 @@ body {
 <div id="selectdate">
 	<input type="date" id="startdate" name="startdate" > 
 	<input type="date" id="enddate" name="enddate"   > 
-	<button type="button" id="btnchkpay" > 조회 </button> 
-<hr>
-
-
-<!--데이트 피커  --> 
-<!--  	<input type="text" id="startDate" name="startDate"placeholder="시작날짜선택해주세요">  -->
-<!-- 	<span>~</span>	 -->
-<!-- 	<input type="text" id="endDate" name="endDate"placeholder="끝 날짜를 선택해주세요"> -->
-  
+	<button type="button" id="btnchkpay" onclick="chkpaymentlist()"> 조회 </button> 
 
 </div>
-
 <div id="paymentlist"></div>
 
-
-
+<!-- <form action="/homett/paymentlist" method="post" id="paymentlist" name="paymentlist"> -->
+<!-- </form> -->
 
 </body>
 </html>

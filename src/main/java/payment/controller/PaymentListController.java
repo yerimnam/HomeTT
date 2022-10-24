@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import payment.dto.Payment;
 import payment.service.face.PaymentListServcie;
 import payment.service.impl.PaymentListServiceImpl;
+import util.PbPaging;
 
 
 @WebServlet("/homett/paymentlist")
@@ -41,7 +42,12 @@ public class PaymentListController extends HttpServlet {
 		HttpSession session = req.getSession();
 		//테스트로 넣을 userno =2번 데이터
 		session.setAttribute("user_no",2);
-
+		
+		//전달파라미터에서 현재 페이징 객체 계산하기
+		
+		PbPaging paging = paymentListService.getPaging(req);
+	
+		
 		
 		//실제로 작동 될 코드 
 		int userNo = (int)session.getAttribute("user_no");
@@ -57,10 +63,15 @@ public class PaymentListController extends HttpServlet {
 		Date end = paymentListService.changeend(endDate);
 		//기간과 이름을 으로 게시글 조회
 		
-		List<Payment> paymentList = paymentListService.getPaymentList(userNo,start,end);
+		List<Payment> paymentList = paymentListService.getPaymentList(paging,userNo,start,end);
+	
+		//페이징 객체를 MODEL값 전달
+		req.setAttribute("paging", paging);
 		
 		//model값을 view로 보내기
 		req.setAttribute("paymentList", paymentList);
+		
+	
 		
 		System.out.println(paymentList);
 		req.getRequestDispatcher("/WEB-INF/mypage/paymentListview.jsp").forward(req, resp);

@@ -1,15 +1,19 @@
+<%@page import="util.PbPaging"%>
 <%@page import="payment.dto.Payment"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
      <% List<Payment> paymentList = (List)request.getAttribute("paymentList"); %>
-    
+    <% PbPaging paging = (PbPaging)request.getAttribute("paging"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+
 
 <!--jQuery 2.2.4.CDN  -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -21,6 +25,9 @@
 <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 <script type="text/javascript">
+
+
+
 
 </script>
 </head>
@@ -65,6 +72,45 @@
 
 
 </div>
+
+
+<div class="text-center">
+   <ul class="pagination">
+   
+      <%-- 첫 페이지로 이동 --%>
+      <%   if( paging.getCurPage() != 1) { %>
+      <li><a href="/homett/paymentlist">&larr;처음</a></li>
+      <%  } %>
+      
+   
+      <%-- 이전 페이지로 이동 --%>
+      <%   if( paging.getCurPage() != 1) { %>
+      <li><a href="/homett/paymentlist?curPage=<%=paging.getCurPage() - 1 %>">&lt;</a></li>
+      <%   } %>
+   
+   
+      <%   for(int i=paging.getStartPage(); i<=paging.getEndPage(); i++) { %>
+      <%      if( i == paging.getCurPage() ) { %>
+      <li class="active"><a href="/homett/paymentlist?curPage=<%=i %>"><%=i %></a></li>
+      <%      } else { %>
+      <li><a href="/homett/paymentlist?curPage=<%=i %>"><%=i %></a></li>
+      <%      } %>
+      <%   } %>
+      
+      <%-- 다음 페이지로 이동 --%>
+      <%   if( paging.getCurPage() != paging.getTotalPage() ) { %>
+      <li><a href="/homett/paymentlist?curPage=<%=paging.getCurPage() + 1 %>">&gt;</a></li>
+      <%   } %>
+      
+      <%-- 마지막 페이지로 이동 --%>
+      <%   if( paging.getCurPage() != paging.getTotalPage() ) { %>
+      <li><a href="/homett/paymentlist?curPage=<%=paging.getTotalPage() %>">&rarr;끝</a></li>
+      <%   } %>
+      
+   </ul>
+</div>
+
+
 
 
 </body>
