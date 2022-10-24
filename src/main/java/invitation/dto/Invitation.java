@@ -2,58 +2,60 @@ package invitation.dto;
 
 public class Invitation {
 	
-	private String party_code;
-	private int user_no;
-	private int party_no;
-	private String user_phone;
+	private String partyCode;
+	private int userNo;
+	private int partyNo; 
+	private String userPhone;
 	
 	public Invitation() {}
 
-	public Invitation(String party_code, int user_no, int party_no, String user_phone) {
+	public Invitation(String partyCode, int userNo, int partyNo, String userPhone) {
 		super();
-		this.party_code = party_code;
-		this.user_no = user_no;
-		this.party_no = party_no;
-		this.user_phone = user_phone;
+		this.partyCode = partyCode;
+		this.userNo = userNo;
+		this.partyNo = partyNo;
+		this.userPhone = userPhone;
 	}
 
 	@Override
 	public String toString() {
-		return "Invitation [party_code=" + party_code + ", user_no=" + user_no + ", party_no=" + party_no
-				+ ", user_phone=" + user_phone + "]";
+		return "Invitation [partyCode=" + partyCode + ", userNo=" + userNo + ", partyNo=" + partyNo + ", userPhone="
+				+ userPhone + "]";
 	}
 
-	public String getParty_code() {
-		return party_code;
+	public String getPartyCode() {
+		return partyCode;
 	}
 
-	public void setParty_code(String party_code) {
-		this.party_code = party_code;
+	public void setPartyCode(String partyCode) {
+		this.partyCode = partyCode;
 	}
 
-	public int getUser_no() {
-		return user_no;
+	public int getUserNo() {
+		return userNo;
 	}
 
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
-	public int getParty_no() {
-		return party_no;
+	public int getPartyNo() {
+		return partyNo;
 	}
 
-	public void setParty_no(int party_no) {
-		this.party_no = party_no;
+	public void setPartyNo(int partyNo) {
+		this.partyNo = partyNo;
 	}
 
-	public String getUser_phone() {
-		return user_phone;
+	public String getUserPhone() {
+		return userPhone;
 	}
 
-	public void setUser_phone(String user_phone) {
-		this.user_phone = user_phone;
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
+	
+	
 
 	
 	
