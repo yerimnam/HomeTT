@@ -38,7 +38,7 @@ public class MemberReportController extends HttpServlet {
 		
 		
 		//파티게시판으로 리다이렉트 하기
-		resp.sendRedirect("/homett/partyroom");
+		resp.sendRedirect("/homett/roomboard");
 		
 		
 	}

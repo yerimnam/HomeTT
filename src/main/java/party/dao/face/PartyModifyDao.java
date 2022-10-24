@@ -36,6 +36,15 @@ public interface PartyModifyDao {
 	 * @return int - 테이블의 전체 행 수
 	 */
 	public int selectPrAll(Connection conn);
+	
+	/**
+	 * 지정된 partyRoomNo의 게시글 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param partyRoomNo - 조회할 게시글의 partyRoomNo를 가진 DTO객체
+	 * @return Party - 조회된 파티정보의 상제정보 DTO객체
+	 */
+	public Party selectPartyByPartyRoomNo(Connection conn,Party partyRoomNo);
 
 
 	

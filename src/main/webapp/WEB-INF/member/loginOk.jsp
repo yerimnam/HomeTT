@@ -8,5 +8,9 @@
 </head>
 <body>
 
+<h1>로그인 성공</h1>
+
+<!-- onclick="location.href='./member/logout'" -->
+<button class="logOutBtn">로그아웃</button>
 </body>
 </html>
