@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
    <% Member member = (Member)request.getAttribute("userinfo");%>
    <% Party party = (Party)request.getAttribute("partyinfo");  %>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,51 +23,76 @@
 
 	//결제 준비하기
  IMP.init("imp41280154"); 
-	 
+	 	var paid_at = new Date();
+	 	
+	
  function requestPay() {
-	 
+
      // IMP.request_pay(param, callback) 결제창 호출
      IMP.request_pay({ // param
          pg: "html5_inicis",
          pay_method: "card",
          merchant_uid : "<%=party.getPartyNo()%>_" +  new Date().getTime(),
           name: "HomeTT",
+          paid_at: paid_at,
+          
           
          buyer_email: "<%=member.getUserEmail()%>",
          buyer_name: "<%=member.getUserName()%>",
          amount: <%=party.getPaymentAmount()%>,
-         buyer_tel: "<%=member.getUserPhone()%>"
-<%--          user_no:<%=member.getUserNo()%>, --%>
+         buyer_tel: "<%=member.getUserPhone()%>",
+         user_no:<%=member.getUserNo()%>
      
      },function (rsp) { // callback
     	 
     	 console.log(rsp)
          if (rsp.success) { // 결제 성공 시: 
-        	
-			
 				
-<%-- 			document.location.href="<%=request.getContextPath()%>/homett/paycomplete" --%>
 
         	 
 				console.log('결제성공')
+				console.log('paycomplete 로 DB에 저장할 정보를 전달함 ')
+				
         	 // jQuery로 HTTP 요청
              jQuery.ajax({
                  url: "/homett/paycomplete", // 예: https://www.myservice.com/payments/complete
                  method: "post", // POST method
-                 headers: { "Content-Type": "application/json" },
+//                  headers: { "Content-Type": "application/json" },
+                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
+     
                  data: {
+                	 
+                	 //rsp == 아임포트 결제 결과 정보
                      imp_uid: rsp.imp_uid, //결제번호
                      merchant_uid: rsp.merchant_uid,  //주문번호
-                     paid_amount : rsp.amount,  //결제 금액
-                     party_no : rsp.party_no, //파티 넘버
                 	 pay_method: rsp.pay_method, //결제수단
-//                 	 user_no: rsp.user_no,//유저 번호
-                	 user_email: rsp.buyer_email, //이메일
-                	 user_name : rsp.buyer_name, //유저이름
-                	 user_phone : rsp.buyer_tel //유저 전화번호
+                	 card_name:rsp.card_name, //카드 이름
+                	 card_number:rsp.card_number,//카드 번호 
+                	 paid_at:rsp.paid_at ,//결제 시각
+
+                	 //개발 사이트 정보?
+                	paid_amount: <%=party.getPaymentAmount()%>, //결제 금액
+                     party_no : <%=party.getPartyNo() %>, //파티 넘버
+                	 user_no: <%=member.getUserNo() %>,//유저 번호
+                	 user_email: '<%=member.getUserEmail() %>', //이메일
+                	 user_name: '<%=member.getUserName() %>', //유저이름
+                	 user_phone: '<%=member.getUserPhone() %>' //유저 전화번호
                      
                  }
-         
+                 , dataType: "html"
+         		, success: function( result ) {
+         			console.log('결제 정보 DB저장 AJAX 성공')
+         			
+         			//결제 정보 DB에 저장 성공하면 수행할 작업 작성
+         			//	-> 리다이렉트?
+         			
+         					$("#pay").css("display","none"),
+         					$("#payresult").html(result)
+         					
+         		}
+         		, error: function() {
+         			console.log('결제 정보 DB저장 AJAX 실패')
+         		}
 
              });	 
 //             	 
@@ -78,8 +104,6 @@
            }
            
          });
-     
-     
      
 //   //HomeTT 서버 코드
      
@@ -193,89 +217,95 @@ border: 1px solid black;
 
 
 <body>
+
+
 <header>
 
 	HOME TT
 </header>
 
-<h1>결제하기</h1>
-<hr>
-
-<div id="payinfoarea">
-	<h3> 주문 사항 </h3>
+<div id="payresult">
+<div id="pay">
+	<h1>결제하기</h1>
+	<hr>
 	
-	
-	<table id="payinfo" >
-		
-		<tr>
-				<th>회원 아이디</th>
-				<th>회원 이름</th>
-				<th>파티이름</th>
-				<th>파티장 </th>
-				<th>참여 금액</th>
-		</tr>
+	<div id="payinfoarea">
+		<h3> 주문 사항 </h3>
 		
 		
-		
-		<tr>
-			<td><%=party.getPartyName() %></td>
-			<td><%=party.getPartyLeader() %></td>
-			<td id="partypayment"><%=party.getPaymentAmount() %> 원</td>
+		<table id="payinfo" >
 			
+			<tr>
+					<th>회원 아이디</th>
+					<th>회원 이름</th>
+					<th>파티이름</th>
+					<th>파티장 </th>
+					<th>참여 금액</th>
+			</tr>
+			
+			
+			
+			<tr>
+				<td><%=party.getPartyName() %></td>
+				<td><%=party.getPartyLeader() %></td>
+				<td id="partypayment"><%=party.getPaymentAmount() %> 원</td>
+				
+		
+		</table>
+	</div>
 	
-	</table>
-</div>
-
- <div id="userinfo"> 
- 
-	 <h3>결제자 정보</h3>
+	 <div id="userinfo"> 
+	 
+		 <h3>결제자 정보</h3>
+		
+		 <span>회원 이름 : </span>
+				<span><%=member.getUserName() %>  </span><br><br>
+			<span>회원 아이디 : </span>
+				<span><%=member.getUserId()%></span>
+		
+		<span>이메일 : </span>
+		<span><%=member.getUserEmail() %></span>
+		
+		
+		<span>연락처</span>
+		<span><%=member.getUserPhone() %></span>
+	</div>
 	
-	 <span>회원 이름 : </span>
-			<span><%=member.getUserName() %>  </span><br><br>
-		<span>회원 아이디 : </span>
-			<span><%=member.getUserId()%></span>
 	
-	<span>이메일 : </span>
-	<span><%=member.getUserEmail() %></span>
+	<form  action="/homett/payment" method="post" id="payarea">
+	
+	<div>
+	<h3>총 결제 금액</h3>
+	</div>
+	
+	<div id="payment">
+	
+	   <span id="willpay">결제할 금액 </span>
+	   
+		<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
 	
 	
-	<span>연락처</span>
-	<span><%=member.getUserPhone() %></span>
+	
+	</div>
+	
+	<div id="resultview">
+	
+	</div>
+	
+	
+	</form>
+	
+	
+	
+	
+	<div>
+		<button type="button" id="btnpay" onclick="requestPay()">결제하기</button>
+		<button type="button" id="btncancel" onclick="location.href='/homett/joinparty'">취소하기</button>
+	
+	
+	</div>
 </div>
 
-
-<form  action="/homett/payment" method="post" id="payarea">
-
-<div>
-<h3>총 결제 금액</h3>
-</div>
-
-<div id="payment">
-
-   <span id="willpay">결제할 금액 </span>
-   
-	<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
-
-
-
-</div>
-
-<div id="resultview">
-
-</div>
-
-
-</form>
-
-
-
-
-<div>
-	<button type="button" id="btnpay" onclick="requestPay()">결제하기</button>
-	<button type="button" id="btncancel" onclick="location.href='/homett/joinparty'">취소하기</button>
-
-
-</div>
 
 <footer>
 
@@ -283,5 +313,5 @@ border: 1px solid black;
 
 </footer>
 
-</body>
 </html>
+

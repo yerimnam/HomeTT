@@ -1,7 +1,7 @@
 package payment.dao.face;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import payment.dto.Payment;
@@ -17,6 +17,6 @@ public interface PaymentListDao {
 	 * @param endDate -선택한 마지막 날짜
 	 * @return -기간별 결제내역 조회 반환
 	 */
-	List<Payment> selectPayList(Connection conn, int userNo, Date startDate, Date endDate);
+	List<Payment> selectPayList(Connection conn, int userNo, Date start, Date end);
 
 }

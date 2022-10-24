@@ -1,9 +1,7 @@
 package payment.controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,7 +20,7 @@ import payment.service.impl.PaymentListServiceImpl;
 public class PaymentListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	PaymentListServcie paymentListService = new PaymentListServiceImpl();
+	private static PaymentListServcie paymentListService = new PaymentListServiceImpl();
 	
 	//mypage에서 결제내역 조회하기 누렀을 때 요청을 받음 
 	@Override
@@ -49,30 +47,17 @@ public class PaymentListController extends HttpServlet {
 		int userNo = (int)session.getAttribute("user_no");
 		
 		
+	
 		
-		//기간별 조회시 얻을 파라미터 추출
 		
+		String startDate = req.getParameter("startdate");
+		String endDate =req.getParameter("enddate");
 		
-		SimpleDateFormat date = new SimpleDateFormat("YYYY/MM/DD");
-		String sDate =  req.getParameter("startdate");
-		String eDate = req.getParameter("enddate");
-		
-		System.out.println("date" +date);
-		System.out.println("sDate" +sDate);
-		System.out.println("eDate" +eDate);
-//		
-		Date startDate = null;
-		Date endDate = null;
-		try {
-			startDate = (Date) date.parse(sDate);
-			endDate = (Date) date.parse(eDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
+		Date start = paymentListService.changestart(startDate);
+		Date end = paymentListService.changeend(endDate);
 		//기간과 이름을 으로 게시글 조회
 		
-		List<Payment> paymentList = paymentListService.getPaymentList(userNo,startDate,endDate);
+		List<Payment> paymentList = paymentListService.getPaymentList(userNo,start,end);
 		
 		//model값을 view로 보내기
 		req.setAttribute("paymentList", paymentList);

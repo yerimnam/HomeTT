@@ -49,6 +49,15 @@ public interface PaymentService {
 	
 	Payment setPayment(Payment returnData);
 	
+	/**
+	 * 
+	 * 인서트 된 결과 조회해오기
+	 * @param payinsert -인서트 된 결과
+	 * @return
+	 */
+	
+	Payment getresult(Payment payinsert);
+	
 	
 	
 	

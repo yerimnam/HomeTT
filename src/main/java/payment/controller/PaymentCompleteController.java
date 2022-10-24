@@ -35,26 +35,11 @@ public class PaymentCompleteController extends HttpServlet {
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			System.out.println("/homett/paycomeplete -[GET]");
 			  
-//			 List<Payment> returnData = paymentService.getData (req);
-//			  
-//			  System.out.println(returnData);
-//			  
-//			  //리턴 데이터를 DTO 에 저장
-//			  
-////			  = paymentService.getParam(req);
-////			  
-//			  
-//			 //추출한 값으로 insert하기
-//			  Payment payinsert = paymentService.setPayment(returnData);
-//			  
-//			 req.setAttribute("paycomplete", payinsert);
-//			
 			 req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);
 
 		}
 
 	
-			
 			
 ;	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,22 +47,8 @@ public class PaymentCompleteController extends HttpServlet {
 
 		  System.out.println("/homett/paycomplete [POST]");
 		  
-		  //GSON 객체
-	
+		  req.setCharacterEncoding("UTF-8");
 		  
-		  //1) pay에서 아임포트가 넘겨준 정보를 받아서 인서트 해야한다 -> payment db에 
-		 
-		  //요청 정보에서 속성 추출(ajax가 넘겨준 값으로 받기)
-		  
-		  //1)JSOn으로->String으로.. 
-		  
-		  //데이터 정의 
-		  
-		  
-		  //파라미터 정보 추출 
-//		  LIST<PAYMENT>RETURNDATA = PAYMENTSERVICE.GETDATA (REQ);
-//		  SYSTEM.OUT.PRINTLN(RETURNDATA);
-//		  
 		  //리턴 데이터를 DTO 에 저장
 		  
 		  Payment returnData= paymentService.getParam(req);
@@ -85,7 +56,11 @@ public class PaymentCompleteController extends HttpServlet {
 		 //추출한 값으로 insert하기
 		  Payment payinsert = paymentService.setPayment(returnData);
 		  
-		 req.setAttribute("paycomplete", payinsert);
+		  //인서트 된 값 조회해오기
+		  
+		 Payment payresult = paymentService.getresult(payinsert);
+		  
+		 req.setAttribute("paycomplete", payresult);
 		  
 		  
 		 req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);

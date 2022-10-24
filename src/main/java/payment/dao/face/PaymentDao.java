@@ -40,6 +40,14 @@ public interface PaymentDao {
 
 	public int insertPayment(Connection conn, Payment returnData);
 
+	
+	/**
+	 * 인서트 된 정보 조회해오기
+	 * @param conn -DB 연결
+	 * @return
+	 */
+	public Payment selectpayresult(Connection conn, Payment payinsert);
+
 
 	
 	

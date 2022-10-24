@@ -29,7 +29,7 @@ public class PaymentAmountController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/payamount[GET] - 결제 창");
 		//세션 형성  ->세션에서 id get->속성으로 넣기
-
+		 req.setCharacterEncoding("UTF-8");
 		  HttpSession session =req.getSession();
 				//테스트 데이터
 				session.setAttribute("user_no", 2);
