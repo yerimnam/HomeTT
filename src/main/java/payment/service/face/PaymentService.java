@@ -2,10 +2,12 @@ package payment.service.face;
 
 
 import java.util.List;
+import java.util.Map;
 
-import coupon.dto.Coupon;
+import javax.servlet.http.HttpServletRequest;
+
 import party.dto.Party;
-
+import payment.dto.Payment;
 import user.dto.Member;
 
 public interface PaymentService {
@@ -26,20 +28,50 @@ public interface PaymentService {
 
 	Party getpartyNo(int partyno);
 	
+	
 	/**
-	 * 보유한 쿠폰 정보 조회
-	 * @param userno -유저 넘버
-	 * @return -조회한 쿠폰 정보 반환 
+	 * ajax가 전달한 파라미터 추출하기
+	 * @param req -파라미터
+	 * @return -전달한 정보 반환 
+	 */
+//	List<Payment> getData(HttpServletRequest req);
+
+	
+	
+	
+	Payment getParam(HttpServletRequest req);
+	
+	/**
+	 * 전달한 정보로 insert하기 
+	 * @param req -파라미터
+	 * @return -저장된 payment dto 정보 
 	 */
 	
-	List<Coupon> getCouponInfo(int userno);
+	Payment setPayment(Payment returnData);
 	
 	/**
 	 * 
-	 * @param userno
-	 * @return 회원이 가진 쿠폰 수 반환
+	 * 인서트 된 결과 조회해오기
+	 * @param payinsert -인서트 된 결과
+	 * @return
 	 */
-	int getcntCoupon(int userno);
+	
+	Payment getresult(Payment payinsert);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
