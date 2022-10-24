@@ -1,6 +1,6 @@
 package util;
 
-public class PrPaging {
+public class PbPaging {
 
 	private int curPage; //현재 페이지 번호
 	
@@ -16,17 +16,17 @@ public class PrPaging {
 	private int endNo; //화면에 보이는 게시글의 끝 번호
 	
 	//디폴트 생성자 - 페이징 로직이 처리되지 않는다
-	public PrPaging() {
+	public PbPaging() {
 	}
 	
-	public PrPaging(int totalCount, int curPage) {
+	public PbPaging(int totalCount, int curPage) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 		
 		makePaging();		
 	}
 	
-	public PrPaging(int totalCount, int curPage, int listCount, int pageCount) {
+	public PbPaging(int totalCount, int curPage, int listCount, int pageCount) {
 		setTotalCount(totalCount);
 		setCurPage(curPage);
 
@@ -44,8 +44,8 @@ public class PrPaging {
 
 		//기본값 설정
 		if(curPage == 0)		setCurPage(1); //첫 페이지를 기본 페이지로 설정한다
-		if(listCount == 0)		setListCount(6); //화면에 보여질 게시글 수를 10개로 기본 설정한다
-		if(pageCount == 0)		setPageCount(6); //화면에 보여질 페이지 수를 10개로 기본 설정한다
+		if(listCount == 0)		setListCount(5); //화면에 보여질 게시글 수를 10개로 기본 설정한다
+		if(pageCount == 0)		setPageCount(5); //화면에 보여질 페이지 수를 10개로 기본 설정한다
 		
 		//-----------------------------------------------------------
 		

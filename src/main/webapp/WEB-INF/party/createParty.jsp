@@ -26,16 +26,16 @@ $(document).ready(function() {
  
 })
 
-$(document).readt(function() {
-	 $("#btnnext").click(function() {
+// $(document).readt(function() {
+// 	 $("#btnnext").click(function() {
 
-		 $(".optionbox").hide()
+// 		 $(".optionbox").hide()
 		 
-		 var c2 = $(this).attr("class")
-		 $("#"+c2).show()
-	 })
+// 		 var c2 = $(this).attr("class")
+// 		 $("#"+c2).show()
+// 	 })
 	
-})
+// })
 
 </script>
 
@@ -44,9 +44,7 @@ $(document).readt(function() {
 	display: none;
 }
 
-.optionbox {
-	display: none;
-}
+
 </style>
 </head>
 <body>
@@ -65,13 +63,13 @@ $(document).readt(function() {
 </label>
 
 <ul id="ottMenu">
-	<li><a class="nf">넷플릭스</a></li>
-	<li><a class="df">디즈니 플러스</a></li>
-	<li><a class="tv">티빙</a></li>
-	<li><a class="ap">애플</a></li>
-	<li><a class="wv">웨이브</a></li>
-	<li><a class="wa">왓챠</a></li>
-	<li><a class="la">라프텔</a></li>
+	<li><a class="nf" name="partykind">넷플릭스</a></li>
+	<li><a class="df" name="partykind">디즈니 플러스</a></li>
+	<li><a class="tv" name="partykind">티빙</a></li>
+	<li><a class="ap" name="partykind">애플</a></li>
+	<li><a class="wv" name="partykind">웨이브</a></li>
+	<li><a class="wa" name="partykind">왓챠</a></li>
+	<li><a class="la" name="partykind">라프텔</a></li>
 <!-- 	<li><a href="" >넷플릭스</a></li> -->
 <!-- 	<li><a href="">디즈니 플러스</a></li> -->
 <!-- 	<li><a href="">티빙</a></li> -->
@@ -83,7 +81,6 @@ $(document).readt(function() {
 
 </div>
 
-<hr>
 
 <div class="partyinfo" id="nf">
 
@@ -99,8 +96,19 @@ $(document).readt(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext">다음</button><Br>
+<!-- <button type="button" id="btnnext">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -118,8 +126,19 @@ $(document).readt(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -136,8 +155,19 @@ $(document).readt(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -154,8 +184,19 @@ $(document).readt(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -173,8 +214,19 @@ $(document).readt(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -192,8 +244,19 @@ $(document).readt(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
+
+<div>
+<label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
+<input type="date" id="shareperiod" name="endtDate">
+</div>
+
+<div>
+<label for="partyrule">계정 공유 규칙</label><br>
+<textarea id="partyrule" name="partyrule"> </textarea>
+</div>
+
 </div>
 
 
@@ -211,29 +274,24 @@ $(document).readt(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<button type="button" id="btnnext" onclick="btnclick()">다음</button><Br>
+<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
-</div>
-
-<hr>
-
-<div style="border: 2px solid black;" class="optionbox">
 
 <div>
 <label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
-<input type="date" id="shareperiod" name="startDate">
-<!-- <input type="date" id="shareperiod" name="endDate"> -->
+<input type="date" id="shareperiod" name="endtDate">
 </div>
-
-<!-- <button type="button" id="btnperiod" onclick="">확인</button> -->
-
 
 <div>
 <label for="partyrule">계정 공유 규칙</label><br>
 <textarea id="partyrule" name="partyrule"> </textarea>
 </div>
 
-<!-- <button type="button" id="btnrule" onclick="">확인</button> -->
+</div>
+
+<hr>
+
+
 </div>
 
 <br>

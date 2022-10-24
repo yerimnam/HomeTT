@@ -3,6 +3,7 @@ package party.dao.face;
 import java.sql.Connection;
 
 import party.dto.Party;
+import user.dto.Member;
 
 public interface CreatePartyDao {
 
@@ -15,6 +16,17 @@ public interface CreatePartyDao {
 	 */
 	int selectNextPartyno(Connection conn);
 	
+
+	
+	
+	/**
+	 * 
+	 * @param conn
+	 * @param userno
+	 * @return
+	 */
+	Member selectUserinfo(Connection conn, int userno);
+	
 	
 	
 	/**
@@ -25,6 +37,8 @@ public interface CreatePartyDao {
 	 * @return INSERT 수행 결과(0이면 실패, 1이면 삽입 성공)
 	 */
 	int insert(Connection conn, Party party);
+	
+	
 	
 	
 	
