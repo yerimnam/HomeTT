@@ -183,6 +183,4 @@ public class Party {
 		this.partyNotice = partyNotice;
 	}
 
-	
-	
 }
