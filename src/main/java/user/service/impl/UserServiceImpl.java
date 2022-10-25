@@ -332,7 +332,7 @@ public class UserServiceImpl implements UserService {
 			JDBCTemplate.rollback(conn);
 		}
 				
-		//조회된 게시글 리턴
+		//조회된 정보 리턴
 		return member;
 	}
 	
@@ -374,11 +374,113 @@ public class UserServiceImpl implements UserService {
 //		return member;
 	}
 	
-
-
 //	--------------------------------- 회원탈퇴 끝 -----------------------------------
 
+//	--------------------------------- 개인정보 수정 시작 -----------------------------------
 
+	@Override
+	public Member getTTUserPw(Member member) {
+
+		System.out.println("UserService getUserPw() -  시작");
+
+		//파라미터값인 비밀번호를 userpw에 저장
+		String userpw = member.getUserPw();
+		System.out.println("UserService join() - userpw : " + userpw);
+		
+		
+		//테이블에 있는 pw를 userPw에 저장
+		Member result = userDao.selectUserPw(conn, member);
+		
+		System.out.println("UserService getUserPw() - result.getUserPw() : " + result.getUserPw());
+		
+		
+		if( userpw.equals(result.getUserPw()) ) { // DB삽입 성공
+			return member;
+
+		} else { 
+			
+			return null;
+		}
+		
+	}
+	
+	
+	@Override
+	public Member getEditInfo(HttpServletRequest req) {
+		System.out.println("UserService getEditInfo() -  시작");
+		
+		Member member = new Member();
+//		HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
+		member.setUserId( (String) session.getAttribute("userId")) ;
+
+
+		member.setUserPw( req.getParameter("userPw") );
+		member.setUserNick( req.getParameter("userNick") );
+		member.setUserEmail( req.getParameter("userEmail") );
+		member.setUserPhone( Integer.parseInt(req.getParameter("userPhone")) );
+
+
+		return member;
+	}
+	
+	@Override
+	public Member getEditInfoChange(HttpServletRequest req, Member member) {
+		System.out.println("UserService getEditInfoChange() -  시작");
+		HttpSession session = req.getSession();
+		
+		int phone = member.getUserPhone();
+		System.out.println(phone);
+		
+		//테이블에 있는 pw를 userPw에 저장
+		Member result = userDao.selectUserPw(conn, member);
+		System.out.println("UserService getEditInfo() - result.getUserPw() : " + result.getUserPw());
+		
+		
+		//비밀번호 변경값
+		if( member.getUserPw() == "") {
+			System.out.println("비밀번호 값이 비어있다");
+			member.setUserPw( result.getUserPw() );
+		}
+		
+		//닉네임 변경값
+		if( member.getUserNick() == "") {
+			System.out.println("닉네임 값이 비어있다");
+			member.setUserNick( (String)session.getAttribute("userNick") );
+		}
+		
+		//이메일 변경값
+		if( member.getUserEmail() == "") {
+			System.out.println("이메일 값이 비어있다");
+			member.setUserEmail( (String)session.getAttribute("userEmail") );
+		}
+		
+		return member;
+		
+	}
+	
+	
+	@Override
+	public Member UpdateInfo(Member member) {
+		//DB연결 객체
+		Connection conn = JDBCTemplate.getConnection();
+				
+		//비밀번호 변경
+		if( userDao.UpdateUserInfo(conn, member) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+				
+		//조회된 정보 리턴
+		return member;
+	}
+	
+	
+	
+//	--------------------------------- 개인정보 수정 끝 -----------------------------------
+	
+	
 }
 
 

@@ -112,6 +112,17 @@ public interface UserDao {
 	 * @param member - 테이블에서 삭제할 정보 객체
 	 */
 	public int deleteUserInfo(Connection conn, Member member);
+
+
+	
+	/**
+	 * 조회된 회원정보에 회원정보 변경하기
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param member - 조회할 유저정보를 가진 DTO객체
+	 * @return int - UPDATE쿼리 수행 결과
+	 */
+	public int UpdateUserInfo(Connection conn, Member member);
 	
 	
 	

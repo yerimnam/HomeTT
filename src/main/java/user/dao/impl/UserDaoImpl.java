@@ -135,7 +135,8 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("UserDao selectLoginInfo() - 시작");
 		
 		String sql = "";
-		sql += "SELECT user_no, master_no, user_id, user_pw, user_name, user_nick FROM member";
+		sql += "SELECT user_no, master_no, user_id, user_pw, user_name, user_nick,";
+		sql += " user_email, user_phone FROM member";
 		sql += " WHERE user_id = ?";
 		
 		Member result = null;
@@ -155,6 +156,8 @@ public class UserDaoImpl implements UserDao {
 				result.setUserPw( rs.getString("user_pw") );
 				result.setUserName( rs.getString("user_name") );
 				result.setUserNick( rs.getString("user_nick") );
+				result.setUserEmail( rs.getString("user_email") );
+				result.setUserPhone( rs.getInt("user_phone") );
 			}
 			
 		} catch (SQLException e) {
@@ -356,6 +359,48 @@ public class UserDaoImpl implements UserDao {
 		return result;
 		
 	} 
+	
+	
+	@Override
+	public int UpdateUserInfo(Connection conn, Member member) {
+		System.out.println("UpdateUserInfo getUserPw : " + member.getUserPw());
+		System.out.println("UpdateUserInfo getUserNick : " + member.getUserNick());
+		System.out.println("UpdateUserInfo getUserEmail : " + member.getUserEmail());
+		System.out.println("UpdateUserInfo getUserPhone : " + member.getUserPhone());
+		
+		String sql = "";
+//		sql += "UPDATE member";
+//		sql += "	SET (user_pw, user_nick, user_email, user_phone) = (?, ?, ?, ?)";
+//		sql += "	FROM member";
+		
+		sql += "UPDATE member";
+		sql += "	SET user_pw = ?";
+		sql += "	, user_nick = ?";
+		sql += "	, user_email = ?";
+		sql += "	, user_phone = ?";
+		sql += "	WHERE user_id = ? ";
+
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserPw());
+			ps.setString(2, member.getUserNick());
+			ps.setString(3, member.getUserEmail());
+			ps.setInt(4, member.getUserPhone());
+			ps.setString(5, member.getUserId());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
 	
 	
 	
