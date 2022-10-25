@@ -1,4 +1,4 @@
-package adInquiry.dao.face;
+package oneOnInquiry.dao.face;
 
 public interface AnswerCreateDao {
 
