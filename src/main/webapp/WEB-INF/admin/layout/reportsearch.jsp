@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<form action="/homett/adreportlist" method="GET">
-<div class="box-footer" style="width: 500px;">
+<form action="/homett/adreportlist" method="POST">
+<div class="box-footer" style="width: 570px;">
     <div class="form-group col-sm-3">
-        <select class="form-control" name="searchType" id="searchType" style="width: 120px;">
+        <select class="form-control" name="searchType" id="searchType" style="width: 135px;">
 <!--             <option value="null" >검색 필터</option> -->
             <option value="report_content" >내용</option>
             <option value="reporter" >작성자(닉네임)</option>

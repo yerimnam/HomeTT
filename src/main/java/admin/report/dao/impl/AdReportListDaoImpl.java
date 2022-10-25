@@ -19,22 +19,18 @@ public class AdReportListDaoImpl implements AdReportListDao {
 	
 	@Override
 	public List<Report> selectAll(Connection conn, Paging paging) {
-		System.out.println("AdReportListDao selectAll() - 시작");
 		
-		//SQL작성
 		String sql = "";
 		sql += "SELECT * FROM (";
-		sql += "	SELECT rownum rnum, B.* FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
 		sql += "		SELECT";
 		sql += "			report_no, board_cano, report_date, report_content, reporter, report_target, report_party";
 		sql += "		FROM report";
 		sql += "		ORDER BY report_no DESC";
-		sql += "	) B";
+		sql += "	) R";
 		sql += " ) REPORT";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 		
-		
-		//결과 저장할 List
 		List<Report> reportList = new ArrayList<>();
 		
 		try {
@@ -43,11 +39,10 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			ps.setInt(1, paging.getStartNo());
 			ps.setInt(2, paging.getEndNo());
 			
-			rs = ps.executeQuery(); //SQL수행 및 결과 집합 저장
+			rs = ps.executeQuery();
 			
-			//조회 결과 처리
 			while(rs.next()) {
-				Report r = new Report(); //조회 결과 행 저장 DTO객체
+				Report r = new Report(); 
 				
 				r.setReportNo(rs.getInt("report_no"));
 				r.setBoardCano(rs.getInt("board_cano"));
@@ -57,7 +52,6 @@ public class AdReportListDaoImpl implements AdReportListDao {
 				r.setReportTarget(rs.getString("report_target"));
 				r.setReportParty(rs.getString("report_party"));
 				
-				//리스트에 결과값 저장하기
 				reportList.add(r);
 			}
 			
@@ -68,8 +62,7 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("AdReportListDao selectAll() - 끝");
-		return reportList; //최종 결과 반환
+		return reportList;
 	}
 
 	@Override
@@ -78,12 +71,11 @@ public class AdReportListDaoImpl implements AdReportListDao {
 		String sql = "";
 		sql += "SELECT count(*) cnt FROM report";
 		
-		//총 게시글 수 변수
 		int count = 0;
 		
 		try {
-			ps = conn.prepareStatement(sql); //SQL수행 객체
-			rs = ps.executeQuery(); //SQL수행 및 결과 집합 저장
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
 
 			while( rs.next() ) {
 				count = rs.getInt("cnt");
@@ -96,7 +88,6 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		//최종 결과 반환
 		return count;
 	}
 
@@ -142,30 +133,35 @@ public class AdReportListDaoImpl implements AdReportListDao {
 	}
 
 	@Override
-	public List<Report> selectSearchList(Connection conn, String searchType, String keyword) {
-		
+	public List<Report> selectSearchList(Connection conn, Paging paging, String searchType, String keyword) {
+		System.out.println("selectSearchList searchpaging 시작" + paging);
 		keyword = '%' + keyword + '%';
 		
 		String sql = "";
-		sql += "SELECT";
-		sql += "	report_no, board_cano, report_date, report_content, reporter, report_target, report_party";
-		sql += " FROM report";
-		sql += " WHERE " + searchType + " LIKE ?";
-		sql += " ORDER BY report_no DESC";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += " 		SELECT";
+		sql += " 		report_no, board_cano, report_date, report_content, reporter, report_target, report_party";
+		sql += " 		FROM report";
+		sql += " 		WHERE " + searchType + " LIKE ?";
+		sql += " 		ORDER BY report_no DESC";
+		sql += " 		) R";
+		sql += " 	) REPORT";
+		sql += " WHERE rnum BETWEEN ? AND ?";
 		
-		//결과 저장할 List
 		List<Report> reportList = new ArrayList<>();
 		
 		try {
 			
-			ps = conn.prepareStatement(sql); //SQL수행 객체
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, keyword);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
 			
-			rs = ps.executeQuery(); //SQL수행 및 결과 집합 저장
+			rs = ps.executeQuery();
 			
-			//조회 결과 처리
 			while(rs.next()) {
-				Report r = new Report(); //조회 결과 행 저장 DTO객체
+				Report r = new Report();
 				
 				r.setReportNo(rs.getInt("report_no"));
 				r.setBoardCano(rs.getInt("board_cano"));
@@ -175,7 +171,6 @@ public class AdReportListDaoImpl implements AdReportListDao {
 				r.setReportTarget(rs.getString("report_target"));
 				r.setReportParty(rs.getString("report_party"));
 				
-				//리스트에 결과값 저장하기
 				reportList.add(r);
 			}
 			
@@ -185,10 +180,47 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("searchType" + searchType);
-		System.out.println("keyword" + keyword);
+		System.out.println("selectSearchList searchpaging 끝" + paging);
 		System.out.println("selectSearchList()" + reportList);
 		return reportList;
+	}
+	
+	@Override
+	public int selectSearchCntAll(Connection conn, String searchType, String keyword) {
+		System.out.println("selectSearchCntAll 시작" + searchType + keyword);
+		keyword = '%' + keyword + '%';
+		
+		String sql = "";
+		sql += "SELECT count(*) cnt FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += "		SELECT";
+		sql += "		report_no, board_cano, report_date, report_content, reporter, report_target, report_party";
+		sql += "		FROM report";
+		sql += "		WHERE " + searchType + " LIKE ?";
+		sql += "		) R";
+		sql += "	) REPORT";
+		
+		int count = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+
+			rs = ps.executeQuery();
+
+			while( rs.next() ) {
+				count = rs.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
+		System.out.println("selectSearchCntAll" + count);
+		return count;
 	}
 	
 }

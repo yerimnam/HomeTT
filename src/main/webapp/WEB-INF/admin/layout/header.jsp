@@ -154,7 +154,7 @@
 
 	<div style="display: flex; justify-content: center; height: 50px;">
 		<ul class="nav nav-pills">
-	  		<li role="presentation" class="active text-center"><a href="#">HomeTT ADMIN</a></li>
+	  		<li role="presentation" class="active text-center"><a href="./adminmain">HomeTT ADMIN</a></li>
 	  		<li role="presentation"><a href="#">관리자 계정</a></li>
 	        <li role="presentation"class="dropdown">
 	    		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -176,8 +176,8 @@
 	    		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 	      				통계 <span class="caret"></span></a>
 	    	  	<ul class="dropdown-menu" role="menu">
-		    	  	<li><a href="#">일별 통계</a></li>
-		            <li><a href="#">월별 통계</a></li>
+		    	  	<li><a href="./dailystatistics">일별 통계</a></li>
+		            <li><a href="./monthlystatistics">월별 통계</a></li>
 		        </ul>
 	        </li>
 	        <li role="presentation"class="dropdown">
@@ -198,7 +198,7 @@
 		            <li><a href="#">쿠폰 관리</a></li>
 		        </ul>
 	        </li>
-	        <li role="presentation"><a href="/homett/adreportlist">신고 관리</a></li>
+	        <li role="presentation"><a href="./adreportlist">신고 관리</a></li>
 		</ul>
 	</div>
 	
