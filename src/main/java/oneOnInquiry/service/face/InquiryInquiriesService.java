@@ -1,4 +1,4 @@
-package adInquiry.service.face;
+package oneOnInquiry.service.face;
 
 public interface InquiryInquiriesService {
 

@@ -1,4 +1,4 @@
-package adInquiry.controller;
+package oneOnInquiry.controller;
 
 import java.io.IOException;
 

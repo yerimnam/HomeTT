@@ -1,4 +1,4 @@
-package adInquiry.controller;
+package oneOnInquiry.controller;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

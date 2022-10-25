@@ -1,4 +1,4 @@
-package adInquiry.dto;
+package oneOnInquiry.dto;
 
 public class InquiryBoard {
 
