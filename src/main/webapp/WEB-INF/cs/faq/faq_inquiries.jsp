@@ -8,27 +8,5 @@
 </head>
 <body>
 
-<h1> 이벤트 페이지</h1>
-
- 
-<div> <!-- 제일 큰 div -->
-  <div>
-    <div>
-  
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div>
-    <div>
-
-    </div>
-    <div>
-
-    </div>
-  </div>
-</div>
-
 </body>
 </html>

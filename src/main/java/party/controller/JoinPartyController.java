@@ -43,22 +43,6 @@ public class JoinPartyController extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 
-		//테스트 데이터
-		//	-> 나중에 로그인 기능 구현되면 세션값 넣기
-		session.setAttribute("user_no", 2);
-		
-		
-		//실제 코드 // session 은 String타입
-		int userno = (int) session.getAttribute("user_no");
-
-		
-		//로그인한 사람의 정보 조회
-//		Member user = createpartyService.getuserinfo(userno);		
-//		System.out.println("CreatePartyController doPost() - member : " + userinfo);
-		
-		
-		//JSP View 객체 전달하기
-//		req.setAttribute("userinfo", user);
 
 	}
 

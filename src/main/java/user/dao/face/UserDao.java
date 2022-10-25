@@ -66,11 +66,35 @@ public interface UserDao {
 	 * @return Member - 조회된 id
 	 */
 	public Member getMemberId(Connection conn, Member member);
+
+	
+//	--------------------------------- 아이디 찾기 끝 -----------------------------------
+
+//	--------------------------------- 비밀번호 찾기 시작 -----------------------------------
+	
+	/**
+	 * userid, username, userphone를 이용해 회원정보 조회하기
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param member - 조회할 userid를 가진 객체
+	 * @return Member - 조회된 회원 정보
+	 */
+	public Member getIdNamePhone(Connection conn, Member member);
+
+
+	/**
+	 * 조회된 회원정보에 userphone 변경하기
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param member - 조회할 유저정보의 userphone를 가진 DTO객체
+	 * @return int - UPDATE쿼리 수행 결과
+	 */
+	public int UpdatePwDao(Connection conn, Member member);
 	
 	
 	
 	
-	
+//	--------------------------------- 비밀번호 찾기 끝 -----------------------------------
 	
 	
 	
