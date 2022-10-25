@@ -1,9 +1,9 @@
-package adEvent.dao.face;
+package event.dao.face;
 
 import java.sql.Connection;
 import java.util.List;
 
-import adEvent.dto.EventBoard;
+import event.dto.EventBoard;
 
 public interface EventInquiriesDao {
 	

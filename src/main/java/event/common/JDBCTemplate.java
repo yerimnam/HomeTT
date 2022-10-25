@@ -1,4 +1,4 @@
-package adEvent.common;
+package event.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

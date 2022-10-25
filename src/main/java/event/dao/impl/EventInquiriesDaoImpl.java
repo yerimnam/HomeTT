@@ -1,4 +1,4 @@
-package adEvent.dao.impl;
+package event.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import adEvent.common.JDBCTemplate;
-import adEvent.dao.face.EventInquiriesDao;
-import adEvent.dto.EventBoard;
+import event.common.JDBCTemplate;
+import event.dao.face.EventInquiriesDao;
+import event.dto.EventBoard;
 
 public class EventInquiriesDaoImpl implements EventInquiriesDao {
 

@@ -1,8 +1,8 @@
-package adEvent.service.face;
+package event.service.face;
 
 import java.util.List;
 
-import adEvent.dto.EventBoard;
+import event.dto.EventBoard;
 
 public interface EventInquiriesService {
 	

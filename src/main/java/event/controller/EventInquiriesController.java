@@ -1,4 +1,4 @@
-package adEvent.controller;
+package event.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import adEvent.dto.EventBoard;
-import adEvent.service.face.EventInquiriesService;
-import adEvent.service.impl.EventInquiriesServiceImpl;
+import event.dto.EventBoard;
+import event.service.face.EventInquiriesService;
+import event.service.impl.EventInquiriesServiceImpl;
 
 /**
  * Servlet implementation class AdFaqInquiriesController

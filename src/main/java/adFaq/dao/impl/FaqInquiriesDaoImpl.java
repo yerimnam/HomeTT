@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import adEvent.common.JDBCTemplate;
 import adFaq.dao.face.FaqInquiriesDao;
 import adFaq.dto.FaqBoard;
+import event.common.JDBCTemplate;
 import util.Paging;
 
 public class FaqInquiriesDaoImpl implements FaqInquiriesDao {

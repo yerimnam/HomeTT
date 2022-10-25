@@ -1,4 +1,4 @@
-package adEvent.dto;
+package event.dto;
 
 import java.sql.Date;
 

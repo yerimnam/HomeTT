@@ -1,12 +1,12 @@
-package adEvent.service.impl;
+package event.service.impl;
 
 import java.util.List;
 
-import adEvent.common.JDBCTemplate;
-import adEvent.dao.face.EventInquiriesDao;
-import adEvent.dao.impl.EventInquiriesDaoImpl;
-import adEvent.dto.EventBoard;
-import adEvent.service.face.EventInquiriesService;
+import event.common.JDBCTemplate;
+import event.dao.face.EventInquiriesDao;
+import event.dao.impl.EventInquiriesDaoImpl;
+import event.dto.EventBoard;
+import event.service.face.EventInquiriesService;
 
 public class EventInquiriesServiceImpl implements EventInquiriesService {
 	

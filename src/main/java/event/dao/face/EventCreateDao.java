@@ -1,4 +1,4 @@
-package adEvent.dao.face;
+package event.dao.face;
 
 public interface EventCreateDao {
 

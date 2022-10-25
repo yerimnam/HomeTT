@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import adEvent.common.JDBCTemplate;
 import adFaq.dao.face.FaqInquiriesDao;
 import adFaq.dao.impl.FaqInquiriesDaoImpl;
 import adFaq.dto.FaqBoard;
 import adFaq.service.face.FaqInquiriesService;
+import event.common.JDBCTemplate;
 import util.Paging;
 
 public class FaqInquiriesServiceImpl implements FaqInquiriesService {

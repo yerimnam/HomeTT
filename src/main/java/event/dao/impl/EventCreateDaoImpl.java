@@ -1,6 +1,6 @@
-package adEvent.dao.impl;
+package event.dao.impl;
 
-import adEvent.dao.face.EventCreateDao;
+import event.dao.face.EventCreateDao;
 
 public class EventCreateDaoImpl implements EventCreateDao{
 

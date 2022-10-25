@@ -1,4 +1,4 @@
-package adEvent.controller;
+package event.controller;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
