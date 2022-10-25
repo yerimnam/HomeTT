@@ -2,7 +2,7 @@ package partyCheck.service.impl;
 
 import java.util.List;
 
-import adEvent.common.JDBCTemplate;
+import event.common.JDBCTemplate;
 import partyCheck.dao.face.CreatePartyCheckDao;
 import partyCheck.dao.impl.CreatePartyCheckDaoImpl;
 import partyCheck.dto.PartyCheck;
