@@ -10,20 +10,64 @@ import java.util.List;
 import common.JDBCTemplate;
 import inquiry.dao.face.InquiryInquiriesDao;
 import inquiry.dto.InquiryBoard;
+import util.Paging;
 
 public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 	
 		private PreparedStatement ps;
 		private ResultSet rs;
+		
+		
+		
+		@Override
+		public int selectCntAll(Connection conn) {
+
+			System.out.println("selectCntAll -Start");
+			String sql  ="";
+			sql += "SELECT count(*) cnt FROM cs_inquiry";
+//			sql +=" WHERE user_no =?";
+			
+			//총 게시글 변수 
+			
+			int count =0;
+			
+			try {
+				ps = conn.prepareStatement(sql);
+//				ps.setInt(1,);
+				rs=ps.executeQuery();
+				
+				while(rs.next()) {
+					
+					count = rs.getInt("cnt");
+					
+				}
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(ps);
+			}
+			
+			//최종 결과 반환
+			System.out.println("selectCntAll -end");
+			System.out.println("selectCntAll" + count);
+			return count;
+		}
 	@Override
-	public List<InquiryBoard> selectAll(Connection conn, int userNo) {
+	public List<InquiryBoard> selectAll(Connection conn,Paging paging, int userNo) {
 		System.out.println("inquiryBoard select 시작");
 		String sql ="";
-		sql +="select I.*,m.user_nick from cs_inquiry I";
-		sql +=" inner join member m";
-		sql +=" on m.user_no = I.user_no";
-		sql +=" where I.user_no = ?";		
-	
+		sql +=" SELECT * FROM(";
+		sql +="   SELECT rownum rnum, Q.* FROM(";
+		sql +="       SELECT I.*,m.user_nick from cs_inquiry I";
+		sql +=" 		inner join member m";
+		sql +=" 		on m.user_no = I.user_no";
+		sql +=" 		where I.user_no = ?";
+		sql +="  		)Q		";		
+		sql +="      )INQUIRY";
+		sql +="   WHERE rnum BETWEEN ? AND ? ";
 		
 		//반환데이터 
 		List<InquiryBoard> inquiryList = new ArrayList<>();
@@ -33,6 +77,9 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 			
 			//?에 unserno삽입
 			ps.setInt(1, userNo);
+			
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
 			
 			rs = ps.executeQuery();
 			

@@ -1,9 +1,11 @@
+<%@page import="util.Paging"%>
 <%@page import="java.util.List"%>
 <%@page import="inquiry.dto.InquiryBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%List<InquiryBoard> inquiryBoard = (List)request.getAttribute("inquiryview"); %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +26,9 @@
 </div>
 
 <div>
-
-<button type="button" id="btnwrite" name="btnwrite">글쓰기</button>
+	<form action  method="get">
+	<button type="button" id="btnwrite" name="btnwrite">글쓰기</button>
+</form>
 </div>
 
 <div>
@@ -46,18 +49,23 @@
 					<td><%=inquiryBoard.get(i).getInquiryArticleNumber() %></td>
 					<td><%=inquiryBoard.get(i).getUserNick() %></td>
 					<td><%=inquiryBoard.get(i).getInquiryDate() %></td>
-					<td><a herf=""><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>				
+					<td><a herf=""><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>		<!--  상세보기 링크 걸기-->		
 				</tr>
 		
 		
 		<%} %>	
-		</tbody>
-	
-	
+<!-- 		</tbody> -->
 	</table>
 
 
+
+
+		<%@ include file="./inquirypaging.jsp" %><%-- 페이징 --%>
 </div>
+
+
+
+
 
 <hr>
 <footer>
