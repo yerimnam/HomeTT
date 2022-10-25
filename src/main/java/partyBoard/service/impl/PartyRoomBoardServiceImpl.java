@@ -97,6 +97,37 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 	}
 
 
+	@Override
+	public PartyBoard getpartyBoardno(HttpServletRequest req) {
+		
+		//전달파라미터 저장할 객체 생성
+		PartyBoard partyBoard = new PartyBoard();
+		
+		//전달파라미터 partyboardno 파싱
+		String param = req.getParameter("partyboardno");
+		if( null != param && !"".equals(param) ) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
+			partyBoard.setPartyBoardNo((Integer.parseInt(param)));
+		}
+		
+		return partyBoard;
+	}
+
+
+	@Override
+	public void delete(PartyBoard partyBoard) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//게시글 삭제
+		if(partyRoomBoardDao.delete(conn, partyBoard) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+	}
+
+
 
 
 

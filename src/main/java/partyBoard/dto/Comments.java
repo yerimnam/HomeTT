@@ -1,4 +1,4 @@
-package party.dto;
+package partyBoard.dto;
 
 import java.util.Date;
 

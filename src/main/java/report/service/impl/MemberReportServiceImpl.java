@@ -15,6 +15,24 @@ public class MemberReportServiceImpl implements MemberReportService {
 	//DAO 객체
 	private MemberReportDao memberReportDao = new MemberReportDaoImpl();
 	
+	
+	@Override
+	public Report getReport(HttpServletRequest req) {
+		
+		Report report = new Report();
+		
+		report.setBoardCano(0);
+		report.setReportContent( req.getParameter("reportcontent"));
+		report.setReportDate(null);
+		report.setReporter(req.getParameter("reporter"));
+		report.setReportParty(req.getParameter("partyname"));
+		report.setReportTarget(req.getParameter("reporttarget"));
+		
+		return null;
+	}
+	
+	
+	
 	@Override
 	public void write(HttpServletRequest req) {
 		
@@ -26,8 +44,7 @@ public class MemberReportServiceImpl implements MemberReportService {
 		
 		//게시글 번호 생성
 		int reportno = memberReportDao.selectNextReportno(conn);
-		
-		
+	
 		//게시글 번호 삽입
 		report.setReportNo(reportno);
 
@@ -44,5 +61,7 @@ public class MemberReportServiceImpl implements MemberReportService {
 		
 		
 	}
+
+
 
 }
