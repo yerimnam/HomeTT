@@ -9,6 +9,7 @@ import party.dao.face.CreatePartyDao;
 import party.dao.impl.CreatePartyDaoImpl;
 import party.dto.Party;
 import party.service.face.CreatePartyService;
+import user.dto.Member;
 
 
 public class CreatePartyServiceImpl implements CreatePartyService {
@@ -21,14 +22,13 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		
 		Party party = new Party();
 		
-		party.setPartyKind ( req.getParameter("partykind") );
+//		party.setPartyKind ( req.getParameter("partykind") );
 		party.setPartyRule ( req.getParameter("partyrule ") );
 		party.setPartyName ( req.getParameter("partyname") );
 		party.setPartyLeader ( req.getParameter("partyleader") );
 		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
-		party.setPartyCreDate(null);
-		party.setPartyEndDate(null);
-//		party.setUserNo( Integer.parseInt(req.getParameter("UserNo")));	//userno를 가져와야 하는디...
+//		party.setPartyCreDate(null);
+//		party.setPartyEndDate(null);
 		
 		return party;
 	}
@@ -41,6 +41,7 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//party_seq의 nextval(nextpartyno) 조회하기
+		
 		int next = createpartyDao.selectNextPartyno(conn);
 		System.out.println("CreatePartyService create() - next : " + next);
 		
@@ -64,6 +65,13 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 			return null;
 		}
 		
+	}
+
+
+	@Override
+	public Member getuserinfo(int userno) {
+	
+		return createpartyDao.selectUserinfo(JDBCTemplate.getConnection(),userno);
 	}
 
 }

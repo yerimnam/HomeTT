@@ -1,5 +1,6 @@
 package party.service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +50,41 @@ public class PartyModifyServiceImpl implements PartyModifyService {
 		PrPaging paging = new PrPaging(totalCount, curPage);
 
 		return paging;
+	}
+
+	@Override
+	public Party getPartyRoomNo(HttpServletRequest req) {
+
+		//전달파라미터를 저장할 객체 생성
+		Party party = new Party();
+		
+		//전달파라미터 partyRoomNo 추출(파싱)
+		String param = req.getParameter("partyRoomNo");
+		System.out.println(param);
+		
+		if( null != param && !"".equals(param)) {//전달파라미터가 null또는 ""빈문자열 아닐때
+			party.setPartyRoomNo(Integer.parseInt(param));
+		}
+		return party;
+	}
+
+	@Override
+	public Party view(Party partyRoomNo) {
+		
+		//DB연결 객체
+		Connection conn = JDBCTemplate.getConnection();
+		
+		if(partyModifyDao.selectPartyByPartyRoomNo(conn, partyRoomNo) != null) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		//게시글 조회
+		Party party = partyModifyDao.selectPartyByPartyRoomNo(conn, partyRoomNo);
+		
+		
+		
+		return party;
 	}
 
 

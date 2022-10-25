@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.JDBCTemplate;
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dao.face.PaymentDao;
 import payment.dto.Payment;
@@ -103,11 +102,12 @@ public class PaymentDaoImpl implements PaymentDao {
 	}
 	 
 	 @Override
-	public int insertPayment(Connection conn, Payment payment) {
+	public int insertPayment(Connection conn, Payment returnData) {
+		 
 		 System.out.println("insertPayment -start");
 		 String sql ="";
-		 sql +="INSERT INTO payment (pay_no,user_no,paymentmethod,party_no,payment_amount";
-		 sql +=" values(?,?,?,?,?)";
+		 sql +="INSERT INTO payment (pay_no, order_no, user_no, party_no, paymentmethod,user_cardno,user_cardcom, payment_amount,payment_date)";
+		 sql +=" values(?,?,?,?,?,?,?,?,sysdate)";
 		 
 		 //insert 결과 변수
 		 int result = 0;
@@ -115,13 +115,18 @@ public class PaymentDaoImpl implements PaymentDao {
 		 try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1,payment.getPayNo() );
-			ps.setInt(2, payment.getUserNo());
-			ps.setString(3, payment.getPaymentMethod());
-			ps.setInt(4, payment.getPartyNo());
-			ps.setInt(5,payment.getPaymentAmount());
+			ps.setString(1, returnData.getPayNo());
+			ps.setString(2, returnData.getOrderNo());
+			ps.setInt(3, returnData.getUserNo());
+			ps.setInt(4, returnData.getPartyNo());
+			ps.setString(5, returnData.getPaymentMethod());
+			ps.setInt(6, returnData.getUserCardno());
+			ps.setString(7, returnData.getUserCardCom());
+			ps.setInt(8, returnData.getPaymentAmount());
 			
+			//
 			
+			//나중에 카드번호,.카드 유효기간 카드사 ,넣는 코드 작성하기 
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -133,6 +138,68 @@ public class PaymentDaoImpl implements PaymentDao {
 		return result;
 	}
 	 
+	 
+	 private static PreparedStatement ps_two= null;
+	 private static ResultSet rs_two = null;
+	 @Override
+	public Payment selectpayresult(Connection conn, Payment payinsert) {
+		 
+
+		 System.out.println("selectpay result -strat");
+		 String sql ="";
+		 sql +="SELECT p.party_no,p.payment_amount,p.user_cardcom,m.user_name,m.user_nick,m.user_email,p.payment_date FROM payment p";
+		 sql +=" INNER JOIN member m";
+		 sql +=" on p.user_no = m.user_no";
+		 sql +=" WHERE p.party_no =?";
+		 
+		 
+		 String sql_two ="";
+		 sql_two  +="SELECT a.party_name FROM party a";
+		 sql_two  +=" INNER JOIN payment p";
+		 sql_two  +=" on p.party_no = a.party_no";
+		 sql_two  +=" WHERE p.party_no =?";
+		 
+		 Payment payresult = new Payment();
+		 try {
+			ps = conn.prepareStatement(sql);
+			ps_two = conn.prepareStatement(sql_two);
+			
+			ps.setInt(1, payinsert.getPartyNo());
+			ps_two.setInt(1, payinsert.getPartyNo());
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				payresult.setPartyNo(rs.getInt("party_no"));
+				payresult.setPaymentAmount(rs.getInt("payment_amount"));
+				payresult.setUserCardCom(rs.getString("user_cardcom"));
+				payresult.setUserName(rs.getString("user_name"));
+				payresult.setUserNick(rs.getString("user_nick"));
+				payresult.setUserEmail(rs.getString("user_email"));
+				payresult.setPaymentDate(rs.getDate("payment_date"));
+			}
+			
+			
+			rs_two = ps_two.executeQuery();
+			while(rs_two.next()) {
+				payresult.setPartyName(rs_two.getString("party_name"));
+				
+				
+				
+			}
+		 } catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		 
+		 
+		 
+		 
+		 
+		 System.out.println("selectpay result -end");
+		 return payresult;
+	}
 
 	 
 }

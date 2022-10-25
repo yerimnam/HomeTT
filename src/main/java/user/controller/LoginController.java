@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 
 			//로그인 사용자 정보 조회
 			member = userService.loginInfo(member);
-
+			
 			//세션정보 객체
 			HttpSession session = req.getSession();
 
@@ -61,10 +61,14 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("masterNo", member.getMasterNo());
 			session.setAttribute("userId", member.getUserId());
 			session.setAttribute("userNick", member.getUserNick());
+			
+			} else {
+				resp.sendRedirect("error");
+			}
+		
+		
 
-		}
-
-		resp.sendRedirect("./main");
+//		resp.sendRedirect("./main");
 	}
 
 }

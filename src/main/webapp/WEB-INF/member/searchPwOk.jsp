@@ -29,7 +29,7 @@ $(document).ready(function() {
 <div>
 	<label for="newPw">새로운 비밀번호</label>
 	<input type="text" id="newPw"name="newPw">
-	<button id="newPwchk">인증 확인</button>
+	<button id="newPwchk">비밀번호 변경</button>
 </div>
 
 

@@ -93,8 +93,8 @@ public class UserServiceImpl implements UserService {
 		
 		Member member = new Member();
 
-		member.setUserId( req.getParameter("userid") );
-		member.setUserPw( req.getParameter("userpw") );
+		member.setUserId( req.getParameter("id") );
+		member.setUserPw( req.getParameter("pw") );
 
 		System.out.println("MemberService getLoginParam() -  끝");
 		return member;

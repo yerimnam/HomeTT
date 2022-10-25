@@ -135,7 +135,7 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("UserDao selectLoginInfo() - 시작");
 		
 		String sql = "";
-		sql += "SELECT user_no, master_no, user_id, user_pw, user_nick FROM member";
+		sql += "SELECT user_no, master_no, user_id, user_pw, user_name, user_nick FROM member";
 		sql += " WHERE user_id = ?";
 		
 		Member result = null;
@@ -153,6 +153,7 @@ public class UserDaoImpl implements UserDao {
 				result.setMasterNo( rs.getInt("master_no") );
 				result.setUserId( rs.getString("user_id") );
 				result.setUserPw( rs.getString("user_pw") );
+				result.setUserName( rs.getString("user_name") );
 				result.setUserNick( rs.getString("user_nick") );
 			}
 			

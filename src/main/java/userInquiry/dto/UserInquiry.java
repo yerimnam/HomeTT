@@ -1,5 +1,6 @@
 package userInquiry.dto;
 
+import java.sql.Connection;
 import java.util.Date;
 
 public class UserInquiry {
@@ -87,6 +88,11 @@ public class UserInquiry {
 
 	public void setReportParty(String reportParty) {
 		this.reportParty = reportParty;
+	}
+
+	public int selectNextBoardno(Connection conn) {
+		// TODO Auto-generated method stub
+		return 0;
 	} 
 	
 	
