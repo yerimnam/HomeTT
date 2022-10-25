@@ -131,7 +131,6 @@ public class PaymentListDaoImple implements PaymentListDao {
 			JDBCTemplate.close(ps);
 		}
 
-
 		System.out.println("selectpaylist end");
 		return paymentList;
 	}
