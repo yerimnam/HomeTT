@@ -32,6 +32,7 @@ ul{
 	<%} %>
 	</ul>
 	<button onclick="location.href='./payamount'">가입하기</button>
+<!-- 	<button onclick="location.href='./joinparty'">가입하기</button> -->
 	<button onclick="location.href='./partymodify'">목록으로</button>
 		
 </body>

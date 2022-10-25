@@ -48,6 +48,9 @@ public interface PartyRoomBoardDao {
 	 */
 	public int selectPbAll(Connection conn);
 
+//	public List<PartyBoard> selectAllBr(Connection conn, String searchCondition, String searchKeyword,
+//			PbPaging paging);
+
 
 
 
