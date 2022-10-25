@@ -26,9 +26,12 @@
 List<PartyBoard> partyBoardList = (List) request.getAttribute("partyBoardList");
 %>
 
+<% PartyBoard getpartyBoardno = (PartyBoard) request.getAttribute("partyBoardno"); %>
+
 <%
 PbPaging paging = (PbPaging) request.getAttribute("paging");
 %>
+
 
 <style type="text/css">
 .top {
@@ -375,4 +378,12 @@ function showPrompt(){
 	
 }
 </script>
+
+<script type="text/javascript">
+
+	//삭제버튼
+
+	
+</script>
+
 </html>

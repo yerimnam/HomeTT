@@ -51,7 +51,22 @@ public interface PartyRoomBoardService {
 
 
 
-
+	/**
+	 * 전달 파라미터 getpartyBoardno를 partyBoard DTO로 저장해서 반환
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return - 전달파라미터 getpartyBoardno를 저장한 DTO객체
+	 */
+	public PartyBoard getpartyBoardno(HttpServletRequest req);
+	
+	
+	
+	/**
+	 * 게시글 삭제
+	 * 
+	 * @param partyBoard - 삭제할 게시글 번호 객체
+	 */
+	public void delete(PartyBoard getpartyBoard);
 
 
 
