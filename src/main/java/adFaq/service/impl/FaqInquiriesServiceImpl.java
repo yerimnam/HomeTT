@@ -57,22 +57,41 @@ public class FaqInquiriesServiceImpl implements FaqInquiriesService {
 		return paging;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	@Override
 	public FaqBoard getBoardcode(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		return null;
+
+		FaqBoard faqboard = new FaqBoard(); 
+		
+		//전달파라미터 boardcode 추출(파싱)
+		String param = req.getParameter("boardcode");
+		
+		if(null != param && !"".equals(param)) {//전달 파리미터가 null또는 ""빈문자열이 아닐 때 처리
+			faqboard.setBoardCode(Integer.parseInt(param));
+		}
+		
+		
+		return faqboard;
+	}
+
+
+	@Override
+	public FaqBoard view(FaqBoard boardcode) {
+		
+		//DB연결 객체
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//조회수 증가
+		
+		if(boardDao.updateHit(conn,boardcode)>0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		//게시글 조회
+		FaqBoard board = boardDao.selectBoardByBoardcode(conn, boardcode);
+		
+		
+		return board;
 	}
 	
 	

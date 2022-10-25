@@ -35,10 +35,24 @@ public interface FaqInquiriesDao {
 	  * @param paging - 페이징 정보 객체
 	  * @return List<FaqBoard> - 테이블 페이징 목록 조회 결과
 	  */
-	
-	
 	List<FaqBoard> selectAll(Connection conn, Paging paging);
 
+	
+	/**
+	 * 조회된 게시글의 조회수 증가시키기
+	 * @param conn - DB연결 객체
+	 * @param boardcode - 조회할 게시글의 boardcode를 가진 DTO객체
+	 * @return int - UPDATE쿼리 수행 결과
+	 */
+	public int updateHit(Connection conn, FaqBoard boardcode);
+	
+	/**
+	 * 지정된 boardno의 게시글 조회하기
+	 * @param conn - DB연결 객체
+	 * @param boardcode - 조회할 게시글의 boardcode를 가진 DTO객체
+	 * @return FaqBoard - 조회된 게시글의 상세정보 DTO객체
+	 */
+	public FaqBoard selectBoardByBoardcode(Connection conn, FaqBoard boardcode);
 
 
 

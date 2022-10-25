@@ -5,15 +5,18 @@ import java.sql.Date;
 public class FaqBoard {
 
 	
-	private int faqArticlenumber;
-	private int adminNo;
-	private int boardCode;
-	private String faqArticletitle;
-	private String faqContent;
-	private String faqWriter;
-	private Date faqDate;
-	private int hit;
+	private int faqArticlenumber;		//FAQ_ARTICLENUMBER
+	private int adminNo;				//ADMIN_NO
+	private int boardCode;				//BOARD_CODE
+	private String faqArticletitle;		//FAQ_ARTICLETITLE
+	private String faqContent;			//FAQ_CONTENT
+	private String faqWriter;			//FAQ_WRITER
+	private Date faqDate;				//FAQ_DATE
+	private int hit;					//HIT
 	
+	
+
+
 	
 	public FaqBoard() {	}
 

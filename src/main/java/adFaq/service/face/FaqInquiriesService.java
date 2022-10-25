@@ -36,7 +36,12 @@ public interface FaqInquiriesService {
 	 */
 	public FaqBoard getBoardcode(HttpServletRequest req);
 
-
-
+	/**
+	 * 전달된 boardcode를 이용하여 게시글을 조회한다
+	 * 조회된 게시글의 조회수를 1증가 시킨다
+	 * @param boardcode  조회할 boardcode를 가진 DTO객체
+	 * @return FaqBoard - 조회된 게시글 정보
+	 */
+	public FaqBoard view(FaqBoard boardcode);
 
 }   
