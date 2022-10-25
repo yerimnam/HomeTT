@@ -5,7 +5,6 @@
 
 <%	Report viewreport = (Report) request.getAttribute("viewreport"); %>
 
-
 <%@ include file="../layout/header.jsp" %>
 
 <style type="text/css">
