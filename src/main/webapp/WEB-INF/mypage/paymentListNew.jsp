@@ -3,19 +3,16 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-     <% List<Payment> paymentList = (List)request.getAttribute("paymentList"); %>
-     <% PbPaging paging = (PbPaging)request.getAttribute("paging"); %>
-
+ 
+ <% List<Payment> paymentList = (List)request.getAttribute("paymentList"); %>
+ <% PbPaging paging = (PbPaging)request.getAttribute("paging"); %>
+ 
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-
-
 <!--jQuery 2.2.4.CDN  -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <!-- jQuery UI 1.13.2 DN  -->
@@ -27,19 +24,101 @@
 
 <script type="text/javascript">
 
+$(document).ready(function(){
+
+	$("#btnchkpay").click(function(){
+	
+// 		$("#paymnetlist").submit();
+		$(this).parents("form").submit();
+		console.log($("#paymentlist").val());
+		
+	})
+	
+	
+	
+	
+	
+});
+
+
+// $(function(){
+	
+// 	$("#btnchkpay").on("click",chkpaymentlist);
+	
+// })
+
+// function chkpaymentlist(){
+	
+		
+// 	$.ajax( {
+		
+// 		url : "/homett/paymentlist",
+// 		type : "post",
+// 		data: { //요청 파라미터
+// 			startdate : $("#startdate").val(),
+// 			enddate : $("#enddate").val(),
+		
+// 		}
+// 		,dataType : "html"
+// 		, success : function(res) {
+// 			console.log("성공");
+// 			$("#paymentlist").html(res)
+			
+// 		}, error : function() {
+			
+// 			console.log("실패 ");
+// 			$("#paymentlist").html("결제내역이 없습니다")
+			
+// 		}
+	
+
+// });
+	
+// }
+
+
+
+
+
 
 
 
 </script>
+
+
+
+
+
+
+<style type="text/css">
+
+body {
+	width: 1600px;
+	margin: 0 auto;
+
+}
+
+</style>
+
 </head>
 <body>
 
 
 
-<div >
+<h2>결제내역 조회하기</h2>
+<hr>
 
+<div id="selectdate">
+ <form action="/homett/paymentlist" method="post" id="paymentlist" name="paymentlist">
+ 
+	<input type="date" id="startdate" name="startdate" > 
+	<input type="date" id="enddate" name="enddate"   > 
+	<button type="button" id="btnchkpay" onclick="chkpaymentlist()"> 조회 </button> 
 
-게시판 영역
+</form>
+</div>
+<div id="paymentlist">
+
 <table>
 	<thead>
 		<tr>
@@ -50,8 +129,9 @@
 			<th>결제금액</th>
 		</tr>
 	</thead>
-<!-- <!-- 	<tbody  id="paymentlist">  --> 
-	<% for(int i=0; i<paymentList.size();i++)  {%>
+	
+	<tbody>
+	<% for(int i=0; i<paymentList.size(); i++)  {%>
 	<tr>  
 		<td><%=paymentList.get(i).getOrderNo() %></td>
 		<td><%=paymentList.get(i).getPaymentDate() %></td>
@@ -59,21 +139,16 @@
 		<td><%=paymentList.get(i).getPartyName() %></td>
 		<td><%=paymentList.get(i).getPaymentMethod() %></td>
 		<td><%=paymentList.get(i).getPaymentAmount() %></td>
-
  	</tr>  
-	
-	
-
-
-<%} %>	
-  </tbody>	 
+	<%} %>	
+ 	</tbody>	 
 
 </table>
 
-
-
 </div>
 
+
+</body>
 
 
 <%	String start = request.getParameter("startdate")==null ?"" :"&startdate="+request.getParameter("startdate") ;
@@ -86,7 +161,7 @@
 
 <div class="text-center">
    <ul class="pagination">
-<%-- <%--    <a href="/homett/paymentlist?curPage=<%=paging.getCurPage() - 1 %>"  --start 날짜 파라미터 넣기 --%>
+   
       <%-- 첫 페이지로 이동 --%>
       <%   if( paging.getCurPage() != 1) { %>
       <li><a href="/homett/paymentlist?curPage=1<%=start %><%=end %>" id="firstlist">&larr;처음</a></li>
@@ -120,9 +195,4 @@
    </ul>
 </div>
 
-
-
-
-
-</body>
 </html>

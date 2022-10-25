@@ -30,62 +30,58 @@ public class PaymentListServiceImpl implements PaymentListServcie {
 	
 	
 	
+	
+	
 	//형변환
 	@Override
-	public Date changestart(String startDate) {
-
-		Date start = null;
-
+	public Date changeDate(HttpServletRequest req, String div) {
+		
+		String dateStr = null;
+		if( "start".equals(div) ) {
+			dateStr = req.getParameter("startdate");
+		}
+		if( "end".equals(div) ) {
+			dateStr = req.getParameter("enddate");
+		}
+		if( dateStr == null ) {
+			return null;
+		}
+		
 		//String ->Date로 형 변환
+		Date date = null;
 		try {
-			start = format.parse(startDate);
+			date = format.parse(dateStr);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
-
-		return start;
-	}
-
-	//형변환
-	@Override
-	public Date changeend(String endDate) {
-
-		Date end = null;
-
-		try {
-			end = format.parse(endDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		return end;
-
+		
+		return date;
 	}
 	
 	
 	
 	@Override
-	public PbPaging getPaging(HttpServletRequest req) {
+	public PbPaging getPaging(HttpServletRequest req, int userNo, Date start, Date end) {
 		
 		//총 게시글 수 
-		int totalCount = paymentListDao.selectcntAll(JDBCTemplate.getConnection());
+		int totalCount = paymentListDao.selectcntAll(JDBCTemplate.getConnection(), userNo, start, end);
+		System.out.println("getPaging totalCount: " + totalCount);
 		
 		//전달파라미터 curPage추출하기
 		
 		String param =req.getParameter("curPage");
 		int curPage=0;
 		if(param !=null && !"".equals(param)) {
-			
 			curPage = Integer.parseInt(param);
-			
 		}
+		System.out.println("getPaging: " + curPage);
 		
 		//페이지 객체 생성
 		PbPaging paging = new PbPaging(totalCount,curPage);
 		
 		return paging;
 	}
-
+	
 
 
 

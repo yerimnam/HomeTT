@@ -22,11 +22,8 @@ public interface PaymentListServcie {
 	 * @param startDate -입력된시작날짜
 	 * @return -형식으로 변환된 날짜
 	 */
-
-	Date changestart(String startDate);
 	
-	
-	Date changeend(String endDate);
+	Date changeDate(HttpServletRequest reqq, String div);
 	
 	
 	
@@ -39,7 +36,7 @@ public interface PaymentListServcie {
 	 */
 	
 	
-	PbPaging getPaging(HttpServletRequest req);
+	PbPaging getPaging(HttpServletRequest req, int userNo, Date start, Date end);
 	
 	
 

@@ -29,7 +29,7 @@ public interface PaymentListDao {
 	 */
 	
 	
-	int selectcntAll(Connection conn);
+	int selectcntAll(Connection conn, int userNo, Date start, Date end);
 
 
 
