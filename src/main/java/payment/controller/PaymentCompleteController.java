@@ -56,6 +56,9 @@ public class PaymentCompleteController extends HttpServlet {
 		 //추출한 값으로 insert하기
 		  Payment payinsert = paymentService.setPayment(returnData);
 		  
+		  //@@@@@@@@파티부분@@@@@@@@
+		  int result = paymentService.insertParty(returnData);
+		  
 		  //인서트 된 값 조회해오기
 		  
 		 Payment payresult = paymentService.getresult(payinsert);

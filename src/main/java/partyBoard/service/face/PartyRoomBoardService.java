@@ -70,6 +70,19 @@ public interface PartyRoomBoardService {
 	 */
 	public void delete(PartyBoard getpartyBoard);
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<PartyBoard> getPartySearchList(String searchType, String keyword);
+
 
 
 
