@@ -38,6 +38,14 @@ public class AdReportListServiceImpl implements AdReportListService {
 	}
 	
 	@Override
+	public List<Report> getSearchList(String searchType, String keyword) {
+		System.out.println("getSearchList() - 시작");
+		System.out.println("searchType" + searchType);
+		System.out.println("keyword" + keyword);
+		return adReportListDao.selectSearchList(JDBCTemplate.getConnection(), searchType, keyword);
+	}
+	
+	@Override
 	public Report getReportno(HttpServletRequest req) {
 
 		Report report = new Report();
@@ -58,11 +66,6 @@ public class AdReportListServiceImpl implements AdReportListService {
 		Report report = adReportListDao.selectReportByReportno(conn, reportno);
 		
 		return report;
-	}
-
-	@Override
-	public List<Report> getSearchList(String searchType, String keyword) {
-		return adReportListDao.selectSearchList(JDBCTemplate.getConnection(), searchType, keyword);
 	}
 	
 }

@@ -3,26 +3,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%-- <%	List<Report> reportList = (List) request.getAttribute("reportList"); %> --%>
+<%	List<Report> reportList = (List) request.getAttribute("reportList"); %>
 
 <%-- 입력 : 검색분류(column), 검색어(keyword) --%>
 <%
-	String searchType = request.getParameter("searchType");
-	String keyword = request.getParameter("keyword");
+// 	String searchType = request.getParameter("searchType");
+// 	String keyword = request.getParameter("keyword");
 %>
 
 <%-- 처리 --%>
 <%
-	boolean search = searchType != null && !searchType.isEmpty() && keyword != null && !keyword.isEmpty();
+// 	boolean search = searchType != null && !searchType.isEmpty() && keyword != null && !keyword.isEmpty();
 	
-	List<Report> reportList;
+// 	List<Report> reportList;
 	
-	if( search ){ 
-		reportList = (List) request.getAttribute("reportSearchList");
-	}
-	else{
-		reportList = (List) request.getAttribute("reportList");
-	}
+// 	if( search ){ 
+// 		reportList = (List) request.getAttribute("reportSearchList");
+// 	}
+// 	else{
+// 		reportList = (List) request.getAttribute("reportList");
+// 	}
 %>
 
 <%@ include file="../layout/header.jsp" %>
