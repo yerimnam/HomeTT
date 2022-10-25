@@ -24,11 +24,13 @@
 <%-- 로그인 상태 --%>
 <%	if( session.getAttribute("login") != null && (boolean) session.getAttribute("login") ) { %>
 <h3><%=session.getAttribute("userNick") %>님,환영합니다</h3><br>
+<p>회원번호 :  <%=session.getAttribute("userNo") %></p>
 <p>회원권한 :  <%=session.getAttribute("masterNo") %></p>
 <p>아이디 :  <%=session.getAttribute("userId") %></p>
 <p>닉네임 :  <%=session.getAttribute("userNick") %></p>
 
 <button class="btn" onclick="location.href='/homett/logout'">로그아웃</button>
+<button class="btn" onclick="location.href='/homett/dropuser'">회원탈퇴</button>
 <%	} %>
 
 </div>

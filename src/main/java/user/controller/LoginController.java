@@ -58,6 +58,7 @@ public class LoginController extends HttpServlet {
 			HttpSession session = req.getSession();
 
 			session.setAttribute("login", loginTF);
+			session.setAttribute("userNo", member.getUserNo());
 			session.setAttribute("masterNo", member.getMasterNo());
 			session.setAttribute("userId", member.getUserId());
 			session.setAttribute("userNick", member.getUserNick());

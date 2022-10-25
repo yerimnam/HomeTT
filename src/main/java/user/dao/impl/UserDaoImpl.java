@@ -286,8 +286,80 @@ public class UserDaoImpl implements UserDao {
 	
 //	---------------------------------비밀번호찾기 끝 -----------------------------------	
 	
+//	---------------------------------회원탈퇴 시작 -----------------------------------	
+	
+	@Override
+	public Member selectUserPw(Connection conn, Member member) {
+		
+		System.out.println("UserDao selectUserPw() - 시작");
+		
+		String sql = "";
+		sql += "SELECT user_pw FROM member";
+		sql += " WHERE user_id = ?";
+		
+		Member result = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = new Member();
+				
+				result.setUserPw( rs.getString("user_pw") );
+
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+			
+		System.out.println("UserDao selectUserPw() - 끝");
+		return result;
+
+	}
 	
 	
+	@Override
+	public int deleteUserInfo(Connection conn, Member member) {
+		System.out.println("UserDao deleteUserInfo() - 시작");
+
+		System.out.println(member.getUserId() + " ++++ " + member.getUserPw());
+		String sql = "";
+		sql += "DELETE FROM member";
+		sql += " WHERE user_id = ?"; 
+		sql += " AND user_pw = ?";
+
+		//INSERT 수행 결과 변수
+		int result = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			ps.setString(2, member.getUserPw());
+			
+			result = ps.executeUpdate();
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+
+		System.out.println("UserDao deleteUserInfo() - 끝");
+		return result;
+		
+	} 
+	
+	
+	
+//	---------------------------------회원탈퇴 끝 -----------------------------------	
 }
 
 

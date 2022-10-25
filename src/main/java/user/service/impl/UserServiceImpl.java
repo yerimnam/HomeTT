@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
+	@Override 
 	public boolean login(Member member) {
 
 		System.out.println("MemberService login() -  시작");
@@ -336,16 +336,50 @@ public class UserServiceImpl implements UserService {
 		return member;
 	}
 	
-	
 	 
 //	--------------------------------- 비밀번호찾기 끝 -----------------------------------
+
+//	--------------------------------- 회원탈퇴 시작 -----------------------------------
+
+
+	@Override
+	public Member getUserPw(Member member) {
+		System.out.println("UserService getUserPw() -  시작");
+
+		//파라미터값인 비밀번호를 userpw에 저장
+		String userpw = member.getUserPw();
+		System.out.println("UserService join() - userpw : " + userpw);
+		
+		
+		//테이블에 있는 pw를 userPw에 저장
+		Member result = userDao.selectUserPw(conn, member);
+		
+		System.out.println("UserService getUserPw() - result.getUserPw() : " + result.getUserPw());
+		
+		member.setUserPw( result.getUserPw() );
+		
+		//완성된 member객체를 DB에 삽입
+		userDao.deleteUserInfo(conn, member);
+
+		//결과 처리 - 트랜잭션 관리
+		if( userpw.equals(result.getUserPw()) ) { // DB삽입 성공
+			JDBCTemplate.commit(conn);
+			return member;
+
+		} else { // DB삽입 실패
+			JDBCTemplate.rollback(conn);
+			
+			return null;
+		}
+//		return member;
+	}
+	
+
+
+//	--------------------------------- 회원탈퇴 끝 -----------------------------------
+
+
 }
-
-
-
-
-
-
 
 
 
