@@ -74,7 +74,7 @@ public class DailyStatisticsController extends HttpServlet {
 		System.out.println("종료 파티 수 : " + partyend);
 		
 		
-		req.getRequestDispatcher("/WEB-INF/admin/statistics/dailystatistics.jsp").forward(req, resp);;
+		req.getRequestDispatcher("/WEB-INF/admin/statistics/dailystatistics.jsp").forward(req, resp);
 	}
 	
 }

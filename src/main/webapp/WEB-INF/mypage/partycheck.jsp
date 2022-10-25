@@ -27,7 +27,7 @@
 	margin-top: 50px;
 	margin-bottom: 90px;
 	/* column-gap: 50px; */
-	gap: 50px 50px;	
+	gap: 50px;	
 }
 
 .situation {
@@ -38,7 +38,7 @@
 
 #party {
 	display: flex;
-	width: 400px;
+	width: 230px;
 	height: 250px;
 /* 	margin: 20px; */
 /* 	paddig: 20px; */
@@ -66,7 +66,7 @@ li {
 <div class="container">
 <% for(int i = 0; i < partyList.size(); i++) { %>
 <div id="party">
-	<ul><a herf
+	<ul>
 		<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 			<%=partyList.get(i).getPartyKind() %>
 		</div>
@@ -88,7 +88,7 @@ li {
 <div style="text-align: center;">
 	<ul class="pagination">
 		<% for(int i=paging.getStartPage(); i <= paging.getEndPage(); i++) { %>
-		<li><a href="/partycheck?curPage=<%=i %>"><%=i %></a></li>
+		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li>
 		<% } %>
 	</ul>
 </div>
@@ -116,7 +116,6 @@ li {
 <% } %>
 
 </div>
-
 
 
 

@@ -13,33 +13,35 @@
 <%	int nuser  = (int)request.getAttribute("nuser"); %>
 <%	int duser  = (int)request.getAttribute("duser"); %>
 <%	int partycre  = (int)request.getAttribute("partycre"); %>
-<%	int partyEnd  = (int)request.getAttribute("partyend"); %>
+<%	int partyend  = (int)request.getAttribute("partyend"); %>
 
-<h1 class="text-center" style="text-bold";>일별 통계</h1>
+<h1 class="text-center">일별 통계</h1>
 
-<div class="container">
-	<div class="row my-4">
-	    <div class="col">
-	        <h4>OTT별 생성된 방 통계</h4>
-	    </div>
-	</div>
-	<div class="row py-5">
-	    <div class="col-md-6 py-2">
-	        <div class="card">
-	            <div class="card-body">
-	                <canvas id="myChart" style="width: 800px; height: 500px; contents-align: center;"></canvas>
-	            </div>
-	        </div>
-	    </div>
+<!-- <div class="container"> -->
+<!-- 	<div class="row my-4"> -->
+<!-- 	    <div class="col-md-5"> -->
+<!-- 	        <h4>OTT별 생성된 방 통계</h4> -->
+<!-- 	    </div> -->
+<!-- 	</div> -->
+<!-- 	<div class="row py-5"> -->
+<!-- 	    <div class="col-md-6 py-2"> -->
+<!--         	<canvas id="myChart" style="width: 50vw; height: 40vh;"></canvas> -->
+<!-- 	    </div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+<div style="position:relative; width:1000px; margin: 0 auto;">
+	<h4>OTT별 생성된 방 통계</h4>
+	<div style="position:absolute;"> 
+		<canvas id="myChart" style="width: 1000px; height: 500px;"></canvas>
 	</div>
 </div>
+
 
 </body>
 
 
-
 <script type="text/javascript">
-
 
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
@@ -72,6 +74,11 @@ var myChart = new Chart(ctx, {
   },
   options: {
 	  responsive: false,
+	  plugins:{	
+	  		legend: {
+				display: false,
+			},
+	  	},
     scales: {
     	y: {
     		min: 0,
@@ -92,5 +99,10 @@ var myChart = new Chart(ctx, {
 
   
 </script>
+
+<!-- 부트스트랩3 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </html>
