@@ -35,6 +35,10 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(), paging);
 	}
 	
+//	@Override
+//	public List<PartyBoard> getBrList(String searchCondition, String searchKeyword, PbPaging paging) {
+//		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(),searchCondition,searchKeyword, paging );
+//	}
 	
 	@Override
 	public PbPaging getBrPaging(HttpServletRequest req) {
@@ -79,7 +83,7 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		partyBoard.setPartyBoardTitle(title);
 
 		int partyboardNo = partyRoomBoardDao.selectNextBoardno(conn);
-		partyBoard.setBoardNo(partyboardNo);
+		partyBoard.setPartyBoardNo(partyboardNo);
 
 		int result = partyRoomBoardDao.insert(conn, partyBoard);
 		if (result > 0) {
@@ -91,6 +95,8 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
 		}
 	}
+
+
 
 
 

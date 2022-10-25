@@ -270,7 +270,7 @@ textarea {
 		</div>
 
 
-		<form action="getBoardList.jsp" method="get">
+		<form action="./roomboard" method="get">
 			<!--  검색 시작  -->
 			<div class="search-area">
 				<div class="form-item">

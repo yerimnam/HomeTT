@@ -49,6 +49,8 @@ public interface PartyRoomBoardService {
 
 	public PartyBoard write(HttpServletRequest req);
 
+//	public List<PartyBoard> getBrList(String searchCondition, String searchKeyword, PbPaging paging);
+
 
 
 
