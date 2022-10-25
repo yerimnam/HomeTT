@@ -79,10 +79,8 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		partyBoard.setPartyBoardTitle(title);
 
 		int partyboardNo = partyRoomBoardDao.selectNextBoardno(conn);
-		System.out.println(partyboardNo);
 		partyBoard.setPartyBoardNo(partyboardNo);
 
-		System.out.println(partyBoard);
 		int result = partyRoomBoardDao.insert(conn, partyBoard);
 		if (result > 0) {
 			JDBCTemplate.commit(conn);
