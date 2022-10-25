@@ -27,58 +27,31 @@ public class AdReportListController extends HttpServlet {
 		//한글 인코딩 처리
 		req.setCharacterEncoding("UTF-8");
 		
-		Paging paging = adReportListService.getPaging(req);
-		System.out.println("[TEST] " + paging);
-		
-		//페이징 객체를 MDOEL값 전달
-		req.setAttribute("paging", paging);
-		
 		String searchType = req.getParameter("searchType");
 		String keyword = req.getParameter("keyword");
 		
-//		String searchType = "";
-//		if( searchType_ != null )
-//			searchType = searchType_;
-//		
-//		String keyword = "";
-//		if(keyword_ != null)
-//			keyword = keyword_;
+		Paging paging;
+		if ( searchType != null && keyword != null ) {
+			paging = adReportListService.getSearchPaging(req, searchType, keyword);
+		} else {
+			paging = adReportListService.getPaging(req);
+		}
 		
-		//게시글 페이징 목록 조회
-//		List<Report> reportList = adReportListService.getList( paging );	//전체 목록
-//		List<Report> reportSearchList = adReportListService.getSearchList( searchType, keyword );	//검색 목록
+		req.setAttribute("paging", paging);
 		
 		List<Report> reportList;
 		if(searchType != null && keyword != null) {
 			// 검색한 결과
 			reportList = adReportListService.getSearchList( paging, searchType, keyword );
-			System.out.println("검색한 결과" + reportList);
-			System.out.println("searchType" + searchType);
-			System.out.println("keyword" + keyword);
+			System.out.println("검색한 paging 결과 : " + paging);
 		} else {
 			// 검색 안한 결과
 			reportList = adReportListService.getList( paging );
-			System.out.println("검색안한 결과" + reportList);
+			System.out.println("검색 안한 paging 결과 : " + paging);
 		}
 		
-//		if(reportList != null) {
-			req.setAttribute("reportList", reportList);
-			req.getRequestDispatcher("/WEB-INF/admin/report/adminreportlist.jsp").forward(req, resp);
-//		}
-		
-//		[TEST] 조회결과 확인
-//		for(Report r : reportList)	System.out.println(r);
-		
-		//조회결과를 MODEL값 전달
-//		req.setAttribute("reportList", reportList);
-//		req.setAttribute("reportSearchList", reportSearchList);
-//		System.out.println("reportSearchList" + reportSearchList);
-		
-		//View 지정 및 응답
-//		req.getRequestDispatcher("/WEB-INF/admin/report/adminreportlist.jsp").forward(req, resp);
-//		req.getRequestDispatcher("/WEB-INF/admin/report/adminreportsearchlist.jsp").forward(req, resp);
-		
-		//----------------------------------------------------------------------------
+		req.setAttribute("reportList", reportList);
+		req.getRequestDispatcher("/WEB-INF/admin/report/adminreportlist.jsp").forward(req, resp);
 		
 	}
 		
