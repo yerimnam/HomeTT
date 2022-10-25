@@ -20,12 +20,12 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 		
 		
 		@Override
-		public int selectCntAll(Connection conn) {
+		public int selectCntAll(Connection conn,int userNo) {
 
 			System.out.println("selectCntAll -Start");
 			String sql  ="";
 			sql += "SELECT count(*) cnt FROM cs_inquiry";
-//			sql +=" WHERE user_no =?";
+			sql +=" WHERE user_no =?";
 			
 			//총 게시글 변수 
 			
@@ -33,7 +33,7 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 			
 			try {
 				ps = conn.prepareStatement(sql);
-//				ps.setInt(1,);
+				ps.setInt(1,userNo);
 				rs=ps.executeQuery();
 				
 				while(rs.next()) {
@@ -116,6 +116,53 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 		System.out.println(inquiryList);
 		System.out.println("inquiryBoard select 끝");
 		return inquiryList;
+	}
+	
+	
+	@Override
+	public InquiryBoard selectDetail(Connection conn, int userNo,InquiryBoard inquiryTitle) {
+
+		System.out.println("selectDetail-start");
+		
+		String sql ="";
+		sql +=" SELECT I.inquiry_articlenumber,I.inquiry_articletitle,I.user_no,I.inquiry_content,I.inquiry_date";
+		sql +=" ,m.user_nick";
+		sql +=" FROM cs_inquiry I";
+		sql +=" inner join member m";
+		sql +=" on m.user_no = I.user_no";
+		sql +=" where I.user_no = ? and I.inquiry_articletitle=?" ;
+		
+		InquiryBoard inquiryDetail = null;
+		try {
+
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, userNo);
+			ps.setString(2,inquiryTitle.getInquiryArticleTitle());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				inquiryDetail = new InquiryBoard();
+				inquiryDetail.setInquiryArticleNumber(rs.getInt("inquiry_articlenumber"));
+				inquiryDetail.setInquiryArticleTitle(rs.getString("inquiry_articletitle"));
+				inquiryDetail.setUserNo(rs.getInt("user_no"));
+				inquiryDetail.setInquiryContent(rs.getString("inquiry_content"));
+				inquiryDetail.setInquiryDate(rs.getDate("inquiry_date"));;
+				inquiryDetail.setUserNick(rs.getString("user_nick"));
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		
+		System.out.println("selectDetail-detail");
+		return inquiryDetail;
 	}
 
 }

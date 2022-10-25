@@ -1,11 +1,11 @@
 package inquiry.service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import common.JDBCTemplate;
-import inquiry.dao.face.InquiryCreateDao;
 import inquiry.dao.face.InquiryInquiriesDao;
 import inquiry.dao.impl.InquiryInquiriesDaoImpl;
 import inquiry.dto.InquiryBoard;
@@ -17,11 +17,11 @@ public class InquiryInquiriesServiceImpl implements InquiryInquiriesService {
 
 	
 	@Override
-	public Paging getPaging(HttpServletRequest req) {
+	public Paging getPaging(HttpServletRequest req,int userNo) {
 
 		
 		//총게시글 수 
-		int totalCount = inquiryDao.selectCntAll(JDBCTemplate.getConnection());
+		int totalCount = inquiryDao.selectCntAll(JDBCTemplate.getConnection(),userNo);
 		
 		//전달파라미터 curpage추출하기
 		
@@ -40,6 +40,7 @@ public class InquiryInquiriesServiceImpl implements InquiryInquiriesService {
 		return paging;
 	}
 	
+	
 	@Override
 	public List<InquiryBoard> getinquiry(int userNo, Paging paging) {
 		
@@ -51,4 +52,36 @@ public class InquiryInquiriesServiceImpl implements InquiryInquiriesService {
 	}
 	
 
+	
+	@Override
+	public InquiryBoard getTitle(HttpServletRequest req) {
+		//전달파라미터를 저장할 객체 생성
+		InquiryBoard inquiryBoard = new InquiryBoard();
+		
+		
+		//요청정보에서 전달한 파라미터 추출
+		String param = req.getParameter("inquiryTitle");
+		
+		if(param != null && !"".equals(param)) {
+			inquiryBoard.setInquiryArticleTitle(param);
+			
+			
+		}
+		
+		
+		return inquiryBoard;
+		
+	}
+	
+	
+	
+	@Override
+	public InquiryBoard getDetail(int userNo, InquiryBoard inquiryTitle) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		InquiryBoard inquiryBoard = inquiryDao.selectDetail(conn,userNo,inquiryTitle);
+		
+		return inquiryBoard;
+	}
 }

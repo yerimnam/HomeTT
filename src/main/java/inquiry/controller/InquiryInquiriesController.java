@@ -40,7 +40,7 @@ public class InquiryInquiriesController extends HttpServlet {
 			
 			
 			//전달 파라미터에서 현재 페이징 객체 계산하기
-			Paging paging = inquiryService.getPaging(req);
+			Paging paging = inquiryService.getPaging(req,userNo);
 			System.out.println("[TEST]" + paging);
 			
 			

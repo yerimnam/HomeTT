@@ -24,9 +24,28 @@ public interface InquiryInquiriesService {
 	 *  현재 페이징 객체 계산하기 
 	 * @param req 파라미터
 	 * @param userNo 
+	 * @param userNo 
 	 * @return
 	 */
 
-	Paging getPaging(HttpServletRequest req);
+	Paging getPaging(HttpServletRequest req, int userNo);
+
+
+	/**
+	 * 
+	 * @param req 요청 파라미터 -글제목
+	 * @return 조회된 글제목 
+	 */
+	InquiryBoard getTitle(HttpServletRequest req);
+
+	
+	/**
+	 * 클릭한 글 제목의 상세 내용 
+	 * @param userNo 
+	 * @param inquiryView -글 제목 파라미터 
+	 * @return -글제목의 상세 내용 
+	 */
+
+	InquiryBoard getDetail(int userNo, InquiryBoard inquiryTitle);
 
 }

@@ -25,10 +25,21 @@ public interface InquiryInquiriesDao {
 	/**
 	 * 총 글수 selecㅅ 학
 	 * @param userNo 
+	 * @param userNo 
 	 * @param connection -db연결
 	 * @return - 총 데이터 수 
 	 */
 
-	int selectCntAll(Connection conn);
+	int selectCntAll(Connection conn, int userNo);
+
+
+	/**
+	 * 게시판 상세 글 내용
+	 * @param conn -DB 연결
+	 * @param userNo 
+	 * @param inquiryTitle -글제목 파라미터 추출
+	 * @return 상세 글내용 반환
+	 */
+	InquiryBoard selectDetail(Connection conn, int userNo, InquiryBoard inquiryTitle);
 
 }
