@@ -34,7 +34,6 @@ public class WishListCheckDaoImpl implements WishListCheckDao {
 		sql += " ORDER BY user_no DESC";
 		
 		
-		
 		// 결과 저장 List
 		List<WishListCheck> wishList = new ArrayList<>();
 		
