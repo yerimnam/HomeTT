@@ -41,6 +41,6 @@ public interface AdReportListService {
 	 */
 	public Report view(Report reportno);
 
-	public List<Report> getSearchList(String searchType, String keyword);
+	public List<Report> getSearchList(Paging paging, String searchType, String keyword);
 
 }

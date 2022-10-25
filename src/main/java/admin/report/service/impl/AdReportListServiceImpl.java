@@ -38,11 +38,11 @@ public class AdReportListServiceImpl implements AdReportListService {
 	}
 	
 	@Override
-	public List<Report> getSearchList(String searchType, String keyword) {
+	public List<Report> getSearchList(Paging paging, String searchType, String keyword) {
 		System.out.println("getSearchList() - 시작");
 		System.out.println("searchType" + searchType);
 		System.out.println("keyword" + keyword);
-		return adReportListDao.selectSearchList(JDBCTemplate.getConnection(), searchType, keyword);
+		return adReportListDao.selectSearchList(JDBCTemplate.getConnection(), paging, searchType, keyword);
 	}
 	
 	@Override

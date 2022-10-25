@@ -24,12 +24,12 @@ public class AdReportListDaoImpl implements AdReportListDao {
 		//SQL작성
 		String sql = "";
 		sql += "SELECT * FROM (";
-		sql += "	SELECT rownum rnum, B.* FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
 		sql += "		SELECT";
 		sql += "			report_no, board_cano, report_date, report_content, reporter, report_target, report_party";
 		sql += "		FROM report";
 		sql += "		ORDER BY report_no DESC";
-		sql += "	) B";
+		sql += "	) R";
 		sql += " ) REPORT";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 		
@@ -142,16 +142,22 @@ public class AdReportListDaoImpl implements AdReportListDao {
 	}
 
 	@Override
-	public List<Report> selectSearchList(Connection conn, String searchType, String keyword) {
+	public List<Report> selectSearchList(Connection conn, Paging paging, String searchType, String keyword) {
 		
 		keyword = '%' + keyword + '%';
 		
 		String sql = "";
-		sql += "SELECT";
-		sql += "	report_no, board_cano, report_date, report_content, reporter, report_target, report_party";
-		sql += " FROM report";
-		sql += " WHERE " + searchType + " LIKE ?";
-		sql += " ORDER BY report_no DESC";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += " 		SELECT";
+		sql += " 		report_no, board_cano, report_date, report_content, reporter, report_target, report_party";
+		sql += " 		FROM report";
+		sql += " 		WHERE " + searchType + " LIKE ?";
+		sql += " 		ORDER BY report_no DESC";
+		sql += " 		) R";
+		sql += " 	) REPORT";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+		
 		
 		//결과 저장할 List
 		List<Report> reportList = new ArrayList<>();
@@ -160,6 +166,8 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			
 			ps = conn.prepareStatement(sql); //SQL수행 객체
 			ps.setString(1, keyword);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
 			
 			rs = ps.executeQuery(); //SQL수행 및 결과 집합 저장
 			

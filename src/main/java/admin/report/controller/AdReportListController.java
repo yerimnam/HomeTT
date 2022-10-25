@@ -51,7 +51,7 @@ public class AdReportListController extends HttpServlet {
 		List<Report> reportList;
 		if(searchType != null && keyword != null) {
 			// 검색한 결과
-			reportList = adReportListService.getSearchList( searchType, keyword );
+			reportList = adReportListService.getSearchList( paging, searchType, keyword );
 			System.out.println("검색한 결과" + reportList);
 			System.out.println("searchType" + searchType);
 			System.out.println("keyword" + keyword);
