@@ -34,7 +34,7 @@ public class JoinPartyDaoImpl implements JoinPartyDao {
 			ps.setString(4, party.getPartyLeader());
 			ps.setDate(5, (Date) party.getPartyEndDate());
 			ps.setInt(6, party.getPartyMember());
-			ps.setInt(6, party.getPaymentAmount());
+			ps.setInt(7, party.getPaymentAmount());
 			
 			res = ps.executeUpdate();
 			

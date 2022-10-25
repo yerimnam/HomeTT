@@ -99,7 +99,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		try {
 			ps = conn.prepareStatement(sql);
 
-			//여기 페이지를 안넣어서 안보였었ㅇ므 ㅜㅜㅜ
+			// 여기 페이지를 안넣어서 안보였었ㅇ므 ㅜㅜㅜ
 			ps.setInt(1, paging.getStartNo());
 			ps.setInt(2, paging.getEndNo());
 			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
@@ -123,6 +123,55 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		System.out.println("PartyRoomBoardDao selectBrAll() - 끝");
 		return partyBoardList;
 	}
+
+//	@Override
+//	public List<PartyBoard> selectAllBr(Connection conn, String searchCondition, String searchKeyword,
+//			PbPaging paging) {
+//		// SQL작성
+//		String sql = "";
+//		sql += "SELECT * FROM(";
+//		sql += "   SELECT rownum rnum, PB.* FROM(";
+//		sql += "         SELECT";
+//		sql += "            party_boardNo, party_boardWriter, party_boardtitle";
+//		sql += "         FROM party_board";
+//		sql += "    )PB";
+//		sql += "  )party_board";
+////		sql += " WHERE rnum BETWEEN ? AND ?";
+//
+//		if (searchCondition != null && !"".equals(searchCondition)) {
+//			sql += " WHERE rnum BETWEEN ? AND ?";
+//		}
+//
+//		// 결과 저장할 List
+//		List<PartyBoard> partyBoardList = new ArrayList<>();
+//
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			if (searchCondition != null && !"".equals(searchCondition)) {
+//			}
+//			ps.setInt(1, paging.getStartNo());
+//			ps.setInt(2, paging.getEndNo());
+//			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
+//
+//			while (rs.next()) {
+//				PartyBoard pb = new PartyBoard();
+//
+//				pb.setPartyBoardNo(rs.getInt("party_boardNo"));
+//				pb.setPartyBoardWriter(rs.getString("party_boardWriter"));
+//				pb.setPartyBoardTitle(rs.getString("party_boardtitle"));
+//
+//				partyBoardList.add(pb);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//
+//		System.out.println("PartyRoomBoardDao selectBrAll() - 끝");
+//		return partyBoardList;
+//	}
 
 	@Override
 	public int insert(Connection conn, PartyBoard partyBoard) {
@@ -202,6 +251,30 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		}
 		// 최종 결과 반환
 		return count;
+	}
+
+	@Override
+	public int delete(Connection conn, PartyBoard partyBoard) {
+		
+		
+		String sql = "";
+		sql += "DELETE partyboard";
+		sql += " WHERE party_boardno = ?";
+
+		int res = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, partyBoard.getCommentsNo());
+
+			res = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		return res;
 	}
 
 }

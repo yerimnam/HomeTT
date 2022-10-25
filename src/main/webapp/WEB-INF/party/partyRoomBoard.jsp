@@ -26,9 +26,12 @@
 List<PartyBoard> partyBoardList = (List) request.getAttribute("partyBoardList");
 %>
 
+<% PartyBoard getpartyBoardno = (PartyBoard) request.getAttribute("partyBoardno"); %>
+
 <%
 PbPaging paging = (PbPaging) request.getAttribute("paging");
 %>
+
 
 <style type="text/css">
 .top {
@@ -270,7 +273,7 @@ textarea {
 		</div>
 
 
-		<form action="getBoardList.jsp" method="get">
+		<form action="./roomboard" method="get">
 			<!--  검색 시작  -->
 			<div class="search-area">
 				<div class="form-item">
@@ -375,4 +378,14 @@ function showPrompt(){
 	
 }
 </script>
+
+<script type="text/javascript">
+
+	//삭제버튼
+	
+	
+
+	
+</script>
+
 </html>

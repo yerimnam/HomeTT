@@ -25,6 +25,12 @@ public class PartyRoomBoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/roomboard [GET]");
 		
+//		System.out.println("searchCondition : " + req.getParameter("searchCondition") );
+//		System.out.println("searchKeyword : " + req.getParameter("searchKeyword"));
+//
+//		String searchCondition = req.getParameter("searchCondition") ;
+//		String searchKeyword = req.getParameter("searchKeyword");
+		
 		// 전달파라미터에서 현재 페이징 객체 계산하기
 		PbPaging paging = partyRoomBoardService.getBrPaging(req);
 		System.out.println("[Test]" + paging);

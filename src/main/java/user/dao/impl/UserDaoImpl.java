@@ -1,10 +1,11 @@
 package user.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.servlet.http.HttpSession;
 
 import common.JDBCTemplate;
 import user.dao.face.UserDao;
@@ -134,7 +135,7 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("UserDao selectLoginInfo() - 시작");
 		
 		String sql = "";
-		sql += "SELECT user_no, master_no, user_id, user_pw, user_nick FROM member";
+		sql += "SELECT user_no, master_no, user_id, user_pw, user_name, user_nick FROM member";
 		sql += " WHERE user_id = ?";
 		
 		Member result = null;
@@ -152,6 +153,7 @@ public class UserDaoImpl implements UserDao {
 				result.setMasterNo( rs.getInt("master_no") );
 				result.setUserId( rs.getString("user_id") );
 				result.setUserPw( rs.getString("user_pw") );
+				result.setUserName( rs.getString("user_name") );
 				result.setUserNick( rs.getString("user_nick") );
 			}
 			
@@ -188,7 +190,7 @@ public class UserDaoImpl implements UserDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, member.getUserName());
 			ps.setString(2, member.getUserEmail());
-			
+			 
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -207,6 +209,82 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("UserDao getMemberId() - 끝");
 		return result;
 	}
+	
+//	---------------------------------아이디찾기 끝 -----------------------------------	
+	
+//	---------------------------------비밀번호찾기 시작 -----------------------------------	
+	
+	@Override
+	public Member getIdNamePhone(Connection conn, Member member) {
+		String sql = "";
+		sql += "SELECT user_id, user_name, user_phone FROM member";
+		sql += " WHERE user_id = ?";
+		sql += " AND user_name = ?";
+		sql += " AND user_phone = ?";
+		
+		Member result = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			ps.setString(2, member.getUserName());
+			ps.setInt(3, member.getUserPhone());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = new Member();
+				
+				result.setUserId( rs.getString("user_id") );
+				result.setUserName( rs.getString("user_name") );
+				result.setUserPhone( rs.getInt("user_phone") );
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+				
+		return result;
+	}
+	
+	
+	@Override
+	public int UpdatePwDao(Connection conn, Member member) {
+
+		System.out.println("UpdatePwDao : " + member.getUserId());
+		System.out.println("UpdatePwDao : " + member.getUserName());
+		
+		String sql = "";
+		sql += "UPDATE member";
+		sql += "	SET user_pw = ?";
+		sql += " WHERE user_id = ?";
+		sql += " AND user_name = ?";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserPw());
+			ps.setString(2, member.getUserId());
+			ps.setString(3, member.getUserName());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+		
+	}
+	
+	
+//	---------------------------------비밀번호찾기 끝 -----------------------------------	
 	
 	
 	

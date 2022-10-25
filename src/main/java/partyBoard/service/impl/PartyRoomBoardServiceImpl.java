@@ -35,6 +35,10 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(), paging);
 	}
 	
+//	@Override
+//	public List<PartyBoard> getBrList(String searchCondition, String searchKeyword, PbPaging paging) {
+//		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(),searchCondition,searchKeyword, paging );
+//	}
 	
 	@Override
 	public PbPaging getBrPaging(HttpServletRequest req) {
@@ -79,7 +83,7 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		partyBoard.setPartyBoardTitle(title);
 
 		int partyboardNo = partyRoomBoardDao.selectNextBoardno(conn);
-		partyBoard.setBoardNo(partyboardNo);
+		partyBoard.setPartyBoardNo(partyboardNo);
 
 		int result = partyRoomBoardDao.insert(conn, partyBoard);
 		if (result > 0) {
@@ -91,6 +95,39 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
 		}
 	}
+
+
+	@Override
+	public PartyBoard getpartyBoardno(HttpServletRequest req) {
+		
+		//전달파라미터 저장할 객체 생성
+		PartyBoard partyBoard = new PartyBoard();
+		
+		//전달파라미터 partyboardno 파싱
+		String param = req.getParameter("partyboardno");
+		if( null != param && !"".equals(param) ) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
+			partyBoard.setPartyBoardNo((Integer.parseInt(param)));
+		}
+		
+		return partyBoard;
+	}
+
+
+	@Override
+	public void delete(PartyBoard partyBoard) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//게시글 삭제
+		if(partyRoomBoardDao.delete(conn, partyBoard) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+	}
+
+
 
 
 

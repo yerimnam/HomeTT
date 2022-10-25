@@ -153,7 +153,6 @@ public class AdReportListDaoImpl implements AdReportListDao {
 		sql += " WHERE " + searchType + " LIKE ?";
 		sql += " ORDER BY report_no DESC";
 		
-		
 		//결과 저장할 List
 		List<Report> reportList = new ArrayList<>();
 		
@@ -186,7 +185,9 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
+		System.out.println("searchType" + searchType);
+		System.out.println("keyword" + keyword);
+		System.out.println("selectSearchList()" + reportList);
 		return reportList;
 	}
 	

@@ -25,7 +25,7 @@ public class EventInquiriesController extends HttpServlet {
 	
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/hmett/eventlist [GET]");
+		System.out.println("/homett/eventlist [GET]");
 
 		//게시글 전체 조회
 		List<EventBoard> eventboardList = eventinquiriesService.getList();
