@@ -51,7 +51,7 @@ public class PartyRoomDetailController extends HttpServlet {
 		HttpSession session = req.getSession();
 		session.setAttribute("partyNo",partyNo);
 		//세션값 넣기
-		int userno = (int)session.getAttribute("user_no");
+//		int userno = (int)session.getAttribute("user_no");
 		int partyno = (int)session.getAttribute("party_no");
 	}
 	
