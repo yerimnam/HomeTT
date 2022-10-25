@@ -29,7 +29,13 @@ public class PaymentListController extends HttpServlet {
 		System.out.println("/homett/paymentList - [GET]");
 	
 		
-		
+		//페이지 전달 파라미터 
+		String page = req.getParameter("paging");
+
+		PbPaging paging = paymentListService.getPaging(req);
+
+		req.setAttribute("paging", paging);
+
 		req.getRequestDispatcher("/WEB-INF/mypage/paymentList.jsp").forward(req, resp);
 	
 	}
@@ -44,9 +50,10 @@ public class PaymentListController extends HttpServlet {
 		session.setAttribute("user_no",2);
 		
 		//전달파라미터에서 현재 페이징 객체 계산하기
-		
+//		String page = req.getParameter("paging");
 		PbPaging paging = paymentListService.getPaging(req);
 	
+		req.setAttribute("paging", paging);
 		
 		
 		//실제로 작동 될 코드 
@@ -54,7 +61,8 @@ public class PaymentListController extends HttpServlet {
 		
 		
 	
-		
+		req.setCharacterEncoding("UTF-8");
+
 		
 		String startDate = req.getParameter("startdate");
 		String endDate =req.getParameter("enddate");
@@ -66,7 +74,6 @@ public class PaymentListController extends HttpServlet {
 		List<Payment> paymentList = paymentListService.getPaymentList(paging,userNo,start,end);
 	
 		//페이징 객체를 MODEL값 전달
-		req.setAttribute("paging", paging);
 		
 		//model값을 view로 보내기
 		req.setAttribute("paymentList", paymentList);
