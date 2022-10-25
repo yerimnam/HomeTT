@@ -184,7 +184,7 @@ a.heart {
 <body>
 
 	<div class="top">
-		<h1>파티모집 게시판</h1>
+		<h1><a href="./partymodify">파티모집 게시판</a></h1>
 	</div>
 
 	<div class="container">
@@ -301,10 +301,9 @@ a.heart {
 		<!--  검색 시작  -->
 		<div class="search-area">
 			<div class="form-item">
-				<select id="searchCondition" name="searchCondition">
-					<option value="TITLE">제목</option>
-					<option value="CONTENT">내용</option>
-					<option value="IdNick">아이디(닉네임)</option>
+				<select name="searchType" id="searchType">
+					<option value="party_boardtitle">제목</option>
+					<option value="partyLeader">파티장</option>
 				</select>
 			</div>
 			<div class="form-item">

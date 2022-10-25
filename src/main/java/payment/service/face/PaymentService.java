@@ -59,6 +59,10 @@ public interface PaymentService {
 	Payment getresult(Payment payinsert);
 	
 	
+	//@@@파티부분@@@
+	int insertParty(Payment returnData);
+	
+	
 	
 	
 	
