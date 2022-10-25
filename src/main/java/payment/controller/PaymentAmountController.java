@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import coupon.dto.Coupon;
 import party.dto.Party;
 import payment.dto.Payment;
 import payment.service.face.PaymentService;
@@ -30,7 +29,7 @@ public class PaymentAmountController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/payamount[GET] - 결제 창");
 		//세션 형성  ->세션에서 id get->속성으로 넣기
-
+		 req.setCharacterEncoding("UTF-8");
 		  HttpSession session =req.getSession();
 				//테스트 데이터
 				session.setAttribute("user_no", 2);
@@ -66,11 +65,12 @@ public class PaymentAmountController extends HttpServlet {
 	  @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		  System.out.println("/homett/payamount [POST}");
+		  System.out.println("/homett/payamount [POST]");
 		  
 
-		 
-		  req.getRequestDispatcher("/WEB-INF/party/paymodule.jsp").forward(req, resp);
+	
+		  
+		  req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);
 		  
 	  }
 	}

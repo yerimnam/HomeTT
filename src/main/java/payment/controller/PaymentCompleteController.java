@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.SendResult;
 
-import coupon.dto.Coupon;
+import com.google.gson.Gson;
+
 import party.dto.Party;
 import payment.dto.Payment;
 import payment.service.face.PaymentService;
@@ -33,33 +34,36 @@ public class PaymentCompleteController extends HttpServlet {
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			System.out.println("/homett/paycomeplete -[GET]");
-	
-	
-			
+			  
+			 req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);
+
 		}
 
 	
-			
 			
 ;	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-		  System.out.println("/homett/paymentcal [POST}");
+		  System.out.println("/homett/paycomplete [POST]");
 		  
-		  //1) pay에서 아임포트가 넘겨준 정보를 받아서 인서트 해야한다 -> payment db에 
-		 
-		  //요청 정보에서 속성 추출(ajax가 넘겨준 값으로 받기)
+		  req.setCharacterEncoding("UTF-8");
 		  
+		  //리턴 데이터를 DTO 에 저장
 		  
-		  Payment payment = paymentService.getParam(req);
-//		  
+		  Payment returnData= paymentService.getParam(req);
 		  
 		 //추출한 값으로 insert하기
-		  Payment payinsert = paymentService.setPayment(payment);
+		  Payment payinsert = paymentService.setPayment(returnData);
 		  
-		 req.setAttribute("paycomplete", payinsert);
+		  //인서트 된 값 조회해오기
 		  
-		  req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);
+		 Payment payresult = paymentService.getresult(payinsert);
+		  
+		 req.setAttribute("paycomplete", payresult);
+		  
+		  
+		 req.getRequestDispatcher("/WEB-INF/party/paycomplete.jsp").forward(req, resp);
+		 
 	}
 }
