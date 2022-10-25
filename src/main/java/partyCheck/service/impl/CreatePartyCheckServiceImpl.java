@@ -11,6 +11,8 @@ import partyCheck.service.face.CreatePartyCheckService;
 public class CreatePartyCheckServiceImpl implements CreatePartyCheckService {
 
 	// DAO 객체 생성
-	
+	public CreatePartyCheckServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
 
 }
