@@ -382,6 +382,8 @@ function showPrompt(){
 <script type="text/javascript">
 
 	//삭제버튼
+	
+	
 
 	
 </script>
