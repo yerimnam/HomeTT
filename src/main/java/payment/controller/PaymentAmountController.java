@@ -31,18 +31,20 @@ public class PaymentAmountController extends HttpServlet {
 		//세션 형성  ->세션에서 id get->속성으로 넣기
 		 req.setCharacterEncoding("UTF-8");
 		  HttpSession session =req.getSession();
-				//테스트 데이터
-				session.setAttribute("user_no", 2);
-				session.setAttribute("partyNo", 1);
 				
+		  //테스트 데이터
+//				session.setAttribute("user_no", 2);
+//				session.setAttribute("partyNo", 1);
+				System.out.println("파티넘버 : " + session.getAttribute("partyNo"));
+				System.out.println("유저번호 : " + session.getAttribute("userNo"));
 				
-				//실제 코드 // session 은 Strin g..
-				int userno = (int) session.getAttribute("user_no");
-				int partyno  = (int)session.getAttribute("partyNo");
+				int userno = Integer.parseInt(String.valueOf(session.getAttribute("userNo"))); 
+				int partyno  = Integer.parseInt(String.valueOf(session.getAttribute("partyNo"))); 
 				
 				//로그인한 사람의 정보 조회
-				
+				System.out.println("info 전"); 
 				Member user = paymentService.getuserinfo(userno);
+				System.out.println("info 후");
 				
 				//결제하기 위한 파티 정보 조회 
 				Party partyInfo = paymentService.getpartyNo(partyno);

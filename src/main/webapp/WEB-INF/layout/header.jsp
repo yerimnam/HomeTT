@@ -56,7 +56,19 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	position: absolute;
 }
 
+#rightmenubox > ul > li {
 
+	float: left;
+	width: 140px;
+	margin-left: 15px;
+
+}
+
+/* .gnbMypage { */
+/* 	background-color: #fff; */
+/* 	border-radius: 20px; */
+/* 	te */
+/* } */
 
 </style>
 
@@ -73,28 +85,35 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	</div>	
 		
 	<div id="hdTopright">
-		<div id="rightmenubox">
+		
+		
+		
+		<div id="BottomMenu">
 			<ul>
-				<li>
+				<li class="gnb">
 				<a href="">파티만들기</a>
 				</li>
-				<li>
+				
+				<li class="gnb">
 				<a href="">파티찾기</a>
 				</li>
-				<li>
+				
+				<li class="gnb">
 				<a href="">후기게시판</a>
 				</li>
-				<li>
+				
+				<li class="gnb">
 				<a href="">가이드</a>
 				</li>
-				<li>
+				
+				<li class="gnb">
 				<a href="">고객센터</a>
 				</li>
-				<li>
-				<a href="">마이페이지</a>
-				</li>
-				
 			</ul>
+			
+			<div>
+				<a href="">마이페이지</a>
+			</div>
 		</div>
 	</div>
 		

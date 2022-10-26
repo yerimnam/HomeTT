@@ -20,7 +20,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
 	@Override
 	public Member selectUserInfo(Connection conn, int userno) {
-		System.out.println("SelectuserInf- start");
+		System.out.println("SelectuserInf- start"); 
 		String sql = "";
 		sql += "SELECT user_no,user_id,user_name,user_email,user_phone";
 		sql += " FROM member";
@@ -75,7 +75,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
+			while (rs.next()) { 
 
 				party.setPartyNo(rs.getInt("party_no"));
 				party.setUserNo(rs.getInt("user_no"));
