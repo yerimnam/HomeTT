@@ -3,27 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%-- <%	List<Report> reportList = (List) request.getAttribute("reportList"); %> --%>
-
-<%-- 입력 : 검색분류(column), 검색어(keyword) --%>
-<%
-	String searchType = request.getParameter("searchType");
-	String keyword = request.getParameter("keyword");
-%>
-
-<%-- 처리 --%>
-<%
-	boolean search = searchType != null && !searchType.isEmpty() && keyword != null && !keyword.isEmpty();
-	
-	List<Report> reportList;
-	
-	if( search ){ 
-		reportList = (List) request.getAttribute("reportSearchList");
-	}
-	else{
-		reportList = (List) request.getAttribute("reportList");
-	}
-%>
+<%	List<Report> reportList = (List) request.getAttribute("reportList"); %>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -61,7 +41,6 @@ th {
 </tr>
 
 <%	for(int i=0; i<reportList.size(); i++) { %>
-
 <tr>
 	<td><%=reportList.get(i).getReportNo() %></td>
 	<td><%=reportList.get(i).getReportDate() %></td>
@@ -88,15 +67,5 @@ th {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-// $(document).ready(function() {
-// 	$("#searchBtn").click(function() {
-// 		var searchType = document.getElementById("searchType").value;
-// 		var keyword = document.getElementById("keyword").value;
-// 		location.href = "./adimnsearchlist?searchWord=" + keyword + "&searchType=" + searchType;
-// 	})
-// })
-</script>
 
 </html>

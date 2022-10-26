@@ -18,7 +18,7 @@ public class AdReportListServiceImpl implements AdReportListService {
 	
 	@Override
 	public List<Report> getList(Paging paging) {
-		System.out.println("getList(paging) : " + paging);
+//		System.out.println("getList(paging) : " + paging);
 		return adReportListDao.selectAll(JDBCTemplate.getConnection(), paging);
 	}
 	
@@ -59,10 +59,23 @@ public class AdReportListServiceImpl implements AdReportListService {
 		
 		return report;
 	}
-
+	
 	@Override
-	public List<Report> getSearchList(String searchType, String keyword) {
-		return adReportListDao.selectSearchList(JDBCTemplate.getConnection(), searchType, keyword);
+	public Paging getSearchPaging(HttpServletRequest req, String searchType, String keyword) {
+		int totalCount = adReportListDao.selectSearchCntAll(JDBCTemplate.getConnection() ,searchType ,keyword);
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param != null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+		Paging searchpaging = new Paging(totalCount, curPage);
+		return searchpaging;
+	}
+	
+	@Override
+	public List<Report> getSearchList(Paging paging, String searchType, String keyword) {
+		return adReportListDao.selectSearchList(JDBCTemplate.getConnection(), paging, searchType, keyword);
 	}
 	
 }
