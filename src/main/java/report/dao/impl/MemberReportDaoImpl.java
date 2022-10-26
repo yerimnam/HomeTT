@@ -15,6 +15,34 @@ public class MemberReportDaoImpl implements MemberReportDao {
 	private PreparedStatement ps; //SQL수행 객체
 	private ResultSet rs; //SQL조회 결과 객체
 	
+	@Override
+	public int insert(Connection conn, Report report) {
+		
+		String sql = "";
+		sql += "INSERT INTO report ( report_no, report_content, reporter, report_target, report_party )";
+		sql += " VALUES (?, ?, ?, ?)";
+		
+		int res = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, report.getReportContent());
+			ps.setString(2, report.getReporter());
+			ps.setString(3, report.getReportTarget());
+			ps.setString(4, report.getReportParty());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+	
 	
 	@Override
 	public int selectNextReportno(Connection conn) {
@@ -43,37 +71,6 @@ public class MemberReportDaoImpl implements MemberReportDao {
 		return nextReportno;
 		
 	}
-	
-	@Override
-	public int insert(Connection conn, Report report) {
-		
-		String sql = "";
-		sql += "INSERT INTO report ( report_no, report_content, reporter, report_target, report_party )";
-		sql += " VALUES ( reportno_seq.nextval, ?, ?, ?, ?)";
-		
-		int res = 0;
 
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			ps.setString(1, report.getReportContent());
-			ps.setString(2, report.getReporter());
-			ps.setString(3, report.getReportTarget());
-			ps.setString(4, report.getReportParty());
-			
-			res = ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(ps);
-		}
-		
-		return res;
-	}
-
-
-	
-	
 
 }

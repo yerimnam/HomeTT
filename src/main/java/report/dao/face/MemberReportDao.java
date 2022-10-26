@@ -11,7 +11,7 @@ public interface MemberReportDao {
 	 * 신고글 입력
 	 * 
 	 * @param conn - DB 연결 객체
-	 * @param board - 삽입될 게시글 내용
+	 * @param report - 삽입될 게시글 내용
 	 * @return int - INSERT 쿼리 수행 결과
 	 */
 	public int insert(Connection conn, Report report);

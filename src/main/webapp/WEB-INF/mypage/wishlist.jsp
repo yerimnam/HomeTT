@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% List<WishListCheck> wishList = (List) request.getAttribute("wishList"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +82,6 @@ li {
 		<li>참여 금액 : <%=wishList.get(i).getPaymentamount() %> 원</li>
 	</ul>
 <% } %>
-
 
 
 </div>

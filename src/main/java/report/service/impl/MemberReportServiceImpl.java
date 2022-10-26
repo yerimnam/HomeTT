@@ -50,7 +50,7 @@ public class MemberReportServiceImpl implements MemberReportService {
 
 		
 		//작성자 Id 값 가져오기
-		report.setReporter( (String) req.getSession().getAttribute("userid") );
+		report.setReporter( (String) req.getSession().getAttribute("reporter") );
 		
 		if( memberReportDao.insert(conn, report) > 0 ) {
 			JDBCTemplate.commit(conn);
