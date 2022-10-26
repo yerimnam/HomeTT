@@ -133,8 +133,8 @@ public class PaymentDaoImpl implements PaymentDao {
 		return result;
 	}
 
-	private static PreparedStatement ps_two = null;
-	private static ResultSet rs_two = null;
+	private  PreparedStatement ps_two = null;
+	private  ResultSet rs_two = null;
 
 	@Override
 	public Payment selectpayresult(Connection conn, Payment payinsert) {
@@ -146,6 +146,7 @@ public class PaymentDaoImpl implements PaymentDao {
 		sql += " on p.user_no = m.user_no";
 		sql += " WHERE p.party_no =?";
 
+		//파티이름 조회하여 반환
 		String sql_two = "";
 		sql_two += "SELECT a.party_name FROM party a";
 		sql_two += " INNER JOIN payment p";
@@ -171,6 +172,7 @@ public class PaymentDaoImpl implements PaymentDao {
 				payresult.setPaymentDate(rs.getDate("payment_date"));
 			}
 
+			
 			rs_two = ps_two.executeQuery();
 			while (rs_two.next()) {
 				payresult.setPartyName(rs_two.getString("party_name"));
