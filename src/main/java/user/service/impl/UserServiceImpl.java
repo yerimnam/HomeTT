@@ -476,9 +476,47 @@ public class UserServiceImpl implements UserService {
 		return member;
 	}
 	
-	
-	
 //	--------------------------------- 개인정보 수정 끝 -----------------------------------
+
+//	--------------------------------- 유저타입 변환 시작 -----------------------------------
+	
+	
+	@Override
+	public Member getUserParam(HttpServletRequest req) {
+
+		Member member = new Member();
+		HttpSession session = req.getSession();
+		
+//		member.setUserId( req.getParameter("userId") );
+//		member.setUserName( req.getParameter("userName") );
+		member.setUserId( (String)session.getAttribute("userId") );
+		member.setUserName( (String)session.getAttribute("userName") );
+		
+		return member;
+	}
+	
+	
+	@Override
+	public Member UpdateType(Member member) {
+		
+		System.out.println("UserService UpdateType() -  시작");
+		//DB연결 객체
+		Connection conn = JDBCTemplate.getConnection();
+			
+		//비밀번호 변경
+		if( userDao.UpdateUserType(conn, member) > 0 ) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+				
+		//조회된 정보 리턴
+		return member;
+	}
+	
+	
+//	--------------------------------- 유저타입 변환 끝 -----------------------------------
+	
 	
 	
 }

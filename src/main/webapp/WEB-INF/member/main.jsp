@@ -29,12 +29,12 @@
 <p>아이디 :  <%=session.getAttribute("userId") %></p>
 <p>닉네임 :  <%=session.getAttribute("userNick") %></p>
 <p>이메일 :  <%=session.getAttribute("userEmail") %></p>
-<p>휴대폰번호 :  <%=session.getAttribute("userPhone") %></p>
+<p>휴대폰번호 :  0<%=session.getAttribute("userPhone") %></p>
 
 <button class="btn" onclick="location.href='/homett/logout'">로그아웃</button>
 <button class="btn" onclick="location.href='/homett/dropuser'">회원탈퇴</button>
 <button class="btn" onclick="location.href='/homett/editprofilepwchk'">회원정보 수정</button>
-<button class="btn" onclick="location.href='/homett/type'">파티장 신청</button>
+<button class="btn" onclick="location.href='/homett/typepwchk'">파티장 신청</button>
 
 <%	} %>
 

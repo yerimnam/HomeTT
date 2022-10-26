@@ -359,7 +359,10 @@ public class UserDaoImpl implements UserDao {
 		return result;
 		
 	} 
+
+//	---------------------------------회원탈퇴 끝 -----------------------------------	
 	
+//	---------------------------------회원정보 수정 시작 -----------------------------------	
 	
 	@Override
 	public int UpdateUserInfo(Connection conn, Member member) {
@@ -402,9 +405,48 @@ public class UserDaoImpl implements UserDao {
 		return res;
 	}
 	
+//	---------------------------------회원정보 수정 끝 -----------------------------------	
+	
+//	---------------------------------유저타입 변환 시작 -----------------------------------	
 	
 	
-//	---------------------------------회원탈퇴 끝 -----------------------------------	
+	@Override
+	public int UpdateUserType(Connection conn, Member member) {
+		System.out.println("UserDao UpdateUserType() - 시작");
+
+		System.out.println("member.getUserId() : " + member.getUserId());
+		System.out.println("member.getUserName() : "+ member.getUserName());
+		
+		String sql = "";
+		
+		sql += "UPDATE member";
+		sql += "	SET master_no = '1'";
+		sql += "	WHERE user_id = ? ";
+		sql += "	AND user_name = ? ";
+
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			ps.setString(2, member.getUserName());
+			
+			res = ps.executeUpdate();
+			
+			 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("UserDao UpdateUserType() - 끝");
+		return res;
+		
+		
+	}
+
+//	---------------------------------유저타입 변환 끝 -----------------------------------	
+	
 }
 
 

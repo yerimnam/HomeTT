@@ -1,6 +1,7 @@
 package user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +59,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("userNo", member.getUserNo());
 			session.setAttribute("masterNo", member.getMasterNo());
 			session.setAttribute("userId", member.getUserId());
+			session.setAttribute("userName", member.getUserName());
 			session.setAttribute("userNick", member.getUserNick());
 			session.setAttribute("userEmail", member.getUserEmail());
 			session.setAttribute("userPhone", member.getUserPhone());

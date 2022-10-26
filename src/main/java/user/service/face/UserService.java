@@ -183,12 +183,36 @@ public interface UserService {
 	 * @return Member - 수정한 멤버 정보
 	 */
 	public Member UpdateInfo(Member member);
-	
-	
 
 
 //	--------------------------------- 개인정보 수정 끝 -----------------------------------
 
+//	--------------------------------- 유저타입 변환 시작 -----------------------------------
+	
+	
+	/**
+	 * 회원 정보 추출하기
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Member - 회원 정보 객체
+	 */
+	public Member getUserParam(HttpServletRequest req);
+
+
+	/**
+	 * 전달된 멤버 데이터를 이용하여 회원권환을 변경한다
+	 * 
+	 * @param member - 수정할 객체 
+	 * @return Member - 수정한 회원권환 정보
+	 */
+	public Member UpdateType(Member member);
+	
+//	--------------------------------- 유저타입 변환 끝 -----------------------------------
+	
+	
+	
+	
+	
 
 
 
