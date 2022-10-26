@@ -23,12 +23,12 @@ public class MemberReportServiceImpl implements MemberReportService {
 		
 		report.setBoardCano(0);
 		report.setReportContent( req.getParameter("reportcontent"));
-		report.setReportDate(null);
+//		report.setReportDate( req.getParameter("date"));
 		report.setReporter(req.getParameter("reporter"));
 		report.setReportParty(req.getParameter("partyname"));
 		report.setReportTarget(req.getParameter("reporttarget"));
 		
-		return null;
+		return report;
 	}
 	
 	
