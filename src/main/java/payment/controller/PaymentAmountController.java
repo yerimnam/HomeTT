@@ -31,12 +31,11 @@ public class PaymentAmountController extends HttpServlet {
 		//세션 형성  ->세션에서 id get->속성으로 넣기
 		 req.setCharacterEncoding("UTF-8");
 		  HttpSession session =req.getSession();
-<<<<<<< HEAD
+
 				//테스트 데이터
 //				session.setAttribute("user_no", 2);
 //				session.setAttribute("partyNo", 1);
-=======
->>>>>>> refs/remotes/origin/master
+
 				
 		  //테스트 데이터
 //				session.setAttribute("user_no", 2);
