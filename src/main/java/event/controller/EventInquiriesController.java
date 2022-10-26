@@ -34,7 +34,7 @@ public class EventInquiriesController extends HttpServlet {
 //		List<EventBoard> eventboardList = eventinquiriesService.getList( paging );
 //		
 		//[TEST] 조회결과 확인
-		for(EventBoard b : eventboardList)	System.out.println(b);
+		for(EventBoard e : eventboardList)	System.out.println(e);
 		
 		//조회결과를 MODEL값 전달
 		req.setAttribute("eventboardList", eventboardList );

@@ -10,6 +10,7 @@ import java.util.List;
 import event.common.JDBCTemplate;
 import event.dao.face.EventInquiriesDao;
 import event.dto.EventBoard;
+import util.Paging;
 
 public class EventInquiriesDaoImpl implements EventInquiriesDao {
 
@@ -17,7 +18,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 	private PreparedStatement ps; //SQL수행 객체
 	private ResultSet rs; //SQL조회 결과 객체
 	
-	
+
 	@Override
 	public List<EventBoard> selectAll(Connection conn) {
 		System.out.println("EventBoardDao selectAll - 시작");
@@ -27,9 +28,9 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		String sql = "";
 		sql += "SELECT";
 		sql += "	event_articlenumber, admin_no, board_code, event_articletitle ";
-		sql += " ,event_content,event_writer,event_date";
+		sql += " ,event_content,event_writer,event_date,hit";
 		sql += " FROM cs_event"; 
-		sql += " ORDER BY board_code DESC";
+		sql += " ORDER BY event_Articlenumber DESC";
 		
 		//결과 저장할 List
 		List<EventBoard> eventboardList = new ArrayList<>();
@@ -40,19 +41,19 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			
 			//조회 결과 처리
 			while(rs.next()) {
-				EventBoard b = new EventBoard();//조회결과 행 저장 DTO 객체
+				EventBoard e = new EventBoard();//조회결과 행 저장 DTO 객체
 
-				b.setEventArticlenumber(rs.getInt("event_articlenumber"));
-				b.setAdminNo(rs.getInt("admin_no"));
-				b.setBoardCode(rs.getInt("board_code"));
-				b.setEventArticletitle(rs.getString("event_articletitle"));
-				b.setEventContent(rs.getString("event_content"));
-				b.setEventWriter(rs.getString("event_writer"));
-				b.setEventDate(rs.getDate("event_date"));
-				
+				e.setEventArticlenumber(rs.getInt("event_articlenumber"));
+				e.setAdminNo(rs.getInt("admin_no"));
+				e.setBoardCode(rs.getInt("board_code"));
+				e.setEventArticletitle(rs.getString("event_articletitle"));
+				e.setEventContent(rs.getString("event_content"));
+				e.setEventWriter(rs.getString("event_writer"));
+				e.setEventDate(rs.getDate("event_date"));
+				e.setHit(rs.getInt("hit"));
 				
 				//리스트에 결과값 저장하기
-				eventboardList.add(b);
+				eventboardList.add(e);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -64,6 +65,178 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		System.out.println("EventBoardDao selectAll - 끝");
 		return eventboardList; //최종 결과 반환
 	}
+	
+	
+	@Override
+	public List<EventBoard> selectAll(Connection conn, Paging paging) {
+		System.out.println("EventBoard selectAll - 시작");
+		
+		
+		//SQL작성
+		String sql = "";
+		sql += "SELECT * FROM ( ";
+		sql += " 	SELECT rownum rnum, E.*FROM (";
+		sql += " 	SELECT";
+		sql += "		event_articlenumber,admin_no,board_code,event_articletitle ";
+		sql += " 		,event_content,event_writer,event_date,hit";
+		sql += " 	FROM cs_event"; 
+		sql += " 	ORDER BY event_articlenumber DESC";
+		sql += " 	) B";
+		sql += " ) eventBaord";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+		
+		//결과 저장할 List
+		List<EventBoard> eventboardList = new ArrayList<>();
+		
+		try {
+			ps = conn.prepareStatement(sql); //SQL수행 객체
+			
+			ps.setInt(1, paging.getStartNo());
+			ps.setInt(2, paging.getEndNo());
+			
+			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
+			
+			//조회 결과 처리
+			while(rs.next()) {
+				EventBoard e = new EventBoard();//조회결과 행 저장 DTO 객체
+
+				e.setEventArticlenumber(rs.getInt("event_articlenumber"));
+				e.setAdminNo(rs.getInt("admin_no"));
+				e.setBoardCode(rs.getInt("board_code"));
+				e.setEventArticletitle(rs.getString("event_articletitle"));
+				e.setEventContent(rs.getString("event_content")); 
+				e.setEventWriter(rs.getString("event_writer"));
+				e.setEventDate(rs.getDate("event_date"));				
+				e.setHit(rs.getInt("hit"));
+				
+				//리스트에 결과값 저장하기
+				eventboardList.add(e);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+				
+		System.out.println("FaqBoard selectAll - 끝");
+		return eventboardList; //최종 결과 반환
+	}
+	
+	
+//  
+	@Override
+	public int selectCntAll(Connection conn) {
+		System.out.println("selectCntAll - 시작");	
+		String sql = "";
+//		sql += "SELECT count(*) cnt FROM board";
+		sql += "SELECT count(*) cnt FROM cs_faq";
+		
+		//총 게시글 수 변수
+		int count = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql); //SQL수행 객체
+			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
+			
+			
+			while(rs.next() ) {
+				count = rs.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("selectCntAll - 끝");	
+		//최종 결과 반환
+		return count;
+	}
+
+
+	@Override
+	public int updateHit(Connection conn, EventBoard eventArticlenumber) {
+		
+		System.out.println("updateHit - 시작");	
+		String sql = "";
+		sql += "UPDATE cs_event"; 
+		sql += "	SET hit = hit +1";
+		sql += " WHERE event_Articlenumber = ?";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, eventArticlenumber.getEventArticlenumber());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		System.out.println("updateHit - 끝");	
+		
+		return res;
+	}
+
+	@Override
+	public EventBoard selectBoardByeventArticlenumber(Connection conn, EventBoard eventArticlenumber) {
+		System.out.println("selectBoardByfaqArticlenumber - 시작");	
+		
+		String sql = "";
+		sql += "SELECT";
+		sql +=" 	event_articlenumber,admin_no,board_code,event_articletitle";
+		sql +="		 event_content,event_writer,event_date,hit ";
+		sql +=" FROM cs_event";
+		sql +=" WHERE event_articlenumber = ?";
+		
+		EventBoard board= null;
+		
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1 , eventArticlenumber.getEventArticlenumber());
+				
+				rs = ps.executeQuery();
+				
+				while(rs.next() ) {
+					board = new EventBoard();
+					
+//					board.setEventArticlenumber(rs.getInt("event_articlenumber"));
+//					board.setAdminNo(rs.getInt("admin_no"));
+//					board.setBoardCode(rs.getInt("board_code"));
+//					board.setEventArticletitle(rs.getString("event_articletitle"));
+//					board.setEventContent(rs.getString("event_content"));
+//					board.setEventWriter(rs.getString("event_writer"));
+//					board.setEventDate(rs.getDate("event_date"));
+//					board.setHit(rs.getInt("hit"));
+					
+
+					board.setEventArticlenumber(rs.getInt("event_articlenumber"));
+					board.setAdminNo(rs.getInt("admin_no"));
+					board.setBoardCode(rs.getInt("board_code"));
+					board.setEventArticletitle(rs.getString("event_articletitle"));
+					board.setEventContent(rs.getString("event_content")); 
+					board.setEventWriter(rs.getString("event_writer"));
+					board.setEventDate(rs.getDate("event_date"));				
+					board.setHit(rs.getInt("hit"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(ps);
+			}
+
+			System.out.println("selectBoardByfaqArticlenumber - 끝");	
+		return board;
+	}
+
+
 
 }
 

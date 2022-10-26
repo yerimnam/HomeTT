@@ -54,6 +54,24 @@ public interface FaqInquiriesDao {
 	 */
 	public FaqBoard selectBoardByfaqArticlenumber(Connection conn, FaqBoard faqArticlenumber);
 
+//	/**
+//	 * 게시글 입력
+//	 * 
+//	 * @param conn - DB 연결 객체
+//	 * @param board - 삽입될 게시글 내용
+//	 * @return int - INSERT 쿼리 수행 결과
+//	 */
+//	int insert(Connection conn, FaqBoard board);
+//
+//	
+//	/**
+//	 * 시퀀스를 이용하여 다음 게시글 번호 조회하기
+//	 * 
+//	 * @param conn - DB연결 객체
+//	 * @return int - 다음 게시글 번호
+//	 */
+//	int selectNextFaqArticlenumber(Connection conn);
+
 
 
 }
