@@ -48,8 +48,8 @@ public class MemberReportDaoImpl implements MemberReportDao {
 	public int insert(Connection conn, Report report) {
 		
 		String sql = "";
-		sql += "INSERT INTO board ( report_no, board_cano, report_date, report_content, reporter, report_target, report_party )";
-		sql += " VALUES ( reportno_seq.nextval, boardcano_seq.nextval, ?, ?, ?, ?, ?)";
+		sql += "INSERT INTO report ( report_no, report_content, reporter, report_target, report_party )";
+		sql += " VALUES ( reportno_seq.nextval, ?, ?, ?, ?)";
 		
 		int res = 0;
 

@@ -10,7 +10,7 @@
 	
 		<%-- 첫 페이지로 이동 --%>
 		<%	if( paging.getCurPage() != 1) { %>
-		<li><a href="./adreportlist">&larr; 처음</a></li>
+		<li><a href="./adreportlist">&lt;&lt;</a></li>
 		<%	} %>
 	
 	
@@ -38,7 +38,7 @@
 		
 		<%-- 마지막 페이지로 이동 --%>
 		<%	if( paging.getCurPage() != paging.getTotalPage() ) { %>
-		<li><a href="./adreportlist?curPage=<%=paging.getTotalPage() %>">&rarr; 끝</a></li>
+		<li><a href="./adreportlist?curPage=<%=paging.getTotalPage() %>">&gt;&gt;</a></li>
 		<%	} %>
 	</ul>
 </div>

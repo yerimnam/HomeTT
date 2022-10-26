@@ -32,7 +32,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			
 			rs.next();
 			
-			nextpartyno = rs.getInt(1);
+//			nextpartyno = rs.getInt(1);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

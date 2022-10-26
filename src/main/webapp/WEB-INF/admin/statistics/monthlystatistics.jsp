@@ -15,7 +15,7 @@
 <%	int partycre  = (int)request.getAttribute("partycre"); %>
 <%	int partyend  = (int)request.getAttribute("partyend"); %>
 
-<h1>월별 통계</h1>
+<h1 class="text-center">월별 통계</h1>
 
 <div style="position:relative; width:1000px; margin: 0 auto;">
 	<h4>OTT별 생성된 방 통계</h4>

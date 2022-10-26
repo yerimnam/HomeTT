@@ -15,25 +15,42 @@ public class MemberReportServiceImpl implements MemberReportService {
 	//DAO 객체
 	private MemberReportDao memberReportDao = new MemberReportDaoImpl();
 	
+	
+	@Override
+	public Report getReport(HttpServletRequest req) {
+		
+		Report report = new Report();
+		
+		report.setBoardCano(0);
+		report.setReportContent( req.getParameter("reportcontent"));
+//		report.setReportDate( req.getParameter("date"));
+		report.setReporter(req.getParameter("reporter"));
+		report.setReportParty(req.getParameter("partyname"));
+		report.setReportTarget(req.getParameter("reporttarget"));
+		
+		return report;
+	}
+	
+	
+	
 	@Override
 	public void write(HttpServletRequest req) {
 		
 		//신고 dto 객체
-		Report report = new Report();
+		Report report = getReport(req);
 		
 		//DB연결 객체
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//게시글 번호 생성
-		int reportno = memberReportDao.selectNextReportno(conn);
-		
-		
+//		int reportno = memberReportDao.selectNextReportno(conn);
+	
 		//게시글 번호 삽입
-		report.setReportNo(reportno);
+//		report.setReportNo(reportno);
 
 		
 		//작성자 Id 값 가져오기
-		report.setReporter( (String) req.getSession().getAttribute("userid") );
+		report.setReporter( (String) req.getSession().getAttribute("userno") );
 		
 		if( memberReportDao.insert(conn, report) > 0 ) {
 			JDBCTemplate.commit(conn);
@@ -44,5 +61,7 @@ public class MemberReportServiceImpl implements MemberReportService {
 		
 		
 	}
+
+
 
 }
