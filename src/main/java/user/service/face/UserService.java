@@ -124,22 +124,95 @@ public interface UserService {
 	/**
 	 * 전달된 userphone를 이용하여 비밀번호를 변경한다
 	 * 
-	 * @param member - 조회할 객체 
-	 * @return Member - 조회된 게시글 정보
+	 * @param member - 수정할 객체 
+	 * @return Member - 수정한 멤버 정보
 	 */
 	public Member UpdatePw(Member member);
 
 //	--------------------------------- 비밀번호찾기 끝 -----------------------------------
 
+//	--------------------------------- 회원탈퇴 시작 -----------------------------------
+
+	
+	/**
+	 * 유저 비밀번호 찾아오기
+	 * 
+	 * @param member - 조회할 회원 아이디
+	 * @return Member - 조회된 회원 비밀번호
+	 */
+	public Member getUserPw(Member member);
+
+	
+//	--------------------------------- 회원탈퇴 끝 -----------------------------------
+
+//	--------------------------------- 개인정보 수정 시작 -----------------------------------
+
+	
+	/**
+	 * 유저 비밀번호 찾아오기
+	 * 
+	 * @param member - 조회할 회원 아이디
+	 * @return Member - 조회된 회원 비밀번호
+	 */
+	public Member getTTUserPw(Member member);
 
 
+	/**
+	 * 회원수정 정보 추출하기
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Member - 회원수정 정보 객체
+	 */
+	public Member getEditInfo(HttpServletRequest req);
 
 
+	/**
+	 * 회원수정 정보를 수정하여 추출하기
+	 * 
+	 * @param req - 요청 세션정보 객체 member - 요청 정보 객체
+	 * @return Member - 회원수정 정보를 수정한 객체
+	 */
+	public Member getEditInfoChange(HttpServletRequest req, Member member);
 
 
+	
+	/**
+	 * 전달된 멤더 데이터를 이용하여 개인정보를 변경한다
+	 * 
+	 * @param member - 수정할 객체 
+	 * @return Member - 수정한 멤버 정보
+	 */
+	public Member UpdateInfo(Member member);
 
 
+//	--------------------------------- 개인정보 수정 끝 -----------------------------------
 
+//	--------------------------------- 유저타입 변환 시작 -----------------------------------
+	
+	
+	/**
+	 * 회원 정보 추출하기
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Member - 회원 정보 객체
+	 */
+	public Member getUserParam(HttpServletRequest req);
+
+
+	/**
+	 * 전달된 멤버 데이터를 이용하여 회원권환을 변경한다
+	 * 
+	 * @param member - 수정할 객체 
+	 * @return Member - 수정한 회원권환 정보
+	 */
+	public Member UpdateType(Member member);
+	
+//	--------------------------------- 유저타입 변환 끝 -----------------------------------
+	
+	
+	
+	
+	
 
 
 

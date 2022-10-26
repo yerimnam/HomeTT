@@ -7,44 +7,53 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import user.dto.MailSmsOk;
+import user.dto.Member;
 import user.service.face.UserService;
 import user.service.impl.UserServiceImpl;
 
 
-
-@WebServlet("/homett/emailok")
-public class EmailOkController extends HttpServlet {
+@WebServlet("/homett/editprofile")
+public class EditProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
+	//서비스 객체
 	private UserService userService = new UserServiceImpl();
-	
+		
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/emailok [GET]");
+		System.out.println("/homett/type [GET]");
 		
-		req.getRequestDispatcher("/WEB-INF/member/searchIdOk.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/member/EditProfile.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		Member member = new Member();
+		
+		
+		//요청 데이터의 한글 인코딩 방식 지정하기 : UTF-8
 		req.setCharacterEncoding("UTF-8");
 		
+		member = userService.getEditInfo(req);
 		
-		MailSmsOk result = userService.MailOkChk(req);
+		//파라미터값이 비어있으면 세션에 있는 기본정보로 채우기
+		userService.getEditInfoChange(req, member);
+		 
+		System.out.println(member);
 		
-		System.out.println("result : " + result);
+		userService.UpdateInfo(member);
 		
-		result.getResultChk();  //getResultChk 안에 값이 담겨있다면 인증이 됬다는거
-		
-		
-
-		
-	
 	
 	}
 	
-
 }
+
+
+
+
+
+
+

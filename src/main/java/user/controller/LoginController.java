@@ -1,6 +1,7 @@
 package user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,9 +25,6 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/login [GET]");
 
-		System.out.println("세션 삭제");
-		req.getSession().invalidate();
-		
 		req.getRequestDispatcher("/WEB-INF/member/login.jsp").forward(req, resp);
 
 	}
@@ -58,9 +56,13 @@ public class LoginController extends HttpServlet {
 			HttpSession session = req.getSession();
 
 			session.setAttribute("login", loginTF);
+			session.setAttribute("userNo", member.getUserNo());
 			session.setAttribute("masterNo", member.getMasterNo());
 			session.setAttribute("userId", member.getUserId());
+			session.setAttribute("userName", member.getUserName());
 			session.setAttribute("userNick", member.getUserNick());
+			session.setAttribute("userEmail", member.getUserEmail());
+			session.setAttribute("userPhone", member.getUserPhone());
 			
 			} else {
 				resp.sendRedirect("error");
@@ -68,7 +70,6 @@ public class LoginController extends HttpServlet {
 		
 		
 
-//		resp.sendRedirect("./main");
 	}
 
 }

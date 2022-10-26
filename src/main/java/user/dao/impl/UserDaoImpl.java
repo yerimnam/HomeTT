@@ -135,7 +135,8 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("UserDao selectLoginInfo() - 시작");
 		
 		String sql = "";
-		sql += "SELECT user_no, master_no, user_id, user_pw, user_name, user_nick FROM member";
+		sql += "SELECT user_no, master_no, user_id, user_pw, user_name, user_nick,";
+		sql += " user_email, user_phone FROM member";
 		sql += " WHERE user_id = ?";
 		
 		Member result = null;
@@ -155,6 +156,8 @@ public class UserDaoImpl implements UserDao {
 				result.setUserPw( rs.getString("user_pw") );
 				result.setUserName( rs.getString("user_name") );
 				result.setUserNick( rs.getString("user_nick") );
+				result.setUserEmail( rs.getString("user_email") );
+				result.setUserPhone( rs.getInt("user_phone") );
 			}
 			
 		} catch (SQLException e) {
@@ -286,7 +289,163 @@ public class UserDaoImpl implements UserDao {
 	
 //	---------------------------------비밀번호찾기 끝 -----------------------------------	
 	
+//	---------------------------------회원탈퇴 시작 -----------------------------------	
 	
+	@Override
+	public Member selectUserPw(Connection conn, Member member) {
+		
+		System.out.println("UserDao selectUserPw() - 시작");
+		
+		String sql = "";
+		sql += "SELECT user_pw FROM member";
+		sql += " WHERE user_id = ?";
+		
+		Member result = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = new Member();
+				
+				result.setUserPw( rs.getString("user_pw") );
+
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+			
+		System.out.println("UserDao selectUserPw() - 끝");
+		return result;
+
+	}
+	
+	
+	@Override
+	public int deleteUserInfo(Connection conn, Member member) {
+		System.out.println("UserDao deleteUserInfo() - 시작");
+
+		System.out.println(member.getUserId() + " ++++ " + member.getUserPw());
+		String sql = "";
+		sql += "DELETE FROM member";
+		sql += " WHERE user_id = ?"; 
+		sql += " AND user_pw = ?";
+
+		//INSERT 수행 결과 변수
+		int result = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			ps.setString(2, member.getUserPw());
+			
+			result = ps.executeUpdate();
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+
+		System.out.println("UserDao deleteUserInfo() - 끝");
+		return result;
+		
+	} 
+
+//	---------------------------------회원탈퇴 끝 -----------------------------------	
+	
+//	---------------------------------회원정보 수정 시작 -----------------------------------	
+	
+	@Override
+	public int UpdateUserInfo(Connection conn, Member member) {
+		System.out.println("UpdateUserInfo getUserPw : " + member.getUserPw());
+		System.out.println("UpdateUserInfo getUserNick : " + member.getUserNick());
+		System.out.println("UpdateUserInfo getUserEmail : " + member.getUserEmail());
+		System.out.println("UpdateUserInfo getUserPhone : " + member.getUserPhone());
+		
+		String sql = "";
+//		sql += "UPDATE member";
+//		sql += "	SET (user_pw, user_nick, user_email, user_phone) = (?, ?, ?, ?)";
+//		sql += "	FROM member";
+		
+		sql += "UPDATE member";
+		sql += "	SET user_pw = ?";
+		sql += "	, user_nick = ?";
+		sql += "	, user_email = ?";
+		sql += "	, user_phone = ?";
+		sql += "	WHERE user_id = ? ";
+
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserPw());
+			ps.setString(2, member.getUserNick());
+			ps.setString(3, member.getUserEmail());
+			ps.setInt(4, member.getUserPhone());
+			ps.setString(5, member.getUserId());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
+	}
+	
+//	---------------------------------회원정보 수정 끝 -----------------------------------	
+	
+//	---------------------------------유저타입 변환 시작 -----------------------------------	
+	
+	
+	@Override
+	public int UpdateUserType(Connection conn, Member member) {
+		System.out.println("UserDao UpdateUserType() - 시작");
+
+		System.out.println("member.getUserId() : " + member.getUserId());
+		System.out.println("member.getUserName() : "+ member.getUserName());
+		
+		String sql = "";
+		
+		sql += "UPDATE member";
+		sql += "	SET master_no = '1'";
+		sql += "	WHERE user_id = ? ";
+		sql += "	AND user_name = ? ";
+
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			ps.setString(2, member.getUserName());
+			
+			res = ps.executeUpdate();
+			
+			 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("UserDao UpdateUserType() - 끝");
+		return res;
+		
+		
+	}
+
+//	---------------------------------유저타입 변환 끝 -----------------------------------	
 	
 }
 
