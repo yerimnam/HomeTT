@@ -44,5 +44,6 @@ public interface FaqInquiriesService {
 	 * @return FaqBoard - 조회된 게시글 정보
 	 */
 	public FaqBoard view(FaqBoard faqArticlenumber);
+	
 
 }   
