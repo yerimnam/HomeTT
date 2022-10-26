@@ -32,7 +32,7 @@
      IMP.request_pay({ // param
          pg: "html5_inicis",
          pay_method: "card",
-         merchant_uid : "<%=party.getPartyNo()%>_" +  new Date().getTime(),
+         merchant_uid : 'merchant_' +  new Date().getTime(),
           name: "HomeTT",
           paid_at: paid_at,
           

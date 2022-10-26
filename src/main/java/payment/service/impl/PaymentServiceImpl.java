@@ -20,6 +20,7 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Override
 	public Member getuserinfo(int userno) {
+		System.out.println("Service getuserinfo");
 		return paymentDao.selectUserInfo(JDBCTemplate.getConnection(),userno);
 	}
 	

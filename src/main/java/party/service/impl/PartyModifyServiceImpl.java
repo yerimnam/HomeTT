@@ -59,7 +59,7 @@ public class PartyModifyServiceImpl implements PartyModifyService {
 		Party party = new Party();
 		
 		//전달파라미터 partyRoomNo 추출(파싱)
-		String param = req.getParameter("partyRoomNo");
+		String param = req.getParameter("partyRoomNo"); 
 		System.out.println(param);
 		
 		if( null != param && !"".equals(param)) {//전달파라미터가 null또는 ""빈문자열 아닐때
