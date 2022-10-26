@@ -128,6 +128,15 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 	}
 
 
+	@Override
+	public List<PartyBoard> getPartySearchList(String searchType, String keyword) {
+		System.out.println("getPartySearchList() - 시작");
+		System.out.println("searchType" + searchType);
+		System.out.println("keyword" + keyword);
+		return partyRoomBoardDao.selectPbSearchList(JDBCTemplate.getConnection(), searchType, keyword);
+	}
+
+
 
 
 

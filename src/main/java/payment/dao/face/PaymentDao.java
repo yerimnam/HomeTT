@@ -48,6 +48,10 @@ public interface PaymentDao {
 	 */
 	public Payment selectpayresult(Connection conn, Payment payinsert);
 
+	
+	//@@@@@@파티부분@@@@@@@
+	public int insertPartyM(Connection conn, Payment returnData);
+
 
 	
 	

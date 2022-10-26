@@ -57,7 +57,7 @@ th {
 
 </table>
 
-<%@ include file="../layout/paging.jsp" %>
+<%@ include file="../layout/reportpaging.jsp" %>
 
 <%@ include file="../layout/reportsearch.jsp" %>
 

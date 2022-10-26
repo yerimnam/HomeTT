@@ -23,10 +23,10 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		Party party = new Party();
 		
 //		party.setPartyKind ( req.getParameter("partykind") );
-		party.setPartyRule ( req.getParameter("partyrule ") );
-		party.setPartyName ( req.getParameter("partyname") );
-		party.setPartyLeader ( req.getParameter("partyleader") );
-		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
+		party.setPartyRule(req.getParameter("partyrule"));
+		party.setPartyName(req.getParameter("partyname"));
+		party.setPartyLeader(req.getParameter("partyleader"));
+		party.setPartyMember(Integer.parseInt(req.getParameter("partymember")));
 //		party.setPartyCreDate(null);
 //		party.setPartyEndDate(null);
 		

@@ -49,12 +49,15 @@ public class PaymentCompleteController extends HttpServlet {
 		  
 		  req.setCharacterEncoding("UTF-8");
 		  
-		  //리턴 데이터를 DTO 에 저장
+		  //파라미터 데이터를 DTO 에 저장
 		  
 		  Payment returnData= paymentService.getParam(req);
 		  
 		 //추출한 값으로 insert하기
 		  Payment payinsert = paymentService.setPayment(returnData);
+		  
+		  //@@@@@@@@파티부분@@@@@@@@
+		  int result = paymentService.insertParty(returnData);
 		  
 		  //인서트 된 값 조회해오기
 		  

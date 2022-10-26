@@ -20,7 +20,7 @@ public interface PaymentListDao {
 	 * @return -기간별 결제내역 조회 반환
 	 */
 
-	List<Payment> selectPayList(Connection connection, PbPaging paging, int userNo, Date start, Date end);
+	public List<Payment> selectPayList(Connection connection, PbPaging paging, int userNo, Date start, Date end);
 	
 	/**
 	 * 총 게시글 조회

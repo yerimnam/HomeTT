@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type:"post"			//요청 메소드
-			, url: "/homett/searchid"		//요청 URL
+			, url: "/homett/ttpwchk"		//요청 URL
 			, data: {		//요청 파라미터
 				name : $("#username").val()	
 				, email : $("#useremail").val()
