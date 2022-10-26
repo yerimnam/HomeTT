@@ -199,7 +199,9 @@ textarea {
 					<td><%=partyBoardList.get(i).getPartyBoardWriter()%></td>
 			
 				
-					<td><%=partyBoardList.get(i).getPartyBoardTitle()%><form action="./comment" method="get"><button id="btn-d">❌</button></form></td>
+					<td><%=partyBoardList.get(i).getPartyBoardTitle()%>
+					<a href="./comment?partyboardno=<%=partyBoardList.get(i).getPartyBoardNo()%>"><button id="btn-d">❌</button></a>
+					</td>
 				
 				</tr>
 
