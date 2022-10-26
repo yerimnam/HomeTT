@@ -88,7 +88,6 @@ public class InquiryInquiriesServiceImpl implements InquiryInquiriesService {
 	public InquiryBoard getparam(HttpServletRequest req) {
 		System.out.println("getparam 시작");
 		InquiryBoard inquiryBoard = new InquiryBoard();
-		
 		inquiryBoard.setInquiryArticleTitle(req.getParameter("inquiryTitle")); //글제목
 		inquiryBoard.setInquiryContent(req.getParameter("content"));// 글 본문 
 		
@@ -122,5 +121,86 @@ public class InquiryInquiriesServiceImpl implements InquiryInquiriesService {
 		
 		System.out.println("setInquiry end");
 		return null;
+	}
+	
+	
+	@Override
+	public InquiryBoard getdataforselect(HttpServletRequest req) {
+	
+		System.out.println("수정하기 파라미터");
+		InquiryBoard inquiryforselect = new InquiryBoard();
+		
+		
+		int param = Integer.parseInt(req.getParameter("inquiryNo"));
+		inquiryforselect.setInquiryArticleNumber(param);
+		
+		return inquiryforselect ;
+	}
+	
+	@Override
+	public InquiryBoard getdata(HttpServletRequest req) {
+
+		System.out.println("수정완료를 위한 파라미터 ");
+		InquiryBoard inquiryUpdate = new InquiryBoard();
+		
+	
+		
+			inquiryUpdate.setInquiryArticleNumber(Integer.parseInt( req.getParameter("inquiryNo")));
+			inquiryUpdate.setInquiryArticleTitle(req.getParameter("inquiryTitle"));
+			inquiryUpdate.setInquiryContent(req.getParameter("content"));
+			
+		return inquiryUpdate;
+		
+	}
+	
+	
+	@Override
+	public InquiryBoard getUpdate(InquiryBoard inquiryNo) {
+		
+		return inquiryDao.selectcontent(JDBCTemplate.getConnection(),inquiryNo);
+	}
+	
+	
+	@Override
+	public InquiryBoard setUpdate(InquiryBoard inquiryNum) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int resultUpdate = inquiryDao.updateDo(conn,inquiryNum);
+		
+		if(resultUpdate>0) {
+			
+			System.out.println("update 성공");
+			JDBCTemplate.commit(conn);
+			
+			return inquiryNum;
+			
+		}else {
+			System.out.println("update 실패");
+			JDBCTemplate.rollback(conn);
+			return null;
+		}
+		
+	
+	}
+	
+	
+	@Override
+	public Void deleteInquiry(InquiryBoard inquiryNo) {
+
+		Connection conn  =JDBCTemplate.getConnection();
+	
+		
+		if( inquiryDao.deleteDo(conn,inquiryNo) >0) {
+			
+			System.out.println("delete 성공");
+			JDBCTemplate.commit(conn);
+		}else {
+			
+			System.out.println("delete 실패");
+			
+		}
+		return null;
+		
 	}
 }

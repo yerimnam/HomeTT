@@ -188,9 +188,108 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 		}finally {
 			JDBCTemplate.close(ps);
 		}
-		
 		System.out.println("inquiryinsert_end");
 		return result;
+	}
+	
+	@Override
+	public InquiryBoard selectcontent(Connection conn, InquiryBoard inquiryNo) {
+	
+		System.out.println("selectcontent -start");
+		
+		String sql ="";
+		sql +="SELECT * FROM cs_inquiry";
+		sql +=" WHERE inquiry_articlenumber =?";
+		
+		InquiryBoard updateContent = null;
+		try {
+			ps =conn.prepareStatement(sql);
+
+			ps.setInt(1, inquiryNo.getInquiryArticleNumber());
+			
+			rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				updateContent = new InquiryBoard();
+				updateContent.setInquiryArticleNumber(rs.getInt("inquiry_articlenumber"));
+				updateContent.setInquiryArticleTitle(rs.getString("inquiry_articletitle"));
+				updateContent.setUserNo(rs.getInt("user_no"));
+				updateContent.setInquiryContent(rs.getString("inquiry_content"));
+				updateContent.setInquiryDate(rs.getDate("inquiry_date"));;
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		
+		
+		return updateContent ;
+	}
+	
+	
+	@Override
+	public int updateDo(Connection conn, InquiryBoard inquiryNum) {
+		System.out.println("updateDo 시작");
+		
+		String sql ="";
+		sql +="UPDATE cs_inquiry";
+		sql +=" SET inquiry_articletitle =?,inquiry_content=?";
+		sql +=" WHERE inquiry_articlenumber =?";
+		
+		System.out.println(inquiryNum);
+		
+		int result =0;
+		try {
+			ps =conn.prepareStatement(sql);
+			
+			ps.setString(1, inquiryNum.getInquiryArticleTitle());
+			ps.setString(2, inquiryNum.getInquiryContent());
+			ps.setInt(3, inquiryNum.getInquiryArticleNumber());
+			
+			result = ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("updateDo end");
+	return result;
+	}
+	
+	@Override
+	public int deleteDo(Connection conn, InquiryBoard inquiryNo) {
+
+		System.out.println("deleteDo 시작");
+		
+		String sql ="";
+		sql +="DELETE cs_inquiry";
+		sql +=" WHERE inquiry_articlenumber =? ";
+		
+		int deleteresult  =0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, inquiryNo.getInquiryArticleNumber());
+			
+			deleteresult = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			JDBCTemplate.close(ps);
+		}
+		
+		
+		System.out.println("deleteDo 끝");
+		return deleteresult;
 	}
 
 }

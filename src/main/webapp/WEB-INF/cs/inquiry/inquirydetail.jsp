@@ -19,8 +19,19 @@ function back (){
 	
 }
 
+function update(){
+		console.log("수정하기")
+	alert("수정하시겠습니까?")
+	location.href="/homett/inquiryupdate?inquiryNo=<%=inquiryDetail.getInquiryArticleNumber()%>";
+	}
+	
+function deleteinquiry(){
+	
+	console.log("삭제하기")
+	confirm("삭제 하시겠습니까?")
+	location.href="/homett/inquirydelete?inquiryNo=<%=inquiryDetail.getInquiryArticleNumber()%>";
 
-
+}
 </script>
 
 <body>
@@ -60,9 +71,8 @@ function back (){
 <div>
 
 	<button id="btnList" onclick="back()">목록</button>
-	<button id="btnUpdate">수정</button>
-	<button id="btnDelete">삭제</button>
-	
+	<button id="btnUpdate" onclick="update()">수정</button>
+	<button id="btnDelete" onclick="deleteinquiry()">삭제</button>
 
 
 </div>

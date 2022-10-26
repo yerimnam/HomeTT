@@ -17,7 +17,7 @@ public interface InquiryInquiriesService {
 	 * @return 조회 결과 반환 
 	 */
 
-	List<InquiryBoard> getinquiry(int userNo, Paging paging);
+	public List<InquiryBoard> getinquiry(int userNo, Paging paging);
 	
 	
 	/**
@@ -28,7 +28,7 @@ public interface InquiryInquiriesService {
 	 * @return
 	 */
 
-	Paging getPaging(HttpServletRequest req, int userNo);
+	public Paging getPaging(HttpServletRequest req, int userNo);
 
 
 	/**
@@ -36,7 +36,7 @@ public interface InquiryInquiriesService {
 	 * @param req 요청 파라미터 -글제목
 	 * @return 조회된 글제목 
 	 */
-	InquiryBoard getTitle(HttpServletRequest req);
+	public InquiryBoard getTitle(HttpServletRequest req);
 
 	
 	/**
@@ -46,7 +46,7 @@ public interface InquiryInquiriesService {
 	 * @return -글제목의 상세 내용 
 	 */
 
-	InquiryBoard getDetail(int userNo, InquiryBoard inquiryTitle);
+	public InquiryBoard getDetail(int userNo, InquiryBoard inquiryTitle);
 
 	
 	/**
@@ -56,7 +56,7 @@ public interface InquiryInquiriesService {
 	 * @return 작성한 글 파라미터 
 	 */
 
-	InquiryBoard getparam(HttpServletRequest req);
+	public InquiryBoard getparam(HttpServletRequest req);
 
 	
 	/**
@@ -66,7 +66,41 @@ public interface InquiryInquiriesService {
 	 * @return 문의글 저장
 	 */
 
-	InquiryBoard setInquiry(InquiryBoard param, int userNo);
+	public InquiryBoard setInquiry(InquiryBoard param, int userNo);
+
+	
+	/**
+	 * 수정하기 파라미터 
+	 * @param req- 요청 파라미터
+	 * @return
+	 */
+	public InquiryBoard getdata(HttpServletRequest req);
+
+	public InquiryBoard getdataforselect(HttpServletRequest req);
+	/**
+	 * 수정해야하는 글 가져와서 보여주기
+	 * @param inquiryNo -글 번호
+	 * @return 글번호로 조회안 상세 내용
+	 */
+
+	public InquiryBoard getUpdate(InquiryBoard inquiryNo);
+
+
+	public InquiryBoard setUpdate(InquiryBoard inquiryNum);
+
+	
+	
+	/**
+	 * 삭제하기
+	 * @param inquirtyNo -글 번호
+	 * @return
+	 */
+
+	public Void deleteInquiry(InquiryBoard inquiryNo);
+
+
+
+
 
 
 

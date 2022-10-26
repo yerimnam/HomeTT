@@ -24,7 +24,7 @@ public class InquiryCreateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("1:1 문의 작성하기 시작");
+		System.out.println("/homett/inquiertcreate [GET]");
 		//한글 인코딩
 		req.setCharacterEncoding("UTF-8");
 
@@ -34,7 +34,6 @@ public class InquiryCreateController extends HttpServlet {
 		
 		//model값 저장하여 view전달
 		
-		System.out.println("1:1 문의 작성하기 끝");
 		req.getRequestDispatcher("/WEB-INF/cs/inquiry/inquiryCreate.jsp").forward(req, resp);
 	}
 	
@@ -60,6 +59,7 @@ public class InquiryCreateController extends HttpServlet {
 		//회원번호,파라미터로 게시글 저장하기
 		InquiryBoard insertInquiry = inquiryService.setInquiry(param,userNo);
 		
+		resp.sendRedirect("/homett/inquirylist");
 	
 	}
 }

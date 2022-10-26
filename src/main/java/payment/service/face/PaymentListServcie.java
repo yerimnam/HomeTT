@@ -23,7 +23,7 @@ public interface PaymentListServcie {
 	 * @return -형식으로 변환된 날짜
 	 */
 	
-	Date changeDate(HttpServletRequest reqq, String div);
+	public Date changeDate(HttpServletRequest reqq, String div);
 	
 	
 	
@@ -36,7 +36,7 @@ public interface PaymentListServcie {
 	 */
 	
 	
-	PbPaging getPaging(HttpServletRequest req, int userNo, Date start, Date end);
+	public PbPaging getPaging(HttpServletRequest req, int userNo, Date start, Date end);
 	
 	
 
@@ -49,7 +49,7 @@ public interface PaymentListServcie {
 	 * @return 기가별 조회된 결제내역 리스트 
 	 */
 	
-	List<Payment> getPaymentList(PbPaging paging, int userNo,Date start, Date end);
+	public List<Payment> getPaymentList(PbPaging paging, int userNo,Date start, Date end);
 
 
 

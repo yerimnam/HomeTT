@@ -1,5 +1,8 @@
+<%@page import="inquiry.controller.InquiryUpdateController"%>
+<%@page import="inquiry.dto.InquiryBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% InquiryBoard updatecotent = (InquiryBoard)request.getAttribute("updatecontent"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +40,7 @@ $(document).ready(function(){
 		});
 				//textarea#note에 웹 에디터 적용
 				$("#content").summernote()
-				$("user_id").summernote()
+				$("inquiryTitle").summernote()
 			
 				
 				
@@ -48,15 +51,25 @@ $(document).ready(function(){
 </script>
 
 <script type="text/javascript">
+
 $(document).ready(function(){
 
-	$("#btinwrite").click(function(){
+	$("#btnupdate").click(function(){
 		
-		$("#create").submit();
+		$("#updateinquiry").submit();
 	})		
 	
 })
 
+
+
+function updatedone(){
+	
+	console.log("완료")
+		alert("수정완료")
+	
+}
+	
 
 
 
@@ -89,21 +102,22 @@ body{
 <h2>문의사항 작성하기</h2>
 
 <hr>
-
-<form action="/homett/inquirycreate" method="post" id="create">
-
-	
+<form action="/homett/inquiryupdate" method="post" id="updateinquiry">
 
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
+	<input type="text" hidden="" name="inquiryNo" value="<%=updatecotent.getInquiryArticleNumber() %>">
+	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
+	
+	
 	<div id="title">
 	<span>제목</span>
-	<input type="text" id="inquiryTitle" name="inquiryTitle">
+	<input type="text" id="inquiryTitle" name="inquiryTitle" value="<%=updatecotent.getInquiryArticleTitle() %>">
 	</div>
 	
 	<br><br><br>
-	<textarea id="content" name="content"></textarea><br><br>
+	<textarea id="content" name="content" ><%= updatecotent.getInquiryContent()%></textarea><br><br>
 
-<button type="button" id="btinwrite" >작성완료</button>
+<button type="button" id="btnupdate" >수정완료</button>
 <button type="button" id="cancelwriter" onclick="history.back()">취소</button>
 </form>
 
