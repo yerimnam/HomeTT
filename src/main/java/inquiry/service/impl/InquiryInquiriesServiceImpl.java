@@ -62,7 +62,7 @@ public class InquiryInquiriesServiceImpl implements InquiryInquiriesService {
 		
 		if(param != null && !"".equals(param)) {
 			inquiryBoard.setInquiryArticleTitle(param);
-			
+			inquiryBoard.setAnswercontent(param);
 			
 		}
 		

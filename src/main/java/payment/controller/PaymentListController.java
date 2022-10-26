@@ -69,7 +69,7 @@ public class PaymentListController extends HttpServlet {
 		//기간과 이름을 으로 게시글 조회
 		List<Payment> paymentList = paymentListService.getPaymentList(paging,userNo,start,end);
 
-		for( Payment p : paymentList )	System.out.println(p.getOrderNo() + " : " + p.getPartyNo());
+//		for( Payment p : paymentList )	System.out.println(p.getOrderNo() + " : " + p.getPartyNo());
 		
 		//model값을 view로 보내기
 		req.setAttribute("paymentList", paymentList);
@@ -82,12 +82,6 @@ public class PaymentListController extends HttpServlet {
 	}
 	
 	
-	//사용자가 기간을 설정하여 내역 조히하면  post로 요청함
- @Override
- protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-	}
-
- 
 
 }
