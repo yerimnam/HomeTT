@@ -134,7 +134,7 @@ public class AdReportListDaoImpl implements AdReportListDao {
 
 	@Override
 	public List<Report> selectSearchList(Connection conn, Paging paging, String searchType, String keyword) {
-		System.out.println("selectSearchList searchpaging 시작" + paging);
+//		System.out.println("selectSearchList searchpaging 시작" + paging);
 		keyword = '%' + keyword + '%';
 		
 		String sql = "";
@@ -180,14 +180,14 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectSearchList searchpaging 끝" + paging);
-		System.out.println("selectSearchList()" + reportList);
+//		System.out.println("selectSearchList searchpaging 끝" + paging);
+//		System.out.println("selectSearchList()" + reportList);
 		return reportList;
 	}
 	
 	@Override
 	public int selectSearchCntAll(Connection conn, String searchType, String keyword) {
-		System.out.println("selectSearchCntAll 시작" + searchType + keyword);
+//		System.out.println("selectSearchCntAll 시작" + searchType + keyword);
 		keyword = '%' + keyword + '%';
 		
 		String sql = "";
@@ -218,8 +218,8 @@ public class AdReportListDaoImpl implements AdReportListDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
-		System.out.println("selectSearchCntAll" + count);
+//		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
+//		System.out.println("selectSearchCntAll" + count);
 		return count;
 	}
 	
