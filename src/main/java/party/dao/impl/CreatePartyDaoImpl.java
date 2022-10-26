@@ -1,7 +1,6 @@
 package party.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,9 +30,9 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			
 			rs = ps.executeQuery();
 			
-			while( rs.next() ) {
-				nextpartyno = rs.getInt("nextval");
-			}
+			rs.next();
+			
+//			nextpartyno = rs.getInt(1);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,13 +61,12 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			//sql수행 객체 생성
 			 ps = conn.prepareStatement(sql);
 			 ps.setInt(1, userno);
-			 
 			 //수행 결과 저장
 			 rs = ps.executeQuery();
 			 
 			 //조회 결과 처리 
 			 while(rs.next()) {
-//				 userinfo.setUserNo(rs.getInt("user_no"));
+				 userinfo.setUserNo(rs.getInt("user_no"));
 				 userinfo.setUserId(rs.getString("user_id"));
 				 userinfo.setUserName(rs.getString("user_name"));
 			 }
@@ -95,8 +93,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		//작성할 값 전부 적어야 함
 		String sql ="";
 		sql += "INSERT INTO party";
-		sql	+= " ( party_no, party_room_no, party_name, party_kind, party_rule, party_member, party_credate, party_enddate )";
-		sql += " VALUES ( party_seq.nextval, party_seq.nextval, ?, ?, ?, ?, ?, ? )";
+		sql	+= " ( party_no, party_name, party_kind, party_rule, party_member )";
+		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ? )";
 		
 		int result = 0;
 		
@@ -109,8 +107,6 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			ps.setString(2, party.getPartyKind());
 			ps.setString(3, party.getPartyRule());
 			ps.setInt(4, party.getPartyMember());
-			ps.setDate(5, (Date) party.getPartyCreDate());
-			ps.setDate(6, (Date) party.getPartyEndDate());
 
 			//수행 결과 저장
 			result = ps.executeUpdate();

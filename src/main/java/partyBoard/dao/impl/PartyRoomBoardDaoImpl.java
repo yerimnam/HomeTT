@@ -215,7 +215,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, partyBoard.getCommentsNo());
+			ps.setInt(1, partyBoard.getPartyBoardNo());
 
 			res = ps.executeUpdate();
 
