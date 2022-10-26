@@ -29,7 +29,7 @@ public interface EventInquiriesService {
 	 */
 	public Paging getPaging(HttpServletRequest req);
 	
-	
+	 
 	
 	/**
 	 *  전달 파라미터 eventArticlenumber를 EventBoard DTO로 저장하여 반환한다
