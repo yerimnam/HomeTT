@@ -34,6 +34,9 @@ public interface CreatePartyService {
 	 * @return String  조회한 유저정보 반환
 	 */
 	public Member getuserinfo(int userno);
+
+
+	Party getCreateParty(HttpServletRequest req);
 	
 	
 }

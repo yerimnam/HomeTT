@@ -41,7 +41,7 @@ public class CreatePartyController extends HttpServlet {
 		
 		
 		//파티 생성 전달 파라미터 추출
-//		Party party = createpartyService.getCreateParty(req);
+		Party party = createpartyService.getCreateParty(req);
 //		System.out.println("CreatePartyController doPost() - party : " + party);
 		
 		
@@ -50,7 +50,7 @@ public class CreatePartyController extends HttpServlet {
 		createpartyService.create(req);
 		
 		//JSP View로 객체 전달하기
-//		req.setAttribute("partyinfo", partyinfo);
+		req.setAttribute("partyinfo", party);
 		
 		
 		

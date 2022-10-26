@@ -80,7 +80,7 @@ public class WishListDaoImpl implements WishListDao {
 			ps.setString(3, wishlist.getPartyName());
 			ps.setDate(4, (Date) wishlist.getPartyCredate());
 			ps.setDate(5, (Date) wishlist.getPartyEnddate());
-			ps.setInt(6, res);
+			ps.setString(6, wishlist.getPartyKind());
 			
 			res = ps.executeUpdate();
 			

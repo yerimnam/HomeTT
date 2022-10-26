@@ -194,13 +194,14 @@ textarea {
 				for (int i = 0; i < partyBoardList.size(); i++) {
 				%>
 
-			<form action="./comment" method="post">
 				<tr>
 					<td><%=partyBoardList.get(i).getPartyBoardNo()%></td>
 					<td><%=partyBoardList.get(i).getPartyBoardWriter()%></td>
-					<td><%=partyBoardList.get(i).getPartyBoardTitle()%><button id="btn-d">❌</button></td>
+			
+				
+					<td><%=partyBoardList.get(i).getPartyBoardTitle()%><form action="./comment" method="get"><button id="btn-d">❌</button></form></td>
+				
 				</tr>
-			</form>
 
 				<%
 				}

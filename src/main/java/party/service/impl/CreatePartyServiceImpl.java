@@ -17,22 +17,22 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 	//DAO 객체
 	private CreatePartyDao createpartyDao = new CreatePartyDaoImpl();
 	
-//	@Override
-//	public Party getCreateParty(HttpServletRequest req) {
-//		
-//		Party party = new Party();
-//		
-//		party.setPartyKind ( req.getParameter("partykind") );
-//		party.setPartyRule ( req.getParameter("partyrule ") );
-//		party.setPartyName ( req.getParameter("partyname") );
-//		party.setPartyLeader ( req.getParameter("partyleader") );
-//		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
-//		party.setPartyCreDate(null);
-//		party.setPartyEndDate(null);
-//		
-//		return party;
-//	}
-//	
+	@Override
+	public Party getCreateParty(HttpServletRequest req) {
+		
+		Party party = new Party();
+		
+		party.setPartyKind ( req.getParameter("partykind") );
+		party.setPartyRule ( req.getParameter("partyrule ") );
+		party.setPartyName ( req.getParameter("partyname") );
+		party.setPartyLeader ( req.getParameter("partyleader") );
+		party.setPartyMember( Integer.parseInt(req.getParameter("partymember")) );
+		party.setPartyCreDate(null);
+		party.setPartyEndDate(null);
+		
+		return party;
+	}
+	
 
 	@Override
 	public void create(HttpServletRequest req) {

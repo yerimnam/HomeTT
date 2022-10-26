@@ -1,6 +1,7 @@
 package party.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,12 +62,13 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			//sql수행 객체 생성
 			 ps = conn.prepareStatement(sql);
 			 ps.setInt(1, userno);
+			 
 			 //수행 결과 저장
 			 rs = ps.executeQuery();
 			 
 			 //조회 결과 처리 
 			 while(rs.next()) {
-				 userinfo.setUserNo(rs.getInt("user_no"));
+//				 userinfo.setUserNo(rs.getInt("user_no"));
 				 userinfo.setUserId(rs.getString("user_id"));
 				 userinfo.setUserName(rs.getString("user_name"));
 			 }
@@ -107,6 +109,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			ps.setString(2, party.getPartyKind());
 			ps.setString(3, party.getPartyRule());
 			ps.setInt(4, party.getPartyMember());
+			ps.setDate(5, (Date) party.getPartyCreDate());
+			ps.setDate(6, (Date) party.getPartyEndDate());
 
 			//수행 결과 저장
 			result = ps.executeUpdate();
