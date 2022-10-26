@@ -14,5 +14,8 @@ public interface WishListCheckDao {
 	 * @return List<WishListCheck> - 테이블 전체 조회 목록
 	 */
 	public List<WishListCheck> selectAll(Connection conn);
+	
+	
+	
 
 }

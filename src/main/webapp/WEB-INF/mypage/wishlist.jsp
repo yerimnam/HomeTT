@@ -80,8 +80,9 @@ li {
 		<hr style="height: 1px; background-color: black;">
 		<li>참여 금액 : <%=wishList.get(i).getPaymentamount() %> 원</li>
 	</ul>
-</div>
 <% } %>
+
+
 
 </div>
 <hr>
