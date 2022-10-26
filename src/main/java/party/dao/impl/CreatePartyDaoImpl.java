@@ -30,9 +30,9 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			
 			rs = ps.executeQuery();
 			
-			rs.next();
-			
-			nextpartyno = rs.getInt(1);
+			while( rs.next() ) {
+				nextpartyno = rs.getInt("nextval");
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -93,8 +93,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		//작성할 값 전부 적어야 함
 		String sql ="";
 		sql += "INSERT INTO party";
-		sql	+= " ( party_no, party_name, party_kind, party_rule, party_member )";
-		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ? )";
+		sql	+= " ( party_no, party_room_no, party_name, party_kind, party_rule, party_member, party_credate, party_enddate )";
+		sql += " VALUES ( party_seq.nextval, party_seq.nextval, ?, ?, ?, ?, ?, ? )";
 		
 		int result = 0;
 		

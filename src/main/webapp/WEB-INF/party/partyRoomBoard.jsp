@@ -26,8 +26,8 @@
 List<PartyBoard> partyBoardList = (List) request.getAttribute("partyBoardList");
 %>
 
-<% PartyBoard getpartyBoardno = (PartyBoard) request.getAttribute("partyBoardno"); %>
-
+<%	PartyBoard partyBoard = (PartyBoard) request.getAttribute("partyBoard"); %>
+	
 <%
 PbPaging paging = (PbPaging) request.getAttribute("paging");
 %>
@@ -382,8 +382,11 @@ function showPrompt(){
 <script type="text/javascript">
 
 	//삭제버튼
+// 		$("#btnDelete").click(function() {
+<%-- 		$(location).attr('href', './delete?partyboardno=<%=partyBoard.getPartyBoardNo() %>') --%>
+// })
 	
-	
+
 
 	
 </script>
