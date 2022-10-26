@@ -28,7 +28,7 @@ public class PartyExitContorller extends HttpServlet {
 		partyExitService.delete(partyexit);
 		
 		req.getRequestDispatcher("/WEB-INF/mypage/partyExit.jsp").forward(req, resp);
-		
+		 
 	}
 	
 }
