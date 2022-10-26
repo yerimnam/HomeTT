@@ -9,6 +9,18 @@ Party viewParty = (Party) request.getAttribute("viewParty");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#payBtn").click(function() {
+		$("#payform").submit();
+	})
+	
+
+})
+</script>
 <style type="text/css">
 ul {
 	list-style: none;
@@ -41,12 +53,11 @@ ul {
 		}
 		%>
 	</ul>
-
-
-	<button onclick="location.href='./payamount'">가입하기</button>
+<form action="/homett/payamount" method="get" id="payform">
+	<button onclick="location.href='./payamount'" id= "payBtn">가입하기</button>
 	<!-- 	<button onclick="location.href='./joinparty'">가입하기</button> -->
 	<button onclick="location.href='./partymodify'">목록으로</button>
-
+</form>
 </body>
 </html>
 

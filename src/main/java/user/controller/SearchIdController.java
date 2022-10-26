@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import user.dto.Member;
 import user.dto.MailSmsOk;
+import user.dto.Member;
 import user.service.face.UserService;
 import user.service.impl.UserServiceImpl;
 
@@ -32,6 +32,8 @@ public class SearchIdController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("/homett/searchid [Post]");
+		
 		req.setCharacterEncoding("UTF-8");
 		
 		Member member = new Member();
