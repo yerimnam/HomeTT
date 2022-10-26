@@ -26,8 +26,8 @@
 List<PartyBoard> partyBoardList = (List) request.getAttribute("partyBoardList");
 %>
 
-<% PartyBoard getpartyBoardno = (PartyBoard) request.getAttribute("partyBoardno"); %>
-
+<%	PartyBoard partyBoard = (PartyBoard) request.getAttribute("partyBoard"); %>
+	
 <%
 PbPaging paging = (PbPaging) request.getAttribute("paging");
 %>
@@ -197,7 +197,10 @@ textarea {
 				<tr>
 					<td><%=partyBoardList.get(i).getPartyBoardNo()%></td>
 					<td><%=partyBoardList.get(i).getPartyBoardWriter()%></td>
-					<td><%=partyBoardList.get(i).getPartyBoardTitle()%><button id="btn-d">❌</button></td>
+			
+				
+					<td><%=partyBoardList.get(i).getPartyBoardTitle()%><form action="./comment" method="get"><button id="btn-d">❌</button></form></td>
+				
 				</tr>
 
 				<%
@@ -382,13 +385,8 @@ function showPrompt(){
 }
 </script>
 
-<script type="text/javascript">
 
-	//삭제버튼
-	
-	
 
 	
-</script>
 
 </html>

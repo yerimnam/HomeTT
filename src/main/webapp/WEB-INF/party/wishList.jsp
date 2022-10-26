@@ -1,30 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="util.PrPaging"%>
+<%@page import="party.dto.Party"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script type="text/javascript">
+<!-- SweetAlert2 --> 
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
 
+
+<!-- jQuery 2.2.4 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+<script>
+
+// $(function(){
+	
+// 	$('.part-title, .part-contents').not('.heart-area').on('click',function(e) {
+// 	    swal({
+// 	    	//여기에 파티 정보가 나오게했음 좋겠다
+// 	    title: "해당 파티에 가입하시겠습니까?", 
+// 	    type: "warning",
+// 	    confirmButtonText: "가입",
+// 	    showCancelButton: true
+// 	    })
+// 	      .then((result) => {
+// 	      if (result.value) {
+	    	  
+// 			  window.location = '/homett/joinparty';
+	      
+// 	      //목록으로 라고 글자를 넣어도 안바뀐다
+// 	      } else if (result.dismiss === 'cancel') {
+// 	          swal(
+// 	            'Cancelled',
+// 	            'Your stay here :)',
+// 	            'error'
+// 	          )
+// 	      }
+// 	    })
+// 	});
+	
+// 	$(document).on('click', '.heart', function(){
+// 		// 하트 상태 DB 저장
+// 		$(this).toggleClass('on off');
+// 	});
+
+// });
 </script>
 </head>
+
 <body>
 
-	<form id="like_form">
 
-		<table id="list">
-			<input type="hidden" name="command" value="like_it">
-			<input type="hidden" name="board_num" value="${board.num}">
-			<tr>
-				<input type="button" value="좋아요!" onclick="return like()">
-			</tr>
-			<tr>
-				<div id="like_result">${board.like_it}</div>
-			</tr>
-		</table>
-	</form>
+<h1>찜</h1>
+
+	<span class="heart on"> 🧡 하트 </span>
+
 
 
 </body>
