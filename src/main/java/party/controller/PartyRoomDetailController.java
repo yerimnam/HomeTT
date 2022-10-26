@@ -45,13 +45,14 @@ public class PartyRoomDetailController extends HttpServlet {
 		//View지정 및 응답
 		req.getRequestDispatcher("/WEB-INF/party/partyRoomDetail.jsp").forward(req, resp);
 		
-		String partyNo = req.getParameter("partyRoomNo");
+		String partyNo = req.getParameter("party_room_no");
 
 		//세션 객체 생성 -> user_no 세션값으로 유저정보 조회
 		HttpSession session = req.getSession();
 		session.setAttribute("partyNo",partyNo);
+
 		//세션값 넣기
-//		int userno = (int)session.getAttribute("user_no");
+		int userno = (int)session.getAttribute("user_no");
 		int partyno = (int)session.getAttribute("party_no");
 	}
 	

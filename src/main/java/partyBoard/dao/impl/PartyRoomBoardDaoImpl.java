@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.JDBCTemplate;
+import party.dto.Party;
+import party.dto.PartyRoom;
 import partyBoard.dao.face.PartyRoomBoardDao;
 import partyBoard.dto.PartyBoard;
 import util.PbPaging;
@@ -245,7 +247,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, keyword);
-			
+
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -267,6 +269,33 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		System.out.println("keyword" + keyword);
 		System.out.println("selectSearchList()" + partyBoardList);
 		return partyBoardList;
+	}
+
+	
+	
+
+
+	@Override
+	public int delete(Connection conn, PartyRoom partyRoom) {
+		String sql = "";
+		sql += "DELETE party";
+		sql += " WHERE party_room_no = ?";
+
+		int res = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, partyRoom.getParty_room_no());
+
+			res = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+
+		return res;
 	}
 
 }

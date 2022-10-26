@@ -1,3 +1,4 @@
+<%@page import="party.dto.Party"%>
 <%@page import="util.PbPaging"%>
 <%@page import="partyBoard.dto.PartyBoard"%>
 <%@page import="java.util.List"%>
@@ -26,6 +27,9 @@
 List<PartyBoard> partyBoardList = (List) request.getAttribute("partyBoardList");
 %>
 
+<%
+List<Party> partyList = (List) request.getAttribute("partyList");
+%>
 <% PartyBoard getpartyBoardno = (PartyBoard) request.getAttribute("partyBoardno"); %>
 
 <%
@@ -129,6 +133,11 @@ button:hover {
 	justify-content: space-between;
 }
 
+.member-area {
+	margin-right: 30px
+	border: 1px solid black;
+	
+}
 .p-btn {
 	background: #333;
 	color: #fff;
@@ -299,6 +308,8 @@ textarea {
 		<div class="manage-area">
 			<div class="manage-top">
 				<h3>📌게시글 관리</h3>
+				
+<%-- 				<a href="./roomboard?partyRoomNo=<%=partyList.g%>"></a> --%>
 				<button class="p-btn" onclick="showPrompt()">파티탈퇴</button>
 			</div>
 			<div class="manage-body">
@@ -318,9 +329,9 @@ textarea {
 			</div>
 		</div>
 
+<div class="member-area"></div>
 
-		<%-- 글번호 : <%=partyBoardList.get(i).getPartyBoardNo() %> --%>
-
+	<button>신고하기</button>
 	</div>
 
 
@@ -365,12 +376,14 @@ textarea {
 
 function showPrompt(){
 	console.log("-----prompt-----")
-	var res = prompt("탈퇴를 원하시면 비밀번호를 입력하세요")
+	var res = prompt("탈퇴를 원하시면 '탈퇴'라고 적어주세요")
 	
 	console.log("반환값" , res)
 	
-	if( res == null ) {
-		console.log("취소 선택")
+	
+	if( res == '탈퇴' ) {
+		console.log("확인 선택")
+		alert('탈퇴 되었습니다. 감사합니다');
 		
 	} else if( res == '' ) {
 		console.log("입력값없이 확인 선택")
@@ -383,9 +396,14 @@ function showPrompt(){
 </script>
 
 <script type="text/javascript">
-
+$(document).ready(function() {
 	//삭제버튼
-	
+	$(".p-btn").click(function() {
+<%-- 		$(location).attr('href', './delete?boardno=<%=viewBoard.getBoardno() %>') --%>
+<%-- 		$(location).attr('href', './partymodify?partyRoomNo=<%=partyList.get(i).get%>') --%>
+	})
+
+})	
 	
 
 	

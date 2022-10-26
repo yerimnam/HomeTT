@@ -3,6 +3,8 @@ package partyBoard.dao.face;
 import java.sql.Connection;
 import java.util.List;
 
+import party.dto.Party;
+import party.dto.PartyRoom;
 import partyBoard.dto.PartyBoard;
 import util.PbPaging;
 
@@ -61,6 +63,18 @@ public interface PartyRoomBoardDao {
 	public int delete(Connection conn, PartyBoard partyBoard);
 
 	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword);
+
+	
+	
+	/**
+	 * 파티방 삭제
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param party - 삭제할 파티방 번호
+	 * @return
+	 */
+
+	public int delete(Connection conn, PartyRoom partyRoom);
 
 
 
