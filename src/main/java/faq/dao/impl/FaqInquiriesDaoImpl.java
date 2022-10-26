@@ -29,7 +29,7 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 		sql += "	faq_articlenumber, admin_no, board_code, faq_articletitle ";
 		sql += " ,faq_content,faq_writer,faq_date";
 		sql += " FROM cs_faq"; 
-		sql += " ORDER BY faqArticlenumber DESC";
+		sql += " ORDER BY faq_Articlenumber DESC";
 		
 		//결과 저장할 List
 		List<FaqBoard> faqboardList = new ArrayList<>();
@@ -68,7 +68,7 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 	
 	@Override
 	public List<FaqBoard> selectAll(Connection conn, Paging paging) {
-		System.out.println("FaqBoardDao selectAll - 시작");
+		System.out.println("FaqBoard selectAll - 시작");
 		
 		
 		//SQL작성
@@ -76,12 +76,12 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 		sql += "SELECT * FROM ( ";
 		sql += " 	SELECT rownum rnum, B.*FROM (";
 		sql += " 	SELECT";
-		sql += "		faq_articlenumber, admin_no, board_code, faq_articletitle ";
-		sql += " 		,faq_content,faq_writer,faq_date";
+		sql += "		faq_articlenumber,admin_no,board_code,faq_articletitle ";
+		sql += " 		,faq_content,faq_writer,faq_date,hit";
 		sql += " 	FROM cs_faq"; 
-		sql += " 	ORDER BY board_code DESC";
+		sql += " 	ORDER BY faq_articlenumber DESC";
 		sql += " 	) B";
-		sql += " ) cs_faq";
+		sql += " ) faqBaord";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 		
 		//결과 저장할 List
@@ -99,13 +99,21 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 			while(rs.next()) {
 				FaqBoard b = new FaqBoard();//조회결과 행 저장 DTO 객체
 
+//				b.setFaqArticlenumber(rs.getInt("faq_articlenumber"));
 				b.setFaqArticlenumber(rs.getInt("faq_articlenumber"));
+//				b.setAdminNo(rs.getInt("admin_no"));
 				b.setAdminNo(rs.getInt("admin_no"));
+//				b.setBoardCode(rs.getInt("board_code"));
 				b.setBoardCode(rs.getInt("board_code"));
+//				b.setFaqArticletitle(rs.getString("faq_articletitle"));
 				b.setFaqArticletitle(rs.getString("faq_articletitle"));
-				b.setFaqContent(rs.getString("faq_content"));
+//				b.setFaqContent(rs.getString("faq_content"));
+				b.setFaqContent(rs.getString("faq_content")); 
+//				b.setFaqWriter(rs.getString("faq_writer"));
 				b.setFaqWriter(rs.getString("faq_writer"));
-				b.setFaqDate(rs.getDate("faq_date"));
+//				b.setFaqDate(rs.getDate("faq_write"));		<--에러 (잘못적음)
+				b.setFaqDate(rs.getDate("faq_date"));				
+//				b.setHit(rs.getInt("hit"));
 				b.setHit(rs.getInt("hit"));
 				
 				//리스트에 결과값 저장하기
@@ -118,7 +126,7 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 			JDBCTemplate.close(ps);
 		}
 				
-		System.out.println("FaqBoardDao selectAll - 끝");
+		System.out.println("FaqBoard selectAll - 끝");
 		return faqboardList; //최종 결과 반환
 	}
 	
@@ -126,9 +134,10 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 //  
 	@Override
 	public int selectCntAll(Connection conn) {
-		
+		System.out.println("selectCntAll - 시작");	
 		String sql = "";
-		sql += "SELECT count(*) cnt FROM board";
+//		sql += "SELECT count(*) cnt FROM board";
+		sql += "SELECT count(*) cnt FROM cs_faq";
 		
 		//총 게시글 수 변수
 		int count = 0;
@@ -148,25 +157,26 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-				
+		System.out.println("selectCntAll - 끝");	
 		//최종 결과 반환
 		return count;
 	}
 
 
 	@Override
-	public int updateHit(Connection conn, FaqBoard boardcode) {
+	public int updateHit(Connection conn, FaqBoard faqArticlenumber) {
 		
+		System.out.println("updateHit - 시작");	
 		String sql = "";
 		sql += "UPDATE cs_faq"; 
 		sql += "	SET hit = hit +1";
-		sql += " WHERE boardcode = ?";
+		sql += " WHERE faq_Articlenumber = ?";
 		
 		int res = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, boardcode.getBoardCode());
+			ps.setInt(1, faqArticlenumber.getFaqArticlenumber());
 			
 			res = ps.executeUpdate();
 			
@@ -176,6 +186,7 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 			JDBCTemplate.close(ps);
 		}
 		
+		System.out.println("updateHit - 끝");	
 		
 		return res;
 	}
@@ -183,13 +194,14 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 
 	@Override
 	public FaqBoard selectBoardByfaqArticlenumber(Connection conn, FaqBoard faqArticlenumber) {
+		System.out.println("selectBoardByfaqArticlenumber - 시작");	
 		
 		String sql = "";
 		sql += "SELECT";
 		sql +=" 	faq_articlenumber,admin_no,board_code,faq_articletitle";
 		sql +="		 faq_content,faq_writer,faq_date,hit ";
 		sql +=" FROM cs_Faq";
-		sql +=" WHERE boardcode = ?";
+		sql +=" WHERE faq_articlenumber = ?";
 		
 		FaqBoard board= null;
 		
@@ -218,11 +230,123 @@ public class FaqInquiriesDaoImpl implements FaqInquiriesDao {
 				JDBCTemplate.close(ps);
 			}
 
+			System.out.println("selectBoardByfaqArticlenumber - 끝");	
 		return board;
 	}
-
-
-		
+//	
+////	@Override
+////	public String selectNickByBoard(Connection conn, Board viewBoard) {
+////		
+////		String sql = "";
+////		sql += "SELECT usernick FROM member";
+////		sql += " WHERE userid = ?";
+////		
+////		//결과 저장할 변수
+////		String usernick = null;
+////		
+////		try {
+////			ps = conn.prepareStatement(sql);
+////			ps.setString(1, viewBoard.getUserid());
+////
+////			rs = ps.executeQuery();
+////			
+////			while( rs.next() ) {
+////				usernick = rs.getString("usernick");
+////			}
+////			
+////		} catch (SQLException e) {
+////			e.printStackTrace();
+////		} finally {
+////			JDBCTemplate.close(rs);
+////			JDBCTemplate.close(ps);
+////		}
+////		
+////		return usernick;
+////	}
+//	@Override
+//	public int insert(Connection conn, FaqBoard board) {
+//
+//		String sql = "";
+//		sql += "INSERT INTO board ( faqArticlenumber, faqArticletitle, faqWriter, faqContent, hit )";
+//		sql += " VALUES ( ?, ?, ?, ?, 0 )";
+//		
+//		int res = 0;
+//
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			
+//			ps.setInt(1, board.getFaqArticlenumber());
+//			ps.setString(2, board.getFaqArticletitle());
+//			ps.setString(3, board.getFaqWriter());
+//			ps.setString(4, board.getFaqContent());
+//			
+//			res = ps.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return res;
+//	}
+//		
+//	
+//	@Override
+//	public int selectNextFaqArticlenumber(Connection conn) {
+//		
+//		String sql = "";
+//		sql += "SELECT board_seq.nextval FROM dual";	//<--수정해야하는 부분
+//		
+//		int nextfaqarticlenumber = 0;
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			
+//			rs = ps.executeQuery();
+//			
+//			while( rs.next() ) {
+//				nextfaqarticlenumber = rs.getInt("nextval");
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return nextfaqarticlenumber;
+//	}
+//	
+//
+//	@Override
+//	public int insertFile(Connection conn, BoardFile boardFile) {
+//		
+//		String sql = "";
+//		sql += "INSERT INTO boardfile( fileno, boardno, originname, storedname, filesize )";
+//		sql += " VALUES( boardfile_seq.nextval, ?, ?, ?, ? )";
+//		
+//		int res = 0;
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			
+//			ps.setInt(1, boardFile.getBoardno());
+//			ps.setString(2, boardFile.getOriginname());
+//			ps.setString(3, boardFile.getStoredname());
+//			ps.setInt(4, boardFile.getFilesize());
+//			
+//			res = ps.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return res;
+//	}
 
 
 }

@@ -1,9 +1,7 @@
-<%@page import="faq.dto.FaqBoard"%>
+<%@page import="event.dto.EventBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
-<% FaqBoard viewBoard = (FaqBoard) request.getAttribute("viewBoard"); %>
+<% EventBoard viewBoard = (EventBoard) request.getAttribute("viewBoard"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +10,7 @@
 </head>
 <body>
 
+
 <h1>게시글 상세보기</h1>
 <hr>
 
@@ -19,15 +18,15 @@
 
 <tr>
 	<td class="info">글번호</td>
-	<td><%=viewBoard.getfaq_articlenumber() %></td>
+	<td><%=viewBoard.getEventArticlenumber() %></td>
 	
 	<td class="info">작성일</td>
-	<td><%=viewBoard.getfaq_date() %></td>
+	<td><%=viewBoard.getEventDate() %></td>
 </tr>
 
 <tr>
 	<td class="info">작성자</td>
-	<td><%=viewBoard.getfaq_writer() %></td>
+	<td><%=viewBoard.getEventWriter() %></td>
 	
 <!-- 	<td class="info">닉네임</td> -->
 <%-- 	<td><%=request.getAttribute("writerNick") %></td> --%>
@@ -40,7 +39,7 @@
 
 <tr>
 	<td class="info">제목</td>
-	<td colspan="3"><%=viewBoard.getTitle() %></td>
+	<td colspan="3"><%=viewBoard.getEventArticletitle() %></td>
 </tr>
 
 <tr>
@@ -48,9 +47,10 @@
 </tr>
 
 <tr>
-	<td colspan="4"><%=viewBoard.getContent() %></td>
+	<td colspan="4"><%=viewBoard.getEventContent() %></td>
 </tr>
 
 </table>
+
 </body>
 </html>
