@@ -42,20 +42,22 @@ public class CreatePartyController extends HttpServlet {
 		
 		//파티 생성 전달 파라미터 추출
 		Party party = createpartyService.getCreateParty(req);
-//		System.out.println("CreatePartyController doPost() - party : " + party);
+		
+		System.out.println("CreatePartyController doPost() - party : " + party);
+		
+		Party partyinfo = createpartyService.create(party);
+		System.out.println("CreatePartyController doPost() - result : " + partyinfo);
 		
 		
-		
-		//작성글 삽입 (파티 생성)
-		createpartyService.create(req);
 		
 		//JSP View로 객체 전달하기
-		req.setAttribute("partyinfo", party);
+		req.setAttribute("partyinfo", partyinfo);
+		
 		
 		
 		
 		//세션 객체 생성	-> user_no 세션값으로 유저 정보 조회하기 위해서
-		HttpSession session = req.getSession();
+		HttpSession session =req.getSession();
 
 		
 		//테스트 데이터
@@ -77,7 +79,7 @@ public class CreatePartyController extends HttpServlet {
 		
 		
 		//누르면 결제 창으로 들어가게
-//		resp.sendRedirect("/homett/");
-		req.getRequestDispatcher("/WEB-INF/party/pay.jsp").forward(req, resp);
+//		resp.sendRedirect("/WEB-INF/party/pay.jsp");
+//		req.getRequestDispatcher("/WEB-INF/party/pay.jsp").forward(req, resp);
 	}
 }
