@@ -27,9 +27,9 @@
 List<PartyBoard> partyBoardList = (List) request.getAttribute("partyBoardList");
 %>
 
-<%
-List<Party> partyList = (List) request.getAttribute("partyList");
-%>
+<%-- <% --%>
+// List<Party> partyList = (List) request.getAttribute("partyList");
+<%-- %> --%>
 <% PartyBoard getpartyBoardno = (PartyBoard) request.getAttribute("partyBoardno"); %>
 
 <%
