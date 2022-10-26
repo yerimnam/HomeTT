@@ -90,11 +90,60 @@ public interface UserDao {
 	 * @return int - UPDATE쿼리 수행 결과
 	 */
 	public int UpdatePwDao(Connection conn, Member member);
-	
-	
-	
-	
+
 //	--------------------------------- 비밀번호 찾기 끝 -----------------------------------
+	
+//	--------------------------------- 회원탈퇴 시작 -----------------------------------
+	
+	
+	/**
+	 * 세션에있는 userId로 member의 userPw을 조회한다
+	 * 
+	 * @param conn - DB연결 객체
+	 * @return userpw - userpw로 사용될 member의 pw
+	 */
+	public Member selectUserPw(Connection conn, Member member);
+
+
+	/**
+	 * 전달된 데이터를 통해 userinfo를 삭제한다
+	 * 
+	 * @param conn  - DB 연결 객체
+	 * @param member - 테이블에서 삭제할 정보 객체
+	 */
+	public int deleteUserInfo(Connection conn, Member member);
+
+//	--------------------------------- 회원탈퇴 끝 -----------------------------------
+
+//	--------------------------------- 회원정보 수정 시작 -----------------------------------
+	
+	/**
+	 * 조회된 회원정보에 회원정보 변경하기
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param member - 조회할 유저정보를 가진 DTO객체
+	 * @return int - UPDATE쿼리 수행 결과
+	 */
+	public int UpdateUserInfo(Connection conn, Member member);
+
+//	--------------------------------- 회원정보 수정 끝 -----------------------------------
+	
+//	--------------------------------- 유저타입 변환 시작 -----------------------------------
+	
+	
+	/**
+	 * 조회된 회원정보의 회원 권환 변경하기
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param member - 조회할 유저정보를 가진 DTO객체
+	 * @return int - UPDATE쿼리 수행 결과
+	 */
+	public int UpdateUserType(Connection conn, Member member);
+	
+	
+//	--------------------------------- 유저타입 변환 끝 -----------------------------------
+	
+
 	
 	
 	

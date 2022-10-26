@@ -210,14 +210,14 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 	public int delete(Connection conn, PartyBoard partyBoard) {
 
 		String sql = "";
-		sql += "DELETE partyboard";
+		sql += "DELETE party_board";
 		sql += " WHERE party_boardno = ?";
 
 		int res = 0;
 
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, partyBoard.getCommentsNo());
+			ps.setInt(1, partyBoard.getPartyBoardNo());
 
 			res = ps.executeUpdate();
 

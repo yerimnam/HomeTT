@@ -1,4 +1,4 @@
-package userInquiry.controller;
+ package userInquiry.controller;
 
 import java.io.IOException;
 

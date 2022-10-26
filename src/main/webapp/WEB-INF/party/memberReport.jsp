@@ -36,9 +36,12 @@ $(document).ready(function() {
 
 <table>
 <tr><td >작성자</td><td><%=session.getAttribute("userid") %></td></tr>
-<tr><td>제목</td><td><input type="text" name="title" style="width:100%;"></td></tr>
+
+
+<tr><td>가해자</td><td><input type="text" name="reporttarget" style="width:100%;"></td></tr>
+
 <tr><td colspan="2">신고 내용</td></tr>
-<tr><td colspan="5"><textarea id="content" name="content" style="width: 100%;"></textarea></td></tr>
+<tr><td colspan="5"><textarea id="content" name="reportcontent" style="width: 100%;"></textarea></td></tr>
 </table>
 
 	<button id="btnWrite" >작성</button>

@@ -16,8 +16,7 @@ public interface MemberReportService {
 	 */
 	public Report getReport (HttpServletRequest req);
 	
-	
-	
+		
 	
 	/**
 	 * 신고글 작성
@@ -26,7 +25,6 @@ public interface MemberReportService {
 	 * @param req - 요청 정보 객체
 	 */
 	public void write(HttpServletRequest req);
-	
 	
 	
 	

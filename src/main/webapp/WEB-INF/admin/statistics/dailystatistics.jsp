@@ -1,3 +1,6 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -15,26 +18,25 @@
 <%	int partycre  = (int)request.getAttribute("partycre"); %>
 <%	int partyend  = (int)request.getAttribute("partyend"); %>
 
-<h1 class="text-center">일별 통계</h1>
-
-<!-- <div class="container"> -->
-<!-- 	<div class="row my-4"> -->
-<!-- 	    <div class="col-md-5"> -->
-<!-- 	        <h4>OTT별 생성된 방 통계</h4> -->
-<!-- 	    </div> -->
-<!-- 	</div> -->
-<!-- 	<div class="row py-5"> -->
-<!-- 	    <div class="col-md-6 py-2"> -->
-<!--         	<canvas id="myChart" style="width: 50vw; height: 40vh;"></canvas> -->
-<!-- 	    </div> -->
-<!-- 	</div> -->
-<!-- </div> -->
+<h1 class="text-center" style="margin: 20px auto;">당일 통계 페이지</h1>
+<hr style="width: 1000px; margin: 30px auto; border:0; height:2px; background: #ccc;">
 
 <div style="position:relative; width:1000px; margin: 0 auto;">
-	<h4>OTT별 생성된 방 통계</h4>
-	<div style="position:absolute;"> 
-		<canvas id="myChart" style="width: 1000px; height: 500px;"></canvas>
-	</div>
+	<h4 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+		OTT별 생성된 방 통계</h4>
+	<div> <canvas id="myChart1" style="width: 1000px; height: 500px;"></canvas>	</div>
+	
+<hr style="width: 1000px; margin: 30px auto; border:0; height:1px; background: #ccc;">
+	
+	<h4 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+			회원 통계</h4>
+	<div> <canvas id="myChart2" style="width: 1000px; height: 500px;"></canvas>	</div>
+
+<hr style="width: 1000px; margin: 30px auto; border:0; height:1px; background: #ccc;">
+
+	<h4 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+			파티 통계</h4>
+	<div style="margin-bottom: 100px;"> <canvas id="myChart3" style="width: 1000px; height: 500px;"></canvas>	</div>
 </div>
 
 
@@ -43,13 +45,13 @@
 
 <script type="text/javascript">
 
-var ctx = document.getElementById('myChart');
+var ctx = document.getElementById('myChart1');
 var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ['넷플릭스', '디즈니플러스', '티빙', '애플', '웨이브', '왓챠', '라프텔'],
     datasets: [{
-      	label: '넷플릭스',
+      	label: 'OTT별 통계',
       	data: [<%=netflix %>, <%=disney %>, <%=tving %>, <%=apple %>, <%=wave %>, <%=watcha %>, <%=laftel %>],
       	backgroundColor: [
 	        'rgba(255, 99, 132, 0.2)',
@@ -97,7 +99,95 @@ var myChart = new Chart(ctx, {
   },
 });
 
-  
+var ctx = document.getElementById('myChart2');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['신규 가입 회원', '탈퇴 회원'],
+    datasets: [{
+      	label: '회원 통계',
+      	data: [<%=nuser %>, <%=duser %>],
+      	backgroundColor: [
+	        'rgba(255, 99, 132, 0.2)',
+	        'rgba(54, 162, 235, 0.2)',
+	    ],
+	    borderColor: [
+	    	'rgba(255, 99, 132, 1)',
+	        'rgba(54, 162, 235, 1)',
+	    ],
+	    borderWidth: 1
+    }]
+  },
+  options: {
+	  responsive: false,
+	  plugins:{	
+	  		legend: {
+				display: false,
+			},
+	  	},
+    scales: {
+    	y: {
+    		min: 0,
+    		max: 20,
+    		ticks: {
+    			stepSize: 5,
+                maxTicksLimit: 0,
+            },
+    	},
+    	x: {
+    		ticks: {
+    			maxTicksLimit: 0,
+    		},
+    	},
+    },
+  },
+});
+
+var ctx = document.getElementById('myChart3');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['신규 개설 파티', '종료된 파티'],
+    datasets: [{
+      	label: '파티 통계',
+      	data: [<%=partycre %>, <%=partyend %>],
+      	backgroundColor: [
+	        'rgba(122, 88, 233, 0.2)',
+	        'rgba(255, 159, 64, 0.2)'
+	    ],
+	    borderColor: [
+	        'rgba(122, 88, 233, 1)',
+	        'rgba(255, 159, 64, 1)'
+	    ],
+	    borderWidth: 1
+    }]
+  },
+  options: {
+	  responsive: false,
+	  plugins:{	
+	  		legend: {
+				display: false,
+			},
+	  	},
+    scales: {
+    	y: {
+    		min: 0,
+    		max: 20,
+    		ticks: {
+    			stepSize: 5,
+                maxTicksLimit: 0,
+            },
+    	},
+    	x: {
+    		ticks: {
+    			maxTicksLimit: 0,
+    		},
+    	},
+    },
+  },
+});
+
+
 </script>
 
 <!-- 부트스트랩3 -->

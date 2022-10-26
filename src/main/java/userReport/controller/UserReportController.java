@@ -14,7 +14,9 @@ public class UserReportController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("[TEST] UserReportController");
+		System.out.println("/homett/userreport [GET]");
+		
+		req.getRequestDispatcher("/WEB-INF/mypage/userReport.jsp").forward(req, resp);
 	}
 	
 }

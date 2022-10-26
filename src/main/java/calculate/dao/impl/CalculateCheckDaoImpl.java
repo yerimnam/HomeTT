@@ -25,12 +25,11 @@ public class CalculateCheckDaoImpl implements CalculateCheckDao {
 		
 		// SQL 작성
 		String sql = "";
-		sql += "SELECT DISTINCT";
-		sql += "	pm.payment_date, pm.payment_amount, pm.user_no, pm.party_no";
-		sql	+= "	, py.party_name";
-		sql += " FROM payment pm, party py";
-		sql += " WHERE pm.user_no = py.user_no";
-		sql += " ORDER BY user_no DESC";
+		sql += "SELECT";
+		sql += "	calculate_no, pay_no, calculate_account, calculate_bank";
+		sql += "	, party_no, user_no, payment_amount, payment_date, calculate_date";	
+		sql += " FROM calculate";
+		sql += " ORDER BY calculate_no DESC";
 		
 		// 결과 저장 List
 		List<Calculate> calculateList = new ArrayList<>();
@@ -46,9 +45,9 @@ public class CalculateCheckDaoImpl implements CalculateCheckDao {
 			while(rs.next()) {
 				Calculate c = new Calculate();
 				
-				c.setPayment_Date(rs.getDate("payment_date"));
-				c.setPayment_amount(rs.getInt("payment_amount"));
-				c.setParty_name(rs.getString("party_name"));
+				c.setCalculateDate(rs.getDate("calculate_date"));
+				c.setPaymentAmount(rs.getInt("payment_amount"));
+				c.setPartyNo(rs.getInt(rs.getInt("party_no")));
 				
 				// 리스트에 결과값 저장
 				calculateList.add(c);
