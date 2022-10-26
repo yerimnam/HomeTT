@@ -36,7 +36,6 @@
           name: "HomeTT",
           paid_at: paid_at,
           
-          
          buyer_email: "<%=member.getUserEmail()%>",
          buyer_name: "<%=member.getUserName()%>",
          amount: <%=party.getPaymentAmount()%>,

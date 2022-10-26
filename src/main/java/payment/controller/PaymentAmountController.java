@@ -32,8 +32,8 @@ public class PaymentAmountController extends HttpServlet {
 		 req.setCharacterEncoding("UTF-8");
 		  HttpSession session =req.getSession();
 				//테스트 데이터
-				session.setAttribute("user_no", 2);
-				session.setAttribute("partyNo", 1);
+//				session.setAttribute("user_no", 2);
+//				session.setAttribute("partyNo", 1);
 				
 				
 				//실제 코드 // session 은 Strin g..
