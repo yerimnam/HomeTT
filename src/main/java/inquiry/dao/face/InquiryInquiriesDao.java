@@ -42,4 +42,15 @@ public interface InquiryInquiriesDao {
 	 */
 	InquiryBoard selectDetail(Connection conn, int userNo, InquiryBoard inquiryTitle);
 
+
+	
+	/**
+	 * 문의글 DB에 저장하기
+	 * @param conn -DB 저장
+	 * @param param -글제목 글내용을 담은 DTO 정보
+	 * @param userNo -유저번호
+	 * @return  문의글 DB 저장 결과 
+	 */
+	int insertinQuiry(Connection conn, InquiryBoard param, int userNo);
+
 }

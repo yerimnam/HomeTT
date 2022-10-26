@@ -39,9 +39,30 @@ $(document).ready(function(){
 				$("#content").summernote()
 				$("user_id").summernote()
 			
-			})
+				
+				
+	
+				
+	})
 			
+</script>
 
+<script type="text/javascript">
+function writedone(){
+	
+	console.log("완료")
+		alert("작성완료")
+		location.href="/homett/inquirylist";
+	
+}
+	
+	
+
+
+
+
+		
+		
 
 
 </script>
@@ -71,18 +92,8 @@ body{
 
 <form action="./inquirycreate" method="post">
 
-	<div id="id">
-	<span id="userId">아이디</span>
-	<input type="text" id=user_id name="user_id">
-	</div>
-	
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
-	
-	<div id="nick">
-	<span>닉네임</span>
-	<input type="text" id="user_nick" name="user_nick">
-	</div>
-	
+
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
 	<div id="nick">
 	<span>제목</span>
@@ -91,8 +102,10 @@ body{
 	<br><br><br>
 	<textarea id="content" name="content"></textarea><br><br>
 
-<button id="btinwrite">작성완료</button>
+<button type="button" id="btinwrite" onclick=" writedone()">작성완료</button>
+<button type="button" id="cancelwriter" onclick="history.back()">취소</button>
 </form>
+
 
 
 

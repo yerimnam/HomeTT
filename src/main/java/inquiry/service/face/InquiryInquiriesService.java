@@ -48,4 +48,26 @@ public interface InquiryInquiriesService {
 
 	InquiryBoard getDetail(int userNo, InquiryBoard inquiryTitle);
 
+	
+	/**
+	 * 
+	 * 회원이 작성한 글의 파라미터 얻어오기
+	 * @param req 
+	 * @return 작성한 글 파라미터 
+	 */
+
+	InquiryBoard getparam(HttpServletRequest req);
+
+	
+	/**
+	 * 문의글 insrty하기
+	 * @param param -파라미터(글제목,글본문)
+	 * @param userNo -유저번호
+	 * @return 문의글 저장
+	 */
+
+	InquiryBoard setInquiry(InquiryBoard param, int userNo);
+
+
+
 }

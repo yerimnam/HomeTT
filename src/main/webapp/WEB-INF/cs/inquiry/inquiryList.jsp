@@ -26,8 +26,8 @@
 </div>
 
 <div>
-	<form action="  method="get">
-	<button type="button" id="btnwrite" name="btnwrite">글쓰기</button>
+	<form action="/homett/inquirycreate"  method="get">
+	<button type="button" id="btnwrite" name="btnwrite" onclick ="location.href='/homett/inquirycreate'">글쓰기</button>
 </form>
 </div>
 

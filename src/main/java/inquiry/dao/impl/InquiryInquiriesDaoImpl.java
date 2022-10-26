@@ -52,7 +52,6 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 			
 			//최종 결과 반환
 			System.out.println("selectCntAll -end");
-			System.out.println("selectCntAll" + count);
 			return count;
 		}
 	@Override
@@ -113,7 +112,6 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println(inquiryList);
 		System.out.println("inquiryBoard select 끝");
 		return inquiryList;
 	}
@@ -163,6 +161,36 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 		
 		System.out.println("selectDetail-detail");
 		return inquiryDetail;
+	}
+	
+	
+	@Override
+	public int insertinQuiry(Connection conn, InquiryBoard param, int userNo) {
+		System.out.println("insertinQuiry시작");
+		String sql ="";
+		sql +="INSERT INTO cs_inquiry (inquiry_articlenumber,user_no,inquiry_articletitle,inquiry_content,inquiry_date)";
+		sql +=" VALUES(cs_inquiry_seq.nextval, ?,?,?,sysdate)";
+		
+		
+		int result = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, userNo);
+			ps.setString(2, param.getInquiryArticleTitle());
+			ps.setString(3, param.getInquiryContent());
+			
+		 result = ps.executeUpdate();
+		 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		System.out.println("inquiryinsert_end");
+		return result;
 	}
 
 }

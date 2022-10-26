@@ -41,7 +41,6 @@ public class InquiryInquiriesController extends HttpServlet {
 			
 			//전달 파라미터에서 현재 페이징 객체 계산하기
 			Paging paging = inquiryService.getPaging(req,userNo);
-			System.out.println("[TEST]" + paging);
 			
 			
 			//페이징 객체를 model값 전달
@@ -62,9 +61,7 @@ public class InquiryInquiriesController extends HttpServlet {
 //				
 			}
 //			
-			//제목으로 조회하기 구현하기 
 			
-			System.out.println(inquiry);
 			req.setAttribute("inquiryview", inquiry);
 			
 			
