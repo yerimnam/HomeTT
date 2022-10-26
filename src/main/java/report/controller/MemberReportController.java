@@ -22,7 +22,7 @@ public class MemberReportController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("/homett/mbrreport GET()");
+		System.out.println("/homett/mbrreport [GET])");
 		
 		req.getRequestDispatcher("/WEB-INF/party/memberReport.jsp").forward(req, resp);
 		

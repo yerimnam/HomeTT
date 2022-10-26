@@ -22,4 +22,7 @@ public class WishListCheckServiceImpl implements WishListCheckService {
 		return wishListCheckDao.selectAll(JDBCTemplate.getConnection());
 	}
 
+
+	
 }
+

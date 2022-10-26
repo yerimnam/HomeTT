@@ -13,4 +13,6 @@ public interface WishListCheckService {
 	 */
 	public List<WishListCheck> getList();
 	
+	
+	
 }

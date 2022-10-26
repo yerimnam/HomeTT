@@ -33,6 +33,7 @@ public class WishListCheckDaoImpl implements WishListCheckDao {
 		sql += " WHERE w.party_no = p.party_no"; 
 		sql += " ORDER BY user_no DESC";
 		
+		
 		// 결과 저장 List
 		List<WishListCheck> wishList = new ArrayList<>();
 		
