@@ -19,14 +19,14 @@ public interface PaymentService {
 	 * @return   조회한 유저정보 반환
 	 */
 
-	Member getuserinfo(int userno);
+	public Member getuserinfo(int userno);
 	/**
 	 * 세션에서 알아온 파티 번호로 파티 정보 추출
 	 * @param partyno -파티번호
 	 * @return -파티 정보 반환
 	 */
 
-	Party getpartyNo(int partyno);
+	public Party getpartyNo(int partyno);
 	
 	
 	/**
@@ -39,7 +39,7 @@ public interface PaymentService {
 	
 	
 	
-	Payment getParam(HttpServletRequest req);
+	public Payment getParam(HttpServletRequest req);
 	
 	/**
 	 * 전달한 정보로 insert하기 
@@ -47,7 +47,7 @@ public interface PaymentService {
 	 * @return -저장된 payment dto 정보 
 	 */
 	
-	Payment setPayment(Payment returnData);
+	public Payment setPayment(Payment returnData);
 	
 	/**
 	 * 
@@ -56,11 +56,11 @@ public interface PaymentService {
 	 * @return
 	 */
 	
-	Payment getresult(Payment payinsert);
+	public Payment getresult(Payment payinsert);
 	
 	
 	//@@@파티부분@@@
-	int insertParty(Payment returnData);
+	public int insertParty(Payment returnData);
 	
 	
 	
