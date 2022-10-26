@@ -28,6 +28,11 @@
 		<canvas id="myChart2" style="width: 1000px; height: 500px;"></canvas>
 	</div>
 </div>
+<div>
+	<div>
+		회원 
+	</div>
+</div>
 
 
 </body>

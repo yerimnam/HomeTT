@@ -60,6 +60,9 @@ public interface PartyRoomBoardDao {
 	 */
 	public int delete(Connection conn, PartyBoard partyBoard);
 
+	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword);
+
+
 
 
 

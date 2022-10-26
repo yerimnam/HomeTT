@@ -35,6 +35,10 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(), paging);
 	}
 	
+//	@Override
+//	public List<PartyBoard> getBrList(String searchCondition, String searchKeyword, PbPaging paging) {
+//		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(),searchCondition,searchKeyword, paging );
+//	}
 	
 	@Override
 	public PbPaging getBrPaging(HttpServletRequest req) {
@@ -122,6 +126,17 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		}
 		
 	}
+
+
+	@Override
+	public List<PartyBoard> getPartySearchList(String searchType, String keyword) {
+		System.out.println("getPartySearchList() - 시작");
+		System.out.println("searchType" + searchType);
+		System.out.println("keyword" + keyword);
+		return partyRoomBoardDao.selectPbSearchList(JDBCTemplate.getConnection(), searchType, keyword);
+	}
+
+
 
 
 

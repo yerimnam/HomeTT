@@ -49,6 +49,8 @@ public interface PartyRoomBoardService {
 
 	public PartyBoard write(HttpServletRequest req);
 
+//	public List<PartyBoard> getBrList(String searchCondition, String searchKeyword, PbPaging paging);
+
 
 
 	/**
@@ -67,6 +69,19 @@ public interface PartyRoomBoardService {
 	 * @param partyBoard - 삭제할 게시글 번호 객체
 	 */
 	public void delete(PartyBoard getpartyBoard);
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<PartyBoard> getPartySearchList(String searchType, String keyword);
 
 
 

@@ -99,7 +99,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		try {
 			ps = conn.prepareStatement(sql);
 
-			//여기 페이지를 안넣어서 안보였었ㅇ므 ㅜㅜㅜ
+			// 여기 페이지를 안넣어서 안보였었ㅇ므 ㅜㅜㅜ
 			ps.setInt(1, paging.getStartNo());
 			ps.setInt(2, paging.getEndNo());
 			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
@@ -206,8 +206,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 
 	@Override
 	public int delete(Connection conn, PartyBoard partyBoard) {
-		
-		
+
 		String sql = "";
 		sql += "DELETE partyboard";
 		sql += " WHERE party_boardno = ?";
@@ -226,6 +225,48 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 			JDBCTemplate.close(ps);
 		}
 		return res;
+	}
+
+	@Override
+	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword) {
+		keyword = '%' + keyword + '%';
+
+		// SQL작성
+		String sql = "";
+		sql += "SELECT";
+		sql += "	party_boardNo, party_boardwriter, party_boardtitle";
+		sql += " FROM party_board";
+		sql += " WHERE " + searchType + " LIKE ?";
+		sql += " ORDER BY party_boardNo DESC";
+
+		// 결과 저장할 List
+		List<PartyBoard> partyBoardList = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+			
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				PartyBoard pb = new PartyBoard();
+
+				pb.setPartyBoardNo(rs.getInt("party_boardNo"));
+				pb.setPartyBoardWriter(rs.getString("party_boardwriter"));
+				pb.setPartyBoardTitle(rs.getString("party_boardtitle"));
+
+				partyBoardList.add(pb);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("searchType" + searchType);
+		System.out.println("keyword" + keyword);
+		System.out.println("selectSearchList()" + partyBoardList);
+		return partyBoardList;
 	}
 
 }

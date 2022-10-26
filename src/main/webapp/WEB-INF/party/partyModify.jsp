@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- SweetAlert2 --> 
+<!-- SweetAlert2 -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
 
@@ -160,6 +160,23 @@ a.heart {
 	color: inherit;
 	/* 이미지 넣을 경우 url */
 }
+
+
+.search-area {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 25px;
+}
+
+.form-item {
+	padding: 10px;
+}
+
+.form-item * {
+	height: 30px;
+	padding: 4px;
+}
 </style>
 
 </head>
@@ -167,7 +184,7 @@ a.heart {
 <body>
 
 	<div class="top">
-		<h1>파티모집 게시판</h1>
+		<h1><a href="./partymodify">파티모집 게시판</a></h1>
 	</div>
 
 	<div class="container">
@@ -192,7 +209,7 @@ a.heart {
 					<hr>
 				</div>
 				<ul class="part-contents">
-					
+
 					<li><a href="./partyroomdetail?partyRoomNo=<%=partyList.get(i).getPartyRoomNo()%>">파티방 번호 : <%=partyList.get(i).getPartyRoomNo() %></a></li>
 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
@@ -280,19 +297,24 @@ a.heart {
 		</ul>
 	</div>
 
-	<!--  검색 시작  -->
-	<form action="getBoardList.jsp" method="get">
-		<table cellpadding="0" cellspacing="0" width="700">
-			<tr>
-				<td align="right"><select id="searchCondition" name="searchCondition">
-						<option value="TITLE">제목</option>
-						<option value="CONTENT">내용</option>
-						<option value="IdNick">아이디(닉네임)</option>
-				</select> <input id="searchKeyword" name="searchKeyword" type="text"> <input type="submit" value="검색 "></td>
-			</tr>
-		</table>
+	<form action="./partymodify" method="get">
+		<!--  검색 시작  -->
+		<div class="search-area">
+			<div class="form-item">
+				<select name="searchType" id="searchType">
+					<option value="party_boardtitle">제목</option>
+					<option value="partyLeader">파티장</option>
+				</select>
+			</div>
+			<div class="form-item">
+				<input id="searchKeyword" name="searchKeyword" type="text">
+			</div>
+			<div class="form-item">
+				<input type="submit" value="검색 ">
+			</div>
+		</div>
+		<!-- 검색 종료  -->
 	</form>
-	<!-- 검색 종료  -->
 
 
 

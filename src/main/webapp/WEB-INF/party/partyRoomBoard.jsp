@@ -176,7 +176,7 @@ textarea {
 </head>
 <body>
 	<div class="top">
-		<h1>파티방</h1>
+		<h1><a href="./roomboard">파티방</a></h1>
 	</div>
 
 	<div class="container">
@@ -238,11 +238,15 @@ textarea {
 				<%
 				if (i == paging.getCurPage()) {
 				%>
-				<li class="active"><a href="./roomboard?curPage=<%=i%>"><%=i%></a></li>
+				<li class="active"><a href="./roomboard?curPage=<%=i%>
+				&seachType=<%=request.getParameter("searchType")%>
+					&keyword=<%=request.getParameter("keyword")%>"><%=i%></a></li>
 				<%
 				} else {
 				%>
-				<li><a href="./roomboard?curPage=<%=i%>"><%=i%></a></li>
+				<li><a href="./roomboard?curPage=<%=i%>
+				&searchType=<%=request.getParameter("searchType")%>
+				&keyword=<%=request.getParameter("keyword") %>"><%=i%></a></li>
 				<%
 				}
 				%>
@@ -273,18 +277,17 @@ textarea {
 		</div>
 
 
-		<form action="getBoardList.jsp" method="get">
+		<form action="./roomboard" method="get">
 			<!--  검색 시작  -->
 			<div class="search-area">
 				<div class="form-item">
-					<select id="searchCondition" name="searchCondition">
-						<option value="TITLE">제목</option>
-						<option value="CONTENT">내용</option>
-						<option value="IdNick">아이디(닉네임)</option>
+					<select name="searchType" id="searchType">
+						<option value="party_boardtitle">제목</option>
+						<option value="party_boardwriter">아이디(닉네임)</option>
 					</select>
 				</div>
 				<div class="form-item">
-					<input id="searchKeyword" name="searchKeyword" type="text">
+					<input type="text" class="form-control" name="keyword" id="keywordInput">
 				</div>
 				<div class="form-item">
 					<input type="submit" value="검색 ">

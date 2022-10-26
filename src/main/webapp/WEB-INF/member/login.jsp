@@ -15,6 +15,33 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	$("#btnLogin").click(function() {
+		console.log("#btnLogin 클릭")
+
+		$.ajax({
+			type:"post"			//요청 메소드
+			, url: "/homett/login"		//요청 URL
+			, data: {		//요청 파라미터
+				id : $("#userid").val()	
+				, pw : $("#userpw").val()
+				
+			}
+		, dataType: "html"		//응답 데이터 형식
+		, success: function( res ) {
+			console.log("AJAX 성공")
+			 window.location.href='/homett/main';
+			
+		}
+		, error: function() {
+			console.log("AJAX 실패")
+			alert("입력하신 회원정보가 일치하지 않습니다");
+			$("#userid").focus()
+			
+		}			
+			
+		})
+	})
+	
 // 	$("form").submit(function(){
 // 		console.log("submit event")
 		
@@ -39,10 +66,10 @@ $(document).ready(function() {
 		}
 	})
 	
-	//로그인 버튼
-	$("#btnLogin").click(function() {
-		$("#loginform").submit();
-	})
+// 	//로그인 버튼
+// 	$("#btnLogin").click(function() {
+// 		$("#loginform").submit();
+// 	})
 
 })
 </script>
@@ -113,7 +140,7 @@ li{
 <h1>로그인</h1>
 <hr>
 
-<form action="/homett/login" method="post" id="loginform">
+<!-- <form action="/homett/login" method="post" id="loginform"> -->
 
 	<div>
 		<label for="userid">아이디</label>
@@ -126,13 +153,14 @@ li{
 	</div>
 
 	<div>
-		<button type="button" id="btnLogin">로그인</button>
+		<button id="btnLogin">로그인</button>
 	</div>
 
-</form>
+<!-- </form> -->
 
 	<button class="btn" id="btnJoin" onclick="location.href='/homett/join'">회원가입</button>
-	<a href="/homett/searchidpw" class="btn" id="btnJoin">아이디 I 비밀번호 찾기</a><br>
+	<a href="/homett/searchid" class="btn" id="btnJoin">아이디 찾기</a> I
+	<a href="/homett/searchpw" class="btn" id="btnJoin">비밀번호 찾기</a><br>
 	<button class="btn" id="btnJoin" onclick="location.href='/homett/main'">메인페이지</button><br><br>
 <a href="javascript:kakaoLogin();"><img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" alt="카카오계정 로그인" width="20%" height="20%"/></a>
 <a href="javascript:kakaoLogout();">로그아웃</a>

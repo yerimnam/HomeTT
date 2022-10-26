@@ -82,5 +82,14 @@ public class PaymentServiceImpl implements PaymentService {
 	public Payment getresult(Payment payinsert) {
 		return paymentDao.selectpayresult(JDBCTemplate.getConnection(), payinsert);
 	}
+
+	
+	//@@@@@@파티부분@@@@@@@@
+	@Override
+	public int insertParty(Payment returnData) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		return paymentDao.insertPartyM(conn,returnData);
+	}
 	
 }
