@@ -194,11 +194,13 @@ textarea {
 				for (int i = 0; i < partyBoardList.size(); i++) {
 				%>
 
+			<form action="./comment" method="post">
 				<tr>
 					<td><%=partyBoardList.get(i).getPartyBoardNo()%></td>
 					<td><%=partyBoardList.get(i).getPartyBoardWriter()%></td>
 					<td><%=partyBoardList.get(i).getPartyBoardTitle()%><button id="btn-d">❌</button></td>
 				</tr>
+			</form>
 
 				<%
 				}
@@ -382,16 +384,8 @@ function showPrompt(){
 }
 </script>
 
-<script type="text/javascript">
-
-	//삭제버튼
-// 		$("#btnDelete").click(function() {
-<%-- 		$(location).attr('href', './delete?partyboardno=<%=partyBoard.getPartyBoardNo() %>') --%>
-// })
-	
 
 
 	
-</script>
 
 </html>
