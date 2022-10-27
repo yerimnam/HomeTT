@@ -190,7 +190,7 @@ a.heart {
 			<h3>공지사항</h3>
 		</div>
 		<div>
-			<button style="text align: right";><a href="./createparty">방만들기</a></button>
+			<a href="./createparty"><button style="text align: right">방만들기</button></a>
 		</div>
 		<div class="part-area">
 			<%
@@ -210,7 +210,7 @@ a.heart {
 				</div>
 				<ul class="part-contents">
 
-					<li><a href="./partyroomdetail?partyRoomNo=<%=partyList.get(i).getPartyRoomNo()%>">파티방 번호 : <%=partyList.get(i).getPartyRoomNo()%></a></li>
+					<li><a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>">파티방 번호 : <%=partyList.get(i).getPartyNo()%></a></li>
 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>
@@ -218,15 +218,18 @@ a.heart {
 					<li>참여 금액 : <%=partyList.get(i).getPaymentAmount()%> 원
 					</li>
 				</ul>
+				
+<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
 				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span>
 
 				</span>
+				</a>
 			</div>
+				<%
+				}
+				%>
 			<!-- #party end -->
 
-			<%
-			}
-			%>
 		</div>
 	</div>
 	<!-- .container end -->
