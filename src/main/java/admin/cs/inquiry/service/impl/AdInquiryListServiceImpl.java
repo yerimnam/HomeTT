@@ -18,13 +18,13 @@ private AdInquiryListDao adInquiryListDao = new AdInquiryListDaoImpl();
 	
 	@Override
 	public List<Inquiry> getList(Paging paging) {
-		System.out.println("getList(paging) : " + paging);
+//		System.out.println("getList(paging) : " + paging);
 		return adInquiryListDao.selectAll(JDBCTemplate.getConnection(), paging);
 	}
 	
 	@Override
 	public Paging getPaging(HttpServletRequest req) {
-		System.out.println("getList(paging) 시작");
+//		System.out.println("getList(paging) 시작");
 		int totalCount = adInquiryListDao.selectCntAll(JDBCTemplate.getConnection());
 		
 		String param = req.getParameter("curPage");
@@ -34,7 +34,7 @@ private AdInquiryListDao adInquiryListDao = new AdInquiryListDaoImpl();
 		}
 		Paging paging = new Paging(totalCount, curPage);
 		
-		System.out.println("getList(paging) 끝 : " + paging);
+//		System.out.println("getList(paging) 끝 : " + paging);
 		return paging;
 	}
 	
@@ -87,11 +87,11 @@ private AdInquiryListDao adInquiryListDao = new AdInquiryListDaoImpl();
 		//게시글 정보 DTO객체
 		Inquiry inquiry = new Inquiry();
 		
-		String param = req.getParameter("inquiry_articleNumber");
+		String param = req.getParameter("inquiryArticleNumber");
+		System.out.println("param : " + param);
 		if( null != param && !"".equals(param) ) { //전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
 		inquiry.setInquiryArticleNumber( Integer.parseInt(param) );
 		}
-		
 		inquiry.setAnswerWriter(req.getParameter("answer_writer"));
 		inquiry.setAnswerContent(req.getParameter("answer_content"));
 		

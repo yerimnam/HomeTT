@@ -22,19 +22,19 @@ public class AdInquiryViewController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/adinquiryview [GET]");
-		System.out.println("AdInquiryViewController doGet() - inquiryno : " + req.getParameter("inquiryArticleNumber"));
+//		System.out.println("/homett/adinquiryview [GET]");
+//		System.out.println("AdInquiryViewController doGet() - inquiryno : " + req.getParameter("inquiryArticleNumber"));
 		
 		//한글 인코딩 처리
 		req.setCharacterEncoding("UTF-8");
 		
 		//전달파라미터 객체 얻어오기
 		Inquiry inquiryno = adInquiryListService.getInquiryno(req);
-		System.out.println("AdInquiryViewController doGet() - inquiryno객체 : " + inquiryno);
+//		System.out.println("AdInquiryViewController doGet() - inquiryno객체 : " + inquiryno);
 		
 		//게시글 상세보기 조회 결과 얻어오기
 		Inquiry viewinquiry = adInquiryListService.view( inquiryno );
-		System.out.println("AdInquiryViewController doGet() - viewinquiry : " + viewinquiry);
+//		System.out.println("AdInquiryViewController doGet() - viewinquiry : " + viewinquiry);
 	
 		req.setAttribute("viewinquiry", viewinquiry);
 		

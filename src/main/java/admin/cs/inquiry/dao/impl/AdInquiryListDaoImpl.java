@@ -19,7 +19,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 	
 	@Override
 	public List<Inquiry> selectAll(Connection conn, Paging paging) {
-		System.out.println("selectAll 시작");
+//		System.out.println("selectAll 시작");
 		String sql = "";
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, I.* FROM (";
@@ -67,13 +67,13 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("selectAll 끝 : " + inquiryList);
+//		System.out.println("selectAll 끝 : " + inquiryList);
 		return inquiryList;
 	}
 
 	@Override
 	public int selectCntAll(Connection conn) {
-		System.out.println("selectCntAll 시작");
+//		System.out.println("selectCntAll 시작");
 		String sql = "";
 		sql += "SELECT count(*) cnt FROM cs_inquiry";
 		
@@ -93,13 +93,13 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntAll 끝 : " + count);
+//		System.out.println("selectCntAll 끝 : " + count);
 		return count;
 	}
 
 	@Override
 	public Inquiry selectInquiryByInquiryno(Connection conn, Inquiry inquiryno) {
-		System.out.println("selectInquiryByInquiryno : " + inquiryno);
+//		System.out.println("selectInquiryByInquiryno : " + inquiryno);
 		String sql = "";
 		sql += "SELECT";
 		sql += "	inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle, inquiry_content,";
@@ -246,7 +246,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		sql += " SET answer_writer = ?";
 		sql += "	, answer_content = ?";
 		sql += "	, answer_date = SYSDATE";
-		sql += " WHERE inquiry_articleNumber ?";
+		sql += " WHERE inquiry_articleNumber = ?";
 		
 		int res = 0;
 
