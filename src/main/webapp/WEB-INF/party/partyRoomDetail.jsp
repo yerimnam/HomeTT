@@ -54,7 +54,7 @@ ul {
 		%>
 	</ul>
 <form action="/homett/payamount" method="get" id="payform">
-	<button onclick="location.href='./payamount'" id= "payBtn">가입하기</button>
+	<button  id= "payBtn">가입하기</button>
 	<!-- 	<button onclick="location.href='./joinparty'">가입하기</button> -->
 	<button onclick="location.href='./partymodify'">목록으로</button>
 </form>

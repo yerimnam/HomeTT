@@ -57,8 +57,15 @@
 					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>		<!--  상세보기 링크 걸기-->		
 				
 				<% if ( inquiryBoard.get(i).getAnswercontent() != null && !"".equals(inquiryBoard.get(i).getAnswercontent()))  { %>
-					<td><a href="./inquirtydetail??inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&<%=inquiryBoard.get(i).getAnswercontent() %>">
-					<%=inquiryBoard.get(i).getAnswercontent() %></a></td>
+					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&<%=inquiryBoard.get(i).getAnswercontent() %>">
+						<%if(inquiryBoard.get(i).getAnswercontent().length() > 20) {%>
+						
+						<%=inquiryBoard.get(i).getAnswercontent().substring(0,20)+"..." %></a></td>
+						
+						<% }else {%>
+						<%=inquiryBoard.get(i).getAnswercontent()%>
+						
+						<% } %>
 					<td><%=inquiryBoard.get(i).getAnswerdate() %></td>
 					
 					<td><%=inquiryBoard.get(i).getAnswerWriter() %></td>
