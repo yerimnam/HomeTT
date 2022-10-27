@@ -33,13 +33,10 @@ public class PaymentAmountController extends HttpServlet {
 		  HttpSession session =req.getSession();
 
 				//테스트 데이터
-<<<<<<< HEAD
 				session.setAttribute("userNo", 24);
 				session.setAttribute("partyNo", 4);
-=======
 //				session.setAttribute("user_no", 2);
 //				session.setAttribute("partyNo", 1);
->>>>>>> refs/remotes/origin/master
 
 				
 		  //테스트 데이터
