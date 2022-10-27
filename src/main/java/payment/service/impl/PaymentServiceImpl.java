@@ -29,7 +29,7 @@ public class PaymentServiceImpl implements PaymentService {
 		return paymentDao.selectPartyInfo(JDBCTemplate.getConnection(), partyno);
 	}
 
-	
+	 
 
 	
 	@Override

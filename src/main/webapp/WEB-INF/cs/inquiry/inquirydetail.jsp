@@ -36,15 +36,16 @@ function deleteinquiry(){
 
 <body>
 
-
+<%if(inquiryDetail.getAnswercontent() == null ) {%>
 <table>
 
 <tr>
 	<td>글번호</td>
 	<td><%=inquiryDetail.getInquiryArticleNumber() %>
 
-	<td>작성일</td>
+	<td>작성일자</td>
 	<td><%=inquiryDetail.getInquiryDate() %>
+
 
 </tr>
 <tr>
@@ -55,7 +56,7 @@ function deleteinquiry(){
 
 <tr>
 	<td>제목</td>
-	<td><%=inquiryDetail.getInquiryArticleTitle() %>
+	<td><%=inquiryDetail.getInquiryArticleTitle() %></td>
 </tr>
 
 <tr>
@@ -76,7 +77,70 @@ function deleteinquiry(){
 
 
 </div>
+<%} else {%>
+
+<table>
+
+<tr>
+	<td>글번호</td>
+	<td><%=inquiryDetail.getInquiryArticleNumber() %>
+
+	<td>작성일자</td>
+	<td><%=inquiryDetail.getInquiryDate() %>
 
 
+</tr>
+<tr>
+	<td>닉네임</td>
+	<td><%=inquiryDetail.getUserNick() %></td>
+</tr>
+
+
+<tr>
+	<td>제목</td>
+	<td><%=inquiryDetail.getInquiryArticleTitle() %></td>
+</tr>
+
+<tr>
+	<td>문의사항</td>
+	<td><%=inquiryDetail.getInquiryContent() %></td>
+
+
+</tr>
+
+
+</table>
+
+<div>
+
+
+
+<div>
+
+	<table>
+	
+		<tr>
+			<td>답변일</td>
+			<td><%=inquiryDetail.getAnswerdate()%></td>
+			<td>답변자</td>
+			<td><%=inquiryDetail.getAnswerWriter() %></td>
+		</tr>
+		<tr>	
+			<td>답변 사항</td>
+			<td><%=inquiryDetail.getAnswercontent() %></td>
+		</tr>
+	
+	</table>
+	<button id="btnList" onclick="back()">목록</button>
+
+
+
+
+</div>
+
+
+
+
+<%} %>
 </body>
 </html>
