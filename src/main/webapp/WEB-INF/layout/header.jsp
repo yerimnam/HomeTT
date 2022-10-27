@@ -15,13 +15,49 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
+
+<!-- ------------------------------------- 스크립트 시작 ------------------------------------ -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$(".gnb > a").mouseover(function(){
+// 		alert("마우스 Over");
+// 		$(this).css("color", "#ffffff");
+		event.target.style.color = "#ffffff";
+		});
+	
+	$(".gnb").mouseout(function(){
+		event.target.style.color = "#666666";
+	});
+	
+	
+})
+
+
+
+
+// function mover() {
+	
+// 	 $(this).attr("color", "#ffffff");
+//  alert("마우스가 오버 됩니다.");
+	
+// }
+
+
+</script>
+
+
+
+<!-- ------------------------------------- 스크립트 끝 ------------------------------------ -->
+
 <!-- 스타일 -->
 <style type="text/css">
 
 html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, blockquote, form, fieldset, legend, menu, nav, section, hgroup, article, header, aside, footer, input, select, textarea, button {
     margin: 0;
     padding: 0;
-    font-family: 'yg-jalnan', 'Noto Sans KR', monospace, Corbel, Dotum, AppleGothic, Helvetica, sans-serif;
+    font-family: 'Nanum Gothic', 'Noto Sans KR', monospace, Corbel, Dotum, AppleGothic, Helvetica, sans-serif;
 }
 
 #header{
@@ -33,7 +69,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 #hdTopright{
 	background-color: #ffde59;
 	float: right;
-	width: 76%;
+	width: 72%;
 	height: 110px;
 	border-radius: 0 0 0 90px;
 	position: absolute;
@@ -41,7 +77,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 }
 
 #hdTopleft{
-	width: 24%;
+	width: 28%;
 	height: 110px;
 	float: left;
 	position: relative;
@@ -76,12 +112,14 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 
 #topMenu > a {
 	float: right;
+	display: inline;
+	margin: 0 10px 0 15px;
 }
 
 #bottomMenu {
 	height: 76px;
 	width: 1600px;
-	padding-top: 10px;
+	margin-top: 42px;
 }
 
 #bottomMenu > ul {
@@ -90,20 +128,23 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 }
 
 #bottomMenu > ul > li {
-	margin: 0 30px 0 30px;
-	font-size: 20px;
-	color: #111111;
+	margin: 0 34px 0 34px;
 	float: right;
 }
 
 #bottomMenu > ul > li > a {
-	font-weight: bold;
-	color: #ffffff;
+	font-weight: 600;
+    font-family: 'Noto Sans KR';
+    font-size: 19px;
+    color: #444444;
+    text-decoration-line: none;
+    position: relative;
+	
 }
 
 
 #bottomMenu :nth-child(2) {
-	margin-right: 140px !important;
+ 	margin-right: 46px !important; 
 }
 
 #mypageBtn {
@@ -114,13 +155,13 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	display: inline-block;
     font-size: 18px;
     font-weight: 600;
-    font-family: 'Nanum Gothic';
+    font-family: 'Noto Sans KR';
     width: 184px;
     height: 44px;
     line-height: 44px;
     border-radius: 30px;
     text-align: center;
-    color: #111111;
+    color: #444444;
     background-color: #fff;
 }
 
@@ -137,7 +178,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 		</div>
 	</div>	
 		
-	<div id="borderline">
+	<div id="hdTopright">
 		
 		<div class="inner top">
 			<div id="topMenu">
@@ -154,7 +195,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 					</li>
 					
 					<li class="gnb">
-						<a href="">파티만들기</a>
+						<a href="">파티만들기 </a>
 					</li>
 					
 					<li class="gnb">
