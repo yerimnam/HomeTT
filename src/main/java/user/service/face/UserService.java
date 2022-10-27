@@ -26,6 +26,23 @@ public interface UserService {
 	 */
 	public Member join(Member member);
 
+	/**
+	 * 아이디 정보 추출하기
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Member - 아이디 정보 객체
+	 */
+	public Member getIdChk(HttpServletRequest req);
+	
+	
+	/**
+	 * 아이디 중복 정보 추출하기
+	 * 
+	 * @param member - 클라이언트가 입력하여 전달된 회원정보
+	 * @return - Member - 아이디 중복 가져오기
+	 */
+	public int checkId(Member member);
+	
 	
 //	---------------------------------회원가입 끝 -----------------------------------
 	
@@ -206,6 +223,11 @@ public interface UserService {
 	 * @return Member - 수정한 회원권환 정보
 	 */
 	public Member UpdateType(Member member);
+
+
+	
+
+
 	
 //	--------------------------------- 유저타입 변환 끝 -----------------------------------
 	

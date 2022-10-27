@@ -6,12 +6,51 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	$("#sameChk").click(function(){
+		console.log("#sameChk 클릭")
+		
+		$.ajax({
+			type : "post"
+			, url : "/homett/joinidchk"
+			, data : {
+				userId : $("#userid").val()
+			}
+			, dataType : "html"
+			, success : function( result ){
+				if(result == 0){
+					$("#checkIdBox").css('display', 'block')
+					$("#checkId").html('사용할 수 없는 아이디입니다.');
+					$("#checkId").attr('color','red');
+					
+				} else {
+					$("#checkIdBox").css('display', 'block')
+					$("#checkId").html('사용할 수 있는 아이디입니다.');
+					$("#checkId").attr('color','green');
+					$("#sameChk").val('2')
+					
+				} 
+			},
+			error : function(){
+				alert("서버요청실패");
+			}
+		})
+			 
+	})
+	
+	
 	$("#btnJoin").click(function() {
 		
 		//아이디가 빈칸일때~~~~~~~~~~~~~~~~~!
 		if(document.getElementById("userid").value==""){
 			alert("아이디를 입력해주세요");
 			$("input").eq(0).focus()
+			return;
+		} 
+		
+		//아이디가 중복일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("sameChk").value=="1"){
+			alert("아이디 중복검사를 실행해주세요");
+			$("#sameChk").focus()
 			return;
 		} 
 		
@@ -153,7 +192,6 @@ a{
 div > input {
 	width: 380px;
 	height: 54px;
-/* 	background-color: #eeeeee; */
 	border: 1px solid #dddddd;
 	border-radius: 4px;
 	padding-left: 20px;
@@ -227,7 +265,18 @@ input:focus{
 	right: 0;
 }
 
+#checkIdBox {
+	width: 380px;
+	height: 17px;
+	clear: both;
+	position: relative;
+}
 
+#checkId {
+	position: absolute;
+	bottom: 11px;
+	left: 2px;
+}
 
 
 
@@ -250,11 +299,14 @@ input:focus{
 	
 	
 	<!-- 아이디 -->
-	<div class="input">
-		<button type="button" id="sameChk">중복 확인</button>
+	<div class="input" id="input1">
+		<button type="button" id="sameChk" value="1">중복 확인</button>
 		<input type="text" id="userid" name="userid" placeholder="아이디를 입력해 주세요">
 	</div>
-	<em class="msgInvalid" id="idCheckMsg1" style="display:none">4~20자의 영문, 숫자와 특수문자'_'만 사용해주세요.</em>
+	<div id="checkIdBox" style=" display: none">
+		<font id = "checkId" size = "2"></font>
+	</div>
+	
 
 	<!-- 비밀번호 -->
 	<div class="input">	

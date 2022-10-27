@@ -81,6 +81,27 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	
+	@Override
+	public Member getIdChk(HttpServletRequest req) {
+		System.out.println("UserService getIdChk() -  시작");
+		Member member = new Member();
+
+		member.setUserId( req.getParameter("userId") );
+		
+		return member;
+	}
+	
+	
+	@Override
+	public int checkId(Member member) {
+		
+		int result = userDao.checkId(conn, member);
+		System.out.println("result" + result);
+		return result;
+	}
+	
+	
 
 	//	---------------------------------회원가입 끝 -----------------------------------
 
