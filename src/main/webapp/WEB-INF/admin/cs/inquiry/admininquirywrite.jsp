@@ -6,7 +6,8 @@
 
 <%	Date date = new Date();
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-	System.out.println(formatter.format(date));%>
+// 	System.out.println(formatter.format(date));
+	%>
 	
 <%	Inquiry viewinquiry = (Inquiry) request.getAttribute("viewinquiry"); %>
 <!-- 답변자 getAttribute -->
@@ -22,11 +23,14 @@
 
 <h1 style="margin: 30px 0; margin-left: 560px;">1:1 문의 - 답변하기</h1>
 
+<form action="./adinquirywrite" method="POST">
+
 <table class="table table-bordered text-center" style="width: 800px; margin: 30px auto; margin-bottom: 50px;">
 
 <tr>
 	<td class="info" style="width: 30%; font-weight: bold;">글 번호</td>
-	<td id="inquiry_articleNumber" name="inquiry_articleNumber" style="width: 70%"><%=viewinquiry.getInquiryArticleNumber() %></td>
+	<td style="width: 70%"><input class="text-center" type="text" name="inquiryArticleNumber" 
+		value="<%=viewinquiry.getInquiryArticleNumber() %>" readonly style="border: 0px;"></td>
 </tr>
 <tr>
 	<td class="info" style="font-weight: bold;">작성일</td>
@@ -54,11 +58,11 @@
 
 <h3 style="margin: 30px 0; margin-left: 560px;">답변작성</h3>
 
-<form action="./adinquirywrite" method="POST">
 <table class="table table-bordered text-center" style="width: 800px; margin: 30px auto; ">
 <tr>
 	<td class="info" style="width: 30%; font-weight: bold;">답변자</td>
-	<td id="answer_writer" name="answer_writer" style="width: 70%">관리자</td>
+	<td style="width: 70%"><input class="text-center" type="text" name="answer_writer" 
+		value="관리자" readonly style="border: 0px;"></td>
 </tr>
 <tr>
 	<td class="info" style="font-weight: bold;">답변 작성일</td>
@@ -68,7 +72,7 @@
 	<td class="warning" colspan="2" style="font-weight: bold;">답변 내용</td>
 </tr>
 <tr>
-	<td colspan="2"><textarea id="answer_content" name="answer_content" name="answer_content" style="width: 100%;"></textarea></td>
+	<td colspan="2"><textarea id="answer_content" name="answer_content" style="width: 100%;"></textarea></td>
 </tr>
 </table>
 </form>

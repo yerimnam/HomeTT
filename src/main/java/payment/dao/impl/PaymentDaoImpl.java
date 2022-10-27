@@ -20,7 +20,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
 	@Override
 	public Member selectUserInfo(Connection conn, int userno) {
-		System.out.println("SelectuserInf- start");
+		System.out.println("SelectuserInf- start"); 
 		String sql = "";
 		sql += "SELECT user_no,user_id,user_name,user_email,user_phone";
 		sql += " FROM member";
@@ -75,7 +75,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
+			while (rs.next()) { 
 
 				party.setPartyNo(rs.getInt("party_no"));
 				party.setUserNo(rs.getInt("user_no"));
@@ -133,33 +133,39 @@ public class PaymentDaoImpl implements PaymentDao {
 		return result;
 	}
 
-	private  PreparedStatement ps_two = null;
-	private  ResultSet rs_two = null;
-
 	@Override
 	public Payment selectpayresult(Connection conn, Payment payinsert) {
 
 		System.out.println("selectpay result -strat");
 		String sql = "";
-		sql += "SELECT p.party_no,p.payment_amount,p.user_cardcom,m.user_name,m.user_nick,m.user_email,p.payment_date FROM payment p";
-		sql += " INNER JOIN member m";
-		sql += " on p.user_no = m.user_no";
-		sql += " WHERE p.party_no =?";
-
-		//파티이름 조회하여 반환
-		String sql_two = "";
-		sql_two += "SELECT a.party_name FROM party a";
-		sql_two += " INNER JOIN payment p";
-		sql_two += " on p.party_no = a.party_no";
-		sql_two += " WHERE p.party_no =?";
+		
+		sql +="SELECT p.party_no,a.party_name, p.payment_amount,p.user_cardcom,m.user_name,m.user_nick,m.user_email,p.payment_date ";
+		sql +=" FROM member m";
+		sql +=" inner join  payment p";
+		sql +=" on  p.user_no = m.user_no";
+		sql +="    inner join party a";
+		sql +="     on  p.party_no = a.party_no ";
+		sql +="  where p.party_no =?"  ;     
+		  //-----------------------------------------------------------------------------------------   
+//		sql += "SELECT p.party_no,p.payment_amount,p.user_cardcom,m.user_name,m.user_nick,m.user_email,p.payment_date FROM payment p";
+//		sql += " INNER JOIN member m";
+//		sql += " on p.user_no = m.user_no";
+//		sql += " WHERE p.party_no =?";
+//
+//		//파티이름 조회하여 반환
+//		String sql_two = "";
+//		sql_two += "SELECT a.party_name FROM party a";
+//		sql_two += " INNER JOIN payment p";
+//		sql_two += " on p.party_no = a.party_no";
+//		sql_two += " WHERE p.party_no =?";
 
 		Payment payresult = new Payment();
 		try {
 			ps = conn.prepareStatement(sql);
-			ps_two = conn.prepareStatement(sql_two);
+		
 
 			ps.setInt(1, payinsert.getPartyNo());
-			ps_two.setInt(1, payinsert.getPartyNo());
+			
 
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -170,14 +176,11 @@ public class PaymentDaoImpl implements PaymentDao {
 				payresult.setUserNick(rs.getString("user_nick"));
 				payresult.setUserEmail(rs.getString("user_email"));
 				payresult.setPaymentDate(rs.getDate("payment_date"));
+				payresult.setPartyName(rs.getString("party_name"));
 			}
 
 			
-			rs_two = ps_two.executeQuery();
-			while (rs_two.next()) {
-				payresult.setPartyName(rs_two.getString("party_name"));
-
-			}
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

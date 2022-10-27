@@ -39,12 +39,8 @@ public class AdInquiryWriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		int inquiryArticleNumber = Integer.parseInt(req.getParameter("inquiry_articleNumber"));
-//		Inquiry inquiryno = adInquiryListService.getInquiryno(req);
-//		String inquiryArticleNumber = req.getParameter("inquiry_articleNumber");
-//		System.out.println("inquiryno" + inquiryArticleNumber);
-//		String answerWriter = req.getParameter("answer_writer");
-//		String answerContent = req.getParameter("answer_content");
+		//한글 인코딩 처리
+		req.setCharacterEncoding("UTF-8");
 		
 		//답변글 삽입
 		adInquiryListService.writeAnswer(req);

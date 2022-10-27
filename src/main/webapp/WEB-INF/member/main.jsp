@@ -35,6 +35,7 @@
 <button class="btn" onclick="location.href='/homett/dropuser'">회원탈퇴</button>
 <button class="btn" onclick="location.href='/homett/editprofilepwchk'">회원정보 수정</button>
 <button class="btn" onclick="location.href='/homett/typepwchk'">파티장 신청</button>
+<button class="btn" onclick="location.href='/homett/partymodify'">파티가입하기</button>
 
 <%	} %>
 
