@@ -11,6 +11,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+</script>
 </head>
 <body>
 
@@ -66,10 +74,8 @@
 						<%=inquiryBoard.get(i).getAnswercontent()%>
 						
 						<% } %>
-					<td><%=inquiryBoard.get(i).getAnswerdate() %></td>
-					
-					<td><%=inquiryBoard.get(i).getAnswerWriter() %></td>
-				<%} else {%>
+				
+			
 					
 					<td> 답변예정</td>
 					<td> 답변예정</td>

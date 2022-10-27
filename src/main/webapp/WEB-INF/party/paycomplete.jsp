@@ -83,7 +83,7 @@ body {
 	<span><%=paycomplete.getPaymentAmount() %></span>
 </div>
 
-<button type="button">메인으로</button>
+<button type="button" onclick="location.href='/homett/main'">메인으로</button>
 
 </body>
 </html>
