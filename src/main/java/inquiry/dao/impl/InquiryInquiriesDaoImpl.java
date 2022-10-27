@@ -152,12 +152,12 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 				inquiryDetail.setInquiryDate(rs.getDate("inquiry_date"));
 				inquiryDetail.setAnswerWriter(rs.getString("answer_writer"));
 				inquiryDetail.setAnswercontent(rs.getString("answer_content"));
-				inquiryDetail.setInquiryDate(rs.getDate("answer_date"));
+				inquiryDetail.setAnswerdate(rs.getDate("answer_date"));
 				inquiryDetail.setUserNick(rs.getString("user_nick"));
 				
 			}
 			
-			System.out.println(inquiryDetail.getInquiryDate());
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
