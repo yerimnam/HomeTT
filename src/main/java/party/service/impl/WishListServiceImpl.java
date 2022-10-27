@@ -59,6 +59,26 @@ public class WishListServiceImpl implements WishListService {
 		}
 		
 	}
+
+
+
+	@Override
+	public void wishdelete(HttpServletRequest req) {
+		
+		
+			Connection conn = JDBCTemplate.getConnection();
+			WishList wishlist = new WishList();
+			
+			
+
+			//게시글 삭제
+			if(wishlistdao.delete(conn, wishlist ) > 0 ) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+			
+	}
 	
 	
 

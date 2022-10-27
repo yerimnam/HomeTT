@@ -23,9 +23,8 @@ public class WishListController extends HttpServlet {
 	
 	
 	//객체 생성하기
-	WishListService wishlistService = new WishListServiceImpl();
+	private WishListService wishlistService = new WishListServiceImpl();
 	
-
 	// 서비스객체
 	private PartyModifyService partyModifyService = new PartyModifyServiceImpl();
 	
@@ -37,7 +36,6 @@ public class WishListController extends HttpServlet {
 			
 			//jsp 뷰 먼저 지정
 			req.getRequestDispatcher("/WEB-INF/party/wishList.jsp").forward(req, resp);
-			
 		
 			
 		}
@@ -50,8 +48,9 @@ public class WishListController extends HttpServlet {
 			System.out.println("/homett/wishlist [POST]");
 			
 
-			//전달 파라미터 먼저 추출
-			
+
+			//글 삽입하기
+			wishlistService.wishinsert(req);
 			
 			
 			
