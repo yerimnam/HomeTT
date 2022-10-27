@@ -56,29 +56,22 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 }
 
 
-.inner {
+#inner {
 	width: 1600px;
+	height: 110px;
 	margin: auto;
-	right: 160px;
 	position: absolute;
+	right: 160px;
 }
-
-.bottom {
-
-}
-
 
 #topMenu {
-	width: 100%;
+	float: right;
 	height: 34px;
 	line-height: 40px;
 }
 
-#topMenu > a {
-	float: right;
-}
-
 #bottomMenu {
+	float: right;
 	height: 76px;
 	width: 1600px;
 	padding-top: 10px;
@@ -90,10 +83,10 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 }
 
 #bottomMenu > ul > li {
+	float: right;
 	margin: 0 30px 0 30px;
 	font-size: 20px;
 	color: #111111;
-	float: right;
 }
 
 #bottomMenu > ul > li > a {
@@ -137,16 +130,14 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 		</div>
 	</div>	
 		
+	<div id="hdTopright">
 	<div id="borderline">
-		
-		<div class="inner top">
+		<div id="inner">
 			<div id="topMenu">
 				<a href="">로그인</a>
 				<a href="">회원가입</a>
 			</div><!-- topMenu end -->
-		</div>	
-		
-		<div class="inner bottom">
+			
 			<div id="bottomMenu">
 				<ul>
 					<li id="mypageBtn">
@@ -173,11 +164,12 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 						<a href="">고객센터</a>
 					</li>
 				</ul>
+				
+			
 			
 			</div><!-- bottomMenu end -->
 		</div>
-
-
+	</div>
 	</div><!-- hdTopright -->
 		
 	</header>
