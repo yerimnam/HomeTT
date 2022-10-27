@@ -4,7 +4,7 @@ public class PartyRoom {
 	
 	private int party_room_no;
 	private int user_no;
-	private int party_no; //넷플은 1 티빙2이런거
+	private int party_no; 
 	
 	public PartyRoom() {
 	}

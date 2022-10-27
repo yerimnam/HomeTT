@@ -32,7 +32,7 @@ public class PartyExitController extends HttpServlet {
 		//파티룸 객체 생성
 		PartyRoom partyRoom = new PartyRoom();
 		
-		Party party = partyRoomBoardService.getPartyRoomNo(req);
+		Party party = partyRoomBoardService.getPartyNo(req);
 		
 		partyRoomBoardService.dropParty(partyRoom);
 		

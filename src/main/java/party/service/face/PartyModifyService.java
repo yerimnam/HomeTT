@@ -38,7 +38,7 @@ public interface PartyModifyService {
 	 * @param req-요청정보 객체
 	 * @return Party - 전달파라미터 partyRoomNo를 저장한 DTO객체
 	 */
-	public Party getPartyRoomNo(HttpServletRequest req);
+//	public Party getPartyRoomNo(HttpServletRequest req);
 
 	/**
 	 * 전달된 partyRoomNo를 이용하여 모집글을 조회한다
@@ -47,6 +47,8 @@ public interface PartyModifyService {
 	 * @return Party - 조회된 게시글 정보
 	 */
 	public Party view(Party partyRoomNo);
+
+	public Party getPartyRoomNo(HttpServletRequest req);
 
 
 

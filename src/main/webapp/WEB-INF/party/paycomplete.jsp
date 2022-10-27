@@ -40,6 +40,7 @@ body {
 </span>
 </div>
 
+<div>
 <span>닉네임 : </span>
 <span><%=paycomplete.getUserNick() %>
 </span>

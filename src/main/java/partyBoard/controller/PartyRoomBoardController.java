@@ -45,22 +45,6 @@ public class PartyRoomBoardController extends HttpServlet {
 
 		req.getRequestDispatcher("/WEB-INF/party/partyRoomBoard.jsp").forward(req, resp);
 
-		// 검색 관련
-		String searchType = req.getParameter("searchType");
-		String keyword = req.getParameter("keyword");
-
-		List<PartyBoard> partyBoardSearchList;
-		if (searchType != null && keyword != null) {
-			partyBoardSearchList = partyRoomBoardService.getPartySearchList(searchType, keyword);
-			System.out.println("검색한 결과" + partyBoardSearchList);
-			System.out.println("searchType" + searchType);
-			System.out.println("keyword" + keyword);
-		} else {
-			// 검색 안한 결과
-			//@@@@@@@@@@@@
-			partyBoardSearchList = partyRoomBoardService.getBrList(paging);
-			System.out.println("검색안한 결과" + partyBoardSearchList);
-		}
 
 	}
 

@@ -12,6 +12,7 @@ import partyBoard.dao.face.PartyRoomBoardDao;
 import partyBoard.dao.impl.PartyRoomBoardDaoImpl;
 import partyBoard.dto.PartyBoard;
 import partyBoard.service.face.PartyRoomBoardService;
+import util.Paging;
 import util.PbPaging;
 
 public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
@@ -35,10 +36,6 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(), paging);
 	}
 
-//	@Override
-//	public List<PartyBoard> getBrList(String searchCondition, String searchKeyword, PbPaging paging) {
-//		return partyRoomBoardDao.selectAllBr(JDBCTemplate.getConnection(),searchCondition,searchKeyword, paging );
-//	}
 
 	@Override
 	public PbPaging getBrPaging(HttpServletRequest req) {
@@ -125,24 +122,15 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
 	}
 
-	@Override
-	public List<PartyBoard> getPartySearchList(String searchType, String keyword) {
-		System.out.println("getPartySearchList() - 시작");
-		System.out.println("searchType" + searchType);
-		System.out.println("keyword" + keyword);
-		return partyRoomBoardDao.selectPbSearchList(JDBCTemplate.getConnection(), searchType, keyword);
-	}
-	
-	
 	
 
 	@Override
-	public Party getPartyRoomNo(HttpServletRequest req) {
+	public Party getPartyNo(HttpServletRequest req) {
 		// 전달파라미터를 저장할 객체 생성
 		Party party = new Party();
 
 		// 전달파라미터 partyRoomno 추출(파싱)
-		String param = req.getParameter("party_room_no");
+		String param = req.getParameter("partyNo");
 		if (null != param && !"".equals(param)) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리
 			party.setPartyRoomNo(Integer.parseInt(param));
 		}
@@ -163,4 +151,23 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
 	}
 
+	@Override
+	public PbPaging getPbSearchPaging(HttpServletRequest req, String searchType, String keyword) {
+		int totalCount = partyRoomBoardDao.selectPbAll(JDBCTemplate.getConnection(),searchType, keyword);
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param != null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+		PbPaging searchpaging = new PbPaging(totalCount, curPage);
+		return searchpaging;
+	}
+
+	@Override
+	public List<PartyBoard> getPartySearchList(PbPaging paging, String searchType, String keyword) {
+		return partyRoomBoardDao.selectPbSearchList(JDBCTemplate.getConnection(), paging, searchType, keyword);
+	}
+	
+	
 }

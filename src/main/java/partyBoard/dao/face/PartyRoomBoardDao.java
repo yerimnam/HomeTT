@@ -62,7 +62,6 @@ public interface PartyRoomBoardDao {
 	 */
 	public int delete(Connection conn, PartyBoard partyBoard);
 
-	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword);
 
 	
 	
@@ -70,7 +69,7 @@ public interface PartyRoomBoardDao {
 	 * 파티방 삭제
 	 * 
 	 * @param conn - DB연결 객체
-	 * @param party - 삭제할 파티방 번호
+	 * @param partyRoom - 삭제할 파티방 번호
 	 * @return
 	 */
 
