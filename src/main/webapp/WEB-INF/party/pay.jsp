@@ -235,8 +235,6 @@ border: 1px solid black;
 		<table id="payinfo" >
 			
 			<tr>
-					<th>회원 아이디</th>
-					<th>회원 이름</th>
 					<th>파티이름</th>
 					<th>파티장 </th>
 					<th>참여 금액</th>
