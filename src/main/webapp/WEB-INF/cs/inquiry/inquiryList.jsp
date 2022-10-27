@@ -11,6 +11,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+</script>
 </head>
 <body>
 
@@ -40,16 +48,39 @@
 					<th>작성자</th>
 					<th>작성일자</th>
 					<th>제목</th>
+					<th>문의 답변</th>
+					<th>답변 날짜</th>
+					<th>답변자</th>
 			</tr>
 		</thead>
+		
+		
 		
 		<tbody>
 			<%for(int i=0;i<inquiryBoard.size();i++) { %>
 				<tr>
 					<td><%=inquiryBoard.get(i).getInquiryArticleNumber() %></td>
-					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>		<!--  상세보기 링크 걸기-->		
 					<td><%=inquiryBoard.get(i).getUserNick() %></td>
 					<td><%=inquiryBoard.get(i).getInquiryDate() %></td>
+					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>		<!--  상세보기 링크 걸기-->		
+				
+				<% if ( inquiryBoard.get(i).getAnswercontent() != null && !"".equals(inquiryBoard.get(i).getAnswercontent()))  { %>
+					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&<%=inquiryBoard.get(i).getAnswercontent() %>">
+						<%if(inquiryBoard.get(i).getAnswercontent().length() > 20) {%>
+						
+						<%=inquiryBoard.get(i).getAnswercontent().substring(0,20)+"..." %></a></td>
+						
+						<% }else {%>
+						<%=inquiryBoard.get(i).getAnswercontent()%>
+						
+						<% } %>
+				
+			
+					
+					<td> 답변예정</td>
+					<td> 답변예정</td>
+					<td> 미정</td>
+				<%} %>
 				</tr>
 		
 		

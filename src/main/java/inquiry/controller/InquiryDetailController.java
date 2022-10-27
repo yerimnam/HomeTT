@@ -42,7 +42,8 @@ public class InquiryDetailController extends HttpServlet {
 		
 		//글 상세 보기 
 		InquiryBoard inquiryDetail = inquiryService.getDetail(userNo, inquiryTitle);
-
+		
+		System.out.println(inquiryDetail.getInquiryDate());
 		//MODEL값 저장
 		req.setAttribute("inquiryDetail", inquiryDetail);
 		

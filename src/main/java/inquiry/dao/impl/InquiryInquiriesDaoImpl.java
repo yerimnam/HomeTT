@@ -105,6 +105,7 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 			inquiryList.add(inquiryBaord);
 			
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -123,7 +124,7 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 		System.out.println("selectDetail-start");
 		
 		String sql ="";
-		sql +=" SELECT I.inquiry_articlenumber,I.inquiry_articletitle,I.user_no,I.inquiry_content,I.inquiry_date";
+		sql +=" SELECT I.*";
 		sql +=" ,m.user_nick";
 		sql +=" FROM cs_inquiry I";
 		sql +=" inner join member m";
@@ -142,12 +143,20 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 			while(rs.next()) {
 				inquiryDetail = new InquiryBoard();
 				inquiryDetail.setInquiryArticleNumber(rs.getInt("inquiry_articlenumber"));
-				inquiryDetail.setInquiryArticleTitle(rs.getString("inquiry_articletitle"));
 				inquiryDetail.setUserNo(rs.getInt("user_no"));
+				inquiryDetail.setAdminNo(rs.getInt("admin_no"));
+				inquiryDetail.setBoardCode(rs.getInt("board_code"));
+				inquiryDetail.setInquiryArticleTitle(rs.getString("inquiry_articletitle"));
 				inquiryDetail.setInquiryContent(rs.getString("inquiry_content"));
-				inquiryDetail.setInquiryDate(rs.getDate("inquiry_date"));;
+				inquiryDetail.setInquiryWriter(rs.getString("inquiry_writer"));
+				inquiryDetail.setInquiryDate(rs.getDate("inquiry_date"));
+				inquiryDetail.setAnswerWriter(rs.getString("answer_writer"));
+				inquiryDetail.setAnswercontent(rs.getString("answer_content"));
+				inquiryDetail.setAnswerdate(rs.getDate("answer_date"));
 				inquiryDetail.setUserNick(rs.getString("user_nick"));
+				
 			}
+			
 			
 			
 		} catch (SQLException e) {

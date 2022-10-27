@@ -33,10 +33,13 @@ public class PaymentListController extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		//테스트로 넣을 userno =2번 데이터
-		session.setAttribute("user_no",2);
+
+
+		session.setAttribute("user_no",2);  
+
 		
 		//실제로 작동 될 코드 
-		int userNo = (int)session.getAttribute("user_no");
+		int userNo = Integer.parseInt(String.valueOf(session.getAttribute("userNo"))); 
 			
 		
 		
@@ -65,7 +68,7 @@ public class PaymentListController extends HttpServlet {
 		//기간과 이름을 으로 게시글 조회
 		List<Payment> paymentList = paymentListService.getPaymentList(paging,userNo,start,end);
 
-		for( Payment p : paymentList )	System.out.println(p.getOrderNo() + " : " + p.getPartyNo());
+//		for( Payment p : paymentList )	System.out.println(p.getOrderNo() + " : " + p.getPartyNo());
 		
 		//model값을 view로 보내기
 		req.setAttribute("paymentList", paymentList);
@@ -78,12 +81,6 @@ public class PaymentListController extends HttpServlet {
 	}
 	
 	
-	//사용자가 기간을 설정하여 내역 조히하면  post로 요청함
- @Override
- protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-	}
-
- 
 
 }
