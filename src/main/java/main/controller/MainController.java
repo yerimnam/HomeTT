@@ -1,4 +1,4 @@
-package user.controller;
+package main.controller;
 
 import java.io.IOException;
 
@@ -15,8 +15,14 @@ public class MainController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		req.getRequestDispatcher("/WEB-INF/member/main.jsp").forward(req, resp);
+		System.out.println("homett/main [GET]");
+	
 		
+		
+		//g
+		
+		
+		
+		req.getRequestDispatcher("/WEB-INF/main/main.jsp").forward(req, resp);
 	}
 }
