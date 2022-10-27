@@ -47,13 +47,8 @@ public class WishListController extends HttpServlet {
 			
 			System.out.println("/homett/wishlist [POST]");
 			
-
-
 			//글 삽입하기
 			wishlistService.wishinsert(req);
-			
-			
-			
 			
 			
 			

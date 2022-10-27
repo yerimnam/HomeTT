@@ -210,7 +210,7 @@ a.heart {
 				</div>
 				<ul class="part-contents">
 
-					<li><a href="./partyroomdetail?partyRoomNo=<%=partyList.get(i).getPartyRoomNo()%>">파티방 번호 : <%=partyList.get(i).getPartyRoomNo()%></a></li>
+					<li><a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>">파티방 번호 : <%=partyList.get(i).getPartyNo()%></a></li>
 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>

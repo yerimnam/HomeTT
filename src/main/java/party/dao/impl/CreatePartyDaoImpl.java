@@ -50,7 +50,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		
 		String sql ="";
 		sql +="SELECT";
-		sql +=" user_id,user_name";
+		sql +=" user_no, user_id, user_name";
 		sql +=" FROM member";
 		sql +=" WHERE user_no =?";
 		

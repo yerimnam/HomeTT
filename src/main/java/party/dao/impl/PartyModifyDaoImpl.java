@@ -52,7 +52,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 		sql += "	party_no, ,party_room_no, party_kind, party_name, party_leader, party_creDate";
 		sql += "	, party_endDate, party_period, party_member, paymentAmount";
 		sql += " FROM party";
-		sql += " ORDER BY party_no ASC";
+		sql += " ORDER BY party_no DESC";
 
 		// 결과 저장할 List
 		List<Party> partyList = new ArrayList<>();
@@ -102,7 +102,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 		sql += "				party_no, party_room_no, party_kind, party_name, party_leader, party_creDate";      
 		sql += "					, party_endDate, party_period, party_member, paymentAmount";
 		sql += "	        FROM party";
-		sql += " 		    ORDER BY party_no ASC";
+		sql += " 		    ORDER BY party_no DESC";
 		sql += "	)P";
 		sql += "  )PARTY";
 		sql += " WHERE rnum BETWEEN ? AND ?";
@@ -173,24 +173,24 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 	}
 
 	@Override
-	public Party selectPartyByPartyRoomNo(Connection conn, Party partyRoomNo) {
+	public Party selectPartyByPartyRoomNo(Connection conn, Party partyNo) {
 
 		String sql = "";
 		sql += "SELECT";
 		sql += "	party_no, party_kind, party_name, party_room_no, party_leader";
 		sql += "	, party_creDate, party_endDate, party_period, party_member, paymentAmount";
 		sql += " FROM party";
-		sql += " WHERE party_room_no = ?";
+		sql += " WHERE party_no = ?";
 		
 		
 		Party party = null;
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, partyRoomNo.getPartyRoomNo());
+			ps.setInt(1, partyNo.getPartyRoomNo());
 			
 			System.out.println(sql);
-			System.out.println( partyRoomNo.getPartyRoomNo());
+			System.out.println( partyNo.getPartyRoomNo());
 			
 			System.out.println(ps);
 			rs = ps.executeQuery();
