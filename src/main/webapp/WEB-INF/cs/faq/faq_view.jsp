@@ -25,6 +25,7 @@
 	<td><%=viewBoard.getfaq_date() %></td>
 </tr>
 
+
 <tr>
 	<td class="info">작성자</td>
 	<td><%=viewBoard.getfaq_writer() %></td>
