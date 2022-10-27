@@ -117,8 +117,7 @@ body {
 	String end = request.getParameter("enddate")==null ?"" :"&enddate="+request.getParameter("enddate");
 %>
 
-<%=start %>
-<%=end %>
+
 
 
 <div class="text-center">

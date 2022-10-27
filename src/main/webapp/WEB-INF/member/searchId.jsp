@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type:"post"			//요청 메소드
-			, url: "/homett/ttpwchk"		//요청 URL
+			, url: "/homett/searchid"		//요청 URL
 			, data: {		//요청 파라미터
 				name : $("#username").val()	
 				, email : $("#useremail").val()
@@ -33,7 +33,6 @@ $(document).ready(function() {
 			$("#okHide").css('display', 'block')
 			$("#btnCalc").css('display','none')
 			alert("회원님의 이메일로 인증번호를 발송하였습니다");
-// 			console.log(ranNum)
 			
 			
 		}
