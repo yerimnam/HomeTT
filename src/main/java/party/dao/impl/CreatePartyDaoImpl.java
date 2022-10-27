@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import common.JDBCTemplate;
 import party.dao.face.CreatePartyDao;
@@ -50,7 +51,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		
 		String sql ="";
 		sql +="SELECT";
-		sql +=" user_id,user_name";
+		sql +=" user_no, user_id, user_name";
 		sql +=" FROM member";
 		sql +=" WHERE user_no =?";
 		
@@ -93,8 +94,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		//작성할 값 전부 적어야 함
 		String sql ="";
 		sql += "INSERT INTO party";
-		sql	+= " ( party_no, party_name, party_kind, party_rule, party_member )";
-		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ? )";
+		sql	+= " ( party_no, party_name, user_no, party_kind, party_leader, party_rule, party_member, paymentamount, party_enddate )";
+		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ? )";
 		
 		int result = 0;
 		
@@ -104,9 +105,14 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			ps= conn.prepareStatement(sql);
 			
 			ps.setString(1, party.getPartyName());
-			ps.setString(2, party.getPartyKind());
-			ps.setString(3, party.getPartyRule());
-			ps.setInt(4, party.getPartyMember());
+			ps.setInt(2, party.getUserNo());
+			ps.setString(3, party.getPartyKind());
+			ps.setString(4, party.getPartyLeader());
+			ps.setString(5, party.getPartyRule());
+			ps.setInt(6, party.getPartyMember());
+			ps.setInt(7, party.getPaymentAmount());
+			ps.setDate(8, new java.sql.Date(party.getPartyEndDate().getTime()));
+			
 
 			//수행 결과 저장
 			result = ps.executeUpdate();
