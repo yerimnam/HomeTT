@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/homett/main")
-public class MainController extends HttpServlet {
+@WebServlet("/homett/loginmain")
+public class LoginMainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		req.getRequestDispatcher("/WEB-INF/member/main.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/member/loginmain.jsp").forward(req, resp);
 		
 	}
 }
