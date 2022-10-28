@@ -2,12 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% ReviewBoard create = (ReviewBoard)request.getAttribute("reviewInsert"); %>
+<% ReviewBoard updatecotentReviewBoard = (ReviewBoard)request.getAttribute("updatecontent");  %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -20,7 +22,6 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <script type="text/javascript">
-
 
 $(document).ready(function(){
 
@@ -38,24 +39,36 @@ $(document).ready(function(){
 		});
 				//textarea#note에 웹 에디터 적용
 				$("#content").summernote()
-				$("user_id").summernote()					
-	})
+				$("eventTitle").summernote()
 			
-</script>
-
+				
+				
+	
+				
+	})
+	
+	
 <script type="text/javascript">
+
 $(document).ready(function(){
 
-	$("#btinwrite").click(function(){
+	$("#btnupdate").click(function(){
 		
-		$("#create").submit();
+		$("#updateevent").submit();
 	})		
 	
 })
 
 
-</script>
 
+function updatedone(){
+	
+	console.log("완료")
+		alert("수정완료")
+	
+}
+			
+</script>
 <style type="text/css">
 
 body{
@@ -70,24 +83,33 @@ body{
 }
 
 </style>
-
 </head>
 <body>
-<form action="/homett/reviewcreate" method="post" id="create">
 
+
+<h2>문의사항 작성하기</h2>
+
+<hr>
+<form action="/homett/reviewupdate" method="post" id="updatereview">
+
+	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
+	<input type="text" hidden="" name="reviewNo" value="<%=updatecotentReviewBoard.getReviewArticlenumber() %>">
+	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
 	
-
+	
 	<div id="title">
 	<span>제목</span>
-	<input type="text" id="reviewTitle" name="reviewTitle">
+	<input type="text" id="reviewTitle" name="reviewTitle" value="<%=updatecotentReviewBoard.getReviewArticletitle() %>">
 	</div>
 	
 	<br><br><br>
-	<textarea id="content" name="content"></textarea><br><br>
+	<textarea id="content" name="content" ><%= updatecotentReviewBoard.getReviewContent()%></textarea><br><br>
 
-<button type="button" id="btinwrite" >작성완료</button>
+<button type="button" id="btnupdate" >수정완료</button>
 <button type="button" id="cancelwriter" onclick="history.back()">취소</button>
-
 </form>
+
+
+
 </body>
 </html>
