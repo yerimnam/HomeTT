@@ -23,42 +23,38 @@
 
 
 <script type="text/javascript">
+	// $(function(){
 
-// $(function(){
-	
-// 	$('.part-title, .part-contents').not('.heart-area').on('click',function(e) {
-// 	    swal({
-// 	    	//여기에 파티 정보가 나오게했음 좋겠다
-// 	    title: "해당 파티에 가입하시겠습니까?", 
-// 	    type: "warning",
-// 	    confirmButtonText: "가입",
-// 	    showCancelButton: true
-// 	    })
-// 	      .then((result) => {
-// 	      if (result.value) {
-	    	  
-// 			  window.location = '/homett/joinparty';
-	      
-// 	      //목록으로 라고 글자를 넣어도 안바뀐다
-// 	      } else if (result.dismiss === 'cancel') {
-// 	          swal(
-// 	            'Cancelled',
-// 	            'Your stay here :)',
-// 	            'error'
-// 	          )
-// 	      }
-// 	    })
-// 	});
-	
-// 	$(document).on('click', '.heart', function(){
-// 		// 하트 상태 DB 저장
-// 		$(this).toggleClass('on off');
-// 	});
+	// 	$('.part-title, .part-contents').not('.heart-area').on('click',function(e) {
+	// 	    swal({
+	// 	    	//여기에 파티 정보가 나오게했음 좋겠다
+	// 	    title: "해당 파티에 가입하시겠습니까?", 
+	// 	    type: "warning",
+	// 	    confirmButtonText: "가입",
+	// 	    showCancelButton: true
+	// 	    })
+	// 	      .then((result) => {
+	// 	      if (result.value) {
 
-// });
+	// 			  window.location = '/homett/joinparty';
 
+	// 	      //목록으로 라고 글자를 넣어도 안바뀐다
+	// 	      } else if (result.dismiss === 'cancel') {
+	// 	          swal(
+	// 	            'Cancelled',
+	// 	            'Your stay here :)',
+	// 	            'error'
+	// 	          )
+	// 	      }
+	// 	    })
+	// 	});
 
+	// 	$(document).on('click', '.heart', function(){
+	// 		// 하트 상태 DB 저장
+	// 		$(this).toggleClass('on off');
+	// 	});
 
+	// });
 </script>
 
 <%--모델값 전달받기 --%>
@@ -161,7 +157,6 @@ a.heart {
 	/* 이미지 넣을 경우 url */
 }
 
-
 .search-area {
 	display: flex;
 	flex-wrap: wrap;
@@ -184,13 +179,18 @@ a.heart {
 <body>
 
 	<div class="top">
-		<h1><a href="./partymodify">파티모집 게시판</a></h1>
+		<h1>
+			<a href="./partymodify">파티모집 게시판</a>
+		</h1>
 	</div>
 
 	<div class="container">
 		<div class="notice">
 			<span class="round-box">공지사항</span>
 			<h3>공지사항</h3>
+		</div>
+		<div>
+			<a href="./createparty"><button style="text align: right">방만들기</button></a>
 		</div>
 		<div class="part-area">
 			<%
@@ -210,7 +210,7 @@ a.heart {
 				</div>
 				<ul class="part-contents">
 
-					<li><a href="./partyroomdetail?partyRoomNo=<%=partyList.get(i).getPartyRoomNo()%>">파티방 번호 : <%=partyList.get(i).getPartyRoomNo() %></a></li>
+					<li><a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>">파티방 번호 : <%=partyList.get(i).getPartyNo()%></a></li>
 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>
@@ -218,15 +218,18 @@ a.heart {
 					<li>참여 금액 : <%=partyList.get(i).getPaymentAmount()%> 원
 					</li>
 				</ul>
+				
+<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
 				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span>
 
 				</span>
+				</a>
 			</div>
+				<%
+				}
+				%>
 			<!-- #party end -->
 
-			<%
-			}
-			%>
 		</div>
 	</div>
 	<!-- .container end -->

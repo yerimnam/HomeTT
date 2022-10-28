@@ -53,6 +53,4 @@ public interface AdReportListDao {
 	 */
 	public List<Report> selectSearchList(Connection conn, Paging paging, String searchType, String keyword);
 	
-	
-	
 }

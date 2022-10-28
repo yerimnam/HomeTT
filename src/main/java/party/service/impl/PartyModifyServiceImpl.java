@@ -53,13 +53,13 @@ public class PartyModifyServiceImpl implements PartyModifyService {
 	}
 
 	@Override
-	public Party getPartyRoomNo(HttpServletRequest req) {
+	public Party getPartyNo(HttpServletRequest req) {
 
 		//전달파라미터를 저장할 객체 생성
 		Party party = new Party();
 		
 		//전달파라미터 partyRoomNo 추출(파싱)
-		String param = req.getParameter("partyRoomNo");
+		String param = req.getParameter("partyNo"); 
 		System.out.println(param);
 		
 		if( null != param && !"".equals(param)) {//전달파라미터가 null또는 ""빈문자열 아닐때
@@ -69,18 +69,18 @@ public class PartyModifyServiceImpl implements PartyModifyService {
 	}
 
 	@Override
-	public Party view(Party partyRoomNo) {
+	public Party view(Party partyNo) {
 		
 		//DB연결 객체
 		Connection conn = JDBCTemplate.getConnection();
 		
-		if(partyModifyDao.selectPartyByPartyRoomNo(conn, partyRoomNo) != null) {
+		if(partyModifyDao.selectPartyByPartyRoomNo(conn, partyNo) != null) {
 			JDBCTemplate.commit(conn);
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
 		//게시글 조회
-		Party party = partyModifyDao.selectPartyByPartyRoomNo(conn, partyRoomNo);
+		Party party = partyModifyDao.selectPartyByPartyRoomNo(conn, partyNo);
 		
 		
 		

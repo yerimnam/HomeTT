@@ -22,16 +22,6 @@ th {
 }
 </style>
 
-<script type="text/javascript">
-// $(document).ready(function() {
-// 	$("#searchBtn").click(function() {
-// 		var searchType = document.getElementById("searchType").value;
-// 		var keyword = document.getElementById("keyword").value;
-// 		location.href = "./adimnsearchlist?searchWord=" + keyword + "&searchType=" + searchType;
-// 	})
-// })
-</script>
-
 </head>
 <body>
 
@@ -55,9 +45,13 @@ th {
 <tr>
 	<td><%=reportSearchList.get(i).getReportNo() %></td>
 	<td><%=reportSearchList.get(i).getReportDate() %></td>
+	<%	String content = reportSearchList.get(i).getReportContent();
+		if( content.length() > 15 ) { 
+		content = content.substring(0, 15) + "...";
+		} %>
 	<td>
 		<a href="./adreportview?reportno=<%=reportSearchList.get(i).getReportNo() %>">
-			<%=reportSearchList.get(i).getReportContent() %>
+			<%=content %>
 		</a>
 	</td>
 	<td><%=reportSearchList.get(i).getReporter() %></td>
@@ -78,5 +72,12 @@ th {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+body{
+	font-family: 'SUIT';
+}
+</style>
 
 </html>

@@ -1,6 +1,8 @@
 package party.service.impl;
 
 import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,13 +24,21 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		
 		Party party = new Party();
 		
-//		party.setPartyKind ( req.getParameter("partykind") );
+		party.setPartyKind ( req.getParameter("partykind") );
 		party.setPartyRule(req.getParameter("partyrule"));
 		party.setPartyName(req.getParameter("partyname"));
 		party.setPartyLeader(req.getParameter("partyleader"));
 		party.setPartyMember(Integer.parseInt(req.getParameter("partymember")));
-//		party.setPartyCreDate(null);
-//		party.setPartyEndDate(null);
+		
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String endtDate = req.getParameter("endtDate");
+		try {
+			party.setPartyEndDate( sdf.parse(endtDate) );
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		return party;
 	}

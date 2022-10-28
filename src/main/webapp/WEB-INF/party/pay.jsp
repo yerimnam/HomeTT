@@ -32,10 +32,9 @@
      IMP.request_pay({ // param
          pg: "html5_inicis",
          pay_method: "card",
-         merchant_uid : "<%=party.getPartyNo()%>_" +  new Date().getTime(),
+         merchant_uid : 'merchant_' +  new Date().getTime(),
           name: "HomeTT",
           paid_at: paid_at,
-          
           
          buyer_email: "<%=member.getUserEmail()%>",
          buyer_name: "<%=member.getUserName()%>",
@@ -236,8 +235,6 @@ border: 1px solid black;
 		<table id="payinfo" >
 			
 			<tr>
-					<th>회원 아이디</th>
-					<th>회원 이름</th>
 					<th>파티이름</th>
 					<th>파티장 </th>
 					<th>참여 금액</th>

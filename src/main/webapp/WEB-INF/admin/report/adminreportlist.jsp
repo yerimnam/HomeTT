@@ -32,9 +32,9 @@ th {
 <table style="width: 1600px;" class="table table-striped table-hover table-condensed">
 
 <tr>
-	<th style="width: 10%; text-align: center">신고 번호</th>
-	<th style="width: 15%; text-align: center">신고 날짜</th>
-	<th style="width: 30%; text-align: center">신고 내용</th>
+	<th style="width: 5%; text-align: center">신고 번호</th>
+	<th style="width: 10%; text-align: center">신고 날짜</th>
+	<th style="width: 40%; text-align: center">신고 내용</th>
 	<th style="width: 15%; text-align: center">신고자</th>
 	<th style="width: 15%; text-align: center">신고 대상자</th>
 	<th style="width: 20%; text-align: center">신고 파티명</th>
@@ -44,9 +44,13 @@ th {
 <tr>
 	<td><%=reportList.get(i).getReportNo() %></td>
 	<td><%=reportList.get(i).getReportDate() %></td>
+	<%	String content = reportList.get(i).getReportContent();
+		if( content.length() > 15 ) { 
+		content = content.substring(0, 15) + "...";
+		} %>
 	<td>
 		<a href="./adreportview?reportno=<%=reportList.get(i).getReportNo() %>">
-			<%=reportList.get(i).getReportContent() %>
+			<%=content %>
 		</a>
 	</td>
 	<td><%=reportList.get(i).getReporter() %></td>
@@ -67,5 +71,12 @@ th {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+body{
+	font-family: 'SUIT';
+}
+</style>
 
 </html>

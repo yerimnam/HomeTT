@@ -18,7 +18,10 @@
 <%	int partycre  = (int)request.getAttribute("partycre"); %>
 <%	int partyend  = (int)request.getAttribute("partyend"); %>
 
-<h1 class="text-center" style="margin: 20px auto;">당일 통계 페이지</h1>
+<div style="margin-left:480px;">
+	<h1 style="margin: 30px 0;">당일 통계 페이지</h1>
+</div>
+
 <hr style="width: 1000px; margin: 30px auto; border:0; height:2px; background: #ccc;">
 
 <div style="position:relative; width:1000px; margin: 0 auto;">
@@ -194,5 +197,12 @@ var myChart = new Chart(ctx, {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+body{
+	font-family: 'SUIT';
+}
+</style>
 
 </html>
