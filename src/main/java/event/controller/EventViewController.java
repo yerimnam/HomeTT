@@ -23,7 +23,7 @@ public class EventViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	//서비스 객체
-	private EventInquiriesService eventinquieiesService = new EventInquiriesServiceImpl();
+	private EventInquiriesService eventinquiriesService = new EventInquiriesServiceImpl();
 
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,11 +33,11 @@ public class EventViewController extends HttpServlet {
 		System.out.println("EventViewController doGet() - eventArticlenumber : " + req.getParameter("eventArticlenumber"));
 		
 		//전달 파라미터 객체 얻어오기
-		EventBoard eventArticlenumber =eventinquieiesService.geteventArticlenumber(req);
+		EventBoard eventArticlenumber =eventinquiriesService.geteventArticlenumber(req);
 		System.out.println("EventViewController doGet() - eventArticlenumber객체 : " + eventArticlenumber);
 		
 		//게시글 상세보기 조회 결과 얻어오기
-		EventBoard viewBoard = eventinquieiesService.view(eventArticlenumber);
+		EventBoard viewBoard = eventinquiriesService.view(eventArticlenumber);
 		System.out.println("FaqViewController doGet() - viewBoard : " + viewBoard);
 		
 //		//조회 결과를 MODEL값으로 전달
