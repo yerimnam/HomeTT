@@ -52,11 +52,10 @@ li {
 }
 </style>
 
-</head>
+<%@ include file="../layout/header.jsp" %>
+
 <body>
 
-<h1 style="text-align: center; background-color: #7DA5E1">찜 목록 조회</h1>
-<hr>
 
 <div class="situation">
 찜 목록 조회
@@ -66,26 +65,27 @@ li {
 
 <div class="container">
 <% for(int i = 0; i < wishList.size(); i++) { %>
-<div id="wishlist">
-	<ul>
-		<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
-			<%=wishList.get(i).getPartyKind() %>
-		</div>
-		<div style="text-align: center; margin: 5px; margin-top: 15px;">
-			<%=wishList.get(i).getPartyName() %>
-		</div>
-		<hr style="height: 1px; background-color: black;">
-		<li>파티장 : <%=wishList.get(i).getPartyLeader() %></li>
-		<li>파티 만료일 : <%=wishList.get(i).getPartyEnddate() %></li>
-		<li>모집 인원 : <%=wishList.get(i).getPartyMember() %></li>
-		<hr style="height: 1px; background-color: black;">
-		<li>참여 금액 : <%=wishList.get(i).getPaymentamount() %> 원</li>
-	</ul>
-<% } %>
-
-
+	<div id="wishlist">
+		<ul>
+			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
+				<%=wishList.get(i).getPartyKind() %>
+			</div>
+			<div style="text-align: center; margin: 5px; margin-top: 15px;">
+				<%=wishList.get(i).getPartyName() %>
+			</div>
+			<hr style="height: 1px; background-color: black;">
+			<li>파티장 : <%=wishList.get(i).getPartyLeader() %></li>
+			<li>파티 만료일 : <%=wishList.get(i).getPartyEnddate() %></li>
+			<li>모집 인원 : <%=wishList.get(i).getPartyMember() %></li>
+			<hr style="height: 1px; background-color: black;">
+			<li>참여 금액 : <%=wishList.get(i).getPaymentamount() %> 원</li>
+			<li><button>찜하기</button></li>
+		</ul>
+	<% } %>
+	</div>
+	<hr>
 </div>
-<hr>
+
 
 </body>
 </html>
