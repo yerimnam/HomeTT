@@ -50,7 +50,7 @@
 
 <div class="text-center">
 	<button class="btn btn-primary" onclick="history.back()" style="margin-right: 20px;">목록</button>
-	<button id="btnadminuserinfo" class="btn btn-info">회원정보 조회하기</button>
+	<button id="btnaduserinfo" class="btn btn-info">회원정보 조회하기</button>
 </div>
 
 <!-- <div id="btnList" class="pull-right text-center"></div> -->
@@ -67,11 +67,19 @@
 $(document).ready(function() {
 	
 	//회원정보 조회하기 버튼
-	$("#btnadminuserinfo").click(function() {
-		$(location).attr('href', './adminuserinfo?ReportTarget=<%=viewreport.getReportTarget() %>')
+	$("#btnaduserinfo").click(function() {
+		$(location).attr('href', './aduserdetails')
+<%-- 		$(location).attr('href', './adminuserinfo?ReportTarget=<%=viewreport.getReportTarget() %>') --%>
 	})
 	
 })
 </script>
+
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+body{
+	font-family: 'SUIT';
+}
+</style>
 
 </html>

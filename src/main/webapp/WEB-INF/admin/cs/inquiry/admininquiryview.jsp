@@ -102,4 +102,11 @@ $(document).ready(function() {
 })
 </script>
 
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+body {
+	font-family: 'SUIT';
+}
+</style>
+
 </html>

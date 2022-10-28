@@ -47,9 +47,13 @@ th {
 	<td><%=inquiryList.get(i).getInquiryWriter() %></td>
 	<td><%=inquiryList.get(i).getInquiryDate() %></td>
 	<td><%=inquiryList.get(i).getInquiryArticleTitle() %></td>
+	<%	String content = inquiryList.get(i).getInquiryContent();
+		if( content.length() > 15 ) { 
+		content = content.substring(0, 15) + "...";
+		} %>
 	<td>
 		<a href="./adinquiryview?inquiryArticleNumber=<%=inquiryList.get(i).getInquiryArticleNumber() %>">
-			<%=inquiryList.get(i).getInquiryContent() %>
+			<%=content %>
 		</a>
 	</td>
 	<td><% if ( inquiryList.get(i).getAnswerDate() != null ) { %>
@@ -80,5 +84,12 @@ th {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+body {
+	font-family: 'SUIT';
+}
+</style>
 
 </html>
