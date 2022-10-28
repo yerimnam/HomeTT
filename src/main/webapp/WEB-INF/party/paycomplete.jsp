@@ -42,6 +42,8 @@ body {
 <div>
 	<span>닉네임 : </span>
 	<span><%=paycomplete.getUserNick() %></span>
+<span>닉네임 : </span>
+<span><%=paycomplete.getUserNick() %></span>
 </div>
 <div>
 
@@ -56,7 +58,7 @@ body {
 </div>
 
 
-
+<div>
 
 
 	<span>결제일자 : </span>

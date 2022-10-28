@@ -10,9 +10,6 @@
 <title>Insert title here</title>
 
 
-<!-- SweetAlert2 -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -399,7 +396,6 @@ function showPrompt(){
 }
 </script>
 
-<<<<<<< HEAD
 <script type="text/javascript">
 $(document).ready(function() {
 	//삭제버튼

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import party.dto.Party;
+import party.dto.PartyRoom;
 import partyBoard.dto.PartyBoard;
 import partyBoard.service.face.PartyRoomBoardService;
 import partyBoard.service.impl.PartyRoomBoardServiceImpl;
@@ -35,53 +37,57 @@ public class PartyRoomBoardController extends HttpServlet {
 
 		// 게시글 전체 조회
 //		List<PartyBoard> partyBoardList = partyRoomBoardService.getBrList();
+		
+		//@@@@@@@@@@@@@@@@@@@@@@@@
+		//		Party partyroomNo = partyBoardList.get(0),getPartyRoomNo();
 
 		// 파티게시판 전체 조회
 		List<PartyBoard> partyBoardList = partyRoomBoardService.getBrList(paging);
 
+		//파티룸 번호를 반환하는 파라미터
+//		PartyBoard partyRoomNo = partyRoomBoardService.getParam(req);
+		 PartyRoom partyRoomno =partyRoomBoardService.getPartyNo(req);
+		
+		
 		// 조회결과를 MODEL값 전달
 		req.setAttribute("partyBoardList", partyBoardList);
-//		for(PartyBoard pb : partyBoardList) System.out.println(pb);
-
+//		//파라미터 전달 
+		req.setAttribute("PartyRoomNo", partyRoomno);
+		
+		
+		
+		for(PartyBoard pb : partyBoardList) System.out.println(pb);
+		System.out.println(partyBoardList);
+		
+		
+		
 		req.getRequestDispatcher("/WEB-INF/party/partyRoomBoard.jsp").forward(req, resp);
 
-		// 검색 관련
-		String searchType = req.getParameter("searchType");
-		String keyword = req.getParameter("keyword");
-
-		List<PartyBoard> partyBoardSearchList;
-		if (searchType != null && keyword != null) {
-			partyBoardSearchList = partyRoomBoardService.getPartySearchList(searchType, keyword);
-			System.out.println("검색한 결과" + partyBoardSearchList);
-			System.out.println("searchType" + searchType);
-			System.out.println("keyword" + keyword);
-		} else {
-			// 검색 안한 결과
-			//@@@@@@@@@@@@
-			partyBoardSearchList = partyRoomBoardService.getBrList(paging);
-			System.out.println("검색안한 결과" + partyBoardSearchList);
-		}
 
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/roomboard [POST]");
-
-		// 전달 파라미터 한글 인코딩 처리
-		req.setCharacterEncoding("UTF-8");
-
-		// 전달파라미터를 PartyBoard DTO에 객체 저장하기 - partyRoomBoardService이용
-		PartyBoard partyBoard = partyRoomBoardService.getParam(req);
-		System.out.println("PartyRoomBoardController doPost() - partyBoard : " + partyBoard);
-
-		// 전달 파라미터를 저장한 DTO객체를 DB에 입력한다 - PartyRoomBoardService이용
-
-		// JSP View에 객체 전달하기
-		req.setAttribute("partyBoard", partyBoard);
-
-		// JSP에 객체 전달
-		req.getRequestDispatcher("/WEB-INF/party/partyRoomBoard.jsp").forward(req, resp);
-	}
+//	@Override
+//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		System.out.println("/homett/roomboard [POST]");
+//
+//		// 전달 파라미터 한글 인코딩 처리
+//		req.setCharacterEncoding("UTF-8");
+//
+//		// 전달파라미터를 PartyBoard DTO에 객체 저장하기 - partyRoomBoardService이용
+//		PartyBoard partyBoard = partyRoomBoardService.getParam(req);
+//		System.out.println("PartyRoomBoardController doPost() - partyBoard : " + partyBoard);
+//
+//		// 전달 파라미터를 저장한 DTO객체를 DB에 입력한다 - PartyRoomBoardService이용
+//
+//		// JSP View에 객체 전달하기
+//		req.setAttribute("partyBoard", partyBoard);
+//
+//		// JSP에 객체 전달
+////		req.getRequestDispatcher("/WEB-INF/party/partyRoomBoard.jsp").forward(req, resp);
+//		
+//		//리다이렉트
+//		resp.sendRedirect("./partyexit");
+//		
+//	}
 
 }

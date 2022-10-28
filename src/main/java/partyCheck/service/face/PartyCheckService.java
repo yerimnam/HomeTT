@@ -33,4 +33,20 @@ public interface PartyCheckService {
 	 */
 	public Paging getPaging(HttpServletRequest req);
 
+	
+	/**
+	 * 전달파라미터 partyNo를 partyCheck DTO로 저장하여 반환
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return PartyExit - 전달파라미터 partyNo를 저장한 DTO객체
+	 */
+	public PartyCheck getPartyNo(HttpServletRequest req);
+	
+	/**
+	 * 파티방 나가기(DB삭제)
+	 * 
+	 * @param partyCheck - 나갈 파티방 번호 객체
+	 */
+	public void delete(PartyCheck partyCheck);
+
 }

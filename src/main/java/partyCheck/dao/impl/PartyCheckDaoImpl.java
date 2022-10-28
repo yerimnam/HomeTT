@@ -172,4 +172,30 @@ public class PartyCheckDaoImpl implements PartyCheckDao {
 		
 	}
 
+
+	@Override
+	public int delete(Connection conn, PartyCheck partyCheck) {
+
+		String sql = "";
+		sql += "DELETE party";
+		sql += " WHERE party_no = ?";
+		
+		int res = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, partyCheck.getPartyNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		
+		return res;
+	}
+
 }

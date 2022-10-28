@@ -13,18 +13,21 @@ public class EventBoard {
 	private String eventWriter;
 	private Date eventDate;
 	private int hit;					//HIT					조회수
-	
+	private String userName;
+	private int userNo;
+	 
 	public EventBoard() {	}
 
 	@Override
 	public String toString() {
 		return "EventBoard [eventArticlenumber=" + eventArticlenumber + ", adminNo=" + adminNo + ", boardCode="
 				+ boardCode + ", eventArticletitle=" + eventArticletitle + ", eventContent=" + eventContent
-				+ ", eventWriter=" + eventWriter + ", eventDate=" + eventDate + ", hit=" + hit + "]";
+				+ ", eventWriter=" + eventWriter + ", eventDate=" + eventDate + ", hit=" + hit + ", userName="
+				+ userName + ", userNo=" + userNo + "]";
 	}
 
 	public EventBoard(int eventArticlenumber, int adminNo, int boardCode, String eventArticletitle, String eventContent,
-			String eventWriter, Date eventDate, int hit) {
+			String eventWriter, Date eventDate, int hit, String userName, int userNo) {
 		super();
 		this.eventArticlenumber = eventArticlenumber;
 		this.adminNo = adminNo;
@@ -34,6 +37,8 @@ public class EventBoard {
 		this.eventWriter = eventWriter;
 		this.eventDate = eventDate;
 		this.hit = hit;
+		this.userName = userName;
+		this.userNo = userNo;
 	}
 
 	public int getEventArticlenumber() {
@@ -99,7 +104,24 @@ public class EventBoard {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
 	
-	
+	 
+	 
 	
 }
