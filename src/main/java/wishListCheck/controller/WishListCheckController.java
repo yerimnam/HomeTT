@@ -1,6 +1,8 @@
 package wishListCheck.controller;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,21 +22,25 @@ public class WishListCheckController extends HttpServlet {
 	// 서비스 객체
 	private WishListCheckService wishListCheckservice =  new WishListCheckServiceImpl();
 	
-	@Override
+	 @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		System.out.println("/homett/wishcheck [GET]");
-		
-		// 찜 목록 전체 조회
-		List<WishListCheck> wishList = wishListCheckservice.getList();
-		
-		// [TEST] 조회결과 확인
-		for(WishListCheck w : wishList)	System.out.println(w);
-		
-		// 조회결과를 MODEL값 전달
-		req.setAttribute("wishList", wishList);
-		
-		req.getRequestDispatcher("/WEB-INF/mypage/wishlist.jsp").forward(req, resp);
+		 
+			System.out.println("/homett/wishcheck [GET]");
+			
+			// 찜 목록 전체 조회
+			List<WishListCheck> wishList = wishListCheckservice.getList();
+			
+			// [TEST] 조회결과 확인
+			for(WishListCheck w : wishList)	System.out.println(w);
+			
+			// 조회결과를 MODEL값 전달
+			req.setAttribute("wishList", wishList);
+			
+			req.getRequestDispatcher("/WEB-INF/mypage/wishlist.jsp").forward(req, resp);
+		 
+		 
+		 
 	}
+	
 
 }

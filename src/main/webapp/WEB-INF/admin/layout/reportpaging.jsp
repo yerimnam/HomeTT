@@ -5,18 +5,8 @@
 <%-- 모델값 전달받기 --%>
 <%	Paging paging = (Paging) request.getAttribute("paging"); %>
 
-<%---------------------------------------------------------------------------%>
 <%	String searchType = request.getParameter("searchType");
-	String keyword = request.getParameter("keyword");
-// 	String searchTypeParam = null;
-// 	String keywordParam = null; 
-
-// if( searchType != null && !"".equals(searchType) && keyword != null && !"".equals(keyword) ) { 
-// 		searchTypeParam = "searchType=" + request.getParameter("searchType");
-// 		keywordParam = "keyword=" + request.getParameter("keyword");
-// 	} 
-%>
-<%---------------------------------------------------------------------------%>
+	String keyword = request.getParameter("keyword"); %>
 
 <div class="text-center">
 	<ul class="pagination">

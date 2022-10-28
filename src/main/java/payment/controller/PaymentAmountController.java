@@ -33,6 +33,12 @@ public class PaymentAmountController extends HttpServlet {
 		  HttpSession session =req.getSession();
 
 				//테스트 데이터
+
+
+
+
+				session.setAttribute("userNo", 24);
+				session.setAttribute("partyNo", 4);
 //				session.setAttribute("user_no", 2);
 //				session.setAttribute("partyNo", 1);
 
@@ -44,7 +50,7 @@ public class PaymentAmountController extends HttpServlet {
 				System.out.println("유저번호 : " + session.getAttribute("userNo"));
 				
 				int userno = Integer.parseInt(String.valueOf(session.getAttribute("userNo"))); 
-				int partyno  = Integer.parseInt(String.valueOf(session.getAttribute("partyNo"))); 
+				int partyNum  = Integer.parseInt(String.valueOf(session.getAttribute("partyNo"))); 
 				
 				//로그인한 사람의 정보 조회
 				System.out.println("info 전"); 
@@ -52,7 +58,7 @@ public class PaymentAmountController extends HttpServlet {
 				System.out.println("info 후");
 				
 				//결제하기 위한 파티 정보 조회 
-				Party partyInfo = paymentService.getpartyNo(partyno);
+				Party partyInfo = paymentService.getpartyNo(partyNum);
 				
 				//테스트 콘솔 출력 
 //				System.out.println(user);

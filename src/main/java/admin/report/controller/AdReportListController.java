@@ -22,7 +22,7 @@ public class AdReportListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/adreportlist [GET]");
+//		System.out.println("/homett/adreportlist [GET]");
 		
 		//한글 인코딩 처리
 		req.setCharacterEncoding("UTF-8");
@@ -43,11 +43,11 @@ public class AdReportListController extends HttpServlet {
 		if(searchType != null && keyword != null) {
 			// 검색한 결과
 			reportList = adReportListService.getSearchList( paging, searchType, keyword );
-			System.out.println("검색한 paging 결과 : " + paging);
+//			System.out.println("검색한 paging 결과 : " + paging);
 		} else {
 			// 검색 안한 결과
 			reportList = adReportListService.getList( paging );
-			System.out.println("검색 안한 paging 결과 : " + paging);
+//			System.out.println("검색 안한 paging 결과 : " + paging);
 		}
 		
 		req.setAttribute("reportList", reportList);

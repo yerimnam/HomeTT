@@ -42,6 +42,29 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		}
 		return nextval;
 	}
+	
+	@Override
+	public int selectNextUsernoP(Connection conn, PartyRoom partyroomno) {
+		String sql = "SELECT party_room_seq.nextval FROM dual";
+
+		int nextval = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+
+			rs = ps.executeQuery(); // select에서만 실행
+
+			rs.next(); // 첫번째 행을 찾아라
+
+			nextval = rs.getInt(1); // 첫번째 컬럼의 값 반환
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return nextval;
+	}
 
 	@Override
 	public List<PartyBoard> selectAllBr(Connection conn) {
@@ -229,17 +252,30 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		return res;
 	}
 
+	
+	
+	
+	
+
+
 	@Override
-	public int delete(Connection conn, PartyRoom partyRoom) {
+	public int delete(Connection conn, PartyRoom partyroomno) {
+		
+		
 		String sql = "";
-		sql += "DELETE party";
-		sql += " WHERE party_no = ?";
+		sql += "DELETE party_room";
+		sql += " WHERE party_room_no = ?";
+
 
 		int res = 0;
 
 		try {
 			ps = conn.prepareStatement(sql);
+
 			ps.setInt(1, partyRoom.getParty_no());
+
+			ps.setInt(1, partyroomno.getParty_room_no());
+
 
 			res = ps.executeUpdate();
 
@@ -249,8 +285,10 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 			JDBCTemplate.close(ps);
 		}
 
+		System.out.println("delete 끝");
 		return res;
 	}
+
 
 
 }

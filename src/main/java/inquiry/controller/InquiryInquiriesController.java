@@ -33,7 +33,7 @@ public class InquiryInquiriesController extends HttpServlet {
 			
 			HttpSession session = req.getSession();
 			//테스트를 위한 임의 번호 넣기 
-			session.setAttribute("user_no", 2);
+//			session.setAttribute("user_no", 4);
 			
 			//session 회원 번호 얻어오기 thr
 			int userNo = (int) session.getAttribute("user_no");

@@ -1,5 +1,6 @@
 package partyCheck.service.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +52,33 @@ public class PartyCheckServiceImpl implements PartyCheckService {
 		
 		System.out.println("PartyCheckService getPaging() - end");
 		return paging;
+	}
+
+	@Override
+	public PartyCheck getPartyNo(HttpServletRequest req) {
+
+		// 전달파라미터를 저장할 객체 생성
+		PartyCheck partycheck = new PartyCheck();
+		
+		// 전달파라미터 partyNo 추출
+		String param = req.getParameter("partyNo");
+		if(null != param && !"".equals(param)) {
+			partycheck.setPartyNo(Integer.parseInt(param));
+		}
+		
+		return partycheck;
+	}
+
+	@Override
+	public void delete(PartyCheck partyCheck) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		// 파티방 나가기(DB삭제)
+		if(partyCheckDao.delete(conn, partyCheck) > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
 	}
 
 }

@@ -32,5 +32,14 @@ public interface PartyCheckDao {
 	 * @return int - 테이블의 전체 행수 
 	 */
 	public int selectCntAll(Connection conn);
+	
+	/**
+	 * 파티방 나가기(DB삭제)
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param partyCheck - 나갈 파티방 번호
+	 * @return delete 수행 결과
+	 */
+	public int delete(Connection conn, PartyCheck partyCheck);
 
 }

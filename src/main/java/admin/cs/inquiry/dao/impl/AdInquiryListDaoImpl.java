@@ -59,14 +59,12 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				
 				inquiryList.add(i);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		
 //		System.out.println("selectAll 끝 : " + inquiryList);
 		return inquiryList;
 	}
@@ -129,9 +127,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				inquiry.setAnswerWriter(rs.getString("answer_writer"));
 				inquiry.setAnswerContent(rs.getString("answer_content"));
 				inquiry.setAnswerDate(rs.getDate("answer_date"));
-				
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -240,7 +236,6 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 
 	@Override
 	public int updateAnswer(Connection conn, Inquiry inquiry) {
-
 		String sql = "";
 		sql += "UPDATE cs_inquiry";
 		sql += " SET answer_writer = ?";
@@ -264,13 +259,12 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		} finally {
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("insertAnswer : " + res);
+//		System.out.println("updateAnswer : " + res);
 		return res;
 	}
 
 	@Override
 	public int delete(Connection conn, Inquiry inquiry) {
-		
 		String sql = "";
 		sql += "DELETE cs_inquiry";
 		sql += " WHERE inquiry_articleNumber = ?";
@@ -290,7 +284,6 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		}
 		
 		return res;
-		
 	}
 
 }

@@ -88,15 +88,15 @@ private AdInquiryListDao adInquiryListDao = new AdInquiryListDaoImpl();
 		Inquiry inquiry = new Inquiry();
 		
 		String param = req.getParameter("inquiryArticleNumber");
-		System.out.println("param : " + param);
+//		System.out.println("param : " + param);
 		if( null != param && !"".equals(param) ) { //전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
-		inquiry.setInquiryArticleNumber( Integer.parseInt(param) );
+			inquiry.setInquiryArticleNumber( Integer.parseInt(param) );
 		}
 		inquiry.setAnswerWriter(req.getParameter("answer_writer"));
 		inquiry.setAnswerContent(req.getParameter("answer_content"));
 		
 //		inquiry.setInquiryWriter( (String) req.getSession().getAttribute("userNo") );
-		System.out.println("writeAnswer : " + inquiry);
+//		System.out.println("writeAnswer : " + inquiry);
 		if( adInquiryListDao.updateAnswer(conn, inquiry) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {

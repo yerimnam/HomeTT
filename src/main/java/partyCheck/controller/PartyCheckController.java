@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import partyCheck.dto.PartyCheck;
 import partyCheck.service.face.PartyCheckService;
 import partyCheck.service.impl.PartyCheckServiceImpl;
+import partyExit.dto.PartyExit;
 import util.Paging;
 
 @WebServlet("/homett/partycheck")
@@ -43,14 +44,14 @@ public class PartyCheckController extends HttpServlet {
 		// 조회결과를 MODEL값 전달
 		req.setAttribute("partyList", partyList);
 		
+		PartyCheck partycheck = partyCheckService.getPartyNo(req);
+		
+		partyCheckService.delete(partycheck);
+		
+		
 		// view 지정
 		req.getRequestDispatcher("/WEB-INF/mypage/partycheck.jsp").forward(req, resp);
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-	}
-	
 	
 }

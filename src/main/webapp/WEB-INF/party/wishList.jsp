@@ -64,6 +64,8 @@
 	<span class="heart on"> 🧡 하트 </span>
 
 
+	<button>하트</button>
 
+	<button>🧡</button>
 </body>
 </html>
