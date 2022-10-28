@@ -8,10 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- SweetAlert2 -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
 
+<!-- 스타일 먹히는건지 모르겟 -->
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+</style>
 
 
 <!-- jQuery 2.2.4 -->
@@ -190,7 +191,13 @@ a.heart {
 			<h3>공지사항</h3>
 		</div>
 		<div>
+
+		<form action="/homett/createparty" method="get">
+			<button>방만들기</button>
+			</form>
+
 			<a href="./createparty"><button style="text align: right">방만들기</button></a>
+
 		</div>
 		<div class="part-area">
 			<%

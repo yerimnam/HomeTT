@@ -74,23 +74,33 @@ public interface PartyRoomBoardService {
 
 	
 	
-	public List<PartyBoard> getPartySearchList(String searchType, String keyword);
 
 	
 	
 	/**
-	 * 전달파라미터 getPartyRoomNo를 party DTO로 저장해서 반환
+	 * 전달파라미터 getPartyNo를 party DTO로 저장해서 반환
 	 * @param req-요청 정보 객체
-	 * @return- 전달파라미터 getpartyRoomNo를 저장한 DTO객체
+	 * @return- 전달파라미터 getpartyNo를 저장한 DTO객체
 	 */
+
+	public Party getPartyNo(HttpServletRequest req);
+
 	public PartyRoom getPartyNo(HttpServletRequest req);
 
+
+	
 	/**
 	 * 파티방 탈퇴
 	 * 
 	 * @param partyno - 삭제할 파티 번호 객체
 	 */
 	public void dropParty(PartyRoom partyroomno);
+
+	
+	
+	
+	
+	
 
 
 
