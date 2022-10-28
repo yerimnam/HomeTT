@@ -80,9 +80,6 @@ li {
 내가 만든 파티
 </div>
 
-<div class="invitation">
-    <input type="button" onClick="sendLinkCustom();" value="초대하기"/>
-</div>
 <!--     <input type="button" onClick="sendLinkDefault();" value="친구선택"/> -->
 
 <script type="text/javascript">
@@ -107,7 +104,7 @@ li {
 <div class="main">
 	<% for(int i = 0; i < partyList.size(); i++) { %>
 	<div id="party">
-		<ul>
+		<a herf="./partyroomdetail?partyno=<%=partyList.get(i).getPartyNo()%>"><ul>
 			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 				<%=partyList.get(i).getPartyKind() %>
 			</div>
@@ -122,9 +119,13 @@ li {
 			<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %> 원</li>
 			<li id="party_no" hidden><%=partyList.get(i).getPartyNo() %></li>
 			<button id="#btnPartyOut">나가기</button>
-		</ul>
+		</ul></a>
 	</div>
 	<% } %>
+</div>
+
+<div class="invitation">
+    <input type="button" onClick="sendLinkCustom();" value="초대하기"/>
 </div>
 
 <div style="text-align: center;">
@@ -167,6 +168,10 @@ li {
 	<% } %>
 </div>
 
+<div class="invitation">
+    <input type="button" onClick="sendLinkCustom();" value="초대하기"/>
+</div>
+
 <div style="text-align: center;">
 	<ul class="pagination">
 		<% for(int i=paging.getStartPage(); i <= paging.getEndPage(); i++) { %>
@@ -192,5 +197,4 @@ li {
 </script>
 
 
-</body>
-</html>
+<%@ include file="../layout/footer.jsp" %>
