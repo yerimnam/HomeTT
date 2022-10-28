@@ -54,6 +54,55 @@ public interface EventInquiriesDao {
 	 */
 	public EventBoard selectBoardByeventArticlenumber(Connection conn, EventBoard eventArticlenumber);
 
+	/**
+	 * 게시글 작성자 ID를 이용하여 usernick 을 조회한다
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param viewBoard - 조회할 id를 가진 객체
+	 * @return String - 작성자 닉네임
+	 */
+//	public String selectNickByBoard(Connection connection, EventBoard viewBoard);
+
+
+//	public int delete(Connection conn, EventBoard eventboard);
+
+	/**
+	 * 게시글 입력
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param userNo 
+	 * @param board - 삽입될 게시글 내용
+	 * @return int - INSERT 쿼리 수행 결과
+	 */
+	public int insertevent(Connection conn, EventBoard param, int userNo);
+
+
+	/**
+	 * 수정할 내용 가져와서 먼저 보여주기
+	 * @param connection -DB 연결
+	 * @param eventNo-이벤트 글번호
+	 * @return 가져온 내용 
+	 */
+	public EventBoard selectcontent(Connection connection, EventBoard eventNo);
+
+	/**
+	 * 이벤트 수정
+	 * 
+	 * @param conn -DB 연결
+	 * @param eventNum - 글번호 파람피터 정보
+	 * @return 
+	 */
+	public int updateDo(Connection conn, EventBoard eventNum);
+
+	/**
+	 * 이벤트 삭제
+	 * @param conn -DB 연결
+	 * @param eventNo -이벤트 글 번호
+	 * @return
+	 */
+	public int deleteDo(Connection conn, EventBoard eventNo);
+	
+
 
 
 //	/**

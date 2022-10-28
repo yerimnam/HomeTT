@@ -47,7 +47,82 @@ public interface EventInquiriesService {
 	 */
 	public EventBoard view(EventBoard eventArticlenumber);
 
+	/**
+	 * 전달된 Board객체의 id를 이용하여 nick 조회
+	 * 
+	 * @param viewBoard - 조회할 게시글 정보
+	 * @return String - 게시글 작성자의 닉네임
+	 */
+//	public String getWriteNick(EventBoard viewBoard);
+
+	/**
+	 * 게시글 작성
+	 * 입력한 게시글을 DB에 저장한다
+	 * 
+	 * @param req - 요청 정보 객체
+	 */
+//	public void write(HttpServletRequest req);
+
+
+//	public void delete(EventBoard eventboard);
+
+
+
+
+	/**
+	 * 
+	 * 회원이 작성한 글의 파라미터 얻어오기
+	 * @param req 
+	 * @return 작성한 글 파라미터 
+	 */
+//	public EventBoard getparam(HttpServletRequest req);
+	public EventBoard getparam(HttpServletRequest req);
+
+
+	/**
+	 * 이벤트 insrty
+	 * @param param - 파라미터(글제목,글본문)
+	 * @param userNo 
+	 * @return - 이벤트글 저장
+	 */
+	public EventBoard setEvent(EventBoard param, int userNo);
+
+	/**
+	 * 수정하기 파라미터 
+	 * @param req- 요청 파라미터
+	 * @return
+	 */
+	public EventBoard getdata(HttpServletRequest req);
+
+	public EventBoard getdataforselect(HttpServletRequest req);
+
+
+	/**
+	 * 수정해야하는 글 가져와서 보여주기
+	 * @param eventNo -글 번호
+	 * @return 글번호로 조회안 상세 내용
+	 */
+	public EventBoard getUpdate(EventBoard eventNo);
+
+
+	public EventBoard setUpdate(EventBoard eventNum);
+
+	/**
+	 * 삭제하기
+	 * @param eventNo -글 번호
+	 * @return
+	 */
+	public Void deleteEvent(EventBoard eventNo);
+
+
+		
+	
+	
+	
+
 
 	
+	
+
 
 }
