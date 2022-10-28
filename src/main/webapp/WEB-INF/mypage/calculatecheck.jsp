@@ -1,4 +1,4 @@
-<%@page import="calculate.dto.Calculate"%>
+<%-- <%@page import="calculate.dto.Calculate"%> --%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,7 +10,7 @@
 %>
 
 <%-- 모델값 전달받기 --%>
-<%	List<Calculate> calculateList = (List) request.getAttribute("calculateList"); %>
+<%-- <%	List<Calculate> calculateList = (List) request.getAttribute("calculateList"); %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -111,13 +111,13 @@ document.getElementById("Date").setAttribute("max", today);
 	<th style="width: 40%;">정산파티</th>
 </tr>
 
-<%	for(int i = 0; i < calculateList.size(); i++) { %>
-<tr>
-	<td><%=calculateList.get(i).getCalculateDate() %></td>
-	<td><%=calculateList.get(i).getPaymentAmount() %></td>
-	<td><%=calculateList.get(i).getPartyNo() %></td>
-</tr>
-<%	} %>
+<%-- <%	for(int i = 0; i < calculateList.size(); i++) { %> --%>
+<!-- <tr> -->
+<%-- 	<td><%=calculateList.get(i).getCalculateDate() %></td> --%>
+<%-- 	<td><%=calculateList.get(i).getPaymentAmount() %></td> --%>
+<%-- 	<td><%=calculateList.get(i).getPartyNo() %></td> --%>
+<!-- </tr> -->
+<%-- <%	} %> --%>
 
 
 

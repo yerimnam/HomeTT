@@ -19,16 +19,16 @@
 
 <tr>
 	<td class="info">글번호</td>
-	<td><%=viewBoard.getfaq_articlenumber() %></td>
+<%-- 	<td><%=viewBoard.getfaq_articlenumber() %></td> --%>
 	
 	<td class="info">작성일</td>
-	<td><%=viewBoard.getfaq_date() %></td>
+<%-- 	<td><%=viewBoard.getfaq_date() %></td> --%>
 </tr>
 
 
 <tr>
 	<td class="info">작성자</td>
-	<td><%=viewBoard.getfaq_writer() %></td>
+<%-- 	<td><%=viewBoard.getfaq_writer() %></td> --%>
 	
 <!-- 	<td class="info">닉네임</td> -->
 <%-- 	<td><%=request.getAttribute("writerNick") %></td> --%>
@@ -41,7 +41,7 @@
 
 <tr>
 	<td class="info">제목</td>
-	<td colspan="3"><%=viewBoard.getTitle() %></td>
+<%-- 	<td colspan="3"><%=viewBoard.getTitle() %></td> --%>
 </tr>
 
 <tr>
@@ -49,7 +49,7 @@
 </tr>
 
 <tr>
-	<td colspan="4"><%=viewBoard.getContent() %></td>
+<%-- 	<td colspan="4"><%=viewBoard.getContent() %></td> --%>
 </tr>
 
 </table>
