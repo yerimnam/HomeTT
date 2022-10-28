@@ -266,27 +266,27 @@ border-bottom:1px solid #666666;
 		
 		</div>
 		
-<!-- 	<hr> -->
-<!-- 		<div> -->
-<!-- 			<form  action="/homett/payment" method="post" id="payarea"> -->
+	<hr> 
+ 		<div> 		
+ 		<form  action="/homett/payment" method="post" id="payarea"> 
 			
-<!-- 				<div> -->
-<!-- 					<span>총 결제 금액</span> -->
-<!-- 				</div> -->
-			
-<!-- 				<div id="payment"> -->
-<!-- 				   <span id="willpay">결제할 금액 </span> -->
-<%-- 					<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span> --%>
-<!-- 				</div> -->
-<!-- 			</form> -->
-<!-- 		</div> -->
+				<div> -
+ 					<span>총 결제 금액</span> 
+				</div> 
+	
+ 				<div id="payment"> 
+				   <span id="willpay">결제할 금액 </span> 
+					<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
+				</div> 
+ 			</form> 
+ 		</div> 
 		
-<!-- 		<hr> -->
+		<hr> 
 		
-<!-- 		<div id="btnarea"> -->
-<!-- 			<button type="button" id="btnpay" onclick="requestPay()">결제하기</button> -->
-<!-- 			<button type="button" id="btncancel" onclick="location.href='/homett/joinparty'">취소하기</button> -->
-<!-- 		</div> -->
+ 		<div id="btnarea"> 
+			<button type="button" id="btnpay" onclick="requestPay()">결제하기</button> 
+		<button type="button" id="btncancel" onclick="location.href='/homett/joinparty'">취소하기</button> 
+		</div> 
 
 </div> 
 
