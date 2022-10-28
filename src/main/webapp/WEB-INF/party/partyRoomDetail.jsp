@@ -44,7 +44,7 @@ ul {
 
 		<li>파티종류 : OTT <%=viewParty.getPartyKind()%></li>
 		<li>파티제목 : <%=viewParty.getPartyName()%></li>
-		<li>파티방 번호 : <%=viewParty.getPartyRoomNo()%></li>
+		<li>파티방 번호 : <%=viewParty.getPartyNo()%></li>
 		<li>파티장 정보 : <%=viewParty.getPartyLeader()%></li>
 		<li>파티 종료일 : <%=viewParty.getPartyEndDate()%></li>
 		<li>모집 인원 : <%=viewParty.getPartyMember()%></li>
@@ -54,7 +54,7 @@ ul {
 		%>
 	</ul>
 <form action="/homett/payamount" method="get" id="payform">
-	<button onclick="location.href='./payamount'" id= "payBtn">가입하기</button>
+	<button  id= "payBtn">가입하기</button>
 	<!-- 	<button onclick="location.href='./joinparty'">가입하기</button> -->
 	<button onclick="location.href='./partymodify'">목록으로</button>
 </form>

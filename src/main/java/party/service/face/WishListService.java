@@ -25,4 +25,13 @@ public interface WishListService {
 	public void wishinsert(HttpServletRequest req);
 	
 
+	/**
+	 * 
+	 * 버튼 클릭해서 삭제처리 (찜목록 해제)
+	 * 클릭한 게시글 DB 테이블에서 빼버리기
+	 * 
+	 * @param req - 요청정보 객체
+	 */
+	public void wishdelete(HttpServletRequest req);
+	
 }

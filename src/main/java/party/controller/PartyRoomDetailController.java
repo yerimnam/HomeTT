@@ -25,16 +25,16 @@ public class PartyRoomDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("homett/partyroomdetail [GET]");
 		
-		System.out.println("PartyRoomDetailController doGet() - partyRoomNo : " + req.getParameter("partyRoomNo").trim());
+		System.out.println("PartyRoomDetailController doGet() - partyNo : " + req.getParameter("partyNo").trim());
 
 		//전달파라미터 객체 얻어오기
-		Party partyRoomNo = partyModifyService.getPartyRoomNo(req);
+		Party partyNo = partyModifyService.getPartyNo(req);
 		
-		System.out.println("PartyRoomDetailController doGet() - partyRoomNo객체 : " + partyRoomNo);
+		System.out.println("PartyRoomDetailController doGet() - partyNo객체 : " + partyNo);
 		
 		
 		//게시글 상세보기 조회 결과 얻어오기
-		Party viewParty = partyModifyService.view(partyRoomNo);
+		Party viewParty = partyModifyService.view(partyNo);
 		System.out.println("PartyRoomDetailController doGet() - viewParty : " + viewParty);
 		
 		
@@ -45,11 +45,11 @@ public class PartyRoomDetailController extends HttpServlet {
 		//View지정 및 응답
 		req.getRequestDispatcher("/WEB-INF/party/partyRoomDetail.jsp").forward(req, resp);
 		
-		String partyNo = req.getParameter("partyRoomNo");
+		String partyNum = req.getParameter("partyNo");
 
 		//세션 객체 생성 -> user_no 세션값으로 유저정보 조회
 		HttpSession session = req.getSession();
-		session.setAttribute("partyNo",partyNo);
+		session.setAttribute("partyNo",partyNum);
 		
 		System.out.println("세션 바티번호 : " + session.getAttribute("partyNo"));
 		

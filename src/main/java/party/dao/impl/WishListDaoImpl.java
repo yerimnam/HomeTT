@@ -17,6 +17,8 @@ public class WishListDaoImpl implements WishListDao {
 	private PreparedStatement ps; // SQL수행 객체
 	private ResultSet rs; // SQL 조회 결과 객체
 	
+
+	
 	@Override
 	public WishList selectwishno(Connection conn, WishList wishno) {
 		
@@ -30,15 +32,13 @@ public class WishListDaoImpl implements WishListDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-		
 			
-			//?부분에 partyno 삽입
+			//?부분에 wish_no 삽입
 			ps.setInt(1, wishno.getWishNo());
 			
 			rs = ps.executeQuery();
 			
 			while( rs.next() ) {
-				wishlist = new WishList();
 				
 				wishlist.setWishNo(( rs.getInt("wishno")));
 				wishlist.setPartyNo(( rs.getInt("partyno")));
@@ -49,19 +49,19 @@ public class WishListDaoImpl implements WishListDao {
 				wishlist.setPartyEnddate(( rs.getDate("partyenddate")));
 				wishlist.setPartyKind(( rs.getString("partykind")));
 				
-				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
 			
 		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(rs);
 		}
-		return null;
+		return wishlist;
 	}
 
+	
+	//선택한 wishno에 해당하는 글을 찜 목록으로 추가하기
 	@Override
 	public int insert(Connection conn, WishList wishlist) {
 		
@@ -93,16 +93,59 @@ public class WishListDaoImpl implements WishListDao {
 		return res;
 	}
 
+	
 	@Override
 	public int selectNextWishno(Connection conn) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		
+		String sql = "";
+		sql += "SELECT wishlist_seq.nextval FROM dual";
+		
+		int nextwishno = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				nextwishno = rs.getInt("nextval");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		return nextwishno;
 	}
 
+	
+	//선택한 wishno에 해당하는 글을 찜 목록에서 삭제하기
 	@Override
 	public int delete(Connection conn, WishList wishlist) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		String sql = "";
+		sql += "DELETE wish_list";
+		sql += " WHERE wish_no = ?";
+		
+		int res = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, wishlist.getWishNo());
+			
+			res = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(ps);
+		}
+		
+		return res;
 	}
 
 
