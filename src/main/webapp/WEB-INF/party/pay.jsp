@@ -4,7 +4,7 @@
 <%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ include file="../layout/header.jsp"  %> 
+   <%@ include file="../layout/header.jsp"  %>
     
    <% Member member = (Member)request.getAttribute("userinfo");%>
    <% Party party = (Party)request.getAttribute("partyinfo");  %>
@@ -177,6 +177,8 @@ body{
     left: 100px;
     font-size: 20px;
     color: #666666;
+    font-weight: 500;
+    
 }
 
 
@@ -191,11 +193,147 @@ border-bottom:1px solid #666666;
     top: 49px;
 }
 
+#payinfotitle{
+    width: 200px;
+    height: 58px;
+    text-align: center;
+    background-color: #ffd925;
+    border-radius: 20px;
+    position: relative;
+    top: 123px;
 
+}
+#payinfotitle span{
+    font-size: 40px;
+    background-color: #ffd925;
+    color: white;
+}
+
+
+
+#userinfoarea{
+    width: 1600px;
+    height: 300px;
+    position: relative;
+    top: 177px;
+    left: 6px;
+    font-size: 20px;
+    color: #666666;
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+}
+#userinfo{
+	font-weight: 500;
+    width: 1130px;
+    height: 250px;
+    margin: 0 auto;
+    position: absolute;
+    left: 7px;
+    top: 30px;
+    left: 100px;
+    font-size: 20px;
+    color: #666666;
+
+}
+
+
+
+
+
+.uservalue{
+
+	position: absolute;
+    left: 550px;
+}
+
+#payarea{
+	position: relative;
+    top: 288px;
+    width: 1600px;
+    height: 300px;
+    font-size: 20px;
+    color: #666666;
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+
+}
+
+#total_pay{
+
+    width: 200px;
+    height: 58px;
+    text-align: center;
+    background-color: #ffd925;
+    border-radius: 20px;
+    position: relative;
+    top: 228px;
+
+}
+
+#total_pay span{
+    font-size: 40px;
+    background-color: #ffd925;
+    color: white;
+}
+
+#payment{
+
+	 width: 500px;
+    height: 100px;
+    position: absolute;
+    top: 113px;
+    font-size: 45px;
+    font-weight: 600;
+    left: 500px;
+
+}
+
+#willpay{
+    padding-right: 80px;
+
+}
+
+
+#totalPayment{
+ color: #ff8c11;
+
+}
+
+
+#btnarea{
+ position: relative;
+    top: 352px;
+    width: 600px;
+    height: 156px;
+    left: 518px;
+
+}
+
+button{
+	 width: 174px;
+    height: 42px;
+    border-radius: 18px;
+	margin-right: 77px;
+}
+
+#btnpay{
+	border: none;
+	background-color: #ff8c11 ;
+}
+
+
+#btnpay span,#btncancel span{
+	color: white;
+    font-size: 20px;
+
+}
+
+#btncancel{
+	background-color: #ffd925;
+	border: none;
+	
+}
 </style>
-
-
-
 
 </head>
 
@@ -240,52 +378,50 @@ border-bottom:1px solid #666666;
 				 <span>결제 정보</span> 
 		</div>			 
 				 
- 		 <div id="userinfo">  
+ 		 <div id="userinfoarea">  
 				 
-				<table>
+				<table id="userinfo">
 					<tr>	
-						<th><span>회원 이름 : </span></th> 
-						<td><span><%=member.getUserName() %>  </span></td>
+						<td><span class="user">회원 이름</span></td> 
+						<td><span class="uservalue"><%=member.getUserName() %>  </span></td>
 					</tr>	 
-						
 					<tr>	 
-						<th><span>회원 아이디 : </span></th>
-						<td><span><%=member.getUserId()%></span></td>
+						<td><span class="user">회원 아이디</span></td>
+						<td><span class="uservalue"><%=member.getUserId()%></span></td>
 					</tr> 
 				
-					<tr> 
-						<th><span>이메일 : </span><th> 
-						<td><span><%=member.getUserEmail() %></span></td>
+					<tr>	 
+						<td><span class="user">이메일</span></td>
+						<td><span class="uservalue"><%=member.getUserEmail() %></span></td>
 					</tr> 
-					
+				
+				
  					<tr> 
-						<th><span>연락처</span></th> 
-						<td><span>0<%=member.getUserPhone() %></span></td>
+						<td><span class="user">연락처</span></td> 
+						<td><span class="uservalue">0<%=member.getUserPhone() %></span></td>
 					</tr> 
 				</table> 
 		
 		</div>
-		
-	<hr> 
- 		<div> 		
- 		<form  action="/homett/payment" method="post" id="payarea"> 
-			
-				<div> -
- 					<span>총 결제 금액</span> 
+				<div id="total_pay"> 
+ 					<span>Total</span> 
 				</div> 
+		
+ 		<div id="payarea"> 		
+ 		<form  action="/homett/payment" method="post" id="payareaform"> 
+			
 	
  				<div id="payment"> 
-				   <span id="willpay">결제할 금액 </span> 
+				   <span id="willpay"><span>결제 금액</span></span> 
 					<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
 				</div> 
  			</form> 
  		</div> 
 		
-		<hr> 
 		
  		<div id="btnarea"> 
-			<button type="button" id="btnpay" onclick="requestPay()">결제하기</button> 
-		<button type="button" id="btncancel" onclick="location.href='/homett/joinparty'">취소하기</button> 
+			<button type="button" id="btnpay" onclick="requestPay()"><span>결제하기</span></button> 
+		<button type="button" id="btncancel" onclick="location.href='/homett/partymodify'"><span>취소하기</span></button> 
 		</div> 
 
 </div> 
