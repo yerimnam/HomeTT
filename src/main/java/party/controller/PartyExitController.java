@@ -20,6 +20,8 @@ import partyBoard.service.impl.PartyRoomBoardServiceImpl;
 @WebServlet("/homett/partyexit")
 public class PartyExitController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
 
 	//서비스 객체
 	private PartyRoomBoardService partyRoomBoardService = new PartyRoomBoardServiceImpl();
@@ -30,12 +32,16 @@ public class PartyExitController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 
 		//파티룸 객체 생성
-		PartyRoom partyRoom = new PartyRoom();
+//		PartyRoom partyRoom = new PartyRoom();
 		
-		Party party = partyRoomBoardService.getPartyRoomNo(req);
+	    PartyRoom partyroomno = partyRoomBoardService.getPartyNo(req);
 		
-		partyRoomBoardService.dropParty(partyRoom);
+		partyRoomBoardService.dropParty(partyroomno);
+//		
+//		int partyRoomNo = Integer.parseInt(req.getParameter("partyRoomNo"));
+		req.setAttribute("partyRoomNo",partyroomno);
 		
-		resp.sendRedirect("/homett/roomboard");
+//		resp.sendRedirect("/homett/main");
+		resp.sendRedirect("/homett/partymodify");
 	}
 }

@@ -135,27 +135,43 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 	
 	
 	
-
+	
 	@Override
-	public Party getPartyRoomNo(HttpServletRequest req) {
-		// 전달파라미터를 저장할 객체 생성
-		Party party = new Party();
+	public PartyRoom getPartyNo(HttpServletRequest req) {
 
-		// 전달파라미터 partyRoomno 추출(파싱)
-		String param = req.getParameter("party_room_no");
-		if (null != param && !"".equals(param)) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리
-			party.setPartyRoomNo(Integer.parseInt(param));
-		}
-
-		return party;
+			PartyRoom partyroom= new PartyRoom();
+			
+			String param = req.getParameter("partyRoomNo");
+			
+			if (null != param && !"".equals(param)) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리
+				partyroom.setParty_room_no(Integer.parseInt(param));
+			}
+		
+		return partyroom;
 	}
+	
+	
+
+//	@Override
+//	public PartyRoom getPartyNo(HttpServletRequest req); {
+//		// 전달파라미터를 저장할 객체 생성
+//		PartyRoom partyRoom = new PartyRoom();
+//
+//		// 전달파라미터 partyno 추출(파싱)
+//		String param = req.getParameter("partyRoomNo");
+//		if (null != param && !"".equals(param)) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리
+//			party.setPartyNo(Integer.parseInt(param));
+//		}
+//
+//		return partyRoom;
+//	}
 
 	@Override
-	public void dropParty(PartyRoom partyRoom) {
+	public void dropParty(PartyRoom partyroomno) {
 		Connection conn = JDBCTemplate.getConnection();
 
 	
-		if (partyRoomBoardDao.delete(conn, partyRoom) > 0) {
+		if (partyRoomBoardDao.delete(conn, partyroomno) > 0) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);

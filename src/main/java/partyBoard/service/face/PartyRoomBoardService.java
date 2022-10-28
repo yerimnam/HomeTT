@@ -83,14 +83,14 @@ public interface PartyRoomBoardService {
 	 * @param req-요청 정보 객체
 	 * @return- 전달파라미터 getpartyRoomNo를 저장한 DTO객체
 	 */
-	public Party getPartyRoomNo(HttpServletRequest req);
+	public PartyRoom getPartyNo(HttpServletRequest req);
 
 	/**
 	 * 파티방 탈퇴
 	 * 
-	 * @param partyRoom - 삭제할 파티방 번호 객체
+	 * @param partyno - 삭제할 파티 번호 객체
 	 */
-	public void dropParty(PartyRoom partyRoom);
+	public void dropParty(PartyRoom partyroomno);
 
 
 
