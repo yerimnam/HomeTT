@@ -88,7 +88,7 @@ li {
 <div style="text-align: center;">
 	<ul class="pagination">
 		<% for(int i=paging.getStartPage(); i <= paging.getEndPage(); i++) { %>
-		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li>
+		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li> <!-- 파티장으로 참여중인 페이징 -->
 		<% } %>
 	</ul>
 </div>
@@ -114,6 +114,14 @@ li {
 	</ul>
 </div>
 <% } %>
+
+<div style="text-align: center;">
+	<ul class="pagination">
+		<% for(int i=paging.getStartPage(); i <= paging.getEndPage(); i++) { %>
+		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li> <!-- 파티원으로 참여중인 파티 페이 -->
+		<% } %>
+	</ul>
+</div>
 
 </div>
 
