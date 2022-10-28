@@ -35,7 +35,7 @@ public class PartyExitController extends HttpServlet {
 //		PartyRoom partyRoom = new PartyRoom();
 		
 
-		Party party = partyRoomBoardService.getPartyNo(req);
+//		Party party = partyRoomBoardService.getPartyNo(req);
 
 	    PartyRoom partyroomno = partyRoomBoardService.getPartyNo(req);
 

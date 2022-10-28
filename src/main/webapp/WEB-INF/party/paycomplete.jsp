@@ -35,45 +35,43 @@ body {
 <h3>결제내역</h3>
 
 <div>
-<span>이름 : </span>
-<span><%=paycomplete.getUserName() %>
-</span>
+	<span>이름 : </span>
+	<span><%=paycomplete.getUserName() %></span>
 </div>
 
 <div>
+	<span>닉네임 : </span>
+	<span><%=paycomplete.getUserNick() %></span>
 <span>닉네임 : </span>
-<span><%=paycomplete.getUserNick() %>
-</span>
+<span><%=paycomplete.getUserNick() %></span>
 </div>
 <div>
 
-<span>이메일 : </span>
-<span><%=paycomplete.getUserEmail() %>
-</span>
+	<span>이메일 : </span>
+	<span><%=paycomplete.getUserEmail() %></span>
 </div>
+
 <div>
 
-<span>가입 PARTY : </span>
-<span><%=paycomplete.getPartyName() %>
-</span>
+	<span>가입 PARTY : </span>
+	<span><%=paycomplete.getPartyName() %></span>
 </div>
-
-
 
 
 <div>
 
-<span>결제일자 : </span>
 
-<span><%=paycomplete.getPaymentDate()%></span>
+	<span>결제일자 : </span>
+	
+	<span><%=paycomplete.getPaymentDate()%></span>
 
 </div>
 
 <div>
 
-<span>결제카드 정보 : </span>
-
-<span><%=paycomplete.getUserCardCom()%></span>
+	<span>결제카드 정보 : </span>
+	
+	<span><%=paycomplete.getUserCardCom()%></span>
 
 </div>
 
@@ -84,7 +82,7 @@ body {
 	<span><%=paycomplete.getPaymentAmount() %></span>
 </div>
 
-<button type="button" onclick="location.href='/homett/main'">메인으로</button>
+<button type="button" onclick="location.href='/homett/roomboard ?partyNo=<%=paycomplete.getPartyNo()%>'">파티로 가기</button>
 
 </body>
 </html>

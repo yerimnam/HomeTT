@@ -83,7 +83,7 @@ public interface PartyRoomBoardService {
 	 * @return- 전달파라미터 getpartyNo를 저장한 DTO객체
 	 */
 
-	public Party getPartyNo(HttpServletRequest req);
+//	public Party getPartyNo(HttpServletRequest req);
 
 	public PartyRoom getPartyNo(HttpServletRequest req);
 

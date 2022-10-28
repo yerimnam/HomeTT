@@ -52,7 +52,7 @@ public interface PartyModifyService {
 	 */
 	public Party view(Party partyNo);
 
-	public Party getPartyRoomNo(HttpServletRequest req);
+//	public Party getPartyRoomNo(HttpServletRequest req);
 
 
 
