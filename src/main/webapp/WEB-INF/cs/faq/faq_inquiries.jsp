@@ -43,6 +43,15 @@
 </table>
 
 
+<table>
+<tr>
+	<td colspan="6">
+		<input type="submit" value="삭제">
+		<input type="button" value="글쓰기" oncancel="event_write.jsp">
+	</td>
+</tr>
+</table>
+
 
 
 </body>
