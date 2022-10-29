@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.Date" %>
     <%@page import="java.text.SimpleDateFormat" %>
+       <%@ include file="../layout/header.jsp"  %>
     
   <% Payment paycomplete =(Payment)request.getAttribute("paycomplete");  %>
  
@@ -129,6 +130,7 @@ button{
 		
 			<div id="paylist">
 				<table id="payresult">
+				
 						<tr id="username">
 							<td>이름</td>
 							<td class="value"><%=paycomplete.getUserName() %></td>
@@ -166,7 +168,7 @@ button{
 						<td >결제 금액</td>
 						<td class='value'><%=paycomplete.getPaymentAmount() %></td>
 					</tr>
-					
+				
 				</table>
 		</div>
 	<div id="btnarea">

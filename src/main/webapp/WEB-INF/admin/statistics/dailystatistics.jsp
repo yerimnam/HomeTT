@@ -25,20 +25,20 @@
 <hr style="width: 1000px; margin: 30px auto; border:0; height:2px; background: #ccc;">
 
 <div style="position:relative; width:1000px; margin: 0 auto;">
-	<h4 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
-		OTT별 생성된 방 통계</h4>
+	<h2 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+		OTT별 생성된 방 통계</h2>
 	<div> <canvas id="myChart1" style="width: 1000px; height: 500px;"></canvas>	</div>
 	
 <hr style="width: 1000px; margin: 30px auto; border:0; height:1px; background: #ccc;">
 	
-	<h4 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
-			회원 통계</h4>
+	<h2 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+			회원 통계</h2>
 	<div> <canvas id="myChart2" style="width: 1000px; height: 500px;"></canvas>	</div>
 
 <hr style="width: 1000px; margin: 30px auto; border:0; height:1px; background: #ccc;">
 
-	<h4 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
-			파티 통계</h4>
+	<h2 class="text-center" style="margin-top: 30px; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+			파티 통계</h2>
 	<div style="margin-bottom: 100px;"> <canvas id="myChart3" style="width: 1000px; height: 500px;"></canvas>	</div>
 </div>
 
@@ -62,7 +62,7 @@ var myChart = new Chart(ctx, {
 	        'rgba(255, 206, 86, 0.2)',
 	        'rgba(75, 192, 192, 0.2)',
 	        'rgba(153, 102, 255, 0.2)',
-	        'rgba(122, 88, 233, 0.2)',
+	        'rgba(102, 138, 107, 0.2)',
 	        'rgba(255, 159, 64, 0.2)'
 	    ],
 	    borderColor: [
@@ -71,7 +71,7 @@ var myChart = new Chart(ctx, {
 	        'rgba(255, 206, 86, 1)',
 	        'rgba(75, 192, 192, 1)',
 	        'rgba(153, 102, 255, 1)',
-	        'rgba(122, 88, 233, 1)',
+	        'rgba(102, 138, 107, 1)',
 	        'rgba(255, 159, 64, 1)'
 	    ],
 	    borderWidth: 1
@@ -87,7 +87,7 @@ var myChart = new Chart(ctx, {
     scales: {
     	y: {
     		min: 0,
-    		max: 20,
+//     		max: 20,
     		ticks: {
     			stepSize: 5,
                 maxTicksLimit: 0,
@@ -131,7 +131,7 @@ var myChart = new Chart(ctx, {
     scales: {
     	y: {
     		min: 0,
-    		max: 20,
+//     		max: 20,
     		ticks: {
     			stepSize: 5,
                 maxTicksLimit: 0,
@@ -175,7 +175,7 @@ var myChart = new Chart(ctx, {
     scales: {
     	y: {
     		min: 0,
-    		max: 20,
+//     		max: 20,
     		ticks: {
     			stepSize: 5,
                 maxTicksLimit: 0,

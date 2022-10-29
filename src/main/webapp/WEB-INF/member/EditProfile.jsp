@@ -10,7 +10,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	//가입취소 버튼
+	//가입취소 버튼 
 	$("#btnCancel").click(function() {
 		history.go(-2) //뒤로가기
 	})
