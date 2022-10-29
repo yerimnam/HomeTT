@@ -63,7 +63,7 @@ public class WishListServiceImpl implements WishListService {
 		//이용자 ID 처리하기
 		wishlist.setUserNo( (int) req.getSession().getAttribute("userNo")); 
 		
-		if( wishlistdao.insert(conn, wishlist) > 0 ) {
+		if( wishlistdao.insertWishNo(conn, wishlist) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
