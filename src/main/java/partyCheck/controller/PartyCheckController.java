@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import partyCheck.dto.PartyCheck;
 import partyCheck.service.face.PartyCheckService;
 import partyCheck.service.impl.PartyCheckServiceImpl;
-import partyExit.dto.PartyExit;
-import util.Paging;
+import util.Paging5;
 
 @WebServlet("/homett/partycheck")
 public class PartyCheckController extends HttpServlet {
@@ -27,7 +26,7 @@ public class PartyCheckController extends HttpServlet {
 		System.out.println("/homett/partycheck [GET]");
 		
 		// 전달파라미터에서 현제 페이징 객체 계산하기
-		Paging paging = partyCheckService.getPaging(req);
+		Paging5 paging = partyCheckService.getPaging(req);
 		
 		// 페이징 객체를 MODEL값으로 전달
 		req.setAttribute("paging", paging);

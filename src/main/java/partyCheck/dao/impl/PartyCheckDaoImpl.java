@@ -10,7 +10,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import partyCheck.dao.face.PartyCheckDao;
 import partyCheck.dto.PartyCheck;
-import util.Paging;
+import util.Paging5;
 
 public class PartyCheckDaoImpl implements PartyCheckDao {
 
@@ -31,7 +31,6 @@ public class PartyCheckDaoImpl implements PartyCheckDao {
 		sql += "	, party_leader, party_enddate, party_credate";
 		sql	+= "	, party_member, paymentamount";
 		sql += " FROM party";
-		sql += " ORDER BY user_no DESC";
 		
 		// 결과 저장 List
 		List<PartyCheck> partyList = new ArrayList<>();
@@ -111,7 +110,7 @@ public class PartyCheckDaoImpl implements PartyCheckDao {
 
 
 	@Override
-	public List<PartyCheck> selectAll(Connection conn, Paging paging) {
+	public List<PartyCheck> selectAll(Connection conn, Paging5 paging5) {
 		System.out.println("PartyCheckDao selectAll(paging) - start");
 		
 		//SQL작성
@@ -123,7 +122,6 @@ public class PartyCheckDaoImpl implements PartyCheckDao {
 		sql += "			, party_leader, party_enddate, party_credate";
 		sql	+= "			, party_member, paymentamount";
 		sql += "		FROM party";
-		sql += "		ORDER BY party_no DESC";
 		sql += "	) P";
 		sql += " ) PARTY";
 		sql += " WHERE rnum BETWEEN ? AND ?";
@@ -135,8 +133,8 @@ public class PartyCheckDaoImpl implements PartyCheckDao {
 			// SQL 수행 객체
 			ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1, paging.getStartNo());
-			ps.setInt(2, paging.getEndNo());
+			ps.setInt(1, paging5.getStartNo());
+			ps.setInt(2, paging5.getEndNo());
 			
 			// SQL 수행 및 결과 집합 저장
 			rs = ps.executeQuery();

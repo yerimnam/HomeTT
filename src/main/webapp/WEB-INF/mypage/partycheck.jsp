@@ -1,11 +1,11 @@
-<%@page import="util.Paging"%>
+<%@page import="util.Paging5"%>
 <%@page import="partyCheck.dto.PartyCheck"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <% List<PartyCheck> partyList = (List) request.getAttribute("partyList"); %>
-<% Paging paging = (Paging) request.getAttribute("paging"); %>
+<% Paging5 paging5 = (Paging5) request.getAttribute("paging"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +104,7 @@ li {
 <div class="main">
 	<% for(int i = 0; i < partyList.size(); i++) { %>
 	<div id="party">
-		<a herf="./partyroomdetail?partyno=<%=partyList.get(i).getPartyNo()%>"><ul>
+		<a herf="./roomboard?partyno=<%=partyList.get(i).getPartyNo()%>"><ul>
 			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 				<%=partyList.get(i).getPartyKind() %>
 			</div>
@@ -118,7 +118,6 @@ li {
 			<hr style="height: 1px; background-color: black;">
 			<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %> 원</li>
 			<li id="party_no" hidden><%=partyList.get(i).getPartyNo() %></li>
-			<button id="#btnPartyOut">나가기</button>
 		</ul></a>
 	</div>
 	<% } %>
@@ -130,7 +129,7 @@ li {
 
 <div style="text-align: center;">
 	<ul class="pagination">
-		<% for(int i=paging.getStartPage(); i <= paging.getEndPage(); i++) { %>
+		<% for(int i=paging5.getStartPage(); i <= paging5.getEndPage(); i++) { %>
 		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li>
 		<% } %>
 	</ul>
@@ -150,7 +149,7 @@ li {
 <div class="main">
 	<% for(int i = 0; i < partyList.size(); i++) { %>
 	<div id="party">
-		<ul>
+		<a href="./partycheck?curPage=<%=i %>"><%=i %>><ul>
 			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 				<%=partyList.get(i).getPartyKind() %>
 			</div>
@@ -163,7 +162,7 @@ li {
 			<li>모집 인원 : <%=partyList.get(i).getPartyMember() %></li>
 			<hr style="height: 1px; background-color: black;">
 			<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %> 원</li>
-		</ul>
+		</ul></a>
 	</div>
 	<% } %>
 </div>
@@ -174,7 +173,7 @@ li {
 
 <div style="text-align: center;">
 	<ul class="pagination">
-		<% for(int i=paging.getStartPage(); i <= paging.getEndPage(); i++) { %>
+		<% for(int i=paging5.getStartPage(); i <= paging5.getEndPage(); i++) { %>
 		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li> <!-- 파티장으로 참여중인 페이징 -->
 		<% } %>
 	</ul>

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import partyCheck.dto.PartyCheck;
-import util.Paging;
+import util.Paging5;
 
 public interface PartyCheckService {
 
@@ -22,7 +22,7 @@ public interface PartyCheckService {
 	 * @param paging - 페이징 정보 객체
 	 * @return - 파티 전제 조회 목록
 	 */
-	public List<PartyCheck> getList(Paging paging);
+	public List<PartyCheck> getList(Paging5 paging);
 	
 	
 	/**
@@ -31,7 +31,7 @@ public interface PartyCheckService {
 	 * @param paging - 페이징 정보 객체
 	 * @return List<PartyCheck> - 파티 전체 조회 목록
 	 */
-	public Paging getPaging(HttpServletRequest req);
+	public Paging5 getPaging(HttpServletRequest req);
 
 	
 	/**
