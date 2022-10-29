@@ -59,10 +59,6 @@ $(document).ready(function() {
 		}
 	})
 	
-// 	//로그인 버튼
-// 	$("#btnLogin").click(function() {
-// 		$("#loginform").submit();
-// 	})
 
 })
 </script>
@@ -312,7 +308,7 @@ a:hover {
 	</div>
 
 	<div id="divPw">
-		<input type="text" id="userpw" name="userpw" placeholder="비밀번호" autocomplete="off">
+		<input type="password" id="userpw" name="userpw" placeholder="비밀번호" autocomplete="off">
 	</div>
 	
 	<!-- input 하단 메뉴 버튼 -->

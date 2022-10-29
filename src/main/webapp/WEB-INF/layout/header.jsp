@@ -210,7 +210,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 </style>
 
 </head>
-<body>
+
 
 <%-- 비로그인 상태 --%>
 <%	if( session.getAttribute("login") == null ) { %>
@@ -219,7 +219,6 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 </div><!-- hdTopright -->
 
 <header id="header">
-	
 	
 		<div class="inner top">
 			<div id="topMenu">
@@ -338,7 +337,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	</div>	
 	
 		
-	</header>
+</header>
 
 <br><br><br><br>
 
