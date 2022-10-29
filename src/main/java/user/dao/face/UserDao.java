@@ -26,6 +26,17 @@ public interface UserDao {
 	 * @return insert 수행 결과 ( 0 실패, 1 삽입 성공)
 	 */
 	public int insert(Connection conn, Member member);
+	
+	
+	/**
+	 * 입력한 userid 로 아이디가 중복되는지 알아본다
+	 * 
+	 * @param conn - DB연결 객체
+	 * @param member - 조회할 회원의 정보
+	 * @return int idCheck - 0: 존재하는 회원, 1: 존재하지 않는 회원
+	 */
+	public int checkId(Connection conn, Member member);
+	
 
 //	---------------------------------회원가입 끝 -----------------------------------
 	
@@ -139,6 +150,9 @@ public interface UserDao {
 	 * @return int - UPDATE쿼리 수행 결과
 	 */
 	public int UpdateUserType(Connection conn, Member member);
+
+
+
 	
 	
 //	--------------------------------- 유저타입 변환 끝 -----------------------------------

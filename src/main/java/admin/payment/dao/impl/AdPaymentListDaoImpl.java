@@ -136,7 +136,7 @@ public class AdPaymentListDaoImpl implements AdPaymentListDao {
 	@Override
 	public List<Payment> selectSearchList(Connection conn, Paging paging, String searchType, String keyword) {
 //		System.out.println("selectSearchList searchpaging 시작" + paging);
-//		keyword = '%' + keyword + '%';
+		keyword = '%' + keyword + '%';
 		
 		String sql = "";
 		sql += "SELECT * FROM (";
@@ -190,7 +190,7 @@ public class AdPaymentListDaoImpl implements AdPaymentListDao {
 	@Override
 	public int selectSearchCntAll(Connection conn, String searchType, String keyword) {
 //		System.out.println("selectSearchCntAll 시작" + searchType + keyword);
-//		keyword = '%' + keyword + '%';
+		keyword = '%' + keyword + '%';
 		
 		String sql = "";
 		sql += "SELECT count(*) cnt FROM (";

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<jsp:include page="/WEB-INF/layout/header.jsp" />
+<jsp:include page="../layout/header.jsp" />
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -20,9 +20,8 @@ $(document).ready(function() {
 		, dataType: "html"		//응답 데이터 형식
 		, success: function( res ) {
 			console.log("AJAX 성공")
-			alert("[TEST] 로그인에 성공했습니다.");
-
-// 			 window.location.href='/homett/main';
+			alert("로그인 성공!");
+			 window.location.href='/homett/adminmain';
 			
 		}
 		, error: function() {
@@ -55,7 +54,7 @@ $(document).ready(function() {
 	//패스워드 입력창에 엔터키 입력 시 submit
 	$("input").eq(1).keydown(function(e) {
 		if( e.keyCode == 13 ) { //엔터키
-			$("#btnLogin").click();
+			$("#btnAdminLogin").click();
 		}
 	})
 	
@@ -78,32 +77,42 @@ li{
 
 </head>
 <body>
-<h1>관리자 로그인</h1>
-<hr>
 
-<!-- <form action="/homett/login" method="post" id="loginform"> -->
-
-	<div>
-		<label for="userid">아이디</label>
-		<input type="text" id="userid"name="userid" placeholder="아이디">
+<div class="form-horizontal">
+	<div class="form-group text-center" style="margin: 100px 400px;">
+		<div class="text-center" style="margin-bottom: 20px;">
+			<h1>관리자 로그인</h1>
+		</div>
+		
+		<label for="userid" class="col-lg-5 control-label" style="margin: 10px 0;">아이디</label>
+		<div class="col-lg-5">
+			<input class="form-control" type="text" id="userid" name="userid" placeholder="아이디" style="width: 200px; margin: 10px 0;">
+		</div>
+	
+		<label for="userpw" class="col-lg-5 control-label" style="margin: 10px 0;">비밀번호</label>
+		<div class="col-lg-5">
+			<input class="form-control" type="password" id="userpw" name="userpw" style="width: 200px; margin: 10px 0;">
+		</div>
+	
+		<div class="col-lg-12">
+			<button id="btnAdminLogin" class="btn btn-primary" style="margin: 10px 0;">로그인</button>
+		</div>
 	</div>
-
-	<div>
-		<label for="userpw">비밀번호</label>
-		<input type="text" id="userpw"name="userpw">
-	</div>
-
-	<div>
-		<button id="btnAdminLogin">로그인</button>
-	</div>
-
-<!-- </form> -->
+</div>
 
 
-    
-    
 </body>
+
+<!-- 부트스트랩3 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+body{
+	font-family: 'SUIT';
+}
+</style>
+
 </html>
-
-
-

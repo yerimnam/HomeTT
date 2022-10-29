@@ -14,6 +14,28 @@ $(document).ready(function() {
 	$("#btnCalc").click(function() {
 		console.log("#btnCalc 클릭")
 
+		//아이디가 빈칸일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("userid").value==""){
+			alert("이름을 입력해주세요");
+			$("input").eq(0).focus()
+			return;
+		} 
+		
+		
+		//이름가 빈칸일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("username").value==""){
+			alert("이름을 입력해주세요");
+			$("input").eq(1).focus()
+ 			return;
+		}
+		
+		//휴대폰 번호가 빈칸일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("userphone").value==""){
+			alert("휴대폰 번호를 입력해주세요");
+			$("input").eq(2).focus()
+ 			return;
+		}
+		
 		$.ajax({
 			type:"post"			//요청 메소드
 			, url: "/homett/searchpw"		//요청 URL
