@@ -7,6 +7,7 @@
 <% List<PartyCheck> partyList = (List) request.getAttribute("partyList"); %>
 <% List<PartyCheck> ownerPartyList = (List) request.getAttribute("ownerPartyList"); %>
 <% Paging5 paging5 = (Paging5) request.getAttribute("paging"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,9 +43,8 @@
 }
 
 .situation {
-	display: flex;
 	padding-top: 20px;
-	padding-left: 230px;
+	padding-left: 430px;
 }
 
 .invitation {
@@ -53,24 +53,77 @@
 }
 
 #party {
-	width: 240px;
-	height: 270px;
+	/* width: 240px; */
+	height: 300px;
 /* 	margin: 20px; */
 /* 	paddig: 20px; */
-	border: 1px solid #000;		
+	border: 1px solid #000;
+	background-color: #eff2e0;	
+}
+
+#partyKind {
+	border: 1px solid #000; 
+	height: 45px;
+	padding-top:10px;
+	text-align: center; 
+	border-radius: 5px;
+}
+
+#partyName {
+	text-align: center; 
+	margin: 5px; 
+	margin-top: 15px;
 }
 
 #party ul {
+	text-align: center;
 	padding: 5px;
 }
 
+
 li {
-    display: flex;
-    flex-direction: row;
     list-style: none;
     margin: 0px;
     padding: 0px;
+    font-weight: 300;
 }
+
+a {
+	text-decoration: none !important;
+	color: black;
+	font-weight: 600;
+}
+a:link{
+	color:black;
+    transition : 1s; /* 속성 변경할 때 효과의 속도 조절 */
+}
+a:visited{
+	color: black;
+}
+a:hover { 
+	color:white;
+	text-decoration: none;
+}
+a:active {
+	color:black;
+	text-decoration: none;
+}
+
+#btn {
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-right: -4;
+	border: 1px solid #ffeaa6;
+	background-color: rgba(0,0,0,0);
+	color: #585a72;
+	padding: 5px;
+}
+
+#btn:hover {
+	color: #a9cd72;
+	background-color: #ffeaa6;
+}
+
 </style>
 
 <%@ include file="../layout/header.jsp" %>
@@ -78,8 +131,9 @@ li {
 <body>
 
 <div class="situation">
-내가 만든 파티
+<h4>내가 만든 파티</h4>
 </div>
+<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
 
 <!--     <input type="button" onClick="sendLinkDefault();" value="친구선택"/> -->
 
@@ -106,17 +160,17 @@ li {
 	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
 	<div id="party">
 		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><%=partyList.get(i).getPartyNo() %><ul>
-			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
+			<div id="partyKind">
 				<%=ownerPartyList.get(i).getPartyKind() %>
 			</div>
-			<div style="text-align: center; margin: 5px; margin-top: 15px;">
+			<div id="partyName">
 				<%=ownerPartyList.get(i).getPartyName() %>
 			</div>
-			<hr style="height: 1px; background-color: black;">
+			<hr style="background-color: black; border-style: dashed; width: 100px;">
 			<li>파티장 : <%=ownerPartyList.get(i).getPartyLeader() %></li>
 			<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
 			<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
-			<hr style="height: 1px; background-color: black;">
+			<hr style="background-color: black; border-style: dashed; width: 150px;">
 			<li>참여 금액 : <%=ownerPartyList.get(i).getPaymentamount() %> 원</li>
 			<li id="party_no" hidden><%=ownerPartyList.get(i).getPartyNo() %></li>
 		</ul></a>
@@ -125,15 +179,16 @@ li {
 </div>
 
 <div class="invitation">
-    <input type="button" onClick="sendLinkCustom();" value="초대하기"/>
+    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
 </div>
 
 <hr>
 
 
 <div class="situation">
-참여중인 파티
+<h4>참여중인 파티</h4>
 </div>
+<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
 
 
 <div id="submenu">
@@ -144,17 +199,17 @@ li {
 	<% for(int i = 0; i < partyList.size(); i++) { %>
 	<div id="party">
 		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><%=partyList.get(i).getPartyNo() %><ul>
-			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
+			<div id="partyKind">
 				<%=partyList.get(i).getPartyKind() %>
 			</div>
-			<div style="text-align: center; margin: 5px; margin-top: 15px;">
+			<div id="partyName">
 				<%=partyList.get(i).getPartyName() %>
 			</div>
-			<hr style="height: 1px; background-color: black;">
+			<hr style="background-color: black; border-style: dashed; width: 100px;">
 			<li>파티장 : <%=partyList.get(i).getPartyLeader() %></li>
 			<li>파티 만료일 : <%=partyList.get(i).getPartyEnddate() %></li>
 			<li>모집 인원 : <%=partyList.get(i).getPartyMember() %></li>
-			<hr style="height: 1px; background-color: black;">
+			<hr style="background-color: black; border-style: dashed; width: 150px;">
 			<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %> 원</li>
 		</ul></a>
 	</div>
@@ -162,7 +217,7 @@ li {
 </div>
 
 <div class="invitation">
-    <input type="button" onClick="sendLinkCustom();" value="초대하기"/>
+    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
 </div>
 
 <div style="text-align: center;">
