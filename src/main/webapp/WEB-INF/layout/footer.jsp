@@ -11,7 +11,7 @@ footer
 	width: 100%;
 	height: 120px;
 	background-color: #eeeeee;
-	margin-top: 200px;
+	margin-top: 160px;
 	font-size: 30px;
 	text-align: center;
 	line-height: 140px;
