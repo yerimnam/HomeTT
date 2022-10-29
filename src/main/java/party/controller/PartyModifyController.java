@@ -44,6 +44,9 @@ public class PartyModifyController extends HttpServlet {
 
 		// 조회 결과를 MODEL값 전달
 		req.setAttribute("partyList", partyList);
+		
+		//파티룸에서 파티번호 조회하는메소드
+		Party partyNo = partyModifyService.getPartyNo(req);
 
 		// View 지정 및 응답
 		req.getRequestDispatcher("/WEB-INF/party/partyModify.jsp").forward(req, resp);

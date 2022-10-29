@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<jsp:include page="/WEB-INF/layout/header.jsp" />
 
 <!-- SweetAlert2 -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -29,8 +29,10 @@ List<PartyBoard> partyBoardList = (List) request.getAttribute("partyBoardList");
 
 
 
-<%	PartyBoard partyBoard = (PartyBoard) request.getAttribute("partyBoard"); %>
-	
+<%
+PartyBoard partyBoard = (PartyBoard) request.getAttribute("partyBoard");
+%>
+
 <%
 PbPaging paging = (PbPaging) request.getAttribute("paging");
 %>
@@ -39,8 +41,8 @@ PbPaging paging = (PbPaging) request.getAttribute("paging");
 <style type="text/css">
 .top {
 	padding: 10px;
-	border-bottom: 1px solid #333;
-	margin-bottom: 40px;
+	/* 	border-bottom: 1px solid #333; */
+	/* 	margin-bottom: 40px; */
 	text-align: center;
 }
 
@@ -55,7 +57,7 @@ ul li {
 }
 
 button:hover {
-	background: #cff3b4;
+	background: #ffde59;
 }
 
 .round-box {
@@ -96,17 +98,16 @@ button:hover {
 	padding: 5px;
 }
 
-
 .noData {
 	margin: 30px;
 	text-align: center;
 }
 
-#btn-d{
+#btn-d {
 	border: 0 none;
 	background: inherit;
-	
 }
+
 .search-area {
 	display: flex;
 	flex-wrap: wrap;
@@ -132,13 +133,14 @@ button:hover {
 	justify-content: space-between;
 }
 
-.member-area {
-	margin-right: 30px
-	border: 1px solid black;
-	
+#reportb {
+	border: 0 none;
+	background: inherit;
+	font-size: 18px;
 }
+
 .p-btn {
-	background: #333;
+	background: #F6F6F6;
 	color: #fff;
 	border: none;
 	padding: 10px 30px;
@@ -184,7 +186,9 @@ textarea {
 </head>
 <body>
 	<div class="top">
-		<h1><a href="./roomboard">파티방</a></h1>
+		<h1>
+			<a href="./roomboard">파티방</a>
+		</h1>
 	</div>
 
 	<div class="container">
@@ -205,12 +209,10 @@ textarea {
 				<tr>
 					<td><%=partyBoardList.get(i).getPartyBoardNo()%></td>
 					<td><%=partyBoardList.get(i).getPartyBoardWriter()%></td>
-			
-				
-					<td><%=partyBoardList.get(i).getPartyBoardTitle()%>
-					<a href="./comment?partyboardno=<%=partyBoardList.get(i).getPartyBoardNo()%>"><button id="btn-d">❌</button></a>
-					</td>
-				
+
+
+					<td><%=partyBoardList.get(i).getPartyBoardTitle()%> <a href="./comment?partyboardno=<%=partyBoardList.get(i).getPartyBoardNo()%>"><button id="btn-d">❌</button></a></td>
+
 				</tr>
 
 				<%
@@ -243,29 +245,26 @@ textarea {
 
 
 
-				<%--페이지 번호 리스트 --%>
+
+				<%-- 페이지 번호 리스트 --%>
 				<%
 				for (int i = paging.getStartPage(); i <= paging.getEndPage(); i++) {
 				%>
-
 				<%
 				if (i == paging.getCurPage()) {
 				%>
-				<li class="active"><a href="./roomboard?curPage=<%=i%>
-				&seachType=<%=request.getParameter("searchType")%>
-					&keyword=<%=request.getParameter("keyword")%>"><%=i%></a></li>
+				<li class="active"><a href="./roomboard?curPage=<%=i%>"><%=i%></a></li>
 				<%
 				} else {
 				%>
-				<li><a href="./roomboard?curPage=<%=i%>
-				&searchType=<%=request.getParameter("searchType")%>
-				&keyword=<%=request.getParameter("keyword") %>"><%=i%></a></li>
+				<li><a href="./roomboard?curPage=<%=i%>"><%=i%></a></li>
 				<%
 				}
 				%>
 				<%
 				}
 				%>
+
 
 
 				<%--다음 페이지로 이동 --%>
@@ -305,15 +304,19 @@ textarea {
 				<div class="form-item">
 					<input type="submit" value="검색 ">
 				</div>
+				<!-- 				<form action="/homett/mbrreport" method="get" id="reportform"> -->
+				<button id="reportb" onclick="location.href = '/homett/mbrreport'">🔔</button>
+				<!-- 				</form> -->
 			</div>
 			<!-- 검색 종료  -->
+
 		</form>
 
 		<div class="manage-area">
 			<div class="manage-top">
 				<h3>📌게시글 관리</h3>
-				
-<%-- 				<a href="./roomboard?partyRoomNo=<%=partyList.g%>"></a> --%>
+
+				<%-- 				<a href="./roomboard?partyRoomNo=<%=partyList.g%>"></a> --%>
 				<button class="p-btn" onclick="showPrompt()">파티탈퇴</button>
 			</div>
 			<div class="manage-body">
@@ -333,9 +336,9 @@ textarea {
 			</div>
 		</div>
 
-<div class="member-area"></div>
 
-	<button>신고하기</button>
+
+
 	</div>
 
 
@@ -372,48 +375,31 @@ textarea {
 		});
 
 	}
-	
 </script>
 
 <script type="text/javascript">
+	function showPrompt() {
+		console.log("-----prompt-----")
+		var res = prompt("탈퇴를 원하시면 '탈퇴'라고 적어주세요")
 
+		console.log("반환값", res)
 
-function showPrompt(){
-	console.log("-----prompt-----")
-	var res = prompt("탈퇴를 원하시면 '탈퇴'라고 적어주세요")
-	
-	console.log("반환값" , res)
-	
-	
-	if( res == '탈퇴' ) {
-		console.log("확인 선택")
-		alert('탈퇴 되었습니다. 감사합니다');
-		
-	} else if( res == '' ) {
-		console.log("입력값없이 확인 선택")
-		
-	} else {
-		console.log("입력값 >>", res)
+		if (res == '탈퇴') {
+			console.log("확인 선택")
+			alert('탈퇴 되었습니다. 감사합니다');
+			window.location.href = '/homett/main';
+
+		} else if (res == '') {
+			console.log("입력값없이 확인 선택")
+
+		} else {
+			console.log("입력값 >>", res)
+		}
+
 	}
-	
-}
 </script>
 
-<<<<<<< HEAD
-<script type="text/javascript">
-$(document).ready(function() {
-	//삭제버튼
-	$(".p-btn").click(function() {
-<%-- 		$(location).attr('href', './delete?boardno=<%=viewBoard.getBoardno() %>') --%>
-<%-- 		$(location).attr('href', './partymodify?partyRoomNo=<%=partyList.get(i).get%>') --%>
-	})
 
-})	
-	
-=======
 
->>>>>>> refs/remotes/origin/master
-
-	
 
 </html>

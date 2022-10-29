@@ -35,7 +35,7 @@ public interface PartyRoomBoardDao {
 	 */
 	public List<PartyBoard> selectAllBr(Connection conn, PbPaging paging);
 	
-	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword);
+//	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword);
 
 	/**
 	 * 전달된 파라미터 값을 테이블에 삽입한다

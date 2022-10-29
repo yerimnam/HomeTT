@@ -41,7 +41,7 @@ public class PartyExitController extends HttpServlet {
 //		int partyRoomNo = Integer.parseInt(req.getParameter("partyRoomNo"));
 		req.setAttribute("partyRoomNo",partyroomno);
 		
-//		resp.sendRedirect("/homett/main");
-		resp.sendRedirect("/homett/partymodify");
+		resp.sendRedirect("/homett/main");
+//		resp.sendRedirect("/homett/partymodify");
 	}
 }

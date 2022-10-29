@@ -51,7 +51,6 @@ public interface PartyRoomBoardService {
 
 	public PartyBoard write(HttpServletRequest req);
 
-//	public List<PartyBoard> getBrList(String searchCondition, String searchKeyword, PbPaging paging);
 
 
 
@@ -74,7 +73,7 @@ public interface PartyRoomBoardService {
 
 	
 	
-	public List<PartyBoard> getPartySearchList(String searchType, String keyword);
+//	public List<PartyBoard> getPartySearchList(String searchType, String keyword);
 
 	
 	

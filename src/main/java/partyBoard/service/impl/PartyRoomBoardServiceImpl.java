@@ -125,32 +125,27 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 
 	}
 
-	@Override
-	public List<PartyBoard> getPartySearchList(String searchType, String keyword) {
-		System.out.println("getPartySearchList() - 시작");
-		System.out.println("searchType" + searchType);
-		System.out.println("keyword" + keyword);
-		return partyRoomBoardDao.selectPbSearchList(JDBCTemplate.getConnection(), searchType, keyword);
-	}
-	
-	
-	
-	
+//	@Override
+//	public List<PartyBoard> getPartySearchList(String searchType, String keyword) {
+//		System.out.println("getPartySearchList() - 시작");
+//		System.out.println("searchType" + searchType);
+//		System.out.println("keyword" + keyword);
+//		return partyRoomBoardDao.selectPbSearchList(JDBCTemplate.getConnection(), searchType, keyword);
+//	}
+
 	@Override
 	public PartyRoom getPartyNo(HttpServletRequest req) {
 
-			PartyRoom partyroom= new PartyRoom();
-			
-			String param = req.getParameter("partyRoomNo");
-			
-			if (null != param && !"".equals(param)) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리
-				partyroom.setParty_room_no(Integer.parseInt(param));
-			}
-		
+		PartyRoom partyroom = new PartyRoom();
+
+		String param = req.getParameter("partyRoomNo");
+
+		if (null != param && !"".equals(param)) { // 전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리
+			partyroom.setParty_room_no(Integer.parseInt(param));
+		}
+
 		return partyroom;
 	}
-	
-	
 
 //	@Override
 //	public PartyRoom getPartyNo(HttpServletRequest req); {
@@ -170,7 +165,6 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 	public void dropParty(PartyRoom partyroomno) {
 		Connection conn = JDBCTemplate.getConnection();
 
-	
 		if (partyRoomBoardDao.delete(conn, partyroomno) > 0) {
 			JDBCTemplate.commit(conn);
 		} else {
