@@ -1,8 +1,11 @@
+<%@page import="util.Paging5"%>
 <%@page import="wishListCheck.dto.WishListCheck"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <% List<WishListCheck> wishList = (List) request.getAttribute("wishList"); %>
+<%-- <% Paging5 paging5 = (Paging5) request.getAttribute("paging"); %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -40,23 +43,24 @@
 
 #wishlist {
 	display: flex;
-	width: 230px;
+	width: 210px;
 /* 	height: 250px; */
 /* 	margin: 20px; */
+	border-radius: 5px;
 	padding-bottom: 20px;
 	background-color: #eff2e0;
-	border: 1px solid #000;
+	border: 1px solid #e5dcb1;
 			
 }
 
 #wishlist ul {
 	text-align: center;
-	padding-left: 10px;
+	padding-left: 30px;
 	padding-bottom: 20px;
 }
 
 #partyKind {
-	border: 1px solid #000; 
+	border: 1px solid #585a72; 
 	height: 45px; 
 	padding-top:10px; 
 	text-align: center; 
@@ -137,6 +141,14 @@ a:active {
 	</div>
 	<% } %>
 </div>
+
+<%-- <div style="text-align: center;">
+	<ul class="pagination">
+		<% for(int i=paging5.getStartPage(); i <= paging5.getEndPage(); i++) { %>
+		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li> <!-- 파티장으로 참여중인 페이징 -->
+		<% } %>
+	</ul>
+</div> --%>
 
 
 <%@ include file="../layout/footer.jsp" %>
