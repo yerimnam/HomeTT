@@ -165,6 +165,7 @@ public class UserServiceImpl implements UserService {
 	public MailSmsOk sendMailRandomNum(HttpServletRequest req) {
 		
 		MailSmsOk RanNum = new MailSmsOk();
+		HttpSession ses = req.getSession();
 		
 		Random random = new Random();		//랜덤 함수 선언
 		int createNum = 0;  			//1자리 난수
@@ -179,7 +180,7 @@ public class UserServiceImpl implements UserService {
 			resultNum += ranNum;			//생성된 난수(문자열)을 원하는 수(letter)만큼 더하며 나열
 		}	
 		
-		
+		System.out.println("이이이메일 : " + ses.getAttribute("userEmail"));
 		String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
 	        String user = "wheodus628@naver.com"; // 패스워드
 	        String password = "aaa@4862795";
@@ -200,7 +201,7 @@ public class UserServiceImpl implements UserService {
 	        try {
 	            MimeMessage message = new MimeMessage(session);
 	            message.setFrom(new InternetAddress(user));
-	            message.addRecipient(Message.RecipientType.TO, new InternetAddress("wheodus628@naver.com"));
+	            message.addRecipient(Message.RecipientType.TO, new InternetAddress((String)ses.getAttribute("userEmail")));
 
 	            // 메일 제목
 	            message.setSubject("HomeTT 아디디찾기 인증메일입니다");

@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%	Member member = (Member) request.getAttribute("result"); %>
 <jsp:include page="/WEB-INF/layout/header.jsp" />
 
 
@@ -22,7 +21,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	height: 450px;
 	margin: 0 auto;
 	text-align: center;
-	background-color: #fffcee;
+	background-color: #fffdf5;
 	padding: 80px 0 80px 0;
 }
 
@@ -38,14 +37,14 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 }
 
 #mainTxt > span{
-	font-weight: 700;
+	font-weight: 800;
 	color: #ffd925;
 }
 
 #subTxt {
 	font-size: 17px;
 	color: #888888;
-	font-weight: 200px;
+	font-weight: 300;
 	margin-bottom: 46px;
 }
 

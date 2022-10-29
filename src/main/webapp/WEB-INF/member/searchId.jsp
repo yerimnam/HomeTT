@@ -356,6 +356,12 @@ div > input {
 	margin-bottom: 10px;
 }
 
+/* 인풋 글 작성시 */
+input:focus{
+	border: 2px solid #ffd925;
+    outline: none;
+}
+
 #btnDiv {
 	clear: both;
 	margin-top: 10px;

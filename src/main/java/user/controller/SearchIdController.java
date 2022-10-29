@@ -65,6 +65,7 @@ public class SearchIdController extends HttpServlet {
 		session.setAttribute("rannum", rannum.getRanNum() );
 		
 		session.setAttribute("userId", result.getUserId() );
+		session.setAttribute("userEmail", member.getUserEmail());
 		
 //		req.setAttribute("ranNum", userService.sendMailRandomNum(req));
 
