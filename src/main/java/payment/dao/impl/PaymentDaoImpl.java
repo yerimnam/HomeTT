@@ -101,9 +101,10 @@ public class PaymentDaoImpl implements PaymentDao {
 	public int insertPayment(Connection conn, Payment returnData) {
 
 		System.out.println("insertPayment -start");
+		System.out.println("returnData : " + returnData);
 		String sql = "";
-		sql += "INSERT INTO payment (pay_no, order_no, user_no, party_no, paymentmethod,user_cardno,user_cardcom, payment_amount,payment_date)";
-		sql += " values(?,?,?,?,?,?,?,?,sysdate)";
+		sql += "INSERT INTO payment (pay_no, order_no, user_no, party_no, paymentmethod,user_cardcom, payment_amount,payment_date)";
+		sql += " values(?,?,?,?,?,?,?,sysdate)";
 
 		// insert 결과 변수
 		int result = 0;
@@ -116,9 +117,9 @@ public class PaymentDaoImpl implements PaymentDao {
 			ps.setInt(3, returnData.getUserNo());
 			ps.setInt(4, returnData.getPartyNo());
 			ps.setString(5, returnData.getPaymentMethod());
-			ps.setInt(6, returnData.getUserCardno());
-			ps.setString(7, returnData.getUserCardCom());
-			ps.setInt(8, returnData.getPaymentAmount());
+//			ps.setInt(6, returnData.getUserCardno());
+			ps.setString(6, returnData.getUserCardCom());
+			ps.setInt(7, returnData.getPaymentAmount());
 
 			//
 
@@ -131,6 +132,7 @@ public class PaymentDaoImpl implements PaymentDao {
 			JDBCTemplate.close(ps);
 		}
 		System.out.println("insert-payment-end");
+		System.out.println("result : " + result);
 		return result;
 	}
 

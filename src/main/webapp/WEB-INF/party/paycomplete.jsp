@@ -172,7 +172,7 @@ button{
 				</table>
 		</div>
 	<div id="btnarea">
-		<button type="button" onclick="location.href='/homett/roomboard ?partyNo=<%=paycomplete.getPartyNo()%>'" id="gotoparty"><span>파티로 가기</span></button>
+		<button type="button" onclick="location.href='/homett/roomboard?partyNo=<%=paycomplete.getPartyNo()%>'" id="gotoparty"><span>파티로 가기</span></button>
 	</div>
 </body>
 </html>
