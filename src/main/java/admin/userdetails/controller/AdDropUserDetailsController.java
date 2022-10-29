@@ -30,15 +30,15 @@ public class AdDropUserDetailsController extends HttpServlet {
 		//한글 인코딩
 		req.setCharacterEncoding("UTF-8");
 		
-//		HttpSession session = req.getSession();
-//		
-//		Admin admin = new Admin();
-//		admin.setAdminId((String) session.getAttribute("adminId"));
-//		admin.setAdminPw((String) session.getAttribute("adminPw"));
-//		
-//		boolean loginSt = adminLoginService.login(admin);
+		HttpSession session = req.getSession();
 		
-//		if ( loginSt ) {
+		Admin admin = new Admin();
+		admin.setAdminId((String) session.getAttribute("adminId"));
+		admin.setAdminPw((String) session.getAttribute("adminPw"));
+		
+		boolean loginSt = adminLoginService.login(admin);
+		
+		if ( loginSt ) {
 		
 			String searchType = req.getParameter("searchType");
 			String keyword = req.getParameter("keyword");
@@ -55,9 +55,9 @@ public class AdDropUserDetailsController extends HttpServlet {
 			req.setAttribute("dropuserinfoList", dropuserinfoList);
 			req.getRequestDispatcher("/WEB-INF/admin/userinfo/admindropuserdetails.jsp").forward(req, resp);
 			
-//		} else {
-//			resp.sendRedirect("./adminlogin");
-//		}
+		} else {
+			resp.sendRedirect("./adminlogin");
+		}
 			
 	}
 	

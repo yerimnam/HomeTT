@@ -44,7 +44,7 @@ header {
 	      				PARTY <span class="caret"></span></a>
 	    	  	<ul class="dropdown-menu" role="menu">
 		    	  	<li><a href="./adpartylist">PARTY 관리</a></li>
-		            <li><a href="./reviewlist">후기 관리</a></li>
+		            <li><a href="./reviewlist">후기 관리(UserPage)</a></li>
 		        </ul>
 	        </li>
 	        <li role="presentation"class="dropdown" style="margin-right: 50px;">
@@ -67,9 +67,9 @@ header {
 	    		<a style="color:black;" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 	      				고객센터 <span class="caret"></span></a>
 	    	  	<ul class="dropdown-menu" role="menu">
-		    	  	<li><a href="./noticelist">공지사항</a></li>
-		            <li><a href="./eventlist">이벤트</a></li>
-		            <li><a href="./faqlist">FAQ</a></li>
+		    	  	<li><a href="./noticelist">공지사항(UserPage)</a></li>
+		            <li><a href="./eventlist">이벤트(UserPage)</a></li>
+		            <li><a href="./faqlist">FAQ(UserPage)</a></li>
 		            <li><a href="./adinquirylist">1:1문의</a></li>
 		        </ul>
 	        </li>
