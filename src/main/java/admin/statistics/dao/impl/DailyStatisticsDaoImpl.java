@@ -36,7 +36,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntNetflix() 수행 결과 : " + count);
+//		System.out.println("selectCntNetflix() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -62,7 +62,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntNetflix() 수행 결과 : " + res);
+//		System.out.println("updateCntNetflix() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -89,7 +89,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntDisney() 수행 결과 : " + count);
+//		System.out.println("selectCntDisney() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -115,7 +115,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntDisney() 수행 결과 : " + res);
+//		System.out.println("updateCntDisney() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -142,7 +142,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntTving() 수행 결과 : " + count);
+//		System.out.println("selectCntTving() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -168,7 +168,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntTving() 수행 결과 : " + res);
+//		System.out.println("updateCntTving() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -195,7 +195,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntApple() 수행 결과 : " + count);
+//		System.out.println("selectCntApple() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -221,7 +221,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntApple() 수행 결과 : " + res);
+//		System.out.println("updateCntApple() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -248,7 +248,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntWave() 수행 결과 : " + count);
+//		System.out.println("selectCntWave() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -274,7 +274,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntWave() 수행 결과 : " + res);
+//		System.out.println("updateCntWave() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -301,7 +301,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntWatcha() 수행 결과 : " + count);
+//		System.out.println("selectCntWatcha() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -327,7 +327,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntWatcha() 수행 결과 : " + res);
+//		System.out.println("updateCntWatcha() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -354,7 +354,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntLaftel() 수행 결과 : " + count);
+//		System.out.println("selectCntLaftel() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -380,7 +380,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntLaftel() 수행 결과 : " + res);
+//		System.out.println("updateCntLaftel() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -407,7 +407,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntNuser() 수행 결과 : " + count);
+//		System.out.println("selectCntNuser() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -431,7 +431,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntNuser() 수행 결과 : " + res);
+//		System.out.println("updateCntNuser() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -458,7 +458,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntDuser() 수행 결과 : " + count);
+//		System.out.println("selectCntDuser() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -482,7 +482,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntDuser() 수행 결과 : " + res);
+//		System.out.println("updateCntDuser() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -509,7 +509,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntPartyCre() 수행 결과 : " + count);
+//		System.out.println("selectCntPartyCre() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -533,7 +533,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntPartyCre() 수행 결과 : " + res);
+//		System.out.println("updateCntPartyCre() 수행 결과 : " + res);
 		return res;
 	}
 	
@@ -560,7 +560,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("selectCntPartyEnd() 수행 결과 : " + count);
+//		System.out.println("selectCntPartyEnd() 수행 결과 : " + count);
 		return count;
 	}
 	
@@ -584,7 +584,7 @@ public class DailyStatisticsDaoImpl implements DailyStatisticsDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("updateCntPartyEnd() 수행 결과 : " + res);
+//		System.out.println("updateCntPartyEnd() 수행 결과 : " + res);
 		return res;
 	}
 	

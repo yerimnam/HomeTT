@@ -11,6 +11,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#btnlogout").click(function() {
+		console.log("#btnlogout 클릭")
+
+</script>
+
 <style type="text/css">
 @import url('https://webfontworld.github.io/sunn/SUIT.css');
 header {
@@ -18,17 +25,15 @@ header {
 }
 </style>
 
-<style type="text/css">
-
-</style>
-
 </head>
 <body>
 
 <header>
-	<div id="log" style="width: 1600px; margin: 20px auto; margin-right: 320px;" class="text-right">
-		<button id="login">로그인</button>
-		<button id="logout">로그아웃</button>
+	<div id="log" style="width: 1600px; margin: 20px 0 10px -40px;" class="text-right">
+		<button id="homettmain" class="btn" style="margin-right: 10px; font-weight: bold;" 
+			onclick="location.href='/homett/main'">HommTT 사이트로 가기</button>
+		<button id="btnlogout" class="btn" style="font-weight: bold;" 
+			onclick="location.href='/homett/adminlogout'">로그아웃</button>
 	</div>
 
 	<div style="display: flex; justify-content: center; height: 50px; font-size: 18px; font-weight: bold;">
@@ -38,8 +43,8 @@ header {
 	    		<a style="color:black;" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 	      				PARTY <span class="caret"></span></a>
 	    	  	<ul class="dropdown-menu" role="menu">
-		    	  	<li><a href="#">PARTY 관리</a></li>
-		            <li><a href="#">후기 관리</a></li>
+		    	  	<li><a href="./adpartylist">PARTY 관리</a></li>
+		            <li><a href="./reviewlist">후기 관리</a></li>
 		        </ul>
 	        </li>
 	        <li role="presentation"class="dropdown" style="margin-right: 50px;">
@@ -62,9 +67,9 @@ header {
 	    		<a style="color:black;" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 	      				고객센터 <span class="caret"></span></a>
 	    	  	<ul class="dropdown-menu" role="menu">
-		    	  	<li><a href="#">공지사항</a></li>
-		            <li><a href="#">이벤트</a></li>
-		            <li><a href="#">FAQ</a></li>
+		    	  	<li><a href="./noticelist">공지사항</a></li>
+		            <li><a href="./eventlist">이벤트</a></li>
+		            <li><a href="./faqlist">FAQ</a></li>
 		            <li><a href="./adinquirylist">1:1문의</a></li>
 		        </ul>
 	        </li>
