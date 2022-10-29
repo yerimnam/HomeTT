@@ -56,11 +56,7 @@ $(document).ready(function(){
 
 <style type="text/css">
 
-body {
-	width: 1600px;
-	margin: 0 auto;
 
-}
 
 #title{
 
@@ -84,9 +80,9 @@ body {
     left: 214px;
 }
 #paymentlist{
-   position: absolute;
+	position: absolute;
     top: 0px;
-    left: 1000px;
+    left: 950px;
 }
 
 #startdate, #enddate{
@@ -106,17 +102,181 @@ body {
 .text-center{
 
     position: relative;
-    top: 600px;
 }
+
+#payresult{
+
+  height: 800px;
+    position: relative;
+    top: 210px;
+    left: 558px;
+    width: 1033px;
+}
+
+table{
+
+    height: 236px;
+    text-align: center;
 
 }
 
+
+thead{
+    font-size: 20px;
+    color: #666666;
+
+}
+
+tbody{
+    font-size: 20px;
+    color: #666666;
+
+}
+
+#btnchkpay{
+	    width: 100px;
+    height: 30px;
+    border: none;
+    background-color: #ff8c11;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+
+}
+
+th, td{
+	text-align: center;
+}
+
+#sidemenu{
+
+    width: 300px;
+    position: absolute;
+    left: 138px;
+    height: 1000px;
+    top:300px;
+    color:#666666;
+    
+}
+
+
+#party,#pay,#wishlist,#inquiry,#report{
+border-bottom: 1px solid #bbbbbb;
+
+}
+
+.area{
+
+    margin: 24px 0 0;
+    font-size: 18px;
+}
+.area li:hover{
+	color:#ff8c11 
+}
+.manage{
+	margin: 10px 0 0;
+	  font-size: 25px;
+}
+.area li{
+    margin: 0 0 10px;
+
+}
+
+a{
+	color:#666666;
+}
+a:hover{
+	text-decoration: none;
+}
+a:visited{
+	color:#666666;
+}
 </style>
 
 </head>
 <body>
 
+
+
+	<div id="sidemenu">
+		<div id="party">
+			<ul>
+				<li class="party manage">파티관리
+					<ul class="area">
+						<li>파티관리 </li>
+						
+					</ul>
+				</li>
+			</ul>
+		
+		</div>
 	
+		<div id="pay">
+			<ul>
+				<li class="pay manage">결제관리
+					<ul class="area">
+						<li><a href="/homett/paymentlist">결제내역</a> </li>
+					</ul>
+				</li>
+			</ul>
+		
+		</div>
+		
+		
+	<div id="wishlist">
+		<ul>
+			<li class="wishlist manage">찜하기관리
+			
+				<ul class="area">
+					<li>찜 목록 조회 
+				
+				</ul>
+			
+			</li>
+				
+		</ul>
+		
+	</div>		
+	
+	<div id="inquiry">
+	
+		<ul>
+			<li class="inquiry manage"> 1:1 문의
+			
+			
+				<ul class="area">
+				
+					<li id="askinquiry"><a href="/homett/inquirycreate"">1:1문의하기</a></li>
+					<li id="inquirylist"><a href="/homett/inquirylist">1:1문의 내역</a></li>
+				</ul>
+			
+			</li>
+		
+		</ul>	
+	
+	
+	</div>
+	
+	<div id="report">
+		<ul>
+			<li class="report manage">신고 관리
+				<ul class="area" >
+					<li id="leader">파티장 신고관리 </li>
+					<li id="member">파티원 신고관리 </li>
+				
+				</ul>
+			
+			</li>
+		
+		</ul>
+	
+	
+	</div>
+	
+</div>
+	
+
+<div id="list">
 	<div id="title">
 		<span>결제내역 조회하기</span>
 	</div>
@@ -134,12 +294,12 @@ body {
 	
 	<div id="payresult">
 	
-	<table>
+	<table class="table table-hover" >
 		<thead>
 			<tr>
 				<th>주문번호</th>
 				<th>결제 날짜</th>
-				<th>Party 이름</th>
+				<th>Party</th>
 				<th>결제수단</th>
 				<th>결제금액</th>
 			</tr>
@@ -209,6 +369,6 @@ body {
 	      
 	   </ul>
 	</div>
-
+</div>
 </body>
 </html>
