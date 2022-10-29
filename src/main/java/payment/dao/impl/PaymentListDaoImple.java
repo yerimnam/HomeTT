@@ -33,7 +33,6 @@ public class PaymentListDaoImple implements PaymentListDao {
 		sql +="		on p.party_no = a.party_no";
 		sql +=" WHERE p.user_no = ?";
 		if( start != null && end != null ) {
-//			sql +="		and p.payment_date BETWEEN TO_char(TO_date(?),'YYYYMMDD') and TO_char(TO_date(?),'YYYYMMDD') ";
 			sql +="		and trunc(p.payment_date) BETWEEN ? and ?";
 		}
 
