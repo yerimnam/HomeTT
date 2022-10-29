@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.Date" %>
     <%@page import="java.text.SimpleDateFormat" %>
-       <%@ include file="../layout/header.jsp"  %>
+  <%@ include file="../layout/header.jsp"  %> 
     
   <% Payment paycomplete =(Payment)request.getAttribute("paycomplete");  %>
  
@@ -17,7 +17,7 @@
 
 
 
-div{
+#paycomplete{
 
 	width:1600px;
 	margin:0 auto;
@@ -79,7 +79,7 @@ button{
     border-bottom: 1px solid #666666;
     padding: 40px;
     position:absolute;
-    top:413px;
+    top:647px;
 }
 
 
