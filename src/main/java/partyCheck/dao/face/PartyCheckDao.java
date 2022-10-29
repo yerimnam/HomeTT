@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import partyCheck.dto.PartyCheck;
-import util.Paging;
+import util.Paging5;
 
 public interface PartyCheckDao {
 	
@@ -23,7 +23,7 @@ public interface PartyCheckDao {
 	 * @param paging -  페이징 정보 객체
 	 * @return List<PartyCheck> - 테이블 페이징 조회 결과
 	 */
-	public List<PartyCheck> selectAll(Connection conn, Paging paging);
+	public List<PartyCheck> selectAll(Connection conn, Paging5 paging);
 
 	/**
 	 * 총 파티 수 조회
@@ -41,5 +41,14 @@ public interface PartyCheckDao {
 	 * @return delete 수행 결과
 	 */
 	public int delete(Connection conn, PartyCheck partyCheck);
+
+	
+	/**
+	 * 파티 테이블 파티장 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @return List<PartyCheck> - 테이블 전체 조회 목록
+	 */
+	public List<PartyCheck> selectOwner(Connection conn);
 
 }

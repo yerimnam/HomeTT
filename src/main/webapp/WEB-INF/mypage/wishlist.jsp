@@ -19,37 +19,91 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-.container {
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+* {
+	font-family: SUIT;
+}
+
+
+.main {
 	display: flex;
 	justify-content: center;
-	margin-top: 50px;
-	margin-bottom: 90px;
-	/* column-gap: 50px; */
-	gap: 50px;	
+	margin-top: 40px;
+/* 	margin-bottom: 50px; */
+	gap: 30px;	
 }
 
 .situation {
-	display: flex;
 	padding-top: 20px;
-	padding-left: 200px;
+	padding-left: 430px;
 }
 
 #wishlist {
 	display: flex;
 	width: 230px;
-	height: 250px;
+/* 	height: 250px; */
 /* 	margin: 20px; */
-/* 	paddig: 20px; */
-	border: 1px solid #000;		
+	padding-bottom: 20px;
+	background-color: #eff2e0;
+	border: 1px solid #000;
+			
 }
 
-li {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
+#wishlist ul {
+	text-align: center;
+	padding-left: 10px;
+	padding-bottom: 20px;
 }
+
+#partyKind {
+	border: 1px solid #000; 
+	height: 45px; 
+	padding-top:10px; 
+	text-align: center; 
+	margin-top: 10px; 
+	border-radius: 5px;
+}
+
+#partyName {
+	text-align: center; 
+	margin: 5px; 
+	margin-top: 15px;
+}
+
+
+li {
+    flex-direction: row;
+    list-style: none; 
+    margin: 0px; 
+    font-weight: 300;
+}
+
+a {
+	text-decoration: none !important;
+	color: black;
+	font-weight: bold;
+	font-weight: 600;
+}
+a:link{
+	color:black;
+    transition : 1s; /* 속성 변경할 때 효과의 속도 조절 */
+}
+a:visited{
+	color: black;
+}
+a:hover { 
+	color:white;
+	text-decoration: none;
+}
+a:active {
+	color:black;
+	text-decoration: none;
+}
+
+
+
+
+
 </style>
 
 <%@ include file="../layout/header.jsp" %>
@@ -58,32 +112,30 @@ li {
 
 
 <div class="situation">
-찜 목록 조회
+<h4>찜 목록 조회</h4>
 </div>
-<hr align="center" style=" height: 1px; background-color: black; width: 75%;">
+<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
 
 
-<div class="container">
-<% for(int i = 0; i < wishList.size(); i++) { %>
+<div class="main">
+	<% for(int i = 0; i < wishList.size(); i++) { %>
 	<div id="wishlist">
-		<ul>
-			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
+		<a href="./roomboard?partyno=<%=wishList.get(i).getPartyNo() %>"><%=wishList.get(i).getPartyNo() %><ul>
+			<div id="partyKind">
 				<%=wishList.get(i).getPartyKind() %>
 			</div>
-			<div style="text-align: center; margin: 5px; margin-top: 15px;">
+			<div id="partyName">
 				<%=wishList.get(i).getPartyName() %>
 			</div>
-			<hr style="height: 1px; background-color: black;">
+			<hr style="background-color: black; border-style: dashed; width: 100px;">
 			<li>파티장 : <%=wishList.get(i).getPartyLeader() %></li>
 			<li>파티 만료일 : <%=wishList.get(i).getPartyEnddate() %></li>
 			<li>모집 인원 : <%=wishList.get(i).getPartyMember() %></li>
-			<hr style="height: 1px; background-color: black;">
+			<hr style="background-color: black; border-style: dashed; width: 150px;">
 			<li>참여 금액 : <%=wishList.get(i).getPaymentamount() %> 원</li>
-			<li><button>찜하기</button></li>
-		</ul>
-	<% } %>
+		</ul></a>
 	</div>
-	<hr>
+	<% } %>
 </div>
 
 

@@ -396,6 +396,7 @@ function showPrompt(){
 }
 </script>
 
+
 <script type="text/javascript">
 $(document).ready(function() {
 	//삭제버튼
@@ -406,9 +407,7 @@ $(document).ready(function() {
 
 })	
 	
-=======
 
->>>>>>> refs/remotes/origin/master
 
 	
 

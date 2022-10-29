@@ -10,7 +10,7 @@ import partyCheck.dao.face.PartyCheckDao;
 import partyCheck.dao.impl.PartyCheckDaoImpl;
 import partyCheck.dto.PartyCheck;
 import partyCheck.service.face.PartyCheckService;
-import util.Paging;
+import util.Paging5;
 
 public class PartyCheckServiceImpl implements PartyCheckService {
 
@@ -29,13 +29,14 @@ public class PartyCheckServiceImpl implements PartyCheckService {
 	}
 	
 	@Override
-	public List<PartyCheck> getList(Paging paging) {
-		return partyCheckDao.selectAll(JDBCTemplate.getConnection(), paging);
+	public List<PartyCheck> getList(Paging5 paging5) {
+		return partyCheckDao.selectAll(JDBCTemplate.getConnection(), paging5);
 	}
 
 	@Override
-	public Paging getPaging(HttpServletRequest req) {
+	public Paging5 getPaging(HttpServletRequest req) {
 		System.out.println("PartyCheckService getPaging() - Start");
+		
 		
 		// 총 파티수 조회
 		int totalCount = partyCheckDao.selectCntAll(JDBCTemplate.getConnection());
@@ -48,7 +49,7 @@ public class PartyCheckServiceImpl implements PartyCheckService {
 		}
 		
 		//Paging객체 생성
-		Paging paging = new Paging(totalCount, curPage);
+		Paging5 paging = new Paging5(totalCount, curPage);
 		
 		System.out.println("PartyCheckService getPaging() - end");
 		return paging;
@@ -79,6 +80,17 @@ public class PartyCheckServiceImpl implements PartyCheckService {
 		} else {
 			JDBCTemplate.rollback(conn);
 		}
+	}
+
+	@Override
+	public List<PartyCheck> getOwnerList() {
+		System.out.println("PartyCheckService getOwnerList() - Start");
+		
+		
+		System.out.println("PartyCheckService getOwnerList() - end");
+		
+		// DB조회결과 반환
+		return partyCheckDao.selectOwner(JDBCTemplate.getConnection());
 	}
 
 }
