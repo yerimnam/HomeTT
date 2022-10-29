@@ -19,7 +19,18 @@
 
 
 
-<script>
+<script type="text/javascript">
+
+// #(document).ready(function(){
+
+// 	$("#wishlist").click(function(){
+// 		$("#wishlist_form").submit();
+		
+// 	})
+	
+// })
+
+
 
 // $(function(){
 	
@@ -53,19 +64,27 @@
 // 	});
 
 // });
-</script>
+
+
+
+
+ </script>
 </head>
 
 <body>
 
 
-<h1>찜</h1>
+<!-- <h1>찜</h1> -->
 
-	<span class="heart on"> 🧡 하트 </span>
+<!-- 	<span class="heart on"> 🧡 하트 </span> -->
 
 
-	<button>하트</button>
-
-	<button>🧡</button>
+	<form action="homett/wishlist" method="post" id="wishlist_form">
+		<button type="button" id="wishlist" name="wishlist">🤍</button>	
+	</form>
+	
 </body>
+
+
+
 </html>

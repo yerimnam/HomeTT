@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>파티 생성 페이지</title>
+<title>파티 만들기</title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -24,19 +24,51 @@ $(document).ready(function() {
  })
  
  
-})
-
-// $(document).readt(function() {
-// 	 $("#btnnext").click(function() {
-
-// 		 $(".optionbox").hide()
-		 
-// 		 var c2 = $(this).attr("class")
-// 		 $("#"+c2).show()
-// 	 })
+	//현재날짜 구해오기
+		var now = new Date();
 	
-// })
+ 	// Date 객체 날짜 문자열로 변환
+		function parseDate(date) {
+			var year = date.getFullYear()
+			var month = date.getMonth() + 1
+			var date = date.getDate()
+			return year + "/" + month + "/" + date
+		}
 
+		today = parseDate(now)
+
+		$("#today").html(today)
+		
+
+		
+		
+		// 개월수 선택
+		$("#selectMonth").change(function() {
+			var value = $("#selectMonth option:selected").val();
+			var endDate = new Date()
+			endDate = new Date(endDate.setMonth(endDate.getMonth() + parseInt(value)));
+			var parseEndDate = parseDate(endDate)
+			
+			// 종료일
+			$("#endDate").html(parseEndDate)
+			
+			$("#endDateinput").attr('value', parseEndDate)
+			
+			
+			// 결제 금액 
+			var cost = 4000
+			var pay = cost * value
+			$("#pay").html(pay)
+			
+			$('#payInput').attr('value', pay);
+			
+			//이렇게 하면 12월 지났을때 년도가 올라가지 않는다..
+			//var endMonth = parseInt(month) + parseInt(value)
+			//endDate = year+"/"+endMonth+"/"+date
+			
+		})
+
+	})
 </script>
 
 <style>
@@ -59,25 +91,19 @@ $(document).ready(function() {
 
 
 <label for="partykind">
-<input type="hidden" id ="partykind"> OTT 선택
-</label>
+<input type="hidden" id ="partykind" name="partykind"> OTT 선택
 
 <ul id="ottMenu">
-	<li><a class="nf" name="partykind">넷플릭스</a></li>
-	<li><a class="df" name="partykind">디즈니 플러스</a></li>
-	<li><a class="tv" name="partykind">티빙</a></li>
-	<li><a class="ap" name="partykind">애플</a></li>
-	<li><a class="wv" name="partykind">웨이브</a></li>
-	<li><a class="wa" name="partykind">왓챠</a></li>
-	<li><a class="la" name="partykind">라프텔</a></li>
-<!-- 	<li><a href="" >넷플릭스</a></li> -->
-<!-- 	<li><a href="">디즈니 플러스</a></li> -->
-<!-- 	<li><a href="">티빙</a></li> -->
-<!-- 	<li><a href="">애플</a></li> -->
-<!-- 	<li><a href="">웨이브</a></li> -->
-<!-- 	<li><a href="">왓챠</a></li> -->
-<!-- 	<li><a href="">라프텔</a></li> -->
+	<li><a class="nf" data-value="1">넷플릭스</a></li>
+	<li><a class="df" data-value="2">디즈니 플러스</a></li>
+	<li><a class="tv" data-value="3">티빙</a></li>
+	<li><a class="ap" data-value="4">애플</a></li>
+	<li><a class="wv" data-value="5">웨이브</a></li>
+	<li><a class="wa" data-value="6">왓챠</a></li>
+	<li><a class="la" data-value="7">라프텔</a></li>
+
 </ul>
+</label>
 
 </div>
 
@@ -96,13 +122,50 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<!-- <button type="button" id="btnnext">다음</button><Br> -->
 </div>
 
-<div>
+<!-- <div>
 <label for="shareperiod"><a href="">계정 공유 기간</a></label><br>
 <input type="date" id="shareperiod" name="endtDate">
+</div> -->
+
+<div>
+오늘은
+<div id="today"></div> 입니다.
 </div>
+
+<br>
+
+<div>
+<select name="selectMonth" id="selectMonth">
+  <option value="0" selected>선택</option>
+  <option value="1">1개월</option>
+  <option value="2">2개월</option>
+  <option value="3">3개월</option>
+  <option value="4">4개월</option>
+  <option value="5">5개월</option>
+  <option value="6">6개월</option>
+</select>
+<span>선택시</span>
+</div>
+
+<br>
+
+<div>
+종료일은
+<span id="endDate"></span> 입니다.
+<input type="hidden" id="endDateinput" name="endDate">
+</div>
+
+<br>
+
+<div>
+결제할 금액은
+<span id="pay"></span>원 입니다.
+ 
+<input type="hidden" id="payInput" name="pay"> 
+</div>
+
 
 <div>
 <label for="partyrule">계정 공유 규칙</label><br>
@@ -126,7 +189,6 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
 
 <div>
@@ -155,7 +217,6 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
 
 <div>
@@ -184,7 +245,6 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
 
 <div>
@@ -214,7 +274,6 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
 
 <div>
@@ -244,7 +303,6 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
 
 <div>
@@ -274,7 +332,6 @@ $(document).ready(function() {
 <div>
 <label for="partymember">모집 멤버</label>
 <input type="number" id="partymember" name="partymember"> <br>
-<!-- <button type="button" id="btnnext" onclick="btnclick()">다음</button><Br> -->
 </div>
 
 <div>
@@ -292,10 +349,8 @@ $(document).ready(function() {
 <hr>
 
 
-</div>
-
 <br>
-<button>다음 화면으로</button>
+<button>만들기</button>
 
 </form>
 

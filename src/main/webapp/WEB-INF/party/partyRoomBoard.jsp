@@ -399,21 +399,5 @@ function showPrompt(){
 }
 </script>
 
-<<<<<<< HEAD
-<script type="text/javascript">
-$(document).ready(function() {
-	//삭제버튼
-	$(".p-btn").click(function() {
-<%-- 		$(location).attr('href', './delete?boardno=<%=viewBoard.getBoardno() %>') --%>
-<%-- 		$(location).attr('href', './partymodify?partyRoomNo=<%=partyList.get(i).get%>') --%>
-	})
-
-})	
-	
-=======
-
->>>>>>> refs/remotes/origin/master
-
-	
 
 </html>
