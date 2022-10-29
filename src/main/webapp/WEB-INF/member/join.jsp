@@ -6,6 +6,63 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+		//비밀번호 보여주는거
+	    $('#i1').on('click',function(){
+	        $('input').toggleClass('active');
+	        if($('input').hasClass('active')){
+	            $(this).attr('class',"fa-solid fa-eye-slash")
+	            .prev('#userpw').attr('type',"text");
+	        }else{
+	            $(this).attr('class',"fa-solid fa-eye")
+	            .prev('#userpw').attr('type','password');
+	        }
+	    });
+	    
+	    $('#i2').on('click',function(){
+	        $('input').toggleClass('active');
+	        if($('input').hasClass('active')){
+	            $(this).attr('class',"fa-solid fa-eye-slash")
+	            .prev('#userpw_check').attr('type',"text");
+	        }else{
+	            $(this).attr('class',"fa-solid fa-eye")
+	            .prev('#userpw_check').attr('type','password');
+	        }
+	    });
+	
+
+	
+	$("#sameChk").click(function(){
+		console.log("#sameChk 클릭")
+		
+		$.ajax({
+			type : "post"
+			, url : "/homett/joinidchk"
+			, data : {
+				userId : $("#userid").val()
+			}
+			, dataType : "html"
+			, success : function( result ){
+				if(result == 0){
+					$("#checkIdBox").css('display', 'block')
+					$("#checkId").html('사용할 수 없는 아이디입니다.');
+					$("#checkId").attr('color','red');
+					
+				} else {
+					$("#checkIdBox").css('display', 'block')
+					$("#checkId").html('사용할 수 있는 아이디입니다.');
+					$("#checkId").attr('color','green');
+					$("#sameChk").val('2')
+					
+				} 
+			},
+			error : function(){
+				alert("서버요청실패");
+			}
+		})
+			 
+	})
+	
+	
 	$("#btnJoin").click(function() {
 		
 		//아이디가 빈칸일때~~~~~~~~~~~~~~~~~!
@@ -15,12 +72,22 @@ $(document).ready(function() {
 			return;
 		} 
 		
+		
+		//아이디가 중복일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("sameChk").value=="1"){
+			alert("아이디 중복검사를 실행해주세요");
+			$("#sameChk").focus()
+			return;
+		} 
+		
+		
 		//비밀번호가 빈칸일때~~~~~~~~~~~~~~~~~!
 		if(document.getElementById("userpw").value==""){
 			alert("비밀번호를 입력해주세요");
 			$("input").eq(1).focus()
  			return;
 		}
+		
 		
 		//비밀번호 확인이 빈칸일때~~~~~~~~~~~~~~~~~!
 		if(document.getElementById("userpw_check").value==""){
@@ -60,11 +127,12 @@ $(document).ready(function() {
 		}
 		
 		//휴대폰번호가 빈칸일때~~~~~~~~~~~~~~~~~!
-		if(document.getElementById("userphone").value==""){
-			alert("휴대폰번호를 입력해주세요");
+		if(document.getElementById("userphone").value=="" || (document.getElementById("userphone").value).length != 11){
+			alert("휴대폰번호를 정확히 입력해주세요");
 			$("input").eq(6).focus()
  			return;
 		}
+		
 		
 		    
 		$(this).parents("form").submit();
@@ -98,7 +166,7 @@ $(document).ready(function() {
 html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, blockquote, form, fieldset, legend, menu, nav, section, hgroup, article, header, aside, footer, input, select, textarea, button {
     margin: 0;
     padding: 0;
-    font-family: 'SUIT';
+    font-family: ‘SUIT Variable’, sans-serif;
 }
 
 li{
@@ -153,7 +221,6 @@ a{
 div > input {
 	width: 380px;
 	height: 54px;
-/* 	background-color: #eeeeee; */
 	border: 1px solid #dddddd;
 	border-radius: 4px;
 	padding-left: 20px;
@@ -162,7 +229,7 @@ div > input {
 
 /* 인풋 글 작성시 */
 input:focus{
-	border: 2px solid #ffde59;
+	border: 2px solid #ffd925;
     outline: none;
 }
 
@@ -171,17 +238,17 @@ input:focus{
 	position: absolute;
 	z-index:2;
 	float: right;
-	right: 10px;
+	right: 12px;
 	top: 12px;
 	
 	width: 80px;
 	height: 30px;
- 	background-color: #ffffff; 
-	border: 2px solid #ffde59;
-	font-size: 12px;
-	font-weight: 500;
+ 	background-color: #ffde59; 
+ 	border: 1px solid #ffde59; 
+	font-size: 13px;
+	font-weight: 600;
 	border-radius: 7px;
-	color: #666666;
+	color: #555555;
 	
 }
 
@@ -203,17 +270,17 @@ input:focus{
 	font-weight: 600;
 	text-align: center;
 	line-height: 54px;
-	margin-top: 18px;
+	margin-top: 10px;
 	position: absolute;
 	background-color: #ffffff;
-	border: 1px solid #ffde59; 
+	border: 1px solid #ffd925; 
 	color: #ffde59; 
 }
 
 #btnJoin {
 	width: 185px;
 	height: 54px;
-	background-color: #ffde59;
+	background-color: #ffd925;
 	border: none;
 	border-radius: 4px;
 	font-size: 18px;
@@ -221,12 +288,38 @@ input:focus{
 	font-weight: 600;
 	text-align: center;
 	line-height: 54px;
-	margin-top: 18px;
+	margin-top: 10px;
 	position: absolute;
 	float: right;
 	right: 0;
 }
 
+/* 아이디화면 결과 텍스트 */
+#checkIdBox {
+	width: 380px;
+	height: 17px;
+	clear: both;
+	position: relative;
+}
+
+#checkId {
+	position: absolute;
+	bottom: 11px;
+	left: 2px;
+}
+
+
+
+.fa-solid{
+	width: 32px;
+	position: absolute;
+	right: 10px;
+ 	top: 16px; 
+	font-size: 22px;
+	vertical-align: middle;
+	text-align: center;
+	color: #ffde59;
+}
 
 
 
@@ -240,7 +333,6 @@ input:focus{
 </head>
 <body>
 
-
 <form action="/homett/join" method="post" name="joinForm">
 	
 <div id="bg">
@@ -250,40 +342,46 @@ input:focus{
 	
 	
 	<!-- 아이디 -->
-	<div class="input">
-		<button type="button" id="sameChk">중복 확인</button>
-		<input type="text" id="userid" name="userid" placeholder="아이디를 입력해 주세요">
+	<div class="input" id="input1">
+		<button type="button" id="sameChk" value="1">중복 확인</button>
+		<input type="text" id="userid" name="userid" placeholder="아이디"  autocomplete='off'>
 	</div>
-	<em class="msgInvalid" id="idCheckMsg1" style="display:none">4~20자의 영문, 숫자와 특수문자'_'만 사용해주세요.</em>
+	<div id="checkIdBox" style=" display: none">
+		<font id = "checkId" size = "2"></font>
+	</div>
+	
 
 	<!-- 비밀번호 -->
 	<div class="input">	
-		<input type="text" id="userpw" name="userpw" placeholder="비밀번호를 입력해 주세요">
+		<input type="password" id="userpw" name="userpw" placeholder="비밀번호" autocomplete='off'>
+		<i class="fa-solid fa-eye" id="i1"></i>
 	</div>
-
+		
+	
 	<!-- 비밀번호 확인 -->	
 	<div class="input">
-		<input type="text" id="userpw_check" name="userpw" placeholder="비밀번호를 입력하신 비밀번호와 동일하게 입력해 주세요">
+		<input type="password" id="userpw_check" name="userpw" placeholder="비밀번호 확인" autocomplete='off'>
+		<i class="fa-solid fa-eye" id="i2"></i>
 	</div>
 
 	<!-- 이름 -->
 	<div class="input">
-		<input type="text" id="username" name="username" placeholder="이름을 입력해 주세요">
+		<input type="text" id="username" name="username" placeholder="이름" autocomplete='off'>
 	</div>
 
 	<!-- 닉네임 -->	
 	<div class="input">
-		<input type="text" id="usernick" name="usernick" placeholder="닉네임을 입력해 주세요">
+		<input type="text" id="usernick" name="usernick" placeholder="닉네임" autocomplete='off'>
 	</div>
 
 	<!-- 이메일 -->	 
 	<div class="input">
-		<input type="text" id="useremail" name="useremail" placeholder="이메일을 입력해 주세요">
+		<input type="text" id="useremail" name="useremail" placeholder="이메일" autocomplete='off'>
 	</div>
 
 	<!-- 휴대폰 번호 -->
 	<div class="input">
-		<input type="text" id="userphone" name="userphone" placeholder="휴대폰 번호를 입력해 주세요">
+		<input type="text" id="userphone" name="userphone" placeholder="휴대폰 번호 " autocomplete='off'>
 	</div>
 
 

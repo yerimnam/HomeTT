@@ -42,12 +42,8 @@ public class WishListDaoImpl implements WishListDao {
 				
 				wishlist.setWishNo(( rs.getInt("wishno")));
 				wishlist.setPartyNo(( rs.getInt("partyno")));
-				wishlist.setBoardCano( rs.getInt("boardcano"));
-				wishlist.setPartyLeader(( rs.getString("partyleader")));
-				wishlist.setPartyName(( rs.getString("partyname")));
-				wishlist.setPartyCredate(( rs.getDate("partycredate")));
-				wishlist.setPartyEnddate(( rs.getDate("partyenddate")));
-				wishlist.setPartyKind(( rs.getString("partykind")));
+				wishlist.setUserNo(( rs.getInt("userno")));
+
 				
 			}
 		} catch (SQLException e) {
@@ -63,11 +59,11 @@ public class WishListDaoImpl implements WishListDao {
 	
 	//선택한 wishno에 해당하는 글을 찜 목록으로 추가하기
 	@Override
-	public int insert(Connection conn, WishList wishlist) {
+	public int insertWishNo(Connection conn, WishList wishlist) {
 		
 		String sql = "";
-		sql += "INSERT INTO wish_list ( wish_no, party_no, party_leader, party_name, party_credate, party_enddate, party_kind )";
-		sql += " VALUES ( wishno_seq.nextval, ?, ?, ?, ?, ?, ?)";
+		sql += "INSERT INTO wish_list ( wish_no, party_no, user_no )";
+		sql += " VALUES ( wish_list_seq.nextval, ?, ?)";
 		
 		int res = 0;
 		
@@ -76,11 +72,7 @@ public class WishListDaoImpl implements WishListDao {
 			ps = conn.prepareStatement(sql);
 
 			ps.setInt(1, wishlist.getPartyNo());
-			ps.setString(2, wishlist.getPartyLeader());
-			ps.setString(3, wishlist.getPartyName());
-			ps.setDate(4, (Date) wishlist.getPartyCredate());
-			ps.setDate(5, (Date) wishlist.getPartyEnddate());
-			ps.setString(6, wishlist.getPartyKind());
+			ps.setInt(2, wishlist.getUserNo());
 			
 			res = ps.executeUpdate();
 			
@@ -94,33 +86,33 @@ public class WishListDaoImpl implements WishListDao {
 	}
 
 	
-	@Override
-	public int selectNextWishno(Connection conn) {
-		
-		
-		String sql = "";
-		sql += "SELECT wishlist_seq.nextval FROM dual";
-		
-		int nextwishno = 0;
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			while( rs.next() ) {
-				nextwishno = rs.getInt("nextval");
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-		
-		return nextwishno;
-	}
+//	@Override
+//	public int selectNextWishno(Connection conn) {
+//		
+//		
+//		String sql = "";
+//		sql += "SELECT wishlist_seq.nextval FROM dual";
+//		
+//		int nextwishno = 0;
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			
+//			rs = ps.executeQuery();
+//			
+//			while( rs.next() ) {
+//				nextwishno = rs.getInt("nextval");
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return nextwishno;
+//	}
 
 	
 	//선택한 wishno에 해당하는 글을 찜 목록에서 삭제하기

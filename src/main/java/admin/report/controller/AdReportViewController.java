@@ -7,7 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import admin.login.dto.Admin;
+import admin.login.service.face.AdminLoginService;
+import admin.login.service.impl.AdminLoginServiceImpl;
 import admin.report.dto.Report;
 import admin.report.service.face.AdReportListService;
 import admin.report.service.impl.AdReportListServiceImpl;
@@ -16,6 +20,7 @@ import admin.report.service.impl.AdReportListServiceImpl;
 public class AdReportViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private AdminLoginService adminLoginService = new AdminLoginServiceImpl();
 	private AdReportListService adReportListService = new AdReportListServiceImpl();
 	
 	@Override
@@ -23,20 +28,31 @@ public class AdReportViewController extends HttpServlet {
 //		System.out.println("/homett/adreportview [GET]");
 //		System.out.println("AdReportViewController doGet() - reportno : " + req.getParameter("reportno"));
 		
-		//전달파라미터 객체 얻어오기
-		Report reportno = adReportListService.getReportno(req);
-//		System.out.println("AdReportViewController doGet() - reportno객체 : " + reportno);
+		HttpSession session = req.getSession();
 		
-		//게시글 상세보기 조회 결과 얻어오기
-		Report viewreport = adReportListService.view( reportno );
-//		System.out.println("AdReportViewController doGet() - viewReport : " + viewreport);
-	
-		//조회결과를 MODEL값으로 전달
-		req.setAttribute("viewreport", viewreport);
+		Admin admin = new Admin();
+		admin.setAdminId((String) session.getAttribute("adminId"));
+		admin.setAdminPw((String) session.getAttribute("adminPw"));
 		
-		//View 지정 및 응답
-		req.getRequestDispatcher("/WEB-INF/admin/report/adminreportview.jsp").forward(req, resp);
+		boolean loginSt = adminLoginService.login(admin);
+		
+		if ( loginSt ) {
+		
+			//전달파라미터 객체 얻어오기
+			Report reportno = adReportListService.getReportno(req);
+//			System.out.println("AdReportViewController doGet() - reportno객체 : " + reportno);
+			
+			//게시글 상세보기 조회 결과 얻어오기
+			Report viewreport = adReportListService.view( reportno );
+//			System.out.println("AdReportViewController doGet() - viewReport : " + viewreport);
+		
+			req.setAttribute("viewreport", viewreport);
+			req.getRequestDispatcher("/WEB-INF/admin/report/adminreportview.jsp").forward(req, resp);
 	
+		} else {
+			resp.sendRedirect("./adminlogin");
+		}
+		
 	}
 	
 }

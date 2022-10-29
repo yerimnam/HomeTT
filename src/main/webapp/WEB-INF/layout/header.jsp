@@ -22,28 +22,28 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-   
-   $(".gnb > a").mouseover(function(){
-      event.target.style.color = "#ffaa4f"
-      event.target.nextElementSibling.style.display ="block";
-      });
-   
-   $(".gnb > a").mouseout(function(){
-      event.target.style.color = "#ffffff";
-      event.target.nextElementSibling.style.display ="none";
-   });
-   
-   $("#topMenu > a").mouseover(function(){
-      event.target.style.fontWeight = "bold";
-   });
-   
-   $("#topMenu > a").mouseout(function(){
-      event.target.style.fontWeight = "500";
-   });
-   
-   
-   
-   
+	
+	$(".gnb > a").mouseover(function(){
+		event.target.style.color = "#000000"
+		event.target.nextElementSibling.style.display ="block";
+		});
+	
+	$(".gnb > a").mouseout(function(){
+		event.target.style.color = "#ffffff";
+		event.target.nextElementSibling.style.display ="none";
+	});
+	
+	$("#topMenu > a").mouseover(function(){
+		event.target.style.fontWeight = "bold";
+	});
+	
+	$("#topMenu > a").mouseout(function(){
+		event.target.style.fontWeight = "500";
+	});
+	
+	
+	
+	
 })
 
 
@@ -68,117 +68,134 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
     font-family: 'SUIT';
 }
 
+
+#hdYellowBg{ 
+	width: 100% !important; 
+	height: 110px;
+	background-image: url( "/resources/img/yellowbg.png" );
+	position: relative;
+ } 
+
 #header{
-   height: 110px;
-   margin: 0 auto;
-   position: relative;
+	width: 1600px;
+	height: 110px;
+	margin: 0 160px 0 160px;
+	position: absolute;
+	top: 0;
+/* 	margin-left: 160px; */
 }
 
-#hdTopright{
-   background-color: #ffd925;
-   float: right;
-   width: 1260px;
-   height: 110px;
-   border-radius: 0 0 0 90px;
-   position: absolute;
-   right: 0;
+
+
+/* #hdTopright{ */
+/* 	background-color: #ffd925; */
+/* 	float: right; */
+/* 	width: 1300px; */
+/* 	height: 110px; */
+/* 	border-radius: 0 0 0 90px; */
+/* 	position: absolute; */
+/* 	right: 0; */
+/* } */
+
+#logoBg{
+	width: 500px;
+	height: 110px;
+	line-height: 110px;
+	z-index: 4;
 }
 
 #hdTopleft{
-   width: 660px;
-   height: 110px;
-   float: left;
-   position: relative;
-}
-
-#logoBg{
-   width: 1600px;
-   height: 110px;
-   line-height: 110px;
-   position: absolute;
-   left: 160px;
+	z-index: 2;
+	width: 220px;
+	height: 110px;
 }
 
 
 .inner {
-   width: 1600px;
-   margin: auto;
-   right: 160px;
-   position: absolute;
+	width: 1400px;
+	margin: auto;
+	position: absolute;
+	margin-left: 200px;
+}
+
+.top{
+	top: 0;
 }
 
 .bottom{
-   position: absolute;
-   top: 40px;
+	position: absolute;
+	top: 40px;
 }
 
 .gnb{
-   position: relative;
+	position: relative;
 }
 
 .gnb > p {
-   position: absolute;
-   top: 20px;
-   left: 43%;
-   font-size: 5px;
-   color: #ffaa4f;
-   
+	position: absolute;
+	top: 20px;
+	left: 43%;
+	font-size: 5px;
+	color: #000000;
+	
 }
 
 
 #topMenu {
-   width: 100%;
-   height: 34px;
-   line-height: 40px;
+	width: 100%;
+	height: 34px;
+	line-height: 40px;
+	margin: 0 auto;
 }
 
 #topMenu > a {
-   float: right;
-   display: inline;
-   margin: 0 10px 0 15px;
-   text-decoration: none;
-   font-weight: 500;
-   color: #ffffff;
+	float: right;
+	display: inline;
+	margin: 0 10px 0 15px;
+	text-decoration: none;
+	font-weight: 500;
+	color: #ffffff;
 }
 
 #bottomMenu {
-   height: 70px;
-   width: 1600px;
-   margin-top: 2px;
+	height: 70px;
+	width: 1400px;
+	margin-top: 2px;
+	float: right;
 }
 
 #bottomMenu > ul {
-   float: right;
-   line-height: 48px;
+	float: right;
+	line-height: 48px;
 }
 
 #bottomMenu > ul > li {
-   margin: 0 46px 0 46px;
-   float: right;
+	margin: 0 46px 0 46px;
+	float: right;
 }
 
 #bottomMenu > ul > li > a {
-   font-weight: 600;
+	font-weight: 600;
     font-family: 'SUIT';
-    font-size: 19px;
+    font-size: 21px;
     color: #ffffff;
     text-decoration-line: none;
     position: relative;
-   
+	
 }
 
 
 #bottomMenu :nth-child(2) {
-    margin-right: 60px !important; 
+ 	margin-right: 62px !important; 
 }
 
 /* 마이페이지 버튼 */
 #mypageBtn {
-   margin-right: 0 !important;
+	margin-right: 0 !important;
 }
 
 #mypageBtn a.mypage {
-   display: inline-block;
+	display: inline-block;
     font-size: 16px;
     font-weight: 600;
     width: 174px;
@@ -195,66 +212,67 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 </head>
 <body>
 
+<div id="hdYellowBg">	
+</div><!-- hdTopright -->
+
 <header id="header">
-   
-   <div id="hdTopleft" >
-      <div id="logoBg">
-         <img alt="logo" src="/resources/img/homett_logo.png " id="logo">
-      </div>
-   </div>   
-      
-   <div id="hdTopright">
-      
-      <div class="inner top">
-         <div id="topMenu">
-            <a href="/homett/join">로그인</a>
-            <a href="/homett/join">회원가입</a>
-         </div><!-- topMenu end -->
-      </div>   
-      
-      <div class="inner bottom">
-         <div id="bottomMenu">
-            <ul>
-               <li id="mypageBtn">
-                  <a href="/homett/partycheck" class="mypage">마이페이지</a>
-               </li>
-               
-               <li class="gnb">
-                  <a href="homett/createparty">파티만들기 </a>
-                  <p style=" display: none">●</p>
-               </li>
-               
-               <li class="gnb">
-                  <a href="homett/partymodify">파티찾기</a>
-                  <p style=" display: none">●</p>
-               </li>
-               
-               <li class="gnb">
-                  <a href="">후기게시판</a>
-                  <p style=" display: none">●</p>
-               </li>
-               
-               <li class="gnb">
-                  <a href="">가이드</a>
-                  <p style=" display: none">●</p>
-               </li>
-               
-               <li class="gnb">
-                  <a href="">고객센터</a>
-                  <p style=" display: none">●</p>
-               </li>
-               
-            </ul>
-         
-         </div><!-- bottomMenu end -->
-      </div>
+	
+	
+		<div class="inner top">
+			<div id="topMenu">
+				<a href="/homett/login">로그인</a>
+				<a href="/homett/join">회원가입</a>
+			</div><!-- topMenu end -->
+		</div>	
+		
+		<div class="inner bottom">
+			<div id="bottomMenu">
+				<ul>
+					<li id="mypageBtn">
+						<a href="/homett/partycheck" class="mypage">마이페이지</a>
+					</li>
+					
+					<li class="gnb">
+						<a href="homett/createparty">파티만들기 </a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="homett/partymodify">파티찾기</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="">후기게시판</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="">가이드</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="">고객센터</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+				</ul>
+			
+			</div><!-- bottomMenu end -->
+		</div>
 
-
-   </div><!-- hdTopright -->
-      
-   </header>
+	<div id="hdTopleft" >
+		<a href="/homett/main" id="logoBg">
+			<img alt="logo" src="/resources/img/homett_logo.png " id="logo" >
+		</a>
+	</div>	
+	
+		
+	</header>
 
 <br><br><br><br>
+
 
 
 

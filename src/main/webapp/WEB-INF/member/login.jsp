@@ -9,6 +9,21 @@ $(document).ready(function() {
 	$("#btnLogin").click(function() {
 		console.log("#btnLogin 클릭")
 
+		//아이디가 빈칸일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("userid").value==""){
+			alert("아이디를 입력해주세요");
+			$("input").eq(0).focus()
+			return;
+		} 
+		
+		
+		//비밀번호가 빈칸일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("userpw").value==""){
+			alert("비밀번호를 입력해주세요");
+			$("input").eq(1).focus()
+ 			return;
+		}
+		
 		$.ajax({
 			type:"post"			//요청 메소드
 			, url: "/homett/login"		//요청 URL
@@ -25,28 +40,15 @@ $(document).ready(function() {
 		}
 		, error: function() {
 			console.log("AJAX 실패")
-			alert("입력하신 회원정보가 일치하지 않습니다");
+			alert("로그인 회원정보가 일치하지 않습니다");
 			$("#userid").focus()
 			
 		}			
 			
 		})
 	})
-	
-// 	$("form").submit(function(){
-// 		console.log("submit event")
-		
-// 		//유효성 검증 후 submit
-// 		if( validate() ) {
-			
-// 			$(this).submit();
-// 		}
-// 		//submit 중단시키기(새로고침 되는거 방지)
-// 		alert("회원정보를 전부 입력해주세요")
-// 		return false;
-// 	})
-	
 
+	
 	//아이디 입력창에 포커스주기
 	$("input").eq(0).focus()
 	
@@ -174,7 +176,7 @@ a{
 	font-size: 38px;
 	font-family: 'Montserrat';
 	font-weight: 700;
-	color: #ffde59;
+	color: #ffd925;
 }
 
 /* 서브텍스트 */
@@ -209,7 +211,7 @@ div > input {
 
 /* 인풋 글 작성시 */
 input:focus{
-	border: 2px solid #ffde59;
+	border: 2px solid #ffd925;
     outline: none;
 }
 
@@ -258,7 +260,7 @@ input:focus{
 }
 
 a:hover {
-	color: #ffde59; 
+	color: #ffd925; 
 	font-weight: bold;
 }
 
@@ -271,7 +273,7 @@ a:hover {
 #loginDiv button {
 	width: 380px;
 	height: 54px;
-	background-color: #ffde59;
+	background-color: #ffd925;
 	border: none;
 	border-radius: 4px;
 	font-size: 18px;
@@ -280,6 +282,15 @@ a:hover {
 	text-align: center;
 	line-height: 54px;
 	
+}
+
+#moveImg {
+	position: absolute;
+/* 	right: 800px; */
+}
+
+#moveImg > img {
+	margin: 0 40px 0 40px;
 }
 
 
@@ -307,9 +318,7 @@ a:hover {
 	<!-- input 하단 메뉴 버튼 -->
 	<div id = "searchJoin">
 		<div id="search">
-			<a href="/homett/searchid" class="btn" id="btnSearchId">아이디 찾기</a>
-			<span>I</span>
-			<a href="/homett/searchpw" class="btn" id="btnSearchPw">비밀번호 찾기</a><br>
+			<a href="/homett/searchid" class="btn" id="btnSearchId">아이디 비밀번호 찾기</a>
 		</div>
 		
 		<div id="join">
@@ -322,6 +331,19 @@ a:hover {
 		<button id="btnLogin">로그인</button>
 	</div>
 </div>
+
+<MARQUEE id="moveImg" scrollamount="14">
+	<img src= "/resources/img/NETFLIX.png" height="40px">
+	<img src= "/resources/img/COUPANGPLAY.png" height="40px">
+	<img src= "/resources/img/TVING.png" height="34px">
+	<img src= "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTk2IiBoZWlnaHQ9IjU5IiB2aWV3Qm94PSIwIDAgMTk2IDU5IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTc4LjI3MTMgMTIuOTE4NFYyMC43NzFIODYuMDk0NlY1Ni4xOTU2SDk1Ljg0MzJWMjAuNzcxSDEwMy4yMThWMTIuOTE4NEg3OC4yNzEzWk0xNTMuNDY0IDI5LjYzODlIMTQ2LjAwNFYxMi45NzYzSDEzNi4yODVWNTYuMjUzMkgxNDYuMDA0VjM3LjQ5MTJIMTUzLjQ2NFY1Ni4yNTMySDE2My4xODNWMTIuOTc2M0gxNTMuNDY0VjI5LjYzODlaTTExOS42MTMgMTIuNDUyN0gxMTcuOTJDMTA5LjE0MiAxMi40NTI3IDEwNS42MzEgMTYuOTMxNiAxMDUuNjMxIDI0LjIwM1Y0NC44NTIxQzEwNS42MzEgNTIuMTIzOSAxMDkuMTQyIDU2Ljc3NyAxMTguMTA4IDU2Ljc3N0gxMTkuODAxQzEyOC43MDQgNTYuNzc3IDEzMS44MzkgNTEuNDI1MiAxMzEuODM5IDQ1LjM3NjNWMzcuOTg5MUgxMjIuMzA5VjQ0Ljg1MjFDMTIyLjMwOSA0Ny40MTIzIDEyMS40MzEgNDguOTgyNiAxMTguOTIzIDQ4Ljk4MjZDMTE2LjQ3NyA0OC45ODI2IDExNS42NjMgNDcuNTI4NiAxMTUuNjYzIDQ0Ljc5NDZWMjQuMTQ0NkMxMTUuNjYzIDIxLjQxMDUgMTE2LjQ3NyAyMC4wMTUgMTE4LjkyMyAyMC4wMTVDMTIxLjQ5MyAyMC4wMTUgMTIyLjMwOSAyMS41MjY5IDEyMi4zMDkgMjQuMTQ0NlYyOS4xNDdIMTMxLjgzOVYyMy42MjFDMTMxLjgzOSAxNi40MDg3IDEyOC40NTMgMTIuNDUyNyAxMTkuNjEzIDEyLjQ1MjdaTTY4Ljc4MiA0MS40MjI0TDY1Ljk1NTggMjMuMzMxNkg2NC4yODQxTDYxLjQ1NzYgNDEuNDIyNEg2OC43ODJaTTcyLjMyNjIgMTIuOTE4NEw3OS45NzU5IDU2LjE5NTZINzEuMDkwMkw3MC4wMDkgNDkuMjc1M0g2MC4yMzA4TDU5LjE0OTMgNTYuMTk1Nkg1MC4yNjM2TDU3LjkxMzYgMTIuOTE4NEg3Mi4zMjYyWk0xODQuMzkxIDQxLjQyMjRMMTgxLjU2NCAyMy4zMzE2SDE3OS44OTNMMTc3LjA2NiA0MS40MjI0SDE4NC4zOTFaTTE4Ny45MzUgMTIuOTE4NEwxOTUuNTg1IDU2LjE5NTZIMTg2LjY5OUwxODUuNjE4IDQ5LjI3NTNIMTc1Ljg0TDE3NC43NTkgNTYuMTk1NkgxNjUuODczTDE3My41MjIgMTIuOTE4NEgxODcuOTM1WiIgZmlsbD0iI0ZGMDU1OCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQyLjI1MDEgMC43NTc4MTJMMzkuMzUyMSA0Mi4yMDY3TDM4LjU3MzMgNDIuMjQ2NkwzMS42ODA3IDEyLjkyMjRIMjMuMTY0TDE4LjAwNzggNDMuMzA3MkwxNi45MDI3IDQzLjM2MzlMMTIuMjg2MiAxMi45MjI0SDAuNDE0MDYyTDExLjIxNTEgNTguMjM5N0wyMy4yODkxIDU3LjQ1NTdMMjcuMjE3MyAyOS4zMjY4TDI4LjM2OTQgMjkuMjY1M0wzMy42Mjk1IDU2Ljc3NjFMNDUuMTg1NSA1Ni4wMjA2TDU0LjM2MjUgMC43NTc4MTJINDIuMjUwMVoiIGZpbGw9IiNGRjA1NTgiLz4KPC9zdmc+Cg==" height="40px">
+	<img src= "https://w.namu.la/s/95e5f2c35a862a7cc599dcb8b3c385a9cf67a45967350973baf9f77c62bca575107bfcf4b1318b1c95af5a8faeb2bb1cae918a7745feea0b42f1b8ba495ad75a020b96491c0d4d404328a6c3c213082093f4fd545bccf3ac5aeecee2673c3198" height="40px">
+	<img src= "/resources/img/SEEZN.png" height="30px">
+	<img src= "/resources/img/Disney.png" height="40px">
+	<img src= "/resources/img/Apple.png" height="40px">
+</MARQUEE>
+
+
 
 
 <!-- 	<button class="btn" id="btnJoin" onclick="location.href='/homett/main'">메인페이지</button><br><br> -->

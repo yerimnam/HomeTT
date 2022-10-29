@@ -26,11 +26,12 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		
 		//SQL작성
 		String sql = "";
-		sql += "SELECT";
-		sql += "	event_articlenumber, admin_no, board_code, event_articletitle ";
-		sql += " ,event_content,event_date,user_no,hit";
-		sql += " FROM cs_event"; 
-		sql += " ORDER BY event_Articlenumber DESC";
+		
+        sql +=" SELECT E.*";
+        sql +=" ,m.user_nick";
+        sql +=" FROM cs_event E";
+        sql +=" inner join member m";
+        sql +=" on m.user_no = E.user_no";
 		
 		//결과 저장할 List
 		List<EventBoard> eventboardList = new ArrayList<>();
@@ -51,6 +52,8 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 				e.setEventDate(rs.getDate("event_date"));
 				e.setUserNo(rs.getInt("user_no"));
 				e.setHit(rs.getInt("hit"));
+				
+				e.setUserName(rs.getString("user_nick"));
 				
 				//리스트에 결과값 저장하기
 				eventboardList.add(e);
@@ -128,7 +131,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 	public int selectCntAll(Connection conn) {
 		System.out.println("selectCntAll - 시작");	
 		String sql = "";
-		sql += "SELECT count(*) cnt FROM cs_faq";
+		sql += "SELECT count(*) cnt FROM cs_event";
 		
 		//총 게시글 수 변수
 		int count = 0;
@@ -184,20 +187,21 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 
 	@Override
 	public EventBoard selectBoardByeventArticlenumber(Connection conn, EventBoard eventArticlenumber) {
-		System.out.println("selectBoardByfaqArticlenumber - 시작");	
+		System.out.println("selectBoardByeventArticlenumber - 시작");	
 		
 		String sql = "";
-		sql += "SELECT";
-		sql +=" 	event_articlenumber,admin_no,board_code,event_articletitle,";
-		sql +="		 event_content,event_date,user_no,hit ";
-		sql +=" FROM cs_event";
-		sql +=" WHERE event_articlenumber = ?";
+
+        sql +=" SELECT E.*";
+        sql +=" ,m.user_nick";
+        sql +=" FROM cs_event E";
+        sql +=" inner join member m";
+        sql +=" on m.user_no = E.user_no";
 		
 		EventBoard board= null;
 		
 			try {
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1 , eventArticlenumber.getEventArticlenumber());
+//				ps.setInt(1 , eventArticlenumber.getEventArticlenumber());
 				
 				rs = ps.executeQuery();
 				
@@ -215,6 +219,8 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 					board.setEventDate(rs.getDate("event_date"));				
 					board.setHit(rs.getInt("hit"));
 					board.setUserNo(rs.getInt("user_no"));
+					
+					board.setUserName(rs.getString("user_nick"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -224,6 +230,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			}
 
 			System.out.println("selectBoardByfaqArticlenumber - 끝");	
+			System.out.println(board.getUserName());
 		return board;
 	}
 

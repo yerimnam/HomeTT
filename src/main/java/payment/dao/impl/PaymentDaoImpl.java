@@ -9,6 +9,7 @@ import java.util.List;
 
 import common.JDBCTemplate;
 import party.dto.Party;
+import party.dto.PartyRoom;
 import payment.dao.face.PaymentDao;
 import payment.dto.Payment;
 import user.dto.Member;
@@ -196,16 +197,19 @@ public class PaymentDaoImpl implements PaymentDao {
 	@Override
 	public int insertPartyM(Connection conn, Payment returnData) {
 		String sql = "";
-		sql += "INSERT INTO party (party_no, user_no)";
-		sql += " values( ? ,?)";
+		sql += "INSERT INTO party_room(party_room_no, user_no, party_no)";
+		sql += " values(? ,?, ?)";
 
+		PartyRoom partyRoom = new PartyRoom();
+		
 		int result = 0;
 
 		try {
 			ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, returnData.getPartyNo());
-			ps.setInt(2, returnData.getUserNo());
+			ps.setInt(1, partyRoom.getParty_room_no());
+			ps.setInt(2, returnData.getPartyNo());
+			ps.setInt(3, returnData.getUserNo());
 
 			result = ps.executeUpdate();
 

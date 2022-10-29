@@ -13,7 +13,7 @@ private MonthlyStatisticsDao monthlyStatisticsDao = new MonthlyStatisticsDaoImpl
 	
 	@Override
 	public int getCntNetflix() {
-		System.out.println("getCntnetflix() - 시작");
+//		System.out.println("getCntnetflix() - 시작");
 		//DB연결 객체
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -27,7 +27,7 @@ private MonthlyStatisticsDao monthlyStatisticsDao = new MonthlyStatisticsDaoImpl
 			JDBCTemplate.rollback(conn);
 		}
 		
-		System.out.println("getCntnetflix() - 종료");
+//		System.out.println("getCntnetflix() - 종료");
 		//조회된 넷플릭스 파티방 수 리턴
 		return netflix;
 		

@@ -65,26 +65,27 @@
 					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>		<!--  상세보기 링크 걸기-->		
 				
 				<% if ( inquiryBoard.get(i).getAnswercontent() != null && !"".equals(inquiryBoard.get(i).getAnswercontent()))  { %>
-					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&content=<%=inquiryBoard.get(i).getAnswercontent() %>">
+					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&<%=inquiryBoard.get(i).getAnswercontent() %>">
 						<%if(inquiryBoard.get(i).getAnswercontent().length() > 20) {%>
 						
-							<%=inquiryBoard.get(i).getAnswercontent().substring(0,20)+"..." %>
-							
-							<% }else {%>
-								<%=inquiryBoard.get(i).getAnswercontent()%>
-							<%} %>	</a></td>
-							<td><%=inquiryBoard.get(i).getAnswerdate() %></td>
-							<td><%=inquiryBoard.get(i).getAnswerWriter() %></td>
+						<%=inquiryBoard.get(i).getAnswercontent().substring(0,20)+"..." %></a></td>
 						
-						<% } else{ %> 					
-						<td> 답변예정</td> 			
-						<td> 미정</td> 
+						<% }else {%>
+						<%=inquiryBoard.get(i).getAnswercontent()%>
+						
+						<% } %>
+				
+			
+					
+					<td> 답변예정</td>
+					<td> 답변예정</td>
+					<td> 미정</td>
 				<%} %>
 				</tr>
 		
 		
 		<%} %>	
- 		</tbody> 
+<!-- 		</tbody> -->
 	</table>
 
 

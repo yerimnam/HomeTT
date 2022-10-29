@@ -1,5 +1,8 @@
+<%@page import="reviewBoard.dto.ReviewBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+   <% ReviewBoard updatecotentReviewBoard = (ReviewBoard)request.getAttribute("updatecontent");  %>    
 <!DOCTYPE html>
 <html>
 <head>
