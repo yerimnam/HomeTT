@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
 		//조회된 nextval을 member객체에 저장한다
 		member.setUserNo(next);
-		System.out.println("MemberService join() - next : " + member);
+		System.out.println("UserService join() - next : " + member);
 
 
 		//완성된 member객체를 DB에 삽입
@@ -110,14 +110,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Member getLoginParam(HttpServletRequest req) {
 
-		System.out.println("MemberService getLoginParam() -  시작");
+		System.out.println("UserService getLoginParam() -  시작");
 		
 		Member member = new Member();
 
 		member.setUserId( req.getParameter("id") );
 		member.setUserPw( req.getParameter("pw") );
 
-		System.out.println("MemberService getLoginParam() -  끝");
+		System.out.println("UserService getLoginParam() -  끝");
 		return member;
 
 	}
@@ -126,14 +126,14 @@ public class UserServiceImpl implements UserService {
 	@Override 
 	public boolean login(Member member) {
 
-		System.out.println("MemberService login() -  시작");
+		System.out.println("UserService login() -  시작");
 		
 		//로그인 인증 성공
 		if( userDao.selectLoginIdPw(conn, member) > 0 ) {
 			return true;
 		}
 
-		System.out.println("MemberService login() -  끝");
+		System.out.println("UserService login() -  끝");
 		//로그인 인증 실패
 		return false;
 		
@@ -155,7 +155,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Member searchId(Member member) {
-		System.out.println("MemberService searchId() -  시작");
+		System.out.println("UserService searchId() -  시작");
 		return userDao.getMemberId(conn, member);
 	}
 

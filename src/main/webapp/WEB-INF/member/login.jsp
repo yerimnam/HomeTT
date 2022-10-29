@@ -9,6 +9,21 @@ $(document).ready(function() {
 	$("#btnLogin").click(function() {
 		console.log("#btnLogin 클릭")
 
+		//아이디가 빈칸일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("userid").value==""){
+			alert("아이디를 입력해주세요");
+			$("input").eq(0).focus()
+			return;
+		} 
+		
+		
+		//비밀번호가 빈칸일때~~~~~~~~~~~~~~~~~!
+		if(document.getElementById("userpw").value==""){
+			alert("비밀번호를 입력해주세요");
+			$("input").eq(1).focus()
+ 			return;
+		}
+		
 		$.ajax({
 			type:"post"			//요청 메소드
 			, url: "/homett/login"		//요청 URL
@@ -25,28 +40,15 @@ $(document).ready(function() {
 		}
 		, error: function() {
 			console.log("AJAX 실패")
-			alert("입력하신 회원정보가 일치하지 않습니다");
+			alert("로그인 회원정보가 일치하지 않습니다");
 			$("#userid").focus()
 			
 		}			
 			
 		})
 	})
-	
-// 	$("form").submit(function(){
-// 		console.log("submit event")
-		
-// 		//유효성 검증 후 submit
-// 		if( validate() ) {
-			
-// 			$(this).submit();
-// 		}
-// 		//submit 중단시키기(새로고침 되는거 방지)
-// 		alert("회원정보를 전부 입력해주세요")
-// 		return false;
-// 	})
-	
 
+	
 	//아이디 입력창에 포커스주기
 	$("input").eq(0).focus()
 	
@@ -174,7 +176,7 @@ a{
 	font-size: 38px;
 	font-family: 'Montserrat';
 	font-weight: 700;
-	color: #ffde59;
+	color: #ffd925;
 }
 
 /* 서브텍스트 */
@@ -209,7 +211,7 @@ div > input {
 
 /* 인풋 글 작성시 */
 input:focus{
-	border: 2px solid #ffde59;
+	border: 2px solid #ffd925;
     outline: none;
 }
 
@@ -258,7 +260,7 @@ input:focus{
 }
 
 a:hover {
-	color: #ffde59; 
+	color: #ffd925; 
 	font-weight: bold;
 }
 
@@ -271,7 +273,7 @@ a:hover {
 #loginDiv button {
 	width: 380px;
 	height: 54px;
-	background-color: #ffde59;
+	background-color: #ffd925;
 	border: none;
 	border-radius: 4px;
 	font-size: 18px;
@@ -316,9 +318,7 @@ a:hover {
 	<!-- input 하단 메뉴 버튼 -->
 	<div id = "searchJoin">
 		<div id="search">
-			<a href="/homett/searchid" class="btn" id="btnSearchId">아이디 찾기</a>
-			<span>I</span>
-			<a href="/homett/searchpw" class="btn" id="btnSearchPw">비밀번호 찾기</a><br>
+			<a href="/homett/searchid" class="btn" id="btnSearchId">아이디 비밀번호 찾기</a>
 		</div>
 		
 		<div id="join">

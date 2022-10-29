@@ -10,8 +10,21 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	//가입취소 버튼
+	$("#btnCancel").click(function() {
+		history.go(-2) //뒤로가기
+	})
+	
+	
 	$("#editBtn").click(function() {
 		console.log("#editBtn 클릭")
+		
+		//비밀번호 확인이 비밀번호랑 같지 않을때~~~~~~~~~~~~~~~~~!
+		if( !(document.getElementById("userpw_check").value == document.getElementById("userpw").value )){
+			alert("비밀번호 확인을 비밀번호와 동일하게 입력해주세요.");
+			$("input").eq(1).focus()
+	 			return;
+		}
 
 		$.ajax({
 			type:"post"			//요청 메소드
@@ -23,47 +36,23 @@ $(document).ready(function() {
 				, userEmail : $("#useremail").val()	
 				, userPhone : $("#userphone").val()	
 			}
-		, dataType: "html"		//응답 데이터 형식
-		, success: function( res ) {
+			, dataType: "html"		//응답 데이터 형식
+			, success: function( res ) {
 			console.log("AJAX 성공")
-// 			window.location.href='/homett/editprofile';
+			alert("고객님의 회원정보가 수정되었습니다");
+// 			window.location.href='/homett/editprofile'; //마이페이지 주소
 			
-		}
-		, error: function() {
-			console.log("AJAX 실패")
-// 			alert("입력하신 회원정보가 일치하지 않습니다");
-// 			$("#username").focus()
-			
-		}			
-			
+			}
+			, error: function() {
+				console.log("AJAX 실패")
+// 				alert("입력하신 회원정보가 일치하지 않습니다");
+// 				$("#username").focus()
+			}			
 		})
-		
-		
-// 		$.ajax({
-// 			type:"post"			//요청 메소드
-// 			, url: "/homett/editprofile"		//요청 URL
-// 			, data: {		//요청 파라미터
-// 				userPw : $("#userpw").val()	
-// 				, userPw_check : $("#userpw_check").val()	
-// 				, userNick : $("#usernick").val()	
-// 				, userEmail : $("#useremail").val()	
-// 				, userPhone : $("#userphone").val()	
-// 			}
-// 		, dataType: "html"		//응답 데이터 형식
-// 		, success: function( res ) {
-// 			console.log("AJAX 성공")
-// // 			window.location.href='/homett/editprofile';
-			
-// 		}
-// 		, error: function() {
-// 			console.log("AJAX 실패")
-// // 			alert("입력하신 회원정보가 일치하지 않습니다");
-// // 			$("#username").focus()
-			
-// 		}			
-			
-// 		})
 	})
+	
+	
+	
 		
 	
 	
@@ -112,7 +101,7 @@ $(document).ready(function() {
 	<br>
 	<div>
 		<button type="button" id="editBtn">수정하기</button>
-<!-- 		<button type="button" id="btnCancel">취소하기</button> -->
+		<button type="button" id="btnCancel" >취소하기</button>
 	</div>
 
 </form>
