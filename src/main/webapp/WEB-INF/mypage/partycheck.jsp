@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
     
 <% List<PartyCheck> partyList = (List) request.getAttribute("partyList"); %>
+<% List<PartyCheck> ownerPartyList = (List) request.getAttribute("ownerPartyList"); %>
 <% Paging5 paging5 = (Paging5) request.getAttribute("paging"); %>
 <!DOCTYPE html>
 <html>
@@ -102,22 +103,22 @@ li {
 
 
 <div class="main">
-	<% for(int i = 0; i < partyList.size(); i++) { %>
+	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
 	<div id="party">
-		<a herf="./roomboard?partyno=<%=partyList.get(i).getPartyNo()%>"><ul>
+		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><%=partyList.get(i).getPartyNo() %><ul>
 			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
-				<%=partyList.get(i).getPartyKind() %>
+				<%=ownerPartyList.get(i).getPartyKind() %>
 			</div>
 			<div style="text-align: center; margin: 5px; margin-top: 15px;">
-				<%=partyList.get(i).getPartyName() %>
+				<%=ownerPartyList.get(i).getPartyName() %>
 			</div>
 			<hr style="height: 1px; background-color: black;">
-			<li>파티장 : <%=partyList.get(i).getPartyLeader() %></li>
-			<li>파티 만료일 : <%=partyList.get(i).getPartyEnddate() %></li>
-			<li>모집 인원 : <%=partyList.get(i).getPartyMember() %></li>
+			<li>파티장 : <%=ownerPartyList.get(i).getPartyLeader() %></li>
+			<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
+			<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
 			<hr style="height: 1px; background-color: black;">
-			<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %> 원</li>
-			<li id="party_no" hidden><%=partyList.get(i).getPartyNo() %></li>
+			<li>참여 금액 : <%=ownerPartyList.get(i).getPaymentamount() %> 원</li>
+			<li id="party_no" hidden><%=ownerPartyList.get(i).getPartyNo() %></li>
 		</ul></a>
 	</div>
 	<% } %>
@@ -127,13 +128,6 @@ li {
     <input type="button" onClick="sendLinkCustom();" value="초대하기"/>
 </div>
 
-<div style="text-align: center;">
-	<ul class="pagination">
-		<% for(int i=paging5.getStartPage(); i <= paging5.getEndPage(); i++) { %>
-		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li>
-		<% } %>
-	</ul>
-</div>
 <hr>
 
 
@@ -149,7 +143,7 @@ li {
 <div class="main">
 	<% for(int i = 0; i < partyList.size(); i++) { %>
 	<div id="party">
-		<a href="./partycheck?curPage=<%=i %>"><%=i %>><ul>
+		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><%=partyList.get(i).getPartyNo() %><ul>
 			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 				<%=partyList.get(i).getPartyKind() %>
 			</div>

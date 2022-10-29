@@ -42,4 +42,13 @@ public interface PartyCheckDao {
 	 */
 	public int delete(Connection conn, PartyCheck partyCheck);
 
+	
+	/**
+	 * 파티 테이블 파티장 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @return List<PartyCheck> - 테이블 전체 조회 목록
+	 */
+	public List<PartyCheck> selectOwner(Connection conn);
+
 }

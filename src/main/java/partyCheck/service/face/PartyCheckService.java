@@ -49,4 +49,11 @@ public interface PartyCheckService {
 	 */
 	public void delete(PartyCheck partyCheck);
 
+	/**
+	 * 파티장 파티 목록 전체 조회
+	 * 
+	 * @return - 파티장 파티 전제 조회 목록
+	 */
+	public List<PartyCheck> getOwnerList();
+
 }

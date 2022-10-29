@@ -196,4 +196,59 @@ public class PartyCheckDaoImpl implements PartyCheckDao {
 		return res;
 	}
 
+
+	@Override
+	public List<PartyCheck> selectOwner(Connection conn) {
+
+		System.out.println("PartyCheckDao selectOwner() - start");
+		
+		// SQL 작성
+		String sql = "";
+		sql += "SELECT";
+		sql += "	p.party_no, p.user_no, p.party_kind, p.party_name";
+		sql += "	, p.party_leader, p.party_enddate, p.party_credate";
+		sql	+= "	, p.party_member, p.paymentamount, m.user_no";
+		sql += " FROM party p, member m";
+		sql += " WHERE p.user_no = m.user_no";
+		
+		// 결과 저장 List
+		List<PartyCheck> ownerPartyList = new ArrayList<>();
+		
+		try {
+			// SQL 수행 객체
+			ps = conn.prepareStatement(sql);
+			
+			// SQL 수행 및 결과 집합 저장
+			rs = ps.executeQuery();
+			
+			// 조회 결과 처리
+			while(rs.next()) {
+				PartyCheck p = new PartyCheck(); // 조회결과 행 저장 DTO객체
+				
+				p.setPartyNo(rs.getInt("party_no"));
+				p.setUserNo(rs.getInt("user_no"));
+				p.setPartyKind(rs.getString("party_kind"));
+				p.setPartyName(rs.getString("party_name"));
+				p.setPartyLeader(rs.getString("party_leader"));
+				p.setPartyEnddate(rs.getDate("party_enddate"));
+				p.setPartyCredate(rs.getDate("party_credate"));
+				p.setPartyMember(rs.getInt("party_member"));
+				p.setPaymentamount(rs.getInt("paymentamount"));
+				
+				// 리스트에 결과값 저장
+				ownerPartyList.add(p);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		System.out.println("PartyCheckDao selectOwner() - end");
+		return ownerPartyList;
+	}
+
+
 }

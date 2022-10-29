@@ -82,4 +82,15 @@ public class PartyCheckServiceImpl implements PartyCheckService {
 		}
 	}
 
+	@Override
+	public List<PartyCheck> getOwnerList() {
+		System.out.println("PartyCheckService getOwnerList() - Start");
+		
+		
+		System.out.println("PartyCheckService getOwnerList() - end");
+		
+		// DB조회결과 반환
+		return partyCheckDao.selectOwner(JDBCTemplate.getConnection());
+	}
+
 }

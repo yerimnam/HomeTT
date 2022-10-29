@@ -19,28 +19,38 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-.container {
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+* {
+	font-family: SUIT;
+}
+
+
+.main {
 	display: flex;
 	justify-content: center;
-	margin-top: 50px;
-	margin-bottom: 90px;
-	/* column-gap: 50px; */
-	gap: 50px;	
+	margin-top: 40px;
+	margin-bottom: 50px;
+	gap: 30px;	
 }
 
 .situation {
 	display: flex;
 	padding-top: 20px;
-	padding-left: 200px;
+	padding-left: 230px;
 }
 
 #wishlist {
-	display: flex;
+/* 	display: flex; */
+	text-align: center;
 	width: 230px;
 	height: 250px;
 /* 	margin: 20px; */
 /* 	paddig: 20px; */
 	border: 1px solid #000;		
+}
+
+#wishlist ul {
+	padding: 5px;
 }
 
 li {
@@ -63,10 +73,10 @@ li {
 <hr align="center" style=" height: 1px; background-color: black; width: 75%;">
 
 
-<div class="container">
-<% for(int i = 0; i < wishList.size(); i++) { %>
+<div class="main">
+	<% for(int i = 0; i < wishList.size(); i++) { %>
 	<div id="wishlist">
-		<ul>
+		<a herf="./roomboard?partyno=<%=wishList.get(i).getPartyNo()%>"><ul>
 			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 				<%=wishList.get(i).getPartyKind() %>
 			</div>
@@ -79,12 +89,11 @@ li {
 			<li>모집 인원 : <%=wishList.get(i).getPartyMember() %></li>
 			<hr style="height: 1px; background-color: black;">
 			<li>참여 금액 : <%=wishList.get(i).getPaymentamount() %> 원</li>
-			<li><button>찜하기</button></li>
-		</ul>
-	<% } %>
+		</ul></a>
 	</div>
-	<hr>
+	<% } %>
 </div>
+
 
 
 <%@ include file="../layout/footer.jsp" %>
