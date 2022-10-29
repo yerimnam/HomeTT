@@ -12,27 +12,39 @@ import javax.servlet.http.HttpSession;
 import admin.cs.inquiry.dto.Inquiry;
 import admin.cs.inquiry.service.face.AdInquiryListService;
 import admin.cs.inquiry.service.impl.AdInquiryListServiceImpl;
+import admin.login.dto.Admin;
+import admin.login.service.face.AdminLoginService;
+import admin.login.service.impl.AdminLoginServiceImpl;
 
 @WebServlet("/homett/adinquirywrite")
 public class AdInquiryWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	//서비스 객체
+	private AdminLoginService adminLoginService = new AdminLoginServiceImpl();
 	private AdInquiryListService adInquiryListService = new AdInquiryListServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		HttpSession session = req.getSession();
-		//adminNo 테스트 데이터
-//		session.setAttribute("adminNo", 2);
-//		int adminNo = (int)session.getAttribute("adminNo");
+		HttpSession session = req.getSession();
 		
-		Inquiry inquiryno = adInquiryListService.getInquiryno(req);
-		Inquiry viewinquiry = adInquiryListService.view( inquiryno );
-		req.setAttribute("viewinquiry", viewinquiry);
+		Admin admin = new Admin();
+		admin.setAdminId((String) session.getAttribute("adminId"));
+		admin.setAdminPw((String) session.getAttribute("adminPw"));
 		
-		req.getRequestDispatcher("/WEB-INF/admin/cs/inquiry/admininquirywrite.jsp").forward(req, resp);
+		boolean loginSt = adminLoginService.login(admin);
+		
+		if ( loginSt ) {
+		
+			Inquiry inquiryno = adInquiryListService.getInquiryno(req);
+			Inquiry viewinquiry = adInquiryListService.view( inquiryno );
+			req.setAttribute("viewinquiry", viewinquiry);
+			
+			req.getRequestDispatcher("/WEB-INF/admin/cs/inquiry/admininquirywrite.jsp").forward(req, resp);
+		
+		} else {
+			resp.sendRedirect("./adminlogin");
+		}
 		
 	}
 	
@@ -42,11 +54,25 @@ public class AdInquiryWriteController extends HttpServlet {
 		//한글 인코딩 처리
 		req.setCharacterEncoding("UTF-8");
 		
-		//답변글 삽입
-		adInquiryListService.writeAnswer(req);
+		HttpSession session = req.getSession();
 		
-		//목록으로 리다이렉트
-		resp.sendRedirect("/homett/adinquirylist");
+		Admin admin = new Admin();
+		admin.setAdminId((String) session.getAttribute("adminId"));
+		admin.setAdminPw((String) session.getAttribute("adminPw"));
+		
+		boolean loginSt = adminLoginService.login(admin);
+		
+		if ( loginSt ) {
+			
+			//답변글 삽입
+			adInquiryListService.writeAnswer(req);
+			
+			//목록으로 리다이렉트
+			resp.sendRedirect("/homett/adinquirylist");
+		
+		} else {
+			resp.sendRedirect("./adminlogin");
+		}
 		
 	}
 	

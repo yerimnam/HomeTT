@@ -25,11 +25,11 @@ th {
 </head>
 <body>
 
-<div style="margin: 30px 0; margin-left: 160px;">
+<div style="margin: 30px 0; margin-left: 360px;">
 	<h1>1:1 문의 목록</h1>
 </div>
 
-<table style="width: 1600px;" class="table table-striped table-hover table-condensed">
+<table style="width: 1200px;" class="table table-striped table-hover table-condensed">
 
 <tr>
 	<th style="width: 5%; text-align: center">글 번호</th>
