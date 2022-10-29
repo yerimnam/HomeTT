@@ -34,9 +34,7 @@ footer{
     top: 1300px;
     }
 body{
-		width: 1600px;
 		margin: 0 auto;
-	
 	}
 
 	
