@@ -20,7 +20,7 @@ $(document).ready(function() {
 		, dataType: "html"		//응답 데이터 형식
 		, success: function( res ) {
 			console.log("AJAX 성공")
-			alert("[TEST] 로그인에 성공했습니다.");
+			alert("로그인 성공!");
 			 window.location.href='/homett/adminmain';
 			
 		}
@@ -54,7 +54,7 @@ $(document).ready(function() {
 	//패스워드 입력창에 엔터키 입력 시 submit
 	$("input").eq(1).keydown(function(e) {
 		if( e.keyCode == 13 ) { //엔터키
-			$("#btnLogin").click();
+			$("#btnAdminLogin").click();
 		}
 	})
 	

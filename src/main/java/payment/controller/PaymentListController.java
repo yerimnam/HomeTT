@@ -41,7 +41,7 @@ public class PaymentListController extends HttpServlet {
 
 
 
-		session.setAttribute("userNo",24);  
+//		session.setAttribute("userNo",24);  
 //		session.setAttribute("user_no",2);  
 
 
@@ -81,7 +81,7 @@ public class PaymentListController extends HttpServlet {
 		
 		//model값을 view로 보내기
 		req.setAttribute("paymentList", paymentList);
-
+		System.out.println("paymentList : " + paymentList);
 		
 		
 //		System.out.println(paymentList);

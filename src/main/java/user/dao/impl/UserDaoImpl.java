@@ -239,6 +239,7 @@ public class UserDaoImpl implements UserDao {
 			JDBCTemplate.close(ps);
 		}
 		
+		System.out.println("getMemberId result : " + result);
 		System.out.println("UserDao getMemberId() - 끝");
 		return result;
 	}

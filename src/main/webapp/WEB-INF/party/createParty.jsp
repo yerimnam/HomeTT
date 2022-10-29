@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 <label for="partykind">
 <input type="hidden" id ="partykind" name="partykind"> OTT 선택
-
+<ul id="ottMenu">
 	<li><a class="nf" data-value="1">넷플릭스</a></li>
 	<li><a class="df" data-value="2">디즈니 플러스</a></li>
 	<li><a class="tv" data-value="3">티빙</a></li>
@@ -100,7 +100,6 @@ $(document).ready(function() {
 	<li><a class="wv" data-value="5">웨이브</a></li>
 	<li><a class="wa" data-value="6">왓챠</a></li>
 	<li><a class="la" data-value="7">라프텔</a></li>
-
 </ul>
 </label>
 
@@ -129,12 +128,12 @@ $(document).ready(function() {
 </div> -->
 
 <div>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
 오늘 날짜는 <div id="today"></div> 입니다.
-=======
-오늘은
-<div id="today"></div> 입니다.
->>>>>>> refs/remotes/origin/Jiwon
+<!-- ======= -->
+<!-- 오늘은 -->
+<!-- <div id="today"></div> 입니다. -->
+<!-- >>>>>>> refs/remotes/origin/Jiwon -->
 </div>
 
 <br>
