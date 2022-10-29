@@ -2,6 +2,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ include file="../layout/header.jsp"  %> 
+   
     
     <%List<Party> partyList = (List)request.getAttribute("mainlist"); %>
 <!DOCTYPE html>
@@ -24,11 +26,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
     font-family: 'SUIT';
 }
 
-header, footer{
 
-	height: 300px;
-
-}
 
 footer{
 	border: 1px solid black;
@@ -279,11 +277,7 @@ a:visited {
 <body>
 
 
-<header>
-헤더 영역
 
-</header>
-<hr>
 
 
 <div id="homett_area">

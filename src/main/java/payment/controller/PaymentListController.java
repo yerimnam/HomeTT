@@ -35,8 +35,15 @@ public class PaymentListController extends HttpServlet {
 		//테스트로 넣을 userno =2번 데이터
 
 
+
+//		session.setAttribute("user_no",2);  
+
+
+
+
 		session.setAttribute("userNo",24);  
 //		session.setAttribute("user_no",2);  
+
 
 
 		
