@@ -7,7 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+<!-- SweetAlert2 -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
+=======
 
+>>>>>>> refs/remotes/origin/master
 
 <!-- 스타일 먹히는건지 모르겟 -->
 <style type="text/css">
@@ -69,10 +76,12 @@ PrPaging paging = (PrPaging) request.getAttribute("paging");
 
 
 <style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+
 .top {
 	padding: 10px;
-	border-bottom: 1px solid #333;
-	margin-bottom: 40px;
+	/* 	border-bottom: 1px solid #333; */
+	/* 	margin-bottom: 40px; */
 	text-align: center;
 }
 
@@ -180,9 +189,9 @@ a.heart {
 <body>
 
 	<div class="top">
-		<h1>
-			<a href="./partymodify">파티모집 게시판</a>
-		</h1>
+		<h2>
+			<a href="./partymodify">파티찾기</a>
+		</h2>
 	</div>
 
 	<div class="container">
@@ -190,15 +199,8 @@ a.heart {
 			<span class="round-box">공지사항</span>
 			<h3>공지사항</h3>
 		</div>
-		<div>
 
-		<form action="/homett/createparty" method="get">
-			<button>방만들기</button>
-			</form>
 
-			<a href="./createparty"><button style="text align: right">방만들기</button></a>
-
-		</div>
 		<div class="part-area">
 			<%
 			for (int i = 0; i < partyList.size(); i++) {
@@ -217,7 +219,11 @@ a.heart {
 				</div>
 				<ul class="part-contents">
 
+<%-- 					<%if((Integer.parseInt(partyList.get(i).getPartyNo())){ %> --%>
 					<li><a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>">파티방 번호 : <%=partyList.get(i).getPartyNo()%></a></li>
+<%-- 					<%}else{ %> --%>
+<%-- 					<a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>"></a> --%>
+<%-- 					<%} %> --%>
 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>
@@ -225,14 +231,14 @@ a.heart {
 					<li>참여 금액 : <%=partyList.get(i).getPaymentAmount()%> 원
 					</li>
 				</ul>
-				
-<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
+
+				<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
 				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span>
 
 				</span>
-				</a>
+				<!-- 				</a> -->
 			</div>
-				<%
+			<%
 				}
 				%>
 			<!-- #party end -->

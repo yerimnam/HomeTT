@@ -24,14 +24,14 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		
 		Party party = new Party();
 		
-		party.setPartyKind ( req.getParameter("partykind") );
-		party.setPartyRule(req.getParameter("partyrule"));
-		party.setPartyName(req.getParameter("partyname"));
-		party.setPartyLeader(req.getParameter("partyleader"));
-		party.setPartyMember(Integer.parseInt(req.getParameter("partymember")));
+		party.setPartyKind(req.getParameter("partyKind"));
+		party.setPartyRule(req.getParameter("partyRule"));
+		party.setPartyName(req.getParameter("partyName"));
+		party.setPartyLeader(req.getParameter("partyLeader"));
+		party.setPartyMember(Integer.parseInt(req.getParameter("partyMember")));
 		
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 		
 		String endtDate = req.getParameter("endtDate");
 		try {
