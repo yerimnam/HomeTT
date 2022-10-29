@@ -7,11 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <jsp:include page="/WEB-INF/layout/header.jsp" />
 <!-- SweetAlert2 -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
+=======
 
+>>>>>>> refs/remotes/origin/master
+
+<!-- 스타일 먹히는건지 모르겟 -->
+<style type="text/css">
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+</style>
 
 
 <!-- jQuery 2.2.4 -->
@@ -191,6 +199,8 @@ a.heart {
 			<span class="round-box">공지사항</span>
 			<h3>공지사항</h3>
 		</div>
+
+
 		<div class="part-area">
 			<%
 			for (int i = 0; i < partyList.size(); i++) {

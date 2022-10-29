@@ -31,10 +31,10 @@ public class InquiryDetailController extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		//테스트를 위한 임의 번호 넣기 
-		session.setAttribute("user_no", 2);
+		session.setAttribute("userNo", 24);
 		
 		//session 회원 번호 얻어오기 thr
-		int userNo = (int) session.getAttribute("user_no");
+		int userNo = (int) session.getAttribute("userNo");
 		
 		//파라미터에서 클릭한 글 제목 얻어 오기
 		InquiryBoard inquiryTitle = inquiryService.getTitle(req);
@@ -43,7 +43,7 @@ public class InquiryDetailController extends HttpServlet {
 		//글 상세 보기 
 		InquiryBoard inquiryDetail = inquiryService.getDetail(userNo, inquiryTitle);
 		
-		System.out.println(inquiryDetail.getInquiryDate());
+		System.out.println(inquiryDetail);
 		//MODEL값 저장
 		req.setAttribute("inquiryDetail", inquiryDetail);
 		

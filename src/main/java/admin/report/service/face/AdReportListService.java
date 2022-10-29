@@ -29,7 +29,7 @@ public interface AdReportListService {
 	 * 전달파라미터 reportno를 Report DTO로 저장하여 반환한다
 	 * 
 	 * @param req - 요청 정보 객체
-	 * @return Board - 전달파라미터 reportno를 저장한 DTO객체
+	 * @return Report - 전달파라미터 reportno를 저장한 DTO객체
 	 */
 	public Report getReportno(HttpServletRequest req);
 	
