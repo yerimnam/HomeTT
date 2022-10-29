@@ -42,10 +42,10 @@ public class UpdatePwController extends HttpServlet {
 		System.out.println("member : " + member);
 		userService.UpdatePw(member);
 		
-		req.setAttribute("member", member);
-
-		req.getRequestDispatcher("/WEB-INF/member/updatePwOk.jsp").forward(req, resp);
+		session.setAttribute("userId", member.getUserId());
 		
+//		req.getRequestDispatcher("/WEB-INF/member/updatePwOk.jsp").forward(req, resp);
+//		
 	}
 	
 	

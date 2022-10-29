@@ -48,8 +48,6 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	
-
-
 	@Override
 	public int insert(Connection conn, Member member) {
 		System.out.println("UserDao insert() - 시작");
@@ -85,6 +83,38 @@ public class UserDaoImpl implements UserDao {
 
 		System.out.println("UserDao insert() - 끝");
 		return result;
+	}
+	
+	
+@Override
+	public int checkId(Connection conn, Member member) {
+	System.out.println("UserDao checkId() - 시작");
+
+		String sql = "";
+		sql += "SELECT * FROM member WHERE user_id = ?";
+		
+		int idCheck = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserId());
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next() || member.getUserId().equals("")) {
+				idCheck = 0;  // 이미 존재하는 경우, 생성 불가능
+			} else {
+				idCheck = 1;  // 존재하지 않는 경우, 생성 가능
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		return idCheck;
+	
 	}
 
 	
