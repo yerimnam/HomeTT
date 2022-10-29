@@ -15,16 +15,12 @@
 
 <style type="text/css">
 
-body {
 
-	width: 1600px;
-	margin:0 auto;
-}
 
 div{
 
 	width:1600px;
-	
+	margin:0 auto;
 }
 
 #payresult{

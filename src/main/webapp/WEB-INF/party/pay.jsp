@@ -130,6 +130,8 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 div{
 
 	height: 300px;
+	width: 1600px;
+	margin: 0 auto;
 }
 
 table{
@@ -142,11 +144,7 @@ footer{
     position: relative;
     top: 1300px;
     }
-body{
-		width: 1600px;
-		margin: 0 auto;
-	
-	}
+
 
 #pay{
 	position: relative;
@@ -305,7 +303,7 @@ border-bottom:1px solid #666666;
     top: 352px;
     width: 600px;
     height: 156px;
-    left: 518px;
+    left: 20px;
 
 }
 
@@ -332,6 +330,11 @@ button{
 	background-color: #ffd925;
 	border: none;
 	
+}
+
+#partyinfotitle, #payinfotitle,#total_pay{
+	margin: 0px;
+
 }
 </style>
 

@@ -26,6 +26,11 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
     font-family: 'SUIT';
 }
 
+div{
+		width: 1600px;
+		margin: 0 auto;
+
+}
 
 
 footer{
@@ -33,11 +38,7 @@ footer{
     position: relative;
     top: 1300px;
     }
-body{
-		width: 1600px;
-		margin: 0 auto;
-	
-	}
+
 
 	
 ul{
@@ -46,31 +47,30 @@ ul{
 }
 
 #contents_area{
-    height: 423px;
+     height: 543px;
     position: relative;
+    width: 1600px;
 }
 .recommend_contents{
 
-    position: absolute;
-    top: 157px;
-    left: 207px;
-    height: 300px;
+     position: absolute;
     top: 74px;
     left: 24px;
     height: 398px;
-    width: 1500px;
+    width: 1600px;
 }
 
  .contents {
 
-     float: left;
+    float: left;
     position: relative;
     left: 0px;
     top: 27px;
-    margin-right: -51px;
+    margin-right: -23px;
     width: 337px;
     height: 242px;
     margin-left: -1px;
+}
 }
 
 
@@ -102,7 +102,7 @@ ul{
     color: #ffde59; 
 	left: -105px;
     font-weight: bold;
-    font-size: 33px;
+    font-size: 50px;
 
   
 
@@ -112,7 +112,7 @@ ul{
    position: relative;
     top: 64px;
     left: 166px;
-    width: 1213px;
+    width: 1600px;
 
 }
 a{
@@ -164,8 +164,10 @@ a:visited {
 #popular_ott{
    position: relative;
     top: 272px;
-    background-color: #efefef;
+    background-color: #ffde59;
     height: 351px;
+    maring: 0;
+    width: 100%;
 
 }
 
@@ -189,14 +191,14 @@ a:visited {
 
 #ott_area{
   position: relative;
-    top: 194px;
+    top: 106px;
     left: 71px;
 }
 
 #ott{
 
     position: absolute;
-    font-size: 33px;
+    font-size: 50px;
     color: #ffde59;
     font-weight: 700;
 
@@ -238,7 +240,7 @@ a:visited {
 
 #party_now span{
 
-    font-size: 33px;
+    font-size: 50px;
     font-weight: bold;
     color: #ffde59;
 }
