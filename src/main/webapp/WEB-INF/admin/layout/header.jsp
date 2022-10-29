@@ -69,7 +69,6 @@ header {
 	    	  	<ul class="dropdown-menu" role="menu">
 		    	  	<li><a href="./noticelist">공지사항(UserPage)</a></li>
 		            <li><a href="./eventlist">이벤트(UserPage)</a></li>
-		            <li><a href="./faqlist">FAQ(UserPage)</a></li>
 		            <li><a href="./adinquirylist">1:1문의</a></li>
 		        </ul>
 	        </li>

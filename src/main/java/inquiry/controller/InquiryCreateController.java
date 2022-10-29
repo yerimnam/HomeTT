@@ -46,7 +46,7 @@ public class InquiryCreateController extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		//테스트용 세션
-		session.setAttribute("userNo", 24);
+//		session.setAttribute("userNo", 24);
 		
 		
 		//실제 작동
