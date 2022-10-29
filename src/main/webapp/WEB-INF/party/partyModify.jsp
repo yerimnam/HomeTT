@@ -7,14 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
 <jsp:include page="/WEB-INF/layout/header.jsp" />
 <!-- SweetAlert2 -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
-=======
 
->>>>>>> refs/remotes/origin/master
 
 <!-- 스타일 먹히는건지 모르겟 -->
 <style type="text/css">
