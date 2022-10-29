@@ -210,8 +210,8 @@ public class PaymentDaoImpl implements PaymentDao {
 			ps = conn.prepareStatement(sql);
 
 			ps.setInt(1, partyRoom.getParty_room_no());
-			ps.setInt(2, returnData.getPartyNo());
-			ps.setInt(3, returnData.getUserNo());
+			ps.setInt(2, returnData.getUserNo());
+			ps.setInt(3, returnData.getPartyNo());
 
 			result = ps.executeUpdate();
 
