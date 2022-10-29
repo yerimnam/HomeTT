@@ -29,28 +29,28 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 40px;
-	margin-bottom: 50px;
+/* 	margin-bottom: 50px; */
 	gap: 30px;	
 }
 
 .situation {
 	display: flex;
 	padding-top: 20px;
-	padding-left: 230px;
+	padding-left: 260px;
 }
 
 #wishlist {
-/* 	display: flex; */
-	text-align: center;
+	display: flex;
 	width: 230px;
-	height: 250px;
+/* 	height: 250px; */
 /* 	margin: 20px; */
-/* 	paddig: 20px; */
+	padding-bottom: 20px;
 	border: 1px solid #000;		
 }
 
 #wishlist ul {
-	padding: 5px;
+	padding-left: 15px;
+	padding-bottom: 20px;
 }
 
 li {
@@ -76,7 +76,7 @@ li {
 <div class="main">
 	<% for(int i = 0; i < wishList.size(); i++) { %>
 	<div id="wishlist">
-		<a herf="./roomboard?partyno=<%=wishList.get(i).getPartyNo()%>"><ul>
+		<a href="./roomboard?partyno=<%=wishList.get(i).getPartyNo() %>"><%=wishList.get(i).getPartyNo() %><ul>
 			<div style="border: 1px solid #000; text-align: center; margin-top: 10px; border-radius: 5px;">
 				<%=wishList.get(i).getPartyKind() %>
 			</div>
@@ -93,7 +93,6 @@ li {
 	</div>
 	<% } %>
 </div>
-
 
 
 <%@ include file="../layout/footer.jsp" %>
