@@ -29,7 +29,7 @@ public interface WishListDao {
 	 * @param wishlist - 삽입될 파티모집 내용
 	 * @return int - INSERT 쿼리 수행 결과
 	 */
-	public int insert(Connection conn, WishList wishlist);
+	public int insertWishNo(Connection conn, WishList wishlist);
 	
 	
 	/**
@@ -37,7 +37,7 @@ public interface WishListDao {
 	 * @param conn - db 연결 객체
 	 * @return int - 다음 찜목록 번호
 	 */
-	public int selectNextWishno (Connection conn);
+//	public int selectNextWishno (Connection conn);
 	
 	
 	
