@@ -57,12 +57,13 @@
 	height: 300px;
 /* 	margin: 20px; */
 /* 	paddig: 20px; */
-	border: 1px solid #000;
+	border-radius: 5px;
+	border: 1px solid #e5dcb1;
 	background-color: #eff2e0;	
 }
 
 #partyKind {
-	border: 1px solid #000; 
+	border: 1px solid #585a72; 
 	height: 45px;
 	padding-top:10px;
 	text-align: center; 
@@ -186,7 +187,7 @@ a:active {
 
 
 <div class="situation">
-<h4>참여중인 파티</h4>
+<h4>전체 파티 목록</h4>
 </div>
 <hr align="center" style=" height: 1px; background-color: black; width: 60%;">
 
