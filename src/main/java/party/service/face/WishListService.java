@@ -34,4 +34,13 @@ public interface WishListService {
 	 */
 	public void wishdelete(HttpServletRequest req);
 	
+	
+	
+	/**
+	 * 세션에 저장된 값 조회해서 가져오기
+	 * @param req - 요청정보 객체
+	 * 
+	 */
+	public void getuserinfo(HttpServletRequest req);
+	
 }

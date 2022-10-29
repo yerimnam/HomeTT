@@ -146,7 +146,7 @@ body {
 		</thead>
 		
 		<tbody>
-		
+		<% System.out.println(paymentList); %>
 			<% for(int i=0; i<paymentList.size(); i++)  {%>
 				<tr>  
 					<td><%=paymentList.get(i).getOrderNo() %></td>

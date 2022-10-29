@@ -1,4 +1,4 @@
-package admin.cs.faq.controller;
+package admin.login.controller;
 
 import java.io.IOException;
 
@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/homett/AdFaqList")
-public class AdFaqListController extends HttpServlet {
+@WebServlet("/homett/adminlogout")
+public class AdminLogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//세션 정보 삭제 - 로그아웃
+		req.getSession().invalidate();
 		
-		
-		
-		req.getRequestDispatcher("/WEB-INF/admin/cs/faq/adminfaq.jsp").forward(req, resp);
+		//로그인페이지로 리다이렉트
+		resp.sendRedirect("./adminlogin");
 	}
 	
 }

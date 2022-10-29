@@ -53,7 +53,7 @@ th {
 		if( partyname.length() > 10 ) { 
 			partyname = partyname.substring(0, 10) + "...";
 		} %>
-	<td><a href="./partymodify?partyno=<%=partyList.get(i).getPartyNo() %>">
+	<td><a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo() %>">
 				<%=partyname %></a></td>
 	<td><%=partyList.get(i).getPartyLeader() %></td>
 	<td><%=partyList.get(i).getPartyCreDate() %></td>

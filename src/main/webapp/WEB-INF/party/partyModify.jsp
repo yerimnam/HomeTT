@@ -13,11 +13,6 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
 
 
-<!-- 스타일 먹히는건지 모르겟 -->
-<style type="text/css">
-@import url('https://webfontworld.github.io/sunn/SUIT.css');
-</style>
-
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -196,8 +191,6 @@ a.heart {
 			<span class="round-box">공지사항</span>
 			<h3>공지사항</h3>
 		</div>
-
-
 		<div class="part-area">
 			<%
 			for (int i = 0; i < partyList.size(); i++) {

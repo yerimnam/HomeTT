@@ -37,8 +37,8 @@ public class PaymentAmountController extends HttpServlet {
 
 
 
-				session.setAttribute("userNo", 24);
-				session.setAttribute("partyNo", 4);
+//				session.setAttribute("userNo", 24);
+//				session.setAttribute("partyNo", 4);
 //				session.setAttribute("user_no", 2);
 //				session.setAttribute("partyNo", 1);
 
