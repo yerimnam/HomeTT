@@ -252,42 +252,10 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 		return res;
 	}
 
-	
-	
+
 	
 	
 
-
-//	@Override
-//	public int delete(Connection conn, PartyRoom partyroomno) {
-//		
-//		
-//		String sql = "";
-//		sql += "DELETE party_room";
-//		sql += " WHERE party_room_no = ?";
-//
-//
-//		int res = 0;
-//
-//		try {
-//			ps = conn.prepareStatement(sql);
-//
-////			ps.setInt(1, partyRoom.getParty_no());
-//
-//			ps.setInt(1, partyroomno.getParty_room_no());
-//
-//
-//			res = ps.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			JDBCTemplate.close(ps);
-//		}
-//
-//		System.out.println("delete 끝");
-//		return res;
-//	}
 
 	@Override
 	public int delete(Connection conn, PartyRoom partyroomno) {

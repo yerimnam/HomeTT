@@ -301,12 +301,12 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 					</li>
 					
 					<li class="gnb">
-						<a href="homett/createparty">파티만들기 </a>
+						<a href="/homett/createparty">파티만들기 </a>
 						<p style=" display: none">●</p>
 					</li>
 					
 					<li class="gnb">
-						<a href="homett/partymodify">파티찾기</a>
+						<a href="/homett/partymodify">파티찾기</a>
 						<p style=" display: none">●</p>
 					</li>
 					

@@ -41,11 +41,10 @@ public class WishListDeleteController extends HttpServlet {
 
 		System.out.println("/homett/wishdelete [POST]");
 
-		// 글 삽입하기
+		// 글 삭제
 		wishlistService.wishdelete(req);
 			
 		
-		//이제 ajax 처리만 하면 된다.....
 			
 			
 		}

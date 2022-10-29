@@ -9,6 +9,7 @@ import java.util.List;
 
 import common.JDBCTemplate;
 import party.dto.Party;
+import party.dto.PartyRoom;
 import payment.dao.face.PaymentDao;
 import payment.dto.Payment;
 import user.dto.Member;
@@ -100,9 +101,10 @@ public class PaymentDaoImpl implements PaymentDao {
 	public int insertPayment(Connection conn, Payment returnData) {
 
 		System.out.println("insertPayment -start");
+		System.out.println("returnData : " + returnData);
 		String sql = "";
-		sql += "INSERT INTO payment (pay_no, order_no, user_no, party_no, paymentmethod,user_cardno,user_cardcom, payment_amount,payment_date)";
-		sql += " values(?,?,?,?,?,?,?,?,sysdate)";
+		sql += "INSERT INTO payment (pay_no, order_no, user_no, party_no, paymentmethod,user_cardcom, payment_amount,payment_date)";
+		sql += " values(?,?,?,?,?,?,?,sysdate)";
 
 		// insert 결과 변수
 		int result = 0;
@@ -115,9 +117,9 @@ public class PaymentDaoImpl implements PaymentDao {
 			ps.setInt(3, returnData.getUserNo());
 			ps.setInt(4, returnData.getPartyNo());
 			ps.setString(5, returnData.getPaymentMethod());
-			ps.setInt(6, returnData.getUserCardno());
-			ps.setString(7, returnData.getUserCardCom());
-			ps.setInt(8, returnData.getPaymentAmount());
+//			ps.setInt(6, returnData.getUserCardno());
+			ps.setString(6, returnData.getUserCardCom());
+			ps.setInt(7, returnData.getPaymentAmount());
 
 			//
 
@@ -130,6 +132,7 @@ public class PaymentDaoImpl implements PaymentDao {
 			JDBCTemplate.close(ps);
 		}
 		System.out.println("insert-payment-end");
+		System.out.println("result : " + result);
 		return result;
 	}
 
@@ -196,16 +199,19 @@ public class PaymentDaoImpl implements PaymentDao {
 	@Override
 	public int insertPartyM(Connection conn, Payment returnData) {
 		String sql = "";
-		sql += "INSERT INTO party (party_no, user_no)";
-		sql += " values( ? ,?)";
+		sql += "INSERT INTO party_room(party_room_no, user_no, party_no)";
+		sql += " values(? ,?, ?)";
 
+		PartyRoom partyRoom = new PartyRoom();
+		
 		int result = 0;
 
 		try {
 			ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, returnData.getPartyNo());
+			ps.setInt(1, partyRoom.getParty_room_no());
 			ps.setInt(2, returnData.getUserNo());
+			ps.setInt(3, returnData.getPartyNo());
 
 			result = ps.executeUpdate();
 

@@ -78,8 +78,7 @@ public class CreatePartyController extends HttpServlet {
 		req.setAttribute("userinfo", user);
 		
 		
-		//누르면 결제 창으로 들어가게
+		//
 		resp.sendRedirect("./partymodify");
-//		req.getRequestDispatcher("/WEB-INF/party/pay.jsp").forward(req, resp);
 	}
 }

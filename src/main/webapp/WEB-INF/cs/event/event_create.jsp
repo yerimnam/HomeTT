@@ -22,8 +22,6 @@
 <script type="text/javascript">
 
 
-
-
 $(document).ready(function(){
 
 	$('#content').summernote({
@@ -40,12 +38,7 @@ $(document).ready(function(){
 		});
 				//textarea#note에 웹 에디터 적용
 				$("#content").summernote()
-				$("user_id").summernote()
-			
-				
-				
-	
-				
+				$("user_id").summernote()					
 	})
 			
 </script>
@@ -59,13 +52,6 @@ $(document).ready(function(){
 	})		
 	
 })
-
-
-
-
-
-		
-		
 
 
 </script>
@@ -84,7 +70,6 @@ body{
 }
 
 </style>
-
 
 </head>
 <body>
