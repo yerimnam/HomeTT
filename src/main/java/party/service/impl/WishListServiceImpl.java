@@ -1,6 +1,7 @@
 package party.service.impl;
 
 import java.sql.Connection;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +25,8 @@ public class WishListServiceImpl implements WishListService {
 		//전달파라미터를 저장할 객체 생성
 		WishList wishlist = new WishList();
 		
+		wishlist.setUserNo( (int) req.getSession().getAttribute("userNo")); 
+		
 		//전달파라미터 boardno 추출하기
 		String param = req.getParameter("wishno");
 		if( null != param && !"".equals(param) ) { //전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
@@ -43,16 +46,24 @@ public class WishListServiceImpl implements WishListService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//게시글 번호 생성하기
-		int wishno = wishlistdao.selectNextWishno(conn);
+//		int wishno = wishlistdao.selectNextWishno(conn);
 		
 		//찜 번호 삽입
-		wishlist.setWishNo(wishno);
+//		wishlist.setWishNo(wishno);
 		
+		//파티 정보 저장
+		String param = req.getParameter("party_no");
+		String heart = req.getParameter("wish_no");	//형변환 하기
 		
+		if( null != param && !"".equals(param) ) { //전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
+			wishlist.setPartyNo( Integer.parseInt(param) );
+			wishlist.setWishNo( Integer.parseInt(heart) );
+		}
+			
 		//이용자 ID 처리하기
-		wishlist.setUserNo( (int) req.getSession().getAttribute("userno")); 
+		wishlist.setUserNo( (int) req.getSession().getAttribute("userNo")); 
 		
-		if( wishlistdao.insert(conn, wishlist) > 0 ) {
+		if( wishlistdao.insertWishNo(conn, wishlist) > 0 ) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
@@ -78,6 +89,15 @@ public class WishListServiceImpl implements WishListService {
 				JDBCTemplate.rollback(conn);
 			}
 			
+	}
+
+
+
+	@Override
+	public void getuserinfo(HttpServletRequest req) {
+		
+
+		
 	}
 	
 	
