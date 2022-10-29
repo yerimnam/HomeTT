@@ -261,7 +261,6 @@ a.heart {
 					<li>참여 금액 : <%=partyList.get(i).getPaymentAmount()%> 원
 					</li>
 				</ul>
-<<<<<<< HEAD
 
 				<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
 <!-- 				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span> -->
@@ -273,23 +272,6 @@ a.heart {
 						name="wishlist">🧡</button>
 					<div id="result"></div>
 				</form>
-=======
-				<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
-<!-- 				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span> -->
->>>>>>> refs/remotes/origin/Jiwon
-
-<<<<<<< HEAD
-				</span>
-				<!-- 				</a> -->
-=======
-					<form action="/homett/wishlist" method="post" id="wishlist_form">	
-<!-- 						<button>하트</button> -->
-						<button type="button" id="wishlist" onclick="sendHearth(<%=partyList.get(i).getPartyNo()%>)" name="wishlist">🧡</button>
-						<div id="result"></div>
-					</form>
-<!-- 				</span> -->
-<!-- 				</a> -->
->>>>>>> refs/remotes/origin/Jiwon
 			</div>
 			<%
 				}

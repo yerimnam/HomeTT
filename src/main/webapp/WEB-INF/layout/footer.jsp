@@ -18,6 +18,13 @@ footer
 }
 
 
+#ft{ 
+	width: 100% !important; 
+	height: 110px;
+	background-image: url( "/resources/img/yellowbg.png" );
+	position: relative;
+ } 
+
 </style>
 
 </html>
