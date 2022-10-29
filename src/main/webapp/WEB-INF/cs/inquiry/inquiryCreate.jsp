@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -17,9 +15,6 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <script type="text/javascript">
-
-
-
 
 $(document).ready(function(){
 
@@ -38,11 +33,7 @@ $(document).ready(function(){
 				//textarea#note에 웹 에디터 적용
 				$("#content").summernote()
 				$("user_id").summernote()
-			
-				
-				
-	
-				
+						
 	})
 			
 </script>
@@ -56,13 +47,6 @@ $(document).ready(function(){
 	})		
 	
 })
-
-
-
-
-
-		
-		
 
 
 </script>
@@ -83,7 +67,6 @@ body{
 </style>
 
 
-</head>
 <body>
 
 <h2>문의사항 작성하기</h2>

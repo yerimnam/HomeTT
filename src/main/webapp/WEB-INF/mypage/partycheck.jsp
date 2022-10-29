@@ -43,6 +43,7 @@
 }
 
 .situation {
+	display: flex;
 	padding-top: 20px;
 	padding-left: 430px;
 }
@@ -54,7 +55,7 @@
 
 #party {
 	/* width: 240px; */
-	height: 300px;
+	height: 270px;
 /* 	margin: 20px; */
 /* 	paddig: 20px; */
 	border-radius: 5px;
@@ -66,6 +67,7 @@
 	border: 1px solid #585a72; 
 	height: 45px;
 	padding-top:10px;
+	margin-top: 5px;
 	text-align: center; 
 	border-radius: 5px;
 }
@@ -132,7 +134,7 @@ a:active {
 <body>
 
 <div class="situation">
-<h4>내가 만든 파티</h4>
+<h4>가입한 파티</h4>
 </div>
 <hr align="center" style=" height: 1px; background-color: black; width: 60%;">
 
@@ -160,7 +162,7 @@ a:active {
 <div class="main">
 	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
 	<div id="party">
-		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><%=partyList.get(i).getPartyNo() %><ul>
+		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
 			<div id="partyKind">
 				<%=ownerPartyList.get(i).getPartyKind() %>
 			</div>
@@ -183,7 +185,7 @@ a:active {
     <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
 </div>
 
-<hr>
+
 
 
 <div class="situation">
@@ -199,7 +201,7 @@ a:active {
 <div class="main">
 	<% for(int i = 0; i < partyList.size(); i++) { %>
 	<div id="party">
-		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><%=partyList.get(i).getPartyNo() %><ul>
+		<a id="link" href="partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo() %>"><ul>
 			<div id="partyKind">
 				<%=partyList.get(i).getPartyKind() %>
 			</div>
