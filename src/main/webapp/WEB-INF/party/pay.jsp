@@ -4,6 +4,8 @@
 <%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ include file="../layout/header.jsp"  %>
+    
    <% Member member = (Member)request.getAttribute("userinfo");%>
    <% Party party = (Party)request.getAttribute("partyinfo");  %>
    
@@ -104,63 +106,6 @@
            
          });
      
-//   //HomeTT 서버 코드
-     
-//   app.use(bodyParser.json());
-  
-//   // "/payments/complete"에 대한 POST 요청을 처리
-//   app.post("/homett/paycomplete", async (req, res) => {
-//     try {
-//       const { imp_uid, merchant_uid } = req.body; // req의 body에서 imp_uid, merchant_uid 추출
-    
-//       // 액세스 토큰(access token) 발급 받기
-//       const getToken = await axios({
-//         url: "https://api.iamport.kr/users/getToken",
-//         method: "post", // POST method
-//         headers: { "Content-Type": "application/json" }, // "Content-Type": "application/json"
-//         data: {
-//           imp_key: "4471785018183236", // REST API 키
-//           imp_secret: "rGwzfyAZ6DMwEfAhdocdSenuBgh52nOllQudG5TEMiONqlTwXyAfgRBoEKlsTq035VpgUpit3GglzVvq" // REST API Secret
-//         }
-//       });
-//       const { access_token } = getToken.data.response; // 인증 토큰
-     
-//       // imp_uid로 아임포트 서버에서 결제 정보 조회
-//       const getPaymentData = await axios({
-//         url: `/homett/paycomplete/${"imp41280154"}`, // imp_uid 전달
-//         method: "post", // GET method
-//         headers: { "1835b2f17536cc1203d56ba16bb73e5aa8bd7a1b": access_token } // 인증 토큰 Authorization header에 추가
-//       });
-//       const paymentData = getPaymentData.data.response; // 조회한 결제 정보
-//       // DB에서 결제되어야 하는 금액 조회
-//       const order = await Orders.findById(paymentData.merchant_uid);
-//       const amountToBePaid = order.amount; // 결제 되어야 하는 금액
-    
-//       // 결제 검증하기
-//       const { amount, status } = paymentData;
-//       if (amount === amountToBePaid) { // 결제금액 일치. 결제 된 금액 === 결제 되어야 하는 금액
-//         await Orders.findByIdAndUpdate(merchant_uid, { $set: paymentData }); // DB에 결제 정보 저장
-        
-//         switch (status) {
-//              case "ready": // 가상계좌 발급
-// //                // DB에 가상계좌 발급 정보 저장
-//                const { vbank_num, vbank_date, vbank_name } = paymentData;
-<%--                  await Users.findByIdAndUpdate(<%=member.getUserId()%>, { $set: { vbank_num, vbank_date, vbank_name }});  --%>
-// //                // 가상계좌 발급 안내 문자메시지 발송
-// //                SMS.send({ text: \`가상계좌 발급이 성공되었습니다. 계좌 정보 \${vbank_num} \${vbank_date} \${vbank_name}\`});
-//                res.send({ status: "vbankIssued", message: "가상계좌 발급 성공" });
-//                break;
-//           case "paid": // 결제 완료
-//             res.send({ status: "success", message: "일반 결제 성공" });
-//             break;
-//         }
-//       } else { // 결제금액 불일치. 위/변조 된 결제
-//         throw { status: "forgery", message: "위조된 결제시도" };
-//       }
-//     } catch (e) {
-//       res.status(400).send(e);
-//     }
-//   });
 	}
      
 
@@ -172,45 +117,223 @@
 
 <style type="text/css">
 
-body {
-
-	width: 1000px;
-	margin:0 auto;
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, blockquote, form, fieldset, legend, menu, nav, section, hgroup, article, header, aside, footer, input, select, textarea, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'SUIT';
 }
-span{
-	padding: 7px;
-	maring: 50px;
+#payresult {
+
+	height: 0;
+}
+div{
+
+	height: 300px;
 }
 
-table, #payment, #userinfo{
-	width: 1000px;
-	height: 200px;
+table{
+
+	text-decoration: none;
+}
+
+footer{
 	border: 1px solid black;
+    position: relative;
+    top: 1300px;
+    }
+body{
+		width: 1600px;
+		margin: 0 auto;
+	
+	}
 
+#pay{
+	position: relative;
+}
+#partyinfotitle{
+
+	width: 200px;
+    height: 58px;
+    text-align: center;
+    background-color: #ffd925;
+    border-radius: 20px;
 }
 
-td {
-	text-align: center;	
+#partyinfotitle span{
+	font-size: 40px;
+	background-color: #ffd925;
+	color:white;
 	
 
 }
-#payment {
-	border: 1px solid black;
-	margin-top:20px;
-	margin-bottom: 70px;
-	text-align: center;
+#partyinfo {
+    width: 1130px;
+    height: 250px;
+    margin: 0 auto;
+    position: absolute;
+    left: 7px;
+    top: 30px;
+    left: 100px;
+    font-size: 20px;
+    color: #666666;
+    font-weight: 500;
+    
 }
 
+
+.party .partyvalue{
+    position: relative;
+}
+
+#partyinfoarea{
+border-top: 1px solid #666666;
+border-bottom:1px solid #666666;
+    position: relative;
+    top: 49px;
+}
+
+#payinfotitle{
+    width: 200px;
+    height: 58px;
+    text-align: center;
+    background-color: #ffd925;
+    border-radius: 20px;
+    position: relative;
+    top: 123px;
+
+}
+#payinfotitle span{
+    font-size: 40px;
+    background-color: #ffd925;
+    color: white;
+}
+
+
+
+#userinfoarea{
+    width: 1600px;
+    height: 300px;
+    position: relative;
+    top: 177px;
+    left: 6px;
+    font-size: 20px;
+    color: #666666;
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+}
 #userinfo{
-border: 1px solid black;
-	margin-top:20px;
-	margin-bottom: 70px;
+	font-weight: 500;
+    width: 1130px;
+    height: 250px;
+    margin: 0 auto;
+    position: absolute;
+    left: 7px;
+    top: 30px;
+    left: 100px;
+    font-size: 20px;
+    color: #666666;
+
 }
 
+
+
+
+
+.uservalue{
+
+	position: absolute;
+    left: 550px;
+}
+
+#payarea{
+	position: relative;
+    top: 288px;
+    width: 1600px;
+    height: 300px;
+    font-size: 20px;
+    color: #666666;
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+
+}
+
+#total_pay{
+
+    width: 200px;
+    height: 58px;
+    text-align: center;
+    background-color: #ffd925;
+    border-radius: 20px;
+    position: relative;
+    top: 228px;
+
+}
+
+#total_pay span{
+    font-size: 40px;
+    background-color: #ffd925;
+    color: white;
+}
+
+#payment{
+
+	 width: 500px;
+    height: 100px;
+    position: absolute;
+    top: 113px;
+    font-size: 45px;
+    font-weight: 600;
+    left: 500px;
+
+}
+
+#willpay{
+    padding-right: 80px;
+
+}
+
+
+#totalPayment{
+ color: #ff8c11;
+
+}
+
+
+#btnarea{
+ position: relative;
+    top: 352px;
+    width: 600px;
+    height: 156px;
+    left: 518px;
+
+}
+
+button{
+	 width: 174px;
+    height: 42px;
+    border-radius: 18px;
+	margin-right: 77px;
+}
+
+#btnpay{
+	border: none;
+	background-color: #ff8c11 ;
+}
+
+
+#btnpay span,#btncancel span{
+	color: white;
+    font-size: 20px;
+
+}
+
+#btncancel{
+	background-color: #ffd925;
+	border: none;
+	
+}
 </style>
-
-
-
 
 </head>
 
@@ -218,97 +341,99 @@ border: 1px solid black;
 <body>
 
 
-<header>
+<div id="payresult"></div>
 
-	HOME TT
-</header>
 
-<div id="payresult">
-<div id="pay">
-	<h1>결제하기</h1>
-	<hr>
-	
-	<div id="payinfoarea">
-		<h3> 주문 사항 </h3>
+
+	<div id="pay">
 		
-		
-		<table id="payinfo" >
+		<div id="partyinfotitle">
+			<span> 주문정보 </span>
 			
-			<tr>
-					<th>파티이름</th>
-					<th>파티장 </th>
-					<th>참여 금액</th>
-			</tr>
-			
-			
-			
-			<tr>
-				<td><%=party.getPartyName() %></td>
-				<td><%=party.getPartyLeader() %></td>
-				<td id="partypayment"><%=party.getPaymentAmount() %> 원</td>
+		</div>
+		<div id="partyinfoarea">	
+			<table id="partyinfo" >
 				
+				<tr id="partyName">
+					<td class="party">파티이름</td>
+					<td class="partyvalue"><%=party.getPartyName() %></td>
+				</tr>
+					
+				<tr id="partyleader">		
+					<td class="party">파티장 </td>
+					<td class="partyvalue"><%=party.getPartyLeader() %></td>
+				</tr>		
+				
+				<tr id="partypay">
+					<td class="party">참여 금액</td>
+					<td class="partyvalue"><%=party.getPaymentAmount() %> 원</td>
+				</tr>	
+			
+			</table>
+		</div>
 		
-		</table>
-	</div>
-	
-	 <div id="userinfo"> 
-	 
-		 <h3>결제자 정보</h3>
 		
-		 <span>회원 이름 : </span>
-				<span><%=member.getUserName() %>  </span><br><br>
-			<span>회원 아이디 : </span>
-				<span><%=member.getUserId()%></span>
+		<div id=payinfotitle>
+			 
+				 <span>결제 정보</span> 
+		</div>			 
+				 
+ 		 <div id="userinfoarea">  
+				 
+				<table id="userinfo">
+					<tr>	
+						<td><span class="user">회원 이름</span></td> 
+						<td><span class="uservalue"><%=member.getUserName() %>  </span></td>
+					</tr>	 
+					<tr>	 
+						<td><span class="user">회원 아이디</span></td>
+						<td><span class="uservalue"><%=member.getUserId()%></span></td>
+					</tr> 
+				
+					<tr>	 
+						<td><span class="user">이메일</span></td>
+						<td><span class="uservalue"><%=member.getUserEmail() %></span></td>
+					</tr> 
+				
+				
+ 					<tr> 
+						<td><span class="user">연락처</span></td> 
+						<td><span class="uservalue">0<%=member.getUserPhone() %></span></td>
+					</tr> 
+				</table> 
 		
-		<span>이메일 : </span>
-		<span><%=member.getUserEmail() %></span>
+		</div>
+				<div id="total_pay"> 
+ 					<span>Total</span> 
+				</div> 
+		
+ 		<div id="payarea"> 		
+ 		<form  action="/homett/payment" method="post" id="payareaform"> 
+			
+	
+ 				<div id="payment"> 
+				   <span id="willpay"><span>결제 금액</span></span> 
+					<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
+				</div> 
+ 			</form> 
+ 		</div> 
 		
 		
-		<span>연락처</span>
-		<span><%=member.getUserPhone() %></span>
-	</div>
-	
-	
-	<form  action="/homett/payment" method="post" id="payarea">
-	
-	<div>
-	<h3>총 결제 금액</h3>
-	</div>
-	
-	<div id="payment">
-	
-	   <span id="willpay">결제할 금액 </span>
-	   
-		<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
-	
-	
-	
-	</div>
-	
-	<div id="resultview">
-	
-	</div>
-	
-	
-	</form>
-	
-	
-	
-	
-	<div>
-		<button type="button" id="btnpay" onclick="requestPay()">결제하기</button>
-		<button type="button" id="btncancel" onclick="location.href='/homett/joinparty'">취소하기</button>
-	
-	
-	</div>
-</div>
+ 		<div id="btnarea"> 
+			<button type="button" id="btnpay" onclick="requestPay()"><span>결제하기</span></button> 
+		<button type="button" id="btncancel" onclick="location.href='/homett/partymodify'"><span>취소하기</span></button> 
+		</div> 
+
+</div> 
+
+<!-- <hr> -->
+<!-- <footer> -->
+
+<!-- 사업자 정보  -->
+
+<!-- </footer> -->
 
 
-<footer>
-
-사업자 정보 
-
-</footer>
-
+</body>
 </html>
 

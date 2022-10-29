@@ -33,10 +33,10 @@ public class InquiryInquiriesController extends HttpServlet {
 			
 			HttpSession session = req.getSession();
 			//테스트를 위한 임의 번호 넣기 
-			session.setAttribute("user_no", 2);
+			session.setAttribute("userNo", 24);
 			
 			//session 회원 번호 얻어오기 thr
-			int userNo = (int) session.getAttribute("user_no");
+			int userNo = (int) session.getAttribute("userNo");
 			
 			
 			//전달 파라미터에서 현재 페이징 객체 계산하기

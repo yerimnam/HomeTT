@@ -20,17 +20,16 @@ public class AdReportViewController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/adreportview [GET]");
-		
-		System.out.println("AdReportViewController doGet() - reportno : " + req.getParameter("reportno"));
+//		System.out.println("/homett/adreportview [GET]");
+//		System.out.println("AdReportViewController doGet() - reportno : " + req.getParameter("reportno"));
 		
 		//전달파라미터 객체 얻어오기
 		Report reportno = adReportListService.getReportno(req);
-		System.out.println("AdReportViewController doGet() - reportno객체 : " + reportno);
+//		System.out.println("AdReportViewController doGet() - reportno객체 : " + reportno);
 		
 		//게시글 상세보기 조회 결과 얻어오기
 		Report viewreport = adReportListService.view( reportno );
-		System.out.println("AdReportViewController doGet() - viewReport : " + viewreport);
+//		System.out.println("AdReportViewController doGet() - viewReport : " + viewreport);
 	
 		//조회결과를 MODEL값으로 전달
 		req.setAttribute("viewreport", viewreport);

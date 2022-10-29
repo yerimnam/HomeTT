@@ -21,6 +21,11 @@ public interface PartyRoomBoardDao {
 	//시퀀스 설정
 	public int selectNextUserno(Connection conn, PartyBoard partyBoard);
 
+	
+	
+	//파티참여자 목록 시퀀스 설정
+	public int selectNextUsernoP(Connection conn, PartyRoom partyroomno);
+
 	/**
 	 * 게시글 테이블 페이징 목록 조회
 	 * 
@@ -30,6 +35,7 @@ public interface PartyRoomBoardDao {
 	 */
 	public List<PartyBoard> selectAllBr(Connection conn, PbPaging paging);
 	
+//	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword);
 
 	/**
 	 * 전달된 파라미터 값을 테이블에 삽입한다
@@ -57,24 +63,31 @@ public interface PartyRoomBoardDao {
 	 * 게시글 삭제
 	 * 
 	 * @param conn - DB연결 객체
-	 * @param partyBoard - 삭제할 게시글 번호
+	 * @param partyroom - 삭제할 게시글 번호
 	 * @return 수행 결과
 	 */
 	public int delete(Connection conn, PartyBoard partyBoard);
 
-	public List<PartyBoard> selectPbSearchList(Connection conn, String searchType, String keyword);
 
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	/**
 	 * 파티방 삭제
 	 * 
 	 * @param conn - DB연결 객체
-	 * @param party - 삭제할 파티방 번호
+	 * @param partyRoom - 삭제할 파티방 번호
 	 * @return
 	 */
 
-	public int delete(Connection conn, PartyRoom partyRoom);
+	public int delete(Connection conn, PartyRoom partyroomno);
 
 
 
