@@ -16,7 +16,7 @@
  	location.href="/homett/eventlist";
  	console.log ("이전으로")
 	
- }
+ } 
 
  function update(){
 		console.log("수정하기")

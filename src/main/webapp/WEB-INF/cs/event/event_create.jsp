@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <script type="text/javascript">
-
+  
 
 $(document).ready(function(){
 
