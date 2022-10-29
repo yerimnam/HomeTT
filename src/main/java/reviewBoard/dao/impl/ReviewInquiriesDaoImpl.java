@@ -22,15 +22,19 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 	@Override
 	public List<ReviewBoard> selectAll(Connection conn) {
 		System.out.println("ReviewBoardDao selectAll - 시작");
-		
+
 		
 		//SQL작성
 		String sql = "";
-		sql += "SELECT";
-		sql += "	review_articlenumber, admin_no, board_code, review_articletitle ";
-		sql += " ,review_content,review_date,user_no,hit";
-		sql += " FROM board_review"; 
-		sql += " ORDER BY review_Articlenumber DESC";
+
+		
+        sql +=" SELECT R.*";
+        sql +=" ,m.user_nick";
+        sql +=" FROM board_review R";
+        sql +=" inner join member m";
+        sql +=" on m.user_no = R.user_no";
+        
+
 		
 		//결과 저장할 List
 		List<ReviewBoard> reviewboardList = new ArrayList<>();
@@ -51,6 +55,7 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 				r.setReviewDate(rs.getDate("review_date"));
 				r.setUserNo(rs.getInt("user_no"));
 				r.setHit(rs.getInt("hit"));
+				r.setUserName(rs.getString("user_nick"));
 				
 				//리스트에 결과값 저장하기
 				reviewboardList.add(r);
@@ -160,7 +165,7 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 		System.out.println("updateHit - 시작");	
 		String sql = "";
 		sql += "UPDATE board_review"; 
-		sql += "	SET hit = hit +1";
+		sql += "	SET hit = hit + 1";
 		sql += " WHERE review_Articlenumber = ?";
 		
 		int res = 0;
@@ -177,6 +182,7 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 			JDBCTemplate.close(ps);
 		}
 		
+		System.out.println("reviewArticlenumber : " + reviewArticlenumber);
 		System.out.println("updateHit - 끝");	
 		
 		return res;
@@ -185,27 +191,28 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 	@Override
 	public ReviewBoard selectBoardByreviewArticlenumber(Connection conn, ReviewBoard reviewArticlenumber) {
 		System.out.println("selectBoardByreviewArticlenumber - 시작");	
-		
+		System.out.println("reviewArticlenumber.getReviewArticlenumber() : " + reviewArticlenumber.getReviewArticlenumber());
 		String sql = "";
-		sql += "SELECT";
-		sql +=" 	review_articlenumber,admin_no,board_code,review_articletitle,";
-		sql +="		 review_content,review_date,user_no,hit ";
-		sql +=" FROM board_review";
-		sql +=" WHERE review_articlenumber = ?";
+	
+		sql += " SELECT * FROM (";
+        sql += " 	SELECT R.*";
+        sql += " 	,m.user_nick";
+        sql += " 	FROM board_review R";
+        sql += " 	inner join member m";
+        sql += " 	on m.user_no = R.user_no";
+        sql += " ) R ";
+        sql += " WHERE review_articlenumber = ?";
+		
 		
 		ReviewBoard board= null;
 		
 			try {
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1 , reviewArticlenumber.getReviewArticlenumber());
-				
+				ps.setInt(1, reviewArticlenumber.getReviewArticlenumber());
 				rs = ps.executeQuery();
 				
 				while(rs.next() ) {
 					board = new ReviewBoard();
-					
-
-					
 
 					board.setReviewArticlenumber(rs.getInt("review_articlenumber"));
 					board.setAdminNo(rs.getInt("admin_no"));
@@ -215,6 +222,7 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 					board.setReviewDate(rs.getDate("review_date"));				
 					board.setHit(rs.getInt("hit"));
 					board.setUserNo(rs.getInt("user_no"));
+					board.setUserName(rs.getString("user_nick"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -224,6 +232,8 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 			}
 
 			System.out.println("selectBoardByReviewArticlenumber - 끝");	
+			System.out.println("board : " + board);
+			System.out.println(board.getUserName());
 		return board;
 	}
 
@@ -236,7 +246,7 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 		
 		String sql ="";								
 		sql +="INSERT INTO board_review (review_articlenumber,user_no,review_articletitle,review_content,review_date)";
-		sql +=" VALUES(review_seq.nextval,?,?,?,sysdate)";
+		sql +=" VALUES(BOARD_REVIEW_SEQ.nextval,?,?,?,sysdate)";
 		
 		
 

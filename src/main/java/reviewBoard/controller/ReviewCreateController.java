@@ -61,7 +61,7 @@ public class ReviewCreateController extends HttpServlet {
 		//작성글 삽입
 //				reviewinquiriesService.write(req);
 
-//		resp.sendRedirect("/homett/reviewlist");
+		resp.sendRedirect("/homett/reviewlist");
 	
 	}
 	

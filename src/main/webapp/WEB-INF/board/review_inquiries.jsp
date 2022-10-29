@@ -9,6 +9,13 @@
 <head>
 <meta charset="UTF-8">
 <title>하이</title>
+<!-- jQuery 2.2.4 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- 부트스트랩 Bootstrap 3 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style>
 
@@ -45,6 +52,14 @@ width: 68%;
 
 </style>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#btnWrite").click(function() {
+		location.href = "./reviewcreate"
+	})
+})
+</script>
+
 </head>
 <body>
 <table>
@@ -61,16 +76,20 @@ width: 68%;
 <tr>
 	<td><%=reviewboardList.get(i).getReviewArticlenumber() %></td>
 	<td>
-		<a href="./review_view?reviewArticlenumber=<%=reviewboardList.get(i).getReviewArticlenumber() %>">
+		<a href="./reviewview?reviewArticlenumber=<%=reviewboardList.get(i).getReviewArticlenumber() %>">
 			<%=reviewboardList.get(i).getReviewArticletitle() %>
 		</a>
 	</td>
-	<td><%=reviewboardList.get(i).getReviewWriter() %></td>
+	<td><%=reviewboardList.get(i).getUserName() %></td>
 	<td><%=reviewboardList.get(i).getHit() %></td>
 	<td><%=reviewboardList.get(i).getReviewDate() %></td>
 </tr>
 <%	} %>
 </table>
+
+<div id="btnBox">
+	<button id="btnWrite" class="btn">글쓰기</button>
+</div>
 
 </body>
 </html>

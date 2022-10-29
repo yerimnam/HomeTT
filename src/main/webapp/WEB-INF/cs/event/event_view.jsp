@@ -54,6 +54,7 @@
 <tr>
 	<td>작성자</td>
 	<td><%=viewBoard.getEventWriter() %></td>
+		<td><%=viewBoard.getUserName() %></td>
 </tr>
 
 

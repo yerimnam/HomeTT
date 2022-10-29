@@ -61,8 +61,8 @@ public class ReviewInquiriesServiceImpl implements ReviewInquiriesService {
 		
 		//전달파라미터 reviewArticlenumber 추출(파싱)
 		String param = req.getParameter("reviewArticlenumber");
+		System.out.println("파람 테스트 : " + param);
 		
-		System.out.println( "창민 : " + param);		//----------------------------------
 		
 		if(null != param && !"".equals(param)) {//전달 파리미터가 null또는 ""빈문자열이 아닐 때 처리
 			reviewboard.setReviewArticlenumber(Integer.parseInt(param));
@@ -90,6 +90,7 @@ public class ReviewInquiriesServiceImpl implements ReviewInquiriesService {
 		//게시글 조회
 		ReviewBoard board = boardDao.selectBoardByreviewArticlenumber(conn, reviewArticlenumber);
 		
+		System.out.println("board Test" + board);
 		
 		return board;
 	}
@@ -101,7 +102,7 @@ public class ReviewInquiriesServiceImpl implements ReviewInquiriesService {
 		System.out.println("getparam 시작");
 
 		ReviewBoard reviewBoard = new ReviewBoard();
-		reviewBoard.setReviewArticletitle(req.getParameter("title")); //글제목
+		reviewBoard.setReviewArticletitle(req.getParameter("reviewTitle")); //글제목
 		
 		
 		
@@ -146,7 +147,8 @@ public class ReviewInquiriesServiceImpl implements ReviewInquiriesService {
 		ReviewBoard reviewforselect = new ReviewBoard();
 		
 		
-		int param = Integer.parseInt(req.getParameter("reviewNo"));
+		int param = Integer.parseInt(String.valueOf(req.getParameter("reviewNo")));
+		System.out.println("param : " + param);
 		reviewforselect.setReviewArticlenumber(param);
 		
 		return reviewforselect ;
@@ -159,7 +161,7 @@ public class ReviewInquiriesServiceImpl implements ReviewInquiriesService {
 		
 	
 		
-		reviewUpdate.setReviewArticlenumber(Integer.parseInt( req.getParameter("reviewNo")));//<----임시
+		reviewUpdate.setReviewArticlenumber(Integer.parseInt(String.valueOf(req.getParameter("reviewNo"))));//<----임시
 		reviewUpdate.setReviewArticletitle(req.getParameter("reviewTitle"));	//<----임시
 		reviewUpdate.setReviewContent(req.getParameter("content"));
 			

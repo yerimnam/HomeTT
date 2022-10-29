@@ -28,6 +28,8 @@ public class ReviewViewController extends HttpServlet {
 		System.out.println("/homett/reviewview [GET]");
 		
 		System.out.println("ReviewViewController doGet() - reviewArticlenumber : " + req.getParameter("reviewArticlenumber"));
+
+		
 		
 		//전달 파라미터 객체 얻어오기
 		ReviewBoard reviewArticlenumber =reviewinquiriesService.getreviewArticlenumber(req);

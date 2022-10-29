@@ -1,8 +1,8 @@
-<%@page import="reviewBoard.dto.ReviewBoard"%>
+<%@page import="event.dto.EventBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% ReviewBoard create = (ReviewBoard)request.getAttribute("reviewInsert"); %>
+<% EventBoard create = (EventBoard)request.getAttribute("eventInsert"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,13 +73,13 @@ body{
 
 </head>
 <body>
-<form action="/homett/reviewcreate" method="post" id="create">
+<form action="/homett/eventcreate" method="post" id="create">
 
 	
 
 	<div id="title">
 	<span>제목</span>
-	<input type="text" id="reviewTitle" name="reviewTitle">
+	<input type="text" id="eventTitle" name="eventTitle">
 	</div>
 	
 	<br><br><br>

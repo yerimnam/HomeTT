@@ -54,7 +54,8 @@
 </tr>
 <tr>
 	<td>작성자</td>
-	<td><%=viewBoard.getReviewWriter() %></td>
+<%-- 	<td><%=viewBoard.getReviewWriter() %></td> --%>
+	<td><%=viewBoard.getUserName() %></td>
 </tr>
 
 
