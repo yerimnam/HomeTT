@@ -1,13 +1,11 @@
-<%@page import="event.dto.EventBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<% EventBoard create = (EventBoard)request.getAttribute("eventInsert"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -20,6 +18,8 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <script type="text/javascript">
+
+
 
 
 $(document).ready(function(){
@@ -38,7 +38,12 @@ $(document).ready(function(){
 		});
 				//textarea#note에 웹 에디터 적용
 				$("#content").summernote()
-				$("user_id").summernote()					
+				$("user_id").summernote()
+			
+				
+				
+	
+				
 	})
 			
 </script>
@@ -52,6 +57,13 @@ $(document).ready(function(){
 	})		
 	
 })
+
+
+
+
+
+		
+		
 
 
 </script>
@@ -71,15 +83,16 @@ body{
 
 </style>
 
+
 </head>
 <body>
-<form action="/homett/eventcreate" method="post" id="create">
+<form action="/homett/reviewcreate" method="post" id="create">
 
 	
 
 	<div id="title">
 	<span>제목</span>
-	<input type="text" id="eventTitle" name="eventTitle">
+	<input type="text" id="reviewTitle" name="reviewTitle">
 	</div>
 	
 	<br><br><br>

@@ -1,19 +1,20 @@
-<%@page import="event.dto.EventBoard"%>
+<%@page import="reviewBoard.dto.ReviewBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% EventBoard viewBoard = (EventBoard) request.getAttribute("viewBoard"); %>
+    
+    
+<% ReviewBoard viewBoard = (ReviewBoard) request.getAttribute("viewBoard"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 
  function back (){
 	
- 	location.href="/homett/eventlist";
+ 	location.href="/homett/reviewlist";
  	console.log ("이전으로")
 	
  }
@@ -21,20 +22,20 @@
  function update(){
 		console.log("수정하기")
  	alert("수정하시겠습니까?")
- 	location.href="/homett/eventupdate?eventNo=<%=viewBoard.getEventArticlenumber()%>"; 
+ 	location.href="/homett/reviewupdate?reviewNo=<%=viewBoard.getReviewArticlenumber()%>"; 
  	}
 	
  function deleteevent(){
 	
  	console.log("삭제하기")
  	confirm("삭제 하시겠습니까?")
- 	location.href="/homett/eventdelete?eventNo=<%=viewBoard.getEventArticlenumber()%>"; 
+ 	location.href="/homett/reviewdelete?reviewNo=<%=viewBoard.getReviewArticlenumber()%>"; 
 
  }
 </script> 
+<title>Insert title here</title>
 </head>
 <body>
-
 
 <h1>게시글 상세보기</h1>
 <hr>
@@ -45,27 +46,27 @@
 
 <tr>
 	<td>글번호</td>
-	<td><%=viewBoard.getEventArticlenumber() %>
+	<td><%=viewBoard.getReviewArticlenumber() %>
 
 	<td>작성일</td>
-	<td><%=viewBoard.getEventDate() %>
+	<td><%=viewBoard.getReviewDate() %>
 
 </tr>
 <tr>
 	<td>작성자</td>
-	<td><%=viewBoard.getEventWriter() %></td>
-		<td><%=viewBoard.getUserName() %></td>
+<%-- 	<td><%=viewBoard.getReviewWriter() %></td> --%>
+	<td><%=viewBoard.getUserName() %></td>
 </tr>
 
 
 <tr>
 	<td>제목</td>
-	<td><%=viewBoard.getEventArticletitle() %>
+	<td><%=viewBoard.getReviewArticletitle() %>
 </tr>
 
 <tr>
 	<td>이벤트내용</td>
-	<td><%=viewBoard.getEventContent() %></td>
+	<td><%=viewBoard.getReviewContent() %></td>
 
 
 </tr>
@@ -81,8 +82,6 @@
 
 
 </div>
-
-
 
 
 </body>
