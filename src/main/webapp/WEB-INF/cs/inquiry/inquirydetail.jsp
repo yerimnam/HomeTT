@@ -1,9 +1,9 @@
-
-
 <%@page import="inquiry.dto.InquiryBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+
     <% InquiryBoard inquiryDetail = (InquiryBoard) request.getAttribute("inquiryDetail"); %>
 <!DOCTYPE html>
 <html>
@@ -43,9 +43,7 @@ function deleteinquiry(){
 		<td><%=inquiryDetail.getInquiryArticleNumber() %>
 	
 		<td>작성일자</td>
-		<td><%=inquiryDetail.getInquiryDate() %>
-	
-	
+		<td><%=inquiryDetail.getInquiryDate() %>	
 	</tr>
 	<tr>
 		<td>닉네임</td>
@@ -61,11 +59,8 @@ function deleteinquiry(){
 	<tr>
 		<td>문의사항</td>
 		<td><%=inquiryDetail.getInquiryContent() %></td>
-	
-	
 	</tr>
-	
-	
+		
 	</table>
 	
 	<div>
@@ -73,8 +68,7 @@ function deleteinquiry(){
 		<button id="btnList" onclick="back()">목록</button>
 		<button id="btnUpdate" onclick="update()">수정</button>
 		<button id="btnDelete" onclick="deleteinquiry()">삭제</button>
-	
-	
+		
 	</div>
 <%} else {%>
 
@@ -103,13 +97,9 @@ function deleteinquiry(){
 	<tr>
 		<td>문의사항</td>
 		<td><%=inquiryDetail.getInquiryContent() %></td>
-	
-	
 	</tr>
 	
-	
 	</table>
-	
 	
 	<div>
 	
@@ -128,19 +118,14 @@ function deleteinquiry(){
 		
 		</table>
 		<button id="btnList" onclick="back()">목록</button>
-	
-	
-	
-	
+		
 	</div>
-	
-	
-
-
 <%} %>
-</body>
-</html>
 
+
+
+
+<jsp:include page="/WEB-INF/layout/footer.jsp" />
 
 
 

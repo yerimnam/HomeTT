@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+    
     <%List<InquiryBoard> inquiryBoard = (List)request.getAttribute("inquiryview"); %>
     
 <!DOCTYPE html>
@@ -105,5 +107,4 @@
 
 
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />
