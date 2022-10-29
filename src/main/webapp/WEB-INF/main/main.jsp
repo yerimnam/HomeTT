@@ -181,7 +181,7 @@ ul{
 #popular_ott ul {
 
 	position: absolute;
-   left: -38px;
+     left: -227px;
 }
 
 

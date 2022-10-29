@@ -131,7 +131,6 @@ div{
 
 	height: 300px;
 	width: 1600px;
-	margin: 0 auto;
 }
 
 table{
@@ -143,12 +142,15 @@ footer{
 	border: 1px solid black;
     position: relative;
     top: 1300px;
-    }
+  }
 
 
 #pay{
 	position: relative;
+	 margin: 0 auto;
 }
+
+
 #partyinfotitle{
 
 	width: 200px;
@@ -165,6 +167,7 @@ footer{
 	
 
 }
+
 #partyinfo {
     width: 1130px;
     height: 250px;
@@ -191,6 +194,7 @@ border-bottom:1px solid #666666;
     top: 49px;
 }
 
+
 #payinfotitle{
     width: 200px;
     height: 58px;
@@ -201,6 +205,7 @@ border-bottom:1px solid #666666;
     top: 123px;
 
 }
+
 #payinfotitle span{
     font-size: 40px;
     background-color: #ffd925;
@@ -220,6 +225,8 @@ border-bottom:1px solid #666666;
     border-top: 1px solid #666666;
     border-bottom: 1px solid #666666;
 }
+
+
 #userinfo{
 	font-weight: 500;
     width: 1130px;
@@ -304,6 +311,7 @@ border-bottom:1px solid #666666;
     width: 600px;
     height: 156px;
     left: 20px;
+    margin: 0 auto;
 
 }
 
