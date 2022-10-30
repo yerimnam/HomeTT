@@ -141,6 +141,7 @@ a {
 #btn:hover {
 	color: #ff8c11;
 	background-color: #fffcee;
+	transition: 1s;
 }
 
 </style>
