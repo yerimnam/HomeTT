@@ -17,6 +17,7 @@ import party.service.face.PartyModifyService;
 import party.service.face.WishListService;
 import party.service.impl.PartyModifyServiceImpl;
 import party.service.impl.WishListServiceImpl;
+import user.dto.Member;
 
 @WebServlet("/homett/wishlist")
 public class WishListController extends HttpServlet {
@@ -55,16 +56,18 @@ public class WishListController extends HttpServlet {
 			
 			System.out.println("/homett/wishlist [POST]");
 
-//			resp.setContentType("application/json;charset=utf-8");
 			
 			HttpSession session = req.getSession();
-			session.setAttribute("userNo", 1); // 테스트용 유저 정보 받아오기
+			
+			
+			Member member = new Member();
+			member.setUserId((String) session.getAttribute("userNo"));
+			
+//			session.setAttribute("userNo", 1); // 테스트용 유저 정보 받아오기
 //			int userNo = Integer.parseInt(String.valueOf(session.getAttribute("userNo")));
 			
-//			String partyNo = req.getParameter("party_no"); //파티 정보 받아오기
-			
 			//추후 세션값으로 대치
-			int userNo = 1;
+//			int userNo = 1;
 			String partyNo = req.getParameter("partyNo"); //파티 정보 받아오기
 			
 			System.out.println("partyNo :"+ partyNo);

@@ -192,8 +192,15 @@ a.heart {
 				</ul>
 
 				<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
-				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span>
+<!-- 				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span> -->
 
+				<form action="/homett/wishlist" method="post" id="wishlist_form">
+					<!-- 						<button>하트</button> -->
+					<button type="button" id="wishlist"
+						onclick="sendHearth(<%=partyList.get(i).getPartyNo()%>)"
+						name="wishlist">🧡</button>
+					<div id="result"></div>
+				</form>
 				</span>
 				<!-- 				</a> -->
 			</div>

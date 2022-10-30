@@ -27,6 +27,7 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		System.out.println("---------" + req.getParameter("partykind"));
 		System.out.println("---------" + req.getParameter("partyrule"));
 		System.out.println("---------" + req.getParameter("pay"));
+		System.out.println("---------" + req.getParameter("partymember"));
 		
 		party.setPartyKind ( (String)req.getParameter("partykind") );
 		party.setPartyRule(req.getParameter("partyrule"));
@@ -35,11 +36,14 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		party.setPartyMember(Integer.parseInt(req.getParameter("partymember")));
 		party.setPaymentAmount(Integer.parseInt(req.getParameter("pay")));
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String endtDate = req.getParameter("endtDate");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		
+		String endDate = req.getParameter("endDate");
+		System.out.println(endDate);
+		
 		try {
-			party.setPartyEndDate( sdf.parse(endtDate) );
+			party.setPartyEndDate( sdf.parse(endDate) );
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -59,11 +63,11 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		int next = createpartyDao.selectNextPartyno(conn);
 		System.out.println("CreatePartyService create() - next : " + next);
 		
-		//조회디ㅗㄴ enxtval party객체 저장하기
+		//조회된 enxtval party객체 저장하기
 		party.setPartyNo(next);
 		System.out.println("CreatePartyService create() - next : " + party);
 		
-		//완성된 party객체 DB에 삽ㅇㅂ
+		//완성된 party객체 DB에 삽입
 		int result = createpartyDao.insert(conn, party);
 		
 		System.out.println("CreatePartyService create() - 끝 ");

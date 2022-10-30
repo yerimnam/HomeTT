@@ -1,4 +1,4 @@
-package party.dao.face;
+ package party.dao.face;
 
 import java.sql.Connection;
 
@@ -14,7 +14,7 @@ public interface CreatePartyDao {
 	 * @param conn - DB 연결 객체
 	 * @return - partyno로 사용될 party_seq의 nextpartyno
 	 */
-	int selectNextPartyno(Connection conn);
+	public int selectNextPartyno(Connection conn);
 	
 
 	
@@ -25,7 +25,7 @@ public interface CreatePartyDao {
 	 * @param userno
 	 * @return
 	 */
-	Member selectUserinfo(Connection conn, int userno);
+	public Member selectUserinfo(Connection conn, int userno);
 	
 	
 	
@@ -36,7 +36,7 @@ public interface CreatePartyDao {
 	 * @param party - 테이블에 삽입할 정보 객체
 	 * @return INSERT 수행 결과(0이면 실패, 1이면 삽입 성공)
 	 */
-	int insert(Connection conn, Party party);
+	public int insert(Connection conn, Party party);
 	
 	
 	
