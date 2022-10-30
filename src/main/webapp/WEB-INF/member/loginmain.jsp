@@ -26,7 +26,7 @@
 <h3><%=session.getAttribute("userNick") %>님,환영합니다</h3><br>
 <p>회원번호 :  <%=session.getAttribute("userNo") %></p>
 <p>회원권한 :  <%=session.getAttribute("masterNo") %></p>
-<p>아이디 :  <%=session.getAttribute("userId") %></p>
+<p><%=session.getAttribute("userNick") %>님,환영합니다</p>
 <p>닉네임 :  <%=session.getAttribute("userNick") %></p>
 <p>이메일 :  <%=session.getAttribute("userEmail") %></p>
 <p>휴대폰번호 :  0<%=session.getAttribute("userPhone") %></p>

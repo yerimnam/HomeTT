@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import common.JDBCTemplate;
 import partyCheck.dao.face.PartyCheckDao;
 import partyCheck.dao.impl.PartyCheckDaoImpl;
+import partyCheck.dto.MypageMember;
 import partyCheck.dto.PartyCheck;
 import partyCheck.service.face.PartyCheckService;
 import util.Paging5;
@@ -92,5 +93,6 @@ public class PartyCheckServiceImpl implements PartyCheckService {
 		// DB조회결과 반환
 		return partyCheckDao.selectOwner(JDBCTemplate.getConnection());
 	}
+
 
 }

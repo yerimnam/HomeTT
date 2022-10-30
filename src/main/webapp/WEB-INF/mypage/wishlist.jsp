@@ -44,7 +44,7 @@
 #wishlist {
 	display: flex;
 	width: 210px;
-/* 	height: 250px; */
+	height: 275px;
 /* 	margin: 20px; */
 	border-radius: 5px;
 	padding-bottom: 20px;
@@ -62,7 +62,8 @@
 #partyKind {
 	border: 1px solid #585a72; 
 	height: 45px; 
-	padding-top:10px; 
+	padding-top:10px;
+	margin-top: 20px: 
 	text-align: center; 
 	margin-top: 10px; 
 	border-radius: 5px;
@@ -124,7 +125,7 @@ a:active {
 <div class="main">
 	<% for(int i = 0; i < wishList.size(); i++) { %>
 	<div id="wishlist">
-		<a href="./roomboard?partyno=<%=wishList.get(i).getPartyNo() %>"><%=wishList.get(i).getPartyNo() %><ul>
+		<a href="./roomboard?partyno=<%=wishList.get(i).getPartyNo() %>"><ul>
 			<div id="partyKind">
 				<%=wishList.get(i).getPartyKind() %>
 			</div>

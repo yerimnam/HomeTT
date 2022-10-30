@@ -3,13 +3,11 @@ package partyCheck.dao.face;
 import java.sql.Connection;
 import java.util.List;
 
-import partyCheck.dto.MypageMember;
 import partyCheck.dto.PartyCheck;
-import user.dto.Member;
 import util.Paging5;
 
-public interface PartyCheckDao {
-	
+public interface MypageDao {
+
 	/**
 	 * 파티 테이블 전체 조회
 	 * 
@@ -52,17 +50,5 @@ public interface PartyCheckDao {
 	 * @return List<PartyCheck> - 테이블 전체 조회 목록
 	 */
 	public List<PartyCheck> selectOwner(Connection conn);
-
 	
-	/**
-	 * userid를 이용해 회원정보 조회하기
-	 * 
-	 * @param conn - DB연결 객체
-	 * @param member - 조회할 userid를 가진 객체
-	 * @return Member - 조회된 회원 정보
-	 */
-	public Member selectMemberInfo(Connection conn, MypageMember mypageMember);
-
-
-
 }

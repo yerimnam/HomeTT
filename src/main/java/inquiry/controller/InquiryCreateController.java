@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import inquiry.dto.InquiryBoard;
 import inquiry.service.face.InquiryInquiriesService;
 import inquiry.service.impl.InquiryInquiriesServiceImpl;
+import invitation.dto.Invitation;
 
 //1:1 문의 작성
 @WebServlet("/homett/inquirycreate")
@@ -23,14 +24,10 @@ public class InquiryCreateController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		System.out.println("/homett/inquiertcreate [GET]");
+		
 		//한글 인코딩
 		req.setCharacterEncoding("UTF-8");
-
-	
-	
-		
 		
 		//model값 저장하여 view전달
 		
