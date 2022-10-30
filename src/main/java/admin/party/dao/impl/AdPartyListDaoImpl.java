@@ -99,52 +99,52 @@ public class AdPartyListDaoImpl implements AdPartyListDao {
 		return count;
 	}
 
-	@Override
-	public Party selectPartyByPartyno(Connection conn, Party partyno) {
-		
-		String sql = "";
-		sql += "SELECT * FROM party";
-		sql += " WHERE party_no = ?";
-		
-		Party party = null;
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, partyno.getPartyNo());
-			
-			rs = ps.executeQuery();
-			
-			while( rs.next() ) {
-				party = new Party();
-				
-				party.setPartyNo(rs.getInt("party_no"));
-				party.setUserNo(rs.getInt("user_no"));
-				party.setPartyRoomNo(rs.getInt("party_room_no"));
-				party.setPartyKind(rs.getString("party_kind"));
-				party.setPartyRule(rs.getString("party_rule"));
-				party.setPaymentAmount(rs.getInt("paymentAmount"));
-				party.setPartyPeriod(rs.getDate("party_period"));
-				party.setPartyMember(rs.getInt("party_member"));
-				party.setBoardCano(rs.getInt("board_cano"));
-				party.setPartyCreDate(rs.getDate("party_creDate"));
-				party.setPartyEndDate(rs.getDate("party_endDate"));
-				party.setPartyName(rs.getString("party_name"));
-				party.setPartyLeader(rs.getString("party_leader"));
-				party.setOttId(rs.getString("ott_id"));
-				party.setOttPw(rs.getString("ott_pw"));
-				party.setPartyNotice(rs.getString("party_notice"));
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-		
-		return party;
-	}
+//	@Override
+//	public Party selectPartyByPartyno(Connection conn, Party partyno) {
+//		
+//		String sql = "";
+//		sql += "SELECT * FROM party";
+//		sql += " WHERE party_no = ?";
+//		
+//		Party party = null;
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			ps.setInt(1, partyno.getPartyNo());
+//			
+//			rs = ps.executeQuery();
+//			
+//			while( rs.next() ) {
+//				party = new Party();
+//				
+//				party.setPartyNo(rs.getInt("party_no"));
+//				party.setUserNo(rs.getInt("user_no"));
+//				party.setPartyRoomNo(rs.getInt("party_room_no"));
+//				party.setPartyKind(rs.getString("party_kind"));
+//				party.setPartyRule(rs.getString("party_rule"));
+//				party.setPaymentAmount(rs.getInt("paymentAmount"));
+//				party.setPartyPeriod(rs.getDate("party_period"));
+//				party.setPartyMember(rs.getInt("party_member"));
+//				party.setBoardCano(rs.getInt("board_cano"));
+//				party.setPartyCreDate(rs.getDate("party_creDate"));
+//				party.setPartyEndDate(rs.getDate("party_endDate"));
+//				party.setPartyName(rs.getString("party_name"));
+//				party.setPartyLeader(rs.getString("party_leader"));
+//				party.setOttId(rs.getString("ott_id"));
+//				party.setOttPw(rs.getString("ott_pw"));
+//				party.setPartyNotice(rs.getString("party_notice"));
+//				
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+//		
+//		return party;
+//	}
 
 	@Override
 	public List<Party> selectSearchList(Connection conn, Paging paging, String searchType, String keyword) {

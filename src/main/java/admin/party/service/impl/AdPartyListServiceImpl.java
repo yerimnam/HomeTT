@@ -37,28 +37,28 @@ private AdPartyListDao adPartyListDao = new AdPartyListDaoImpl();
 		return paging;
 	}
 	
-	@Override
-	public Party getPartyno(HttpServletRequest req) {
-
-		Party party = new Party();
-		
-		String param = req.getParameter("Partyno");
-		if( null != param && !"".equals(param) ) { //전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
-			party.setPartyNo( Integer.parseInt(param) );
-		}
-		
-		return party;
-	}
+//	@Override
+//	public Party getPartyno(HttpServletRequest req) {
+//
+//		Party party = new Party();
+//		
+//		String param = req.getParameter("Partyno");
+//		if( null != param && !"".equals(param) ) { //전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
+//			party.setPartyNo( Integer.parseInt(param) );
+//		}
+//		
+//		return party;
+//	}
 	
-	@Override
-	public Party view(Party partyno) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-
-		Party party = adPartyListDao.selectPartyByPartyno(conn, partyno);
-		
-		return party;
-	}
+//	@Override
+//	public Party view(Party partyno) {
+//		
+//		Connection conn = JDBCTemplate.getConnection();
+//
+//		Party party = adPartyListDao.selectPartyByPartyno(conn, partyno);
+//		
+//		return party;
+//	}
 	
 	@Override
 	public Paging getSearchPaging(HttpServletRequest req, String searchType, String keyword) {

@@ -32,8 +32,6 @@ header {
 	<div id="log" style="width: 1600px; margin: 20px 0 10px -40px;" class="text-right">
 		<button id="homettmain" class="btn" style="margin-right: 10px; font-weight: bold;" 
 			onclick="location.href='/homett/main'">HommTT 사이트로 가기</button>
-		<button id="btnlogout" class="btn" style="font-weight: bold;" 
-			onclick="location.href='/homett/adminlogout'">로그아웃</button>
 	</div>
 
 	<div style="display: flex; justify-content: center; height: 50px; font-size: 18px; font-weight: bold;">

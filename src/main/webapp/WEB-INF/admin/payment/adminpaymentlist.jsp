@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="util.PbPaging"%>
 <%@page import="admin.payment.dto.Payment"%>
 <%@page import="java.util.List"%>
@@ -5,6 +6,7 @@
     pageEncoding="UTF-8"%>
 
 <%	List<Payment> paymentList = (List) request.getAttribute("paymentList"); %>
+<%	DecimalFormat format = new DecimalFormat("###,###"); %>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -48,13 +50,13 @@ th {
 	
 	<%	for(int i=0; i<paymentList.size(); i++) { %>
 	<tr>
-		<td><%=paymentList.get(i).getPayNo() %></td>
+		<td name="payNo"><%=paymentList.get(i).getPayNo() %></td>
 		<td><%=paymentList.get(i).getOrderNo() %></td>
 		<td><%=paymentList.get(i).getPaymentDate() %></td>
 		<td><%=paymentList.get(i).getUserNo() %></td>
-		<td><%=paymentList.get(i).getPartyNo() %></td>
+		<td><a href="./partyroomdetail?partyNo=<%=paymentList.get(i).getPartyNo() %>"><%=paymentList.get(i).getPartyNo() %></td>
 		<td><%=paymentList.get(i).getPaymentMethod() %></td>
-		<td><%=paymentList.get(i).getPaymentAmount() + "원" %></td>
+		<td><%=format.format(paymentList.get(i).getPaymentAmount())%>원</td>
 	</tr>
 	<%	} %>
 </table>

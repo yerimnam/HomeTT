@@ -63,7 +63,7 @@ public interface MonthlyStatisticsService {
 	 * 
 	 * @return 당월 탈퇴 회원 수
 	 */
-	public int getCntDDuser();
+//	public int getCntDDuser();
 
 	/**
 	 * 당월 생성된 파티 수를 구한다. 

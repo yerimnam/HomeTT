@@ -31,7 +31,7 @@ public interface AdPartyListService {
 	 * @param req - 요청 정보 객체
 	 * @return Party - 전달파라미터 partyno를 저장한 DTO객체
 	 */
-	public Party getPartyno(HttpServletRequest req);
+//	public Party getPartyno(HttpServletRequest req);
 	
 	/**
 	 * 전달된 partyno를 이용하여 파티를 조회한다
@@ -39,7 +39,7 @@ public interface AdPartyListService {
 	 * @param Partyno - 조회할 partyno를 가진 DTO객체
 	 * @return Party - 조회된 파티 정보
 	 */
-	public Party view(Party partyno);
+//	public Party view(Party partyno);
 
 	/**
 	 * 검색 게시글 페이징 객체 생성

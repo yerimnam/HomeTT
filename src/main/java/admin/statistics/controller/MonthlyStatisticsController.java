@@ -68,12 +68,12 @@ public class MonthlyStatisticsController extends HttpServlet {
 			//가입 유저 수, 탈퇴 유저 수, 신규 파티 수, 종료 파티 수 월 통계
 			
 			int nuser = monthlyStatisticsService.getCntDNuser();
-			int duser = monthlyStatisticsService.getCntDDuser();
+//			int duser = monthlyStatisticsService.getCntDDuser();
 			int partycre = monthlyStatisticsService.getCntDPartyCre();
 			int partyend = monthlyStatisticsService.getCntDPartyEnd();
 			
 			req.setAttribute("nuser", nuser);
-			req.setAttribute("duser", duser);
+//			req.setAttribute("duser", duser);
 			req.setAttribute("partycre", partycre);
 			req.setAttribute("partyend", partyend);
 			
