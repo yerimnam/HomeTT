@@ -51,19 +51,11 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 }
 
 #backBg {
-	width: 800px;
+	width: 640px;
 	height: 450px;
 	margin: 0 auto;
 /* 	background-color: #fafafa; */
-	padding: 0px 0 80px 80px;
-}
-
-#mainTxt{
-	font-size: 22px;
-	color: #222222;
-	font-weight: 500;
-	margin-bottom: 20px;
-	
+	padding: 0px 0 80px 0px;
 }
 
  #inBox { 
@@ -72,6 +64,18 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
  	background-color: #fafafa; 
  	padding: 30px 30px 30px 40px;;
  } 
+ 
+#mainTxt{
+	font-size: 22px;
+	color: #222222;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+
+
+hr {
+	border-top : 1px solid #ffd925;
+}
 
 #subTitle{
 	font-size: 18px;
@@ -96,7 +100,7 @@ p > input {
 /* 	background-color: #eeeeee; */
 	border: 1px solid #dddddd;
 	border-radius: 4px;
-	padding-left: 20px;
+	padding-left: 10px;
 	position: absolute;
 	margin-left: 6px;
 }
@@ -104,6 +108,10 @@ p > input {
 #pId {
 	font-size: 16px;
 	margin-bottom: 6px;
+}
+
+#pId > span {
+	margin-left: 16px;
 }
 
 #pPw {
@@ -138,6 +146,11 @@ p > input {
 	right: 0;
 }
 
+/* 인풋 글 작성시 */
+input:focus{
+	border: 2px solid #ffd925;
+    outline: none;
+}
 
 
 </style>
@@ -155,13 +168,13 @@ p > input {
 		
 		<hr>
 		
-			<p id="subTitle"> 유의사항</p>
-			<p id="subContent">회원탈퇴 후에는 회원님의 개인정보를 복원할 수 없으며, 회원님의 로그인정보는 삭제됩니다.</p>
+		<p id="subTitle"> 유의사항</p>
+		<p id="subContent">회원탈퇴 후에는 회원님의 개인정보를 복원할 수 없으며, 회원님의 로그인정보는 삭제됩니다.</p>
 		
 		<div id="inBox">
 		
 			<div id="idDiv">
-				<p id="pId">아이디 :  <%=session.getAttribute("userId") %></p>
+				<p id="pId">아이디 : <span><%=session.getAttribute("userId") %></span></p>
 			</div>
 			<div id="pwDiv">
 				<p id="pPw">비밀번호 : <input type="text" id="userPw"name="userPw"></p>

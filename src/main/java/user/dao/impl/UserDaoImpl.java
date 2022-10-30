@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.servlet.http.HttpSession;
-
 import common.JDBCTemplate;
 import user.dao.face.UserDao;
 import user.dto.Member;

@@ -22,7 +22,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	height: 450px;
 	margin: 0 auto;
 	text-align: center;
-	background-color: #fffcee;
+	background-color: #fffdf5;
 	padding: 80px 0 80px 0;
 }
 

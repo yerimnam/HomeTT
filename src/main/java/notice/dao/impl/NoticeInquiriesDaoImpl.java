@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import event.common.JDBCTemplate;
-import faq.dao.face.FaqInquiriesDao;
-import faq.dto.FaqBoard;
 import notice.dao.face.NoticeInquiriesDao;
 import notice.dto.NoticeBoard;
 import util.Paging;

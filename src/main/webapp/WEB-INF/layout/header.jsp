@@ -210,7 +210,76 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 </style>
 
 </head>
-<body>
+
+
+<%-- 비로그인 상태 --%>
+<%	if( session.getAttribute("login") == null ) { %>
+
+<div id="hdYellowBg">	
+</div><!-- hdTopright -->
+
+<header id="header">
+	
+		<div class="inner top">
+			<div id="topMenu">
+				<a href="/homett/login">로그인</a>
+				<a href="/homett/join">회원가입</a>
+			</div><!-- topMenu end -->
+		</div>	
+		
+		<div class="inner bottom">
+			<div id="bottomMenu">
+				<ul>
+					<li id="mypageBtn">
+						<a href="/homett/login" class="mypage">마이페이지</a>
+					</li>
+					
+					<li class="gnb">
+						<a href="homett/createparty">파티만들기 </a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="homett/partymodify">파티찾기</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="">후기게시판</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="">가이드</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="">고객센터</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+				</ul>
+			
+			</div><!-- bottomMenu end -->
+		</div>
+
+	<div id="hdTopleft" >
+		<a href="/homett/main" id="logoBg">
+			<img alt="logo" src="/resources/img/homett_logo.png " id="logo" >
+		</a>
+	</div>	
+	
+		
+	</header>
+
+<br><br><br><br>
+
+<%	} %>
+
+
+<%-- 로그인 상태 --%>
+<%	if( session.getAttribute("login") != null && (boolean) session.getAttribute("login") ) { %>
 
 <div id="hdYellowBg">	
 </div><!-- hdTopright -->
@@ -220,8 +289,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	
 		<div class="inner top">
 			<div id="topMenu">
-				<a href="/homett/login">로그인</a>
-				<a href="/homett/join">회원가입</a>
+				<a href="/homett/logout">로그아웃</a>
 			</div><!-- topMenu end -->
 		</div>	
 		
@@ -269,15 +337,11 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	</div>	
 	
 		
-	</header>
+</header>
 
 <br><br><br><br>
 
-
-
-
-
-
+<%	} %>
 
 
 

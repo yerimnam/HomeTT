@@ -3,29 +3,17 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.Date" %>
     <%@page import="java.text.SimpleDateFormat" %>
-       <%@ include file="../layout/header.jsp"  %>
+    
     
   <% Payment paycomplete =(Payment)request.getAttribute("paycomplete");  %>
  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 
 <style type="text/css">
 
-body {
 
-	width: 1600px;
-	margin:0 auto;
-}
 
-div{
 
-	width:1600px;
-	
-}
 
 #payresult{
 
@@ -36,6 +24,7 @@ div{
     margin-top: 30px;
     font-size: 20px;
     font-weight: 600;
+    margin: 0 auto;
 
 }
 
@@ -83,7 +72,7 @@ button{
     border-bottom: 1px solid #666666;
     padding: 40px;
     position:absolute;
-    top:413px;
+     top: 380px;
 }
 
 
@@ -103,6 +92,7 @@ button{
     width: 180px;
     height: 50px;
     left: 725px;
+    margin: 0;
 }
 
 #listtitle{
