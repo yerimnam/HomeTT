@@ -65,7 +65,7 @@
 </tr>
 
 <tr>
-	<td>이벤트내용</td>
+	<td>리뷰 내용</td>
 	<td><%=viewBoard.getReviewContent() %></td>
 
 

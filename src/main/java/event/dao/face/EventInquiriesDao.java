@@ -39,6 +39,26 @@ public interface EventInquiriesDao {
 
 	
 	/**
+	 * 검색한 총 게시글 수 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @return int - 검색한 테이블의 전체 행 수
+	 */
+	public int selectSearchCntAll(Connection conn, String searchType, String keyword);
+	
+	/**
+	 * 검색한 게시글 목록 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param searchpaging - 페이징 정보 객체
+	 * @param searchType - 검색 카테고리
+	 * @param keyword - 검색어 내용
+	 * @return 검색한 게시글 목록 전달
+	 */
+	public List<EventBoard> selectSearchList(Connection conn, Paging paging, String searchType, String keyword);
+	
+	
+	/**
 	 * 조회된 게시글의 조회수 증가시키기
 	 * @param conn - DB연결 객체
 	 * @param eventArticlenumber - 조회할 게시글의 eventArticlenumber를 가진 DTO객체
@@ -49,22 +69,13 @@ public interface EventInquiriesDao {
 	/**
 	 * 지정된 eventArticlenumber의 게시글 조회하기
 	 * @param conn - DB연결 객체
-	 * @param eventArticlenumber - 조회할 게시글의 eventArticlenumber를 가진 DTO객체
+	 * @param eventArticlenumber - 조회할 게시글의 neviewArticlenumber를 가진 DTO객체
 	 * @return EventBoard - 조회된 게시글의 상세정보 DTO객체
 	 */
 	public EventBoard selectBoardByeventArticlenumber(Connection conn, EventBoard eventArticlenumber);
 
-	/**
-	 * 게시글 작성자 ID를 이용하여 usernick 을 조회한다
-	 * 
-	 * @param conn - DB연결 객체
-	 * @param viewBoard - 조회할 id를 가진 객체
-	 * @return String - 작성자 닉네임
-	 */
-//	public String selectNickByBoard(Connection connection, EventBoard viewBoard);
 
 
-//	public int delete(Connection conn, EventBoard eventboard);
 
 	/**
 	 * 게시글 입력
@@ -102,26 +113,6 @@ public interface EventInquiriesDao {
 	 */
 	public int deleteDo(Connection conn, EventBoard eventNo);
 	
-
-
-
-//	/**
-//	 * 게시글 입력
-//	 * 
-//	 * @param conn - DB 연결 객체
-//	 * @param board - 삽입될 게시글 내용
-//	 * @return int - INSERT 쿼리 수행 결과
-//	 */
-//	int insert(Connection conn, FaqBoard board);
-//
-//	
-//	/**
-//	 * 시퀀스를 이용하여 다음 게시글 번호 조회하기
-//	 * 
-//	 * @param conn - DB연결 객체
-//	 * @return int - 다음 게시글 번호
-//	 */
-//	int selectNextFaqArticlenumber(Connection conn);
 
 
 

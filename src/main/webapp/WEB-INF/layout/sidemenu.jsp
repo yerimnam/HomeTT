@@ -101,7 +101,7 @@ a:visited{
 				<li class="party manage">PARTY
 					<ul class="area">
 						<li><a href="/homett/type">파티장으로 권한 변경 </a> </li>
-						<li><a href="/homett/partyCheck">파티 조회</a> </li>
+						<li><a href="/homett/partycheck">파티 조회</a> </li>
 						
 					</ul>
 				</li>

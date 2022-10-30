@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import event.common.JDBCTemplate;
+import common.JDBCTemplate;
 import event.dao.face.EventInquiriesDao;
 import event.dto.EventBoard;
 import util.Paging;
@@ -22,16 +22,19 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 	@Override
 	public List<EventBoard> selectAll(Connection conn) {
 		System.out.println("EventBoardDao selectAll - 시작");
-		
+
 		
 		//SQL작성
 		String sql = "";
+
 		
-        sql +=" SELECT E.*";
+        sql +=" SELECT N.*";
         sql +=" ,m.user_nick";
-        sql +=" FROM cs_event E";
+        sql +=" FROM cs_event N";
         sql +=" inner join member m";
-        sql +=" on m.user_no = E.user_no";
+        sql +=" on m.user_no = N.user_no";
+        
+
 		
 		//결과 저장할 List
 		List<EventBoard> eventboardList = new ArrayList<>();
@@ -42,21 +45,20 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			
 			//조회 결과 처리
 			while(rs.next()) {
-				EventBoard e = new EventBoard();//조회결과 행 저장 DTO 객체
+				EventBoard r = new EventBoard();//조회결과 행 저장 DTO 객체
 
-				e.setEventArticlenumber(rs.getInt("event_articlenumber"));
-				e.setAdminNo(rs.getInt("admin_no"));
-				e.setBoardCode(rs.getInt("board_code"));
-				e.setEventArticletitle(rs.getString("event_articletitle"));
-				e.setEventContent(rs.getString("event_content"));
-				e.setEventDate(rs.getDate("event_date"));
-				e.setUserNo(rs.getInt("user_no"));
-				e.setHit(rs.getInt("hit"));
-				
-				e.setUserName(rs.getString("user_nick"));
+				r.setEventArticlenumber(rs.getInt("event_articlenumber"));
+				r.setAdminNo(rs.getInt("admin_no"));
+				r.setBoardCode(rs.getInt("board_code"));
+				r.setEventArticletitle(rs.getString("event_articletitle"));
+				r.setEventContent(rs.getString("event_content"));
+				r.setEventDate(rs.getDate("event_date"));
+				r.setUserNo(rs.getInt("user_no"));
+				r.setHit(rs.getInt("hit"));
+				r.setUserName(rs.getString("user_nick"));
 				
 				//리스트에 결과값 저장하기
-				eventboardList.add(e);
+				eventboardList.add(r);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -78,18 +80,22 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		//SQL작성
 		String sql = "";
 		sql += "SELECT * FROM ( ";
-		sql += " 	SELECT rownum rnum, E.*FROM (";
-		sql += " 	SELECT";
-		sql += "		event_articlenumber,admin_no,board_code,event_articletitle ";
-		sql += " 		,event_content,event_date,user_no,hit";
-		sql += " 	FROM cs_event"; 
-		sql += " 	ORDER BY event_articlenumber DESC";
-		sql += " 	) B";
+		sql += " 	SELECT rownum rnum, R.*FROM (";
+		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+		sql += " 		FROM cs_event RR";
+		sql += "		INNER JOIN member m";
+		sql += "		ON m.user_no = RR.user_no";
+//		sql += " 	SELECT *";
+//		sql += "		event_articlenumber,admin_no,board_code,event_articletitle ";
+//		sql += " 		,event_content,event_date,user_no,hit";
+//		sql += " 	FROM cs_event"; 
+		sql += " 		ORDER BY event_articlenumber DESC";
+		sql += " 	) R";
 		sql += " ) eventBaord";
 		sql += " WHERE rnum BETWEEN ? AND ?";
 		
 		//결과 저장할 List
-		List<EventBoard> eventboardList = new ArrayList<>();
+		List<EventBoard>eventboardList = new ArrayList<>();
 		
 		try {
 			ps = conn.prepareStatement(sql); //SQL수행 객체
@@ -101,18 +107,19 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			
 			//조회 결과 처리
 			while(rs.next()) {
-				EventBoard e = new EventBoard();//조회결과 행 저장 DTO 객체
+				EventBoard r = new EventBoard();//조회결과 행 저장 DTO 객체
 
-				e.setEventArticlenumber(rs.getInt("event_articlenumber"));
-				e.setAdminNo(rs.getInt("admin_no"));
-				e.setBoardCode(rs.getInt("board_code"));
-				e.setEventArticletitle(rs.getString("event_articletitle"));
-				e.setEventContent(rs.getString("event_content")); 
-				e.setEventDate(rs.getDate("event_date"));				
-				e.setHit(rs.getInt("hit"));
-				e.setUserNo(rs.getInt("user_no"));
+				r.setEventArticlenumber(rs.getInt("event_articlenumber"));
+				r.setAdminNo(rs.getInt("admin_no"));
+				r.setBoardCode(rs.getInt("board_code"));
+				r.setEventArticletitle(rs.getString("event_articletitle"));
+				r.setEventContent(rs.getString("event_content")); 
+				r.setEventDate(rs.getDate("event_date"));		
+				r.setEventWriter(rs.getString("user_nick"));
+				r.setHit(rs.getInt("hit"));
+				r.setUserNo(rs.getInt("user_no"));
 				//리스트에 결과값 저장하기
-				eventboardList.add(e);
+				eventboardList.add(r);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -121,7 +128,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			JDBCTemplate.close(ps);
 		}
 				
-		System.out.println("FaqBoard selectAll - 끝");
+		System.out.println("EventBoard selectAll - 끝");
 		return eventboardList; //최종 결과 반환
 	}
 	
@@ -163,7 +170,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		System.out.println("updateHit - 시작");	
 		String sql = "";
 		sql += "UPDATE cs_event"; 
-		sql += "	SET hit = hit +1";
+		sql += "	SET hit = hit + 1";
 		sql += " WHERE event_Articlenumber = ?";
 		
 		int res = 0;
@@ -180,6 +187,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			JDBCTemplate.close(ps);
 		}
 		
+		System.out.println("eventArticlenumber : " + eventArticlenumber);
 		System.out.println("updateHit - 끝");	
 		
 		return res;
@@ -187,29 +195,30 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 
 	@Override
 	public EventBoard selectBoardByeventArticlenumber(Connection conn, EventBoard eventArticlenumber) {
-		System.out.println("selectBoardByeventArticlenumber - 시작");	
-		
+		System.out.println("selectBoardByEventArticlenumber - 시작");	
+		System.out.println("EventArticlenumber.getEventArticlenumber() : " + eventArticlenumber.getEventArticlenumber());
 		String sql = "";
+	
+		sql += " SELECT * FROM (";
+        sql += " 	SELECT R.*";
+        sql += " 	,m.user_nick";
+        sql += " 	FROM cs_event R";
+        sql += " 	inner join member m";
+        sql += " 	on m.user_no = R.user_no";
+        sql += " ) R ";
+        sql += " WHERE event_articlenumber = ?";
+		
 
-        sql +=" SELECT E.*";
-        sql +=" ,m.user_nick";
-        sql +=" FROM cs_event E";
-        sql +=" inner join member m";
-        sql +=" on m.user_no = E.user_no";
 		
 		EventBoard board= null;
 		
 			try {
 				ps = conn.prepareStatement(sql);
-//				ps.setInt(1 , eventArticlenumber.getEventArticlenumber());
-				
+				ps.setInt(1, eventArticlenumber.getEventArticlenumber());
 				rs = ps.executeQuery();
 				
 				while(rs.next() ) {
 					board = new EventBoard();
-					
-
-					
 
 					board.setEventArticlenumber(rs.getInt("event_articlenumber"));
 					board.setAdminNo(rs.getInt("admin_no"));
@@ -219,7 +228,6 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 					board.setEventDate(rs.getDate("event_date"));				
 					board.setHit(rs.getInt("hit"));
 					board.setUserNo(rs.getInt("user_no"));
-					
 					board.setUserName(rs.getString("user_nick"));
 				}
 			} catch (SQLException e) {
@@ -229,7 +237,8 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 				JDBCTemplate.close(ps);
 			}
 
-			System.out.println("selectBoardByfaqArticlenumber - 끝");	
+			System.out.println("selectBoardByEventArticlenumber - 끝");	
+			System.out.println("board : " + board);
 			System.out.println(board.getUserName());
 		return board;
 	}
@@ -242,8 +251,8 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		System.out.println("insertevent시작");
 		
 		String sql ="";								
-		sql +="INSERT INTO cs_event (event_articlenumber,user_no,event_articletitle,event_content,event_date)";
-		sql +=" VALUES(event_seq.nextval,?,?,?,sysdate)";
+		sql +="INSERT INTO cs_event (event_articlenumber,user_no,event_articletitle,event_content,event_date, hit)";
+		sql +=" VALUES(cs_event_SEQ.nextval,?,?,?,sysdate, 0)"; //<- 마지막 ?를 0으로 수정
 		
 		
 
@@ -271,7 +280,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 	@Override
 	public EventBoard selectcontent(Connection conn, EventBoard eventNo) {
 		System.out.println("selectcontent -start");
-		
+		System.out.println("리뷰노 " + eventNo.getEventArticlenumber());
 		String sql ="";
 		sql +="SELECT * FROM cs_event";
 		sql +=" WHERE event_articlenumber =?";
@@ -279,7 +288,8 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		EventBoard updateContent = null;
 		try {
 			ps =conn.prepareStatement(sql);
-
+			
+			
 			ps.setInt(1, eventNo.getEventArticlenumber());
 			
 			rs= ps.executeQuery();
@@ -346,7 +356,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		
 		String sql ="";
 		sql +="DELETE cs_event";
-		sql +=" WHERE event_articlenumber =? ";
+		sql +=" WHERE event_articlenumber = ? ";
 		
 		int deleteevent  =0;
 		
@@ -366,6 +376,106 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		System.out.println("deleteDo 끝");
 		return deleteevent;
 	}
+
+	
+	@Override
+	public List<EventBoard> selectSearchList(Connection conn, Paging paging, String searchType, String keyword) {
+		System.out.println("selectSearchList searchpaging 시작" + paging);
+		keyword = '%' + keyword + '%';
+		
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+		sql += " 		FROM cs_event RR";
+		sql += "		INNER JOIN member m";
+		sql += "		ON m.user_no = RR.user_no";
+		sql += "		WHERE " + searchType + " LIKE ?";
+		sql += " 		ORDER BY Event_ARTICLENUMBER DESC";
+		sql += " 		) R";
+		sql += " 	) RIVIEW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+		
+		List<EventBoard> eventBoardList = new ArrayList<>();
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				EventBoard r = new EventBoard();
+				
+				r.setEventArticlenumber(rs.getInt("event_articlenumber"));
+				r.setAdminNo(rs.getInt("admin_no"));
+				r.setBoardCode(rs.getInt("board_code"));
+				r.setEventArticletitle(rs.getString("event_articletitle"));
+				r.setEventContent(rs.getString("event_content"));
+				r.setEventWriter(rs.getString("user_nick"));
+				r.setEventDate(rs.getDate("event_date"));
+				r.setHit(rs.getInt("hit"));
+				r.setUserName(rs.getString("user_name"));
+				r.setUserNo(rs.getInt("user_no"));
+				
+				eventBoardList.add(r);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("selectSearchList searchpaging 끝" + paging);
+		System.out.println("selectSearchList()" + eventBoardList);
+		return eventBoardList;
+	}
+	
+	@Override
+	public int selectSearchCntAll(Connection conn, String searchType, String keyword) {
+		System.out.println("selectSearchCntAll 시작" + searchType + keyword);
+		keyword = '%' + keyword + '%';
+		
+		String sql = "";
+		sql += "SELECT count(*) cnt FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+		sql += " 		FROM cs_event RR";
+		sql += "		INNER JOIN member m";
+		sql += "		ON m.user_no = RR.user_no";
+		sql += "		WHERE " + searchType + " LIKE ?";
+		sql += "		) R";
+		sql += "	) Event";
+		
+		int count = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+
+			rs = ps.executeQuery();
+
+			while( rs.next() ) {
+				count = rs.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
+		System.out.println("selectSearchCntAll" + count);
+		return count;
+	}
+	
+	
+
 	
 }
 

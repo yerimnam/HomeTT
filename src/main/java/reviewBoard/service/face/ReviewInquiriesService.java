@@ -29,6 +29,24 @@ public interface ReviewInquiriesService {
 	 */
 	public Paging getPaging(HttpServletRequest req);
 	
+	
+	/**
+	 * 검색 게시글 페이징 객체 생성
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Paging - 검색 게시글 페이징 계산이 완료된 객체
+	 */
+	public Paging getSearchPaging(HttpServletRequest req, String searchType, String keyword);
+	
+	/**
+	 * 검색한 게시글 목록 조회
+	 * 
+	 * @param paging - 페이징 계산이 완료된 객체
+	 * @param searchType - 검색 카테고리
+	 * @param keyword - 검색어 내용
+	 * @return 검색한 게시글 목록 전달
+	 */
+	public List<ReviewBoard> getSearchList(Paging paging, String searchType, String keyword);
 	 
 	
 	/**

@@ -297,7 +297,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 			<div id="bottomMenu">
 				<ul>
 					<li id="mypageBtn">
-						<a href="/homett/partycheck" class="mypage">마이페이지</a>
+						<a href="/homett/mypage" class="mypage">마이페이지</a>
 					</li>
 					
 					<li class="gnb">
