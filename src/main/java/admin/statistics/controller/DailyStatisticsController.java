@@ -68,12 +68,12 @@ public class DailyStatisticsController extends HttpServlet {
 			//가입 유저 수, 탈퇴 유저 수, 신규 파티 수, 종료 파티 수 당일 통계
 			
 			int nuser = dailyStatisticsService.getCntDNuser();
-			int duser = dailyStatisticsService.getCntDDuser();
+//			int duser = dailyStatisticsService.getCntDDuser();
 			int partycre = dailyStatisticsService.getCntDPartyCre();
 			int partyend = dailyStatisticsService.getCntDPartyEnd();
 			
 			req.setAttribute("nuser", nuser);
-			req.setAttribute("duser", duser);
+//			req.setAttribute("duser", duser);
 			req.setAttribute("partycre", partycre);
 			req.setAttribute("partyend", partyend);
 			
