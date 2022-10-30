@@ -13,7 +13,8 @@ import party.dto.Party;
 import party.service.face.CreatePartyService;
 import party.service.impl.CreatePartyServiceImpl;
 import user.dto.Member;
-import util.Paging;
+import user.service.face.UserService;
+import user.service.impl.UserServiceImpl;
 
 @WebServlet("/homett/createparty")
 public class CreatePartyController extends HttpServlet {
@@ -22,13 +23,25 @@ public class CreatePartyController extends HttpServlet {
 
 	//서비스 객체
 	private CreatePartyService createpartyService = new CreatePartyServiceImpl();
+	private UserService userService = new UserServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/createparty - doget() TEST");
 		
-		//jsp 뷰 지정
-		req.getRequestDispatcher("/WEB-INF/party/createParty.jsp").forward(req, resp);
+		HttpSession session = req.getSession();
+		
+		Member member = new Member();
+		member.setUserId((String) session.getAttribute("userId"));
+		
+		if ( member.getUserId() != null ) {
+			System.out.println(member.getUserId());
+			//jsp 뷰 지정
+			req.getRequestDispatcher("/WEB-INF/party/createParty.jsp").forward(req, resp);
+		
+		} else {
+			resp.sendRedirect("./login");
+		}
 		
 	}
 	
@@ -60,8 +73,17 @@ public class CreatePartyController extends HttpServlet {
 
 		
 		//세션 객체 가져오기
-		session.getAttribute("userNo");
+		Member member = new Member();
+		member.setUserId((String) session.getAttribute("userId"));
 		
+		if ( member.getUserId() != null ) {
+			
+			System.out.println("로그인됨");
+			
+		} else {
+			resp.sendRedirect("./login");
+		}
+			
 //		boolean loginSt = adminLoginService.login(admin);
 //		
 //		if ( loginSt ) {
@@ -79,16 +101,16 @@ public class CreatePartyController extends HttpServlet {
 		
 		
 		//실제 코드 // session 은 String타입
-		int userno = (int) session.getAttribute("u");
+//		int userno = (int) session.getAttribute("u");
 
 		
 		//로그인한 사람의 정보 조회
-		Member user = createpartyService.getuserinfo(userno);		
+//		Member user = createpartyService.getuserinfo(userno);		
 //		System.out.println("CreatePartyController doPost() - member : " + userinfo);
 		
 		
 		//JSP View 객체 전달하기
-		req.setAttribute("userinfo", user);
+//		req.setAttribute("userinfo", user);
 		
 		
 		//

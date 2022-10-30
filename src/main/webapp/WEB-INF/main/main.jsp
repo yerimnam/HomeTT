@@ -28,11 +28,13 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 
 
 
-footer{
-	border: 1px solid black;
-    position: relative;
-    top: 1300px;
-    }
+ footer{ 
+/*   	border: 1px solid black; */
+     position: relative; 
+     top: 1300px;
+     height: 130px;
+     }
+     
 body{
 		width: 1600px;
 		margin: 0 auto;
@@ -368,11 +370,7 @@ a:visited {
 
 
 
-
- <footer>  
-
-  푸터 영역  
- </footer>  
-
-</body>
-</html>
+  <%@ include file="../layout/footer.jsp"  %>
+  
+<!-- </body> -->
+<!-- </html> -->

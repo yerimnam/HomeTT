@@ -30,15 +30,15 @@ public class AdUserDetailsController extends HttpServlet {
 		//한글 인코딩
 		req.setCharacterEncoding("UTF-8");
 		
-//		HttpSession session = req.getSession();
-//		
-//		Admin admin = new Admin();
-//		admin.setAdminId((String) session.getAttribute("adminId"));
-//		admin.setAdminPw((String) session.getAttribute("adminPw"));
-//		
-//		boolean loginSt = adminLoginService.login(admin);
-//		
-//		if ( loginSt ) {
+		HttpSession session = req.getSession();
+		
+		Admin admin = new Admin();
+		admin.setAdminId((String) session.getAttribute("adminId"));
+		admin.setAdminPw((String) session.getAttribute("adminPw"));
+		
+		boolean loginSt = adminLoginService.login(admin);
+		
+		if ( loginSt ) {
 		
 			String searchType = req.getParameter("searchType");
 			String keyword = req.getParameter("keyword");
@@ -50,14 +50,14 @@ public class AdUserDetailsController extends HttpServlet {
 			} 
 			
 			//TEST 조회결과 확인
-	//		for(Member m : userinfoList) System.out.println("controller 조회 결과 :" + m);
+//			for(Member m : userinfoList) System.out.println("controller 조회 결과 :" + m);
 			
 			req.setAttribute("userinfoList", userinfoList);
 			req.getRequestDispatcher("/WEB-INF/admin/userinfo/adminuserdetails.jsp").forward(req, resp);
 		
-//		} else {
-//			resp.sendRedirect("./adminlogin");
-//		}
+		} else {
+			resp.sendRedirect("./adminlogin");
+		}
 		
 	}
 	

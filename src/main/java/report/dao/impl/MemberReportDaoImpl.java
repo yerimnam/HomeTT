@@ -20,7 +20,7 @@ public class MemberReportDaoImpl implements MemberReportDao {
 		
 		String sql = "";
 		sql += "INSERT INTO report ( report_no, report_content, reporter, report_target, report_party )";
-		sql += " VALUES (?, ?, ?, ?)";
+		sql += " VALUES (report_seq.nextval, ?, ?, ?, ?)";
 		
 		int res = 0;
 

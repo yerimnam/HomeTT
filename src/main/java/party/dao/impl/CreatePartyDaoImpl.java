@@ -94,8 +94,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		//작성할 값 전부 적어야 함
 		String sql ="";
 		sql += "INSERT INTO party";
-		sql	+= " ( party_no, party_name, user_no, party_kind, party_leader, party_rule, paymentamount, party_enddate )";
-		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ?, ?, ?, ? )";
+		sql	+= " ( party_no, party_name, user_no, party_kind, party_leader, party_rule, party_member, paymentamount, party_enddate )";
+		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ? )";
 		
 		int result = 0;
 		
@@ -109,7 +109,7 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			ps.setString(3, party.getPartyKind());
 			ps.setString(4, party.getPartyLeader());
 			ps.setString(5, party.getPartyRule());
-//			ps.setInt(6, party.getPartyMember());
+			ps.setInt(6, party.getPartyMember());
 			ps.setInt(7, party.getPaymentAmount());
 			ps.setDate(8, new java.sql.Date(party.getPartyEndDate().getTime()));
 			

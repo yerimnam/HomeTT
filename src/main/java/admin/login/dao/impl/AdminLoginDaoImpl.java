@@ -18,10 +18,9 @@ public class AdminLoginDaoImpl implements AdminLoginDao {
 	@Override
 	public int selectLoginIdPw(Connection conn, Admin admin) {
 
-		System.out.println("AdminLoginDao selectLoginIdPw() - 시작");
-		System.out.println("admin.getAdminId() : " + admin.getAdminId());
-		System.out.println("admin.getAdminPw() : " + admin.getAdminPw());
-		
+//		System.out.println("AdminLoginDao selectLoginIdPw() - 시작");
+//		System.out.println("admin.getAdminId() : " + admin.getAdminId());
+//		System.out.println("admin.getAdminPw() : " + admin.getAdminPw());
 		
 		String sql = "";
 		sql += "SELECT count(*) cnt FROM admin";
@@ -48,14 +47,14 @@ public class AdminLoginDaoImpl implements AdminLoginDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("AdminLoginDao selectLoginIdPw() - 끝");
+//		System.out.println("AdminLoginDao selectLoginIdPw() - 끝");
 		return cnt;
 	}
 	
 	
 	@Override
 	public Admin selectLoginInfo(Connection conn, Admin admin) {
-		System.out.println("AdminLoginDao selectLoginInfo() - 시작");
+//		System.out.println("AdminLoginDao selectLoginInfo() - 시작");
 
 		String sql = "";
 		sql += "SELECT admin_no, admin_id, admin_pw FROM admin";
@@ -85,13 +84,8 @@ public class AdminLoginDaoImpl implements AdminLoginDao {
 			JDBCTemplate.close(ps);
 		}
 			
-		System.out.println("AdminLoginDao selectLoginInfo() - 끝");
+//		System.out.println("AdminLoginDao selectLoginInfo() - 끝");
 		return result;
 	}
-	
-	
-	
-	
-	
 	
 }

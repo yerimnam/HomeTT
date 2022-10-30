@@ -33,7 +33,7 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		party.setPartyRule(req.getParameter("partyrule"));
 		party.setPartyName(req.getParameter("partyname"));
 		party.setPartyLeader(req.getParameter("partyleader"));
-//		party.setPartyMember(Integer.parseInt(req.getParameter("partymember")));
+		party.setPartyMember(Integer.parseInt(req.getParameter("partymember")));
 		party.setPaymentAmount(Integer.parseInt(req.getParameter("pay")));
 		
 		
@@ -63,11 +63,11 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		int next = createpartyDao.selectNextPartyno(conn);
 		System.out.println("CreatePartyService create() - next : " + next);
 		
-		//조회디ㅗㄴ enxtval party객체 저장하기
+		//조회된 enxtval party객체 저장하기
 		party.setPartyNo(next);
 		System.out.println("CreatePartyService create() - next : " + party);
 		
-		//완성된 party객체 DB에 삽ㅇㅂ
+		//완성된 party객체 DB에 삽입
 		int result = createpartyDao.insert(conn, party);
 		
 		System.out.println("CreatePartyService create() - 끝 ");
