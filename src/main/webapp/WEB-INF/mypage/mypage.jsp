@@ -172,7 +172,7 @@ a:active {
 
 <%@ include file="../layout/sidemenu.jsp" %>
 
-<div id="test" style="margin-top: -130px;">
+<div id="test" style="margin-top: -130px; margin-left: 45px;">
 <div class="situation">
 	<h4>내 정보</h4>
 </div>
