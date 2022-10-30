@@ -46,7 +46,12 @@
 .situation {
 	display: flex;
 	padding-top: 20px;
-	padding-left: 430px;
+	padding-left: 455px;
+}
+
+.situation h4 {
+	color: #1E3269;
+	font-weight: 700;
 }
 
 .invitation {
@@ -54,14 +59,14 @@
 	justify-content: center;
 }
 
-#party {
+#party_My {
 	/* width: 240px; */
 	height: 270px;
 /* 	margin: 20px; */
 /* 	paddig: 20px; */
 	border-radius: 5px;
 	border: 1px solid #e5dcb1;
-	background-color: #eff2e0;	
+ 	background-color: #eff2e0;
 }
 
 #partyKind {
@@ -79,7 +84,7 @@
 	margin-top: 15px;
 }
 
-#party ul {
+#party_My ul {
 	text-align: center;
 	padding: 5px;
 }
@@ -97,19 +102,23 @@ a {
 	color: black;
 	font-weight: 600;
 }
-a:link{
-	color:black;
-    transition : 1s; /* 속성 변경할 때 효과의 속도 조절 */
-}
-a:visited{
+#listHover:link{
 	color: black;
+	background-color: #fffcee; 
+    transition : 0.5s; /* 속성 변경할 때 효과의 속도 조절 */
 }
-a:hover { 
-	color:white;
+#listHover:visited{
+	color: black;
+	background-color: #fffcee; 
+}
+#listHover:hover { 
+	color: #ff8022;
+	background-color: #eff2e0; 
 	text-decoration: none;
 }
-a:active {
-	color:black;
+#listHover:active {
+	color: black;
+	background-color: #fffcee; 
 	text-decoration: none;
 }
 
@@ -121,116 +130,118 @@ a:active {
 	background-color: rgba(0,0,0,0);
 	color: #585a72;
 	padding: 5px;
+	font-weight: 700;
+	font-size: medium;
+	width: 210px;
+	height: 40px;
 }
 
 #btn:hover {
-	color: #a9cd72;
-	background-color: #ffeaa6;
+/* 	color: #a9cd72; */
+	color: #ff8c11;
+/* 	background-color: #ffeaa6; */
+	background-color: #fffcee;
+	transition: 1s;
+	
 }
 
 </style>
 
 <%@ include file="../layout/header.jsp" %>
-
+<%@ include file="../layout/sidemenu.jsp" %>
 <body>
 
-<div class="situation">
-<h4>가입한 파티</h4>
-</div>
-<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
-
-<!--     <input type="button" onClick="sendLinkDefault();" value="친구선택"/> -->
-
-<script type="text/javascript">
-<%-- $(document).ready(function() {
-	
-	$("#btnPartyOut").click(function() {
-		$(location).attr('href', './delete?partyno=<%=partyList.getPartyNo() %>')
-	})
-	
-}) --%>
-
-    function sendLinkCustom() {
-        Kakao.init("5e3445a388e682bf93a131b9d9a3a8e2");
-        Kakao.Link.sendCustom({
-            templateId: 84625 
-        });
-    }
-</script>
-
-
-
-<div class="main">
-	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
-	<div id="party">
-		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
-			<div id="partyKind">
-				<%=ownerPartyList.get(i).getPartyKind() %>
-			</div>
-			<div id="partyName">
-				<%=ownerPartyList.get(i).getPartyName() %>
-			</div>
-			<hr style="background-color: black; border-style: dashed; width: 100px;">
-			<li>파티장 : <%=ownerPartyList.get(i).getPartyLeader() %></li>
-			<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
-			<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
-			<hr style="background-color: black; border-style: dashed; width: 150px;">
-			<li>참여 금액 : <%=format.format(ownerPartyList.get(i).getPaymentamount())%> 원</li>
-		</ul></a>
+<div id="topMain" style="margin-top: 40px; margin-left: 70px;">
+	<div class="situation">
+		<h4>가입한 파티 목록</h4>
 	</div>
-	<% } %>
-</div>
-
-<div class="invitation">
-    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
-</div>
-
-
-
-
-<div class="situation">
-<h4>전체 파티 목록</h4>
-</div>
-<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
-
-
-<div id="submenu">
-	<ul>
-	</ul>
-</div>
-<div class="main">
-	<% for(int i = 0; i < partyList.size(); i++) { %>
-	<div id="party">
-		<a id="link" href="partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo() %>"><ul>
-			<div id="partyKind">
-				<%=partyList.get(i).getPartyKind() %>
-			</div>
-			<div id="partyName">
-				<%=partyList.get(i).getPartyName() %>
-			</div>
-			<hr style="background-color: black; border-style: dashed; width: 100px;">
-			<li>파티장 : <%=partyList.get(i).getPartyLeader() %></li>
-			<li>파티 만료일 : <%=partyList.get(i).getPartyEnddate() %></li>
-			<li>모집 인원 : <%=partyList.get(i).getPartyMember() %></li>
-			<hr style="background-color: black; border-style: dashed; width: 150px;">
-			<li>참여 금액 : <%=format.format(partyList.get(i).getPaymentamount())%> 원</li>
-		</ul></a>
-	</div>
-	<% } %>
-</div>
-
-<div class="invitation">
-    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
-</div>
-
-<div style="text-align: center;">
-	<ul class="pagination">
-		<% for(int i=paging5.getStartPage(); i <= paging5.getEndPage(); i++) { %>
-		<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li> <!-- 파티장으로 참여중인 페이징 -->
+	<hr align="center" style=" height: 1px; background-color: black; width: 55%;">
+	
+	<!--     <input type="button" onClick="sendLinkDefault();" value="친구선택"/> -->
+	
+	<script type="text/javascript">
+	    function sendLinkCustom() {
+	        Kakao.init("5e3445a388e682bf93a131b9d9a3a8e2");
+	        Kakao.Link.sendCustom({
+	            templateId: 84625 
+	        });
+	    }
+	</script>
+	
+	
+	
+	<div class="main">
+		<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
+		<div id="party_My">
+			<a id="listHover" href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
+				<div id="partyKind">
+					<%=ownerPartyList.get(i).getPartyKind() %>
+				</div>
+				<div id="partyName">
+					<%=ownerPartyList.get(i).getPartyName() %>
+				</div>
+				<hr style="background-color: black; border-style: dashed; width: 100px;">
+				<li>파티장 : <%=ownerPartyList.get(i).getPartyLeader() %></li>
+				<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
+				<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
+				<hr style="background-color: black; border-style: dashed; width: 150px;">
+				<li>참여 금액 : <%=format.format(ownerPartyList.get(i).getPaymentamount())%> 원</li>
+			</ul></a>
+		</div>
 		<% } %>
-	</ul>
+	</div>
+	
+	<div class="invitation">
+	    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
+	</div>
+	
+	
+	
+	
+	<div id="topMain" style="margin-top: 40px; margin-left: 70px;">
+	<div class="situation" style="padding-left: 388px;">
+		<h4>전체 파티 목록</h4>
+	</div>
+	<hr align="center" style=" height: 1px; background-color: black; width: 62%;">
+	
+	
+	<div id="submenu">
+		<ul>
+		</ul>
+	</div>
+	<div class="main">
+		<% for(int i = 0; i < partyList.size(); i++) { %>
+		<div id="party_My">
+			<a id="listHover" href="partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo() %>"><ul>
+				<div id="partyKind">
+					<%=partyList.get(i).getPartyKind() %>
+				</div>
+				<div id="partyName">
+					<%=partyList.get(i).getPartyName() %>
+				</div>
+				<hr style="background-color: black; border-style: dashed; width: 100px;">
+				<li>파티장 : <%=partyList.get(i).getPartyLeader() %></li>
+				<li>파티 만료일 : <%=partyList.get(i).getPartyEnddate() %></li>
+				<li>모집 인원 : <%=partyList.get(i).getPartyMember() %></li>
+				<hr style="background-color: black; border-style: dashed; width: 150px;">
+				<li>참여 금액 : <%=format.format(partyList.get(i).getPaymentamount())%> 원</li>
+			</ul></a>
+		</div>
+		<% } %>
+	</div>
+	
+	<div class="invitation">
+	    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
+	</div>
+	
+	<div style="text-align: center;">
+		<ul class="pagination">
+			<% for(int i=paging5.getStartPage(); i <= paging5.getEndPage(); i++) { %>
+			<li><a href="./partycheck?curPage=<%=i %>"><%=i %></a></li> <!-- 파티장으로 참여중인 페이징 -->
+			<% } %>
+		</ul>
+	</div>
 </div>
-
 
 <script>
 	let party_no = document.querySelector("#party_no");

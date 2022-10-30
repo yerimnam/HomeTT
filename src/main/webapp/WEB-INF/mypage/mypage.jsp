@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Party Check</title>
+<title>My Page</title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -104,19 +104,23 @@ a {
 	color: black;
 	font-weight: 600;
 }
-a:link{
-	color:black;
-    transition : 1s; /* 속성 변경할 때 효과의 속도 조절 */
-}
-a:visited{
+#listHover:link{
 	color: black;
+	background-color: #fffcee; 
+    transition : 0.5s; /* 속성 변경할 때 효과의 속도 조절 */
 }
-a:hover { 
-	color: #ffd925;
+#listHover:visited{
+	color: black;
+	background-color: #fffcee; 
+}
+#listHover:hover { 
+	color: #ff8022;
+	background-color: #eff2e0; 
 	text-decoration: none;
 }
-a:active {
-	color:black;
+#listHover:active {
+	color: black;
+	background-color: #fffcee; 
 	text-decoration: none;
 }
 
@@ -135,13 +139,13 @@ a:active {
 }
 
 #btn:hover {
-	color: #a9cd72;
-	background-color: #ffeaa6;
+	color: #ff8c11;
+	background-color: #fffcee;
 }
 
 </style>
 
-<%@ include file="../layout/header.jsp" %>
+
 
 <body>
 
@@ -165,14 +169,11 @@ a:active {
     }
 </script>
 
-<!-- <div style="width: 240px; text-align: center; "> -->
-<!-- <span style="width: 240px; font-weight: 900; font-size: x-large; color: #ff8c11; ">반갑습니다 000님</span><br> -->
-<!-- <span style="width: 240px; font-weigth: 600; font-size: large; color: #ff8c11 ">ID : Trevi</span> -->
-<!-- </div><br> -->
 
+<%@ include file="../layout/header.jsp" %>
 <%@ include file="../layout/sidemenu.jsp" %>
 
-<div id="test" style="margin-top: -130px; margin-left: 45px;">
+<div id="topMain" style="margin-top: -130px; margin-left: 45px;">
 <div class="situation">
 	<h4>내 정보</h4>
 </div>
@@ -202,7 +203,7 @@ a:active {
 <div class="main">
 	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
 	<div id="party_my">
-		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
+		<a id="listHover" href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
 			<div id="partyKind">
 				<%=ownerPartyList.get(i).getPartyKind() %>
 			</div>
