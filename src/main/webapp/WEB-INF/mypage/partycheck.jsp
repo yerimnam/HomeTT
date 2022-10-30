@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="util.Paging5"%>
 <%@page import="partyCheck.dto.PartyCheck"%>
 <%@page import="java.util.List"%>
@@ -7,7 +8,7 @@
 <% List<PartyCheck> partyList = (List) request.getAttribute("partyList"); %>
 <% List<PartyCheck> ownerPartyList = (List) request.getAttribute("ownerPartyList"); %>
 <% Paging5 paging5 = (Paging5) request.getAttribute("paging"); %>
-
+<% DecimalFormat format = new DecimalFormat("###,###"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,8 +175,7 @@ a:active {
 			<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
 			<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
 			<hr style="background-color: black; border-style: dashed; width: 150px;">
-			<li>참여 금액 : <%=ownerPartyList.get(i).getPaymentamount() %> 원</li>
-			<li id="party_no" hidden><%=ownerPartyList.get(i).getPartyNo() %></li>
+			<li>참여 금액 : <%=format.format(ownerPartyList.get(i).getPaymentamount())%> 원</li>
 		</ul></a>
 	</div>
 	<% } %>
@@ -213,7 +213,7 @@ a:active {
 			<li>파티 만료일 : <%=partyList.get(i).getPartyEnddate() %></li>
 			<li>모집 인원 : <%=partyList.get(i).getPartyMember() %></li>
 			<hr style="background-color: black; border-style: dashed; width: 150px;">
-			<li>참여 금액 : <%=partyList.get(i).getPaymentamount() %> 원</li>
+			<li>참여 금액 : <%=format.format(partyList.get(i).getPaymentamount())%> 원</li>
 		</ul></a>
 	</div>
 	<% } %>

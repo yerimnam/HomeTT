@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="partyCheck.dto.PartyCheckOwner"%>
 <%@page import="util.Paging5"%>
 <%@page import="partyCheck.dto.PartyCheck"%>
@@ -8,7 +9,7 @@
 <% List<PartyCheck> partyList = (List) request.getAttribute("partyList"); %>
 <% List<PartyCheck> ownerPartyList = (List) request.getAttribute("ownerPartyList"); %>
 <% Paging5 paging5 = (Paging5) request.getAttribute("paging"); %>
-
+<% DecimalFormat format = new DecimalFormat("###,###"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@
 .situation {
 	display: flex;
 	padding-top: 20px;
-	padding-left: 320px;
+	padding-left: 530px;
 	margin-bottom: -15px;
 }
 
@@ -60,7 +61,7 @@
 	justify-content: center;
 }
 
-#party {
+#party_my {
 	/* width: 240px; */
 	height: 270px;
 /* 	margin: 20px; */
@@ -85,7 +86,7 @@
 	margin-top: 15px;
 }
 
-#party ul {
+#party_my ul {
 	text-align: center;
 	padding: 5px;
 }
@@ -126,6 +127,8 @@ a:active {
 	border: 1px solid #ffeaa6;
 	background-color: rgba(0,0,0,0);
 	color: #585a72;
+	font-weight: 700;
+	font-size: medium;
 	padding: 5px;
 	width: 195px;
 	height: 40px;
@@ -167,34 +170,38 @@ a:active {
 <!-- <span style="width: 240px; font-weigth: 600; font-size: large; color: #ff8c11 ">ID : Trevi</span> -->
 <!-- </div><br> -->
 
-<%-- <%@ include file="../layout/sidemenu.jsp" %> --%>
+<%@ include file="../layout/sidemenu.jsp" %>
 
 <div id="test" style="margin-top: -130px;">
 <div class="situation">
 	<h4>내 정보</h4>
 </div>
-<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
+<hr align="center" style=" height: 1px; background-color: black; width: 50%;">
 
-<div style=" display: flex; justify-content: center;">
-<div style="border: 1px solid black; width: 830px; padding: 10px; height: 210px; background-color: #fffcee;
-	font-weight: 600; font-size: medium; color: #1E3269;">
-<span><%=session.getAttribute("userNick") %>님,환영합니다</span>
-<span>이메일 :  <%=session.getAttribute("userEmail") %></span>
-<span>아이디 :  <%=session.getAttribute("userId") %></span>
-<span>이름 :  <%=session.getAttribute("userName") %></span>
-<span>가입한 파티방 수 :  <%=ownerPartyList.size() %></span>
-</div>
+<div style=" display: flex; justify-content: center; margin-top: 135px;">
+	<div style="border: 1px solid black; width: 830px; padding: 10px; padding-left: 40px; height: 290px; background-color: #fffcee;
+		font-weight: 700; font-size: large; color: #1E3269;">
+		<div style="font-weight: 900; font-size: xx-large; color: #ff8c11; text-align: center;">
+			<span><%=session.getAttribute("userName") %>'s  MyPage</span><br><br>
+		</div>
+		<span>아이디 :  <%=session.getAttribute("userId") %></span><br>
+		<span>회원권한 :  <%=session.getAttribute("masterNo") %></span><br>
+		<span>이메일 :  <%=session.getAttribute("userEmail") %></span><br>
+		<span>연락처 :  <%=session.getAttribute("userPhone") %></span><br>
+		<span>가입한 파티방 수 :  <%=ownerPartyList.size() %></span><br>
+		<a href="./editprofile" style="margin-left: 575px;"><button id="btn">회원정보 수정하기</button></a>
+	</div>
 </div><br><br><br><br>
 
 
 <div class="situation">
 	<h4>가입한 파티</h4>
 </div>
-<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
+<hr align="center" style=" height: 1px; background-color: black; width: 45%;">
 
 <div class="main">
 	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
-	<div id="party">
+	<div id="party_my">
 		<a href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
 			<div id="partyKind">
 				<%=ownerPartyList.get(i).getPartyKind() %>
@@ -207,7 +214,7 @@ a:active {
 			<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
 			<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
 			<hr style="background-color: black; border-style: dashed; width: 150px;">
-			<li>참여 금액 : <%=ownerPartyList.get(i).getPaymentamount() %> 원</li>
+			<li>참여 금액 : <%=format.format(ownerPartyList.get(i).getPaymentamount())%> 원</li>
 		</ul></a>
 	</div>
 	<% } %>
