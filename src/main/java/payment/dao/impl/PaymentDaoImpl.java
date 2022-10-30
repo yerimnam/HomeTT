@@ -117,7 +117,6 @@ public class PaymentDaoImpl implements PaymentDao {
 			ps.setInt(3, returnData.getUserNo());
 			ps.setInt(4, returnData.getPartyNo());
 			ps.setString(5, returnData.getPaymentMethod());
-//			ps.setInt(6, returnData.getUserCardno());
 			ps.setString(6, returnData.getUserCardCom());
 			ps.setInt(7, returnData.getPaymentAmount());
 
