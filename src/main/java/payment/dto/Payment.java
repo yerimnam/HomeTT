@@ -9,12 +9,9 @@ public class Payment {
 	private int userNo;
 	private int partyNo;
 	private String paymentMethod;
-	private int userCardno;
 	private String userCardCom;
 	private int paymentAmount;
 	private Date paymentDate;
-	private Date expiryM;
-	private Date expiryY;
 	private String partyName;
 	private String userId;
 	private String userNick;
@@ -26,21 +23,18 @@ public class Payment {
 	public Payment(){}
 
 
-	public Payment(String payNo, String orderNo, int userNo, int partyNo, String paymentMethod, int userCardno,
-			String userCardCom, int paymentAmount, Date paymentDate, Date expiryM, Date expiryY, String partyName,
-			String userId, String userNick, String userName, String userEmail, String userPhone) {
+	public Payment(String payNo, String orderNo, int userNo, int partyNo, String paymentMethod, String userCardCom,
+			int paymentAmount, Date paymentDate, String partyName, String userId, String userNick, String userName,
+			String userEmail, String userPhone) {
 		super();
 		this.payNo = payNo;
 		this.orderNo = orderNo;
 		this.userNo = userNo;
 		this.partyNo = partyNo;
 		this.paymentMethod = paymentMethod;
-		this.userCardno = userCardno;
 		this.userCardCom = userCardCom;
 		this.paymentAmount = paymentAmount;
 		this.paymentDate = paymentDate;
-		this.expiryM = expiryM;
-		this.expiryY = expiryY;
 		this.partyName = partyName;
 		this.userId = userId;
 		this.userNick = userNick;
@@ -53,10 +47,10 @@ public class Payment {
 	@Override
 	public String toString() {
 		return "Payment [payNo=" + payNo + ", orderNo=" + orderNo + ", userNo=" + userNo + ", partyNo=" + partyNo
-				+ ", paymentMethod=" + paymentMethod + ", userCardno=" + userCardno + ", userCardCom=" + userCardCom
-				+ ", paymentAmount=" + paymentAmount + ", paymentDate=" + paymentDate + ", expiryM=" + expiryM
-				+ ", expiryY=" + expiryY + ", partyName=" + partyName + ", userId=" + userId + ", userNick=" + userNick
-				+ ", userName=" + userName + ", userEmail=" + userEmail + ", userPhone=" + userPhone + "]";
+				+ ", paymentMethod=" + paymentMethod + ", userCardCom=" + userCardCom + ", paymentAmount="
+				+ paymentAmount + ", paymentDate=" + paymentDate + ", partyName=" + partyName + ", userId=" + userId
+				+ ", userNick=" + userNick + ", userName=" + userName + ", userEmail=" + userEmail + ", userPhone="
+				+ userPhone + "]";
 	}
 
 
@@ -110,16 +104,6 @@ public class Payment {
 	}
 
 
-	public int getUserCardno() {
-		return userCardno;
-	}
-
-
-	public void setUserCardno(int userCardno) {
-		this.userCardno = userCardno;
-	}
-
-
 	public String getUserCardCom() {
 		return userCardCom;
 	}
@@ -147,26 +131,6 @@ public class Payment {
 
 	public void setPaymentDate(Date paymentDate) {
 		this.paymentDate = paymentDate;
-	}
-
-
-	public Date getExpiryM() {
-		return expiryM;
-	}
-
-
-	public void setExpiryM(Date expiryM) {
-		this.expiryM = expiryM;
-	}
-
-
-	public Date getExpiryY() {
-		return expiryY;
-	}
-
-
-	public void setExpiryY(Date expiryY) {
-		this.expiryY = expiryY;
 	}
 
 
@@ -228,7 +192,6 @@ public class Payment {
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
-
 
 
 	
