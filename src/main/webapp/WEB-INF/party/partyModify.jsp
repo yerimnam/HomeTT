@@ -12,10 +12,6 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css"> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>  -->
 
-<!-- 스타일 먹히는건지 모르겟 -->
-<style type="text/css">
-@import url('https://webfontworld.github.io/sunn/SUIT.css');
-</style>
 
 
 <!-- jQuery 2.2.4 -->
@@ -26,83 +22,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
-<script type="text/javascript">
-
-
-	// 	$(document).on('click', '.heart', function(){
-	// 		// 하트 상태 DB 저장
-	// 		$(this).toggleClass('on off');
-	// 	});
-
-	// });
-	
-window.onload = function () {
-	
-	wishlist.onclick = function () {
-		cosole.log("#wishlist click")
-		
-		//AJAX 요청 보낵
-		sendRequest("POST", "/homett/wishlist", "", callback)
-		
-	}
-}
-
-function sendHearth(e){
-	$.ajax({
-	    type: "post",
-	    url: '/homett/wishlist',
-	    data: {wishNo : e},
-	    success: function(data) {
-            console.log(data);     
-        }
-	    
-	});
-}
-	
-//AJAX 응답처리 콜백함수
-function callback() {
-	if(httpRequest.readyState ==4) {
-		if(httpRequest.status ==200){
-			console.log("AJAX 성공")
-			
-			printData()
-			
-		} else {
-			console.log("AJAX 실패")
-		}
-	}
-	
-}
-
-//응답결과 처리하는 함수
-	function prinData() {
-	
-	result.innerHTML = httpRequest.responseText
-	
-}
-
-
-// 	#(document).ready(function(){
-
-// 	$("#wishlist").click(function(){
-// 		$("#wishlist_form").submit();
-		
-// 	})
-	
-// })
-
-	
-</script>
 
 
 <%--모델값 전달받기 --%>
+<%List<Party> partyListS = (List) request.getAttribute("partyListS"); %>
 <%
 List<Party> partyList = (List) request.getAttribute("partyList");
 %>
 <%
 PrPaging paging = (PrPaging) request.getAttribute("paging");
 %>
-
+<%	String searchType = request.getParameter("searchType");
+	String keyword = request.getParameter("keyword"); %>
 
 
 <style type="text/css">
@@ -229,8 +160,6 @@ a.heart {
 			<span class="round-box">공지사항</span>
 			<h3>공지사항</h3>
 		</div>
-
-
 		<div class="part-area">
 			<%
 			for (int i = 0; i < partyList.size(); i++) {
@@ -249,11 +178,11 @@ a.heart {
 				</div>
 				<ul class="part-contents">
 
-<%-- 					<%if((Integer.parseInt(partyList.get(i).getPartyNo())){ %> --%>
+					<%-- 					<%if((Integer.parseInt(partyList.get(i).getPartyNo())){ %> --%>
 					<li><a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>">파티방 번호 : <%=partyList.get(i).getPartyNo()%></a></li>
-<%-- 					<%}else{ %> --%>
-<%-- 					<a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>"></a> --%>
-<%-- 					<%} %> --%>
+					<%-- 					<%}else{ %> --%>
+					<%-- 					<a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>"></a> --%>
+					<%-- 					<%} %> --%>
 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>
@@ -272,10 +201,12 @@ a.heart {
 						name="wishlist">🧡</button>
 					<div id="result"></div>
 				</form>
+				</span>
+				<!-- 				</a> -->
 			</div>
 			<%
 				}
- 				%>
+				%>
 			<!-- #party end -->
 
 		</div>
@@ -283,82 +214,99 @@ a.heart {
 	<!-- .container end -->
 	<div class="text-center">
 		<ul class="pagination">
+			<% if ( keyword != null && !"".equals(keyword) ) { %>
+			<%--검색 했을 때 paging 결과 --%>
 
-			<%--첫 페이지로 이동 --%>
-			<%
-			if (paging.getCurPage() != 1) {
-			%>
-			<li><a href="./partymodify">&larr;처음</a></li>
-			<%
-			}
-			%>
-
+			<%-- 첫 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != 1) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getStartPage()%>
+				&searchType=<%=searchType %>&keyword=<%=keyword %>">&lt;&lt;</a></li>
+			<%	} %>
 
 
-			<%--이전 페이지로 이동 --%>
-			<%
-			if (paging.getCurPage() != 1) {
-			%>
-			<li><a href="./partymodify?curPage=<%=paging.getCurPage() - 1%>">&lt;</a></li>
-			<%
-			}
-			%>
+			<%-- 이전 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != 1) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getCurPage() - 1 %>
+					&searchType=<%=searchType %>&keyword=<%=keyword %>">&lt;</a></li>
+			<%	} %>
 
 
-
-			<%--페이지 번호 리스트 --%>
-			<%
-			for (int i = paging.getStartPage(); i <= paging.getEndPage(); i++) {
-			%>
-
-			<%
-			if (i == paging.getCurPage()) {
-			%>
-			<li class="active"><a href="./partymodify?curPage=<%=i%>"><%=i%></a></li>
-			<%
-			} else {
-			%>
-			<li><a href="./partymodify?curPage=<%=i%>"><%=i%></a></li>
-			<%
-			}
-			%>
-			<%
-			}
-			%>
+			<%-- 페이지 번호 리스트 --%>
+			<%	for(int i=paging.getStartPage(); i<=paging.getEndPage(); i++) { %>
+			<%		if( i == paging.getCurPage() ) { %>
+			<li class="active"><a href="./partymodify?curPage=<%=i %>
+					&searchType=<%=searchType %>&keyword=<%=keyword %>"><%=i %></a></li>
+			<%		} else { %>
+			<li><a href="./partymodify?curPage=<%=i %>
+					&searchType=<%=searchType %>&keyword=<%=keyword %>"><%=i %></a></li>
+			<%		} %>
+			<%	} %>
 
 
-			<%--다음 페이지로 이동 --%>
-			<%
-			if (paging.getCurPage() != paging.getTotalPage()) {
-			%>
-			<li><a href="./partymodify?curPage=<%=paging.getCurPage() + 1%>">&gt;</a></li>
-			<%
-			}
-			%>
+			<%-- 다음 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != paging.getTotalPage() ) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getCurPage() + 1 %>
+					&searchType=<%=searchType %>&keyword=<%=keyword %>">&gt;</a></li>
+			<%	} %>
 
 
-			<%--마지막 페이지로 이동 --%>
-			<%
-			if (paging.getCurPage() != paging.getTotalPage()) {
-			%>
-			<li><a href="./partymodify?curPage=<%=paging.getTotalPage()%>">&rarr;끝</a></li>
-			<%
-			}
-			%>
+			<%-- 마지막 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != paging.getTotalPage() ) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getTotalPage() %>
+					&searchType=<%=searchType %>&keyword=<%=keyword %>">&gt;&gt;</a></li>
+			<%	} %>
+
+			<%	} else { %>
+			<%--검색하지 않았을 때 paging 결과 --%>
+
+			<%-- 첫 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != 1) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getStartPage()%>">&lt;&lt;</a></li>
+			<%	} %>
+
+
+			<%-- 이전 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != 1) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getCurPage() - 1 %>">&lt;</a></li>
+			<%	} %>
+
+
+			<%-- 페이지 번호 리스트 --%>
+			<%	for(int i=paging.getStartPage(); i<=paging.getEndPage(); i++) { %>
+			<%		if( i == paging.getCurPage() ) { %>
+			<li class="active"><a href="./partymodify?curPage=<%=i %>"><%=i %></a></li>
+			<%		} else { %>
+			<li><a href="./partymodify?curPage=<%=i %>"><%=i %></a></li>
+			<%		} %>
+			<%	} %>
+
+
+			<%-- 다음 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != paging.getTotalPage() ) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getCurPage() + 1 %>">&gt;</a></li>
+			<%	} %>
+
+
+			<%-- 마지막 페이지로 이동 --%>
+			<%	if( paging.getCurPage() != paging.getTotalPage() ) { %>
+			<li><a href="./partymodify?curPage=<%=paging.getTotalPage() %>">&gt;&gt;</a></li>
+			<%	} %>
+			<%	} %>
+
 		</ul>
 	</div>
 
-	<form action="./partymodify" method="get">
+	<form action="/homett/partymodify" method="POST">
 		<!--  검색 시작  -->
 		<div class="search-area">
 			<div class="form-item">
-				<select name="searchType" id="searchType">
+				<select class="form-control" name="searchType" id="searchType">
 					<option value="party_boardtitle">제목</option>
 					<option value="partyLeader">파티장</option>
 				</select>
 			</div>
 			<div class="form-item">
-				<input id="searchKeyword" name="searchKeyword" type="text">
+				<input type="text" class="form-control" name="keyword" id="keywordInput" >
 			</div>
 			<div class="form-item">
 				<input type="submit" value="검색 ">
