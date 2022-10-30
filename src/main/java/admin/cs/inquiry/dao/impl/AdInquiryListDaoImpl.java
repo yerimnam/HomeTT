@@ -25,7 +25,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		sql += "	SELECT rownum rnum, I.* FROM (";
 		sql += "		SELECT";
 		sql += "			inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle,";
-		sql += "			 inquiry_content, inquiry_writer, inquiry_date, answer_writer, answer_content, answer_date";
+		sql += "			 inquiry_content, inquiry_date, answer_writer, answer_content, answer_date";
 		sql += "		FROM cs_inquiry";
 		sql += "		ORDER BY inquiry_articleNumber DESC";
 		sql += "	) I";
@@ -51,7 +51,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				i.setBoardCode(rs.getInt("board_code"));
 				i.setInquiryArticleTitle(rs.getString("inquiry_articleTitle"));
 				i.setInquiryContent(rs.getString("inquiry_content"));
-				i.setInquiryWriter(rs.getString("inquiry_writer"));
+//				i.setInquiryWriter(rs.getString("inquiry_writer"));
 				i.setInquiryDate(rs.getDate("inquiry_date"));
 				i.setAnswerWriter(rs.getString("answer_writer"));
 				i.setAnswerContent(rs.getString("answer_content"));
@@ -101,7 +101,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		String sql = "";
 		sql += "SELECT";
 		sql += "	inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle, inquiry_content,";
-		sql += "	inquiry_writer, inquiry_date, answer_writer, answer_content, answer_date";
+		sql += "	inquiry_date, answer_writer, answer_content, answer_date";
 		sql += " FROM cs_inquiry";
 		sql += " WHERE inquiry_articleNumber = ?";
 		
@@ -122,7 +122,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				inquiry.setBoardCode(rs.getInt("board_code"));
 				inquiry.setInquiryArticleTitle(rs.getString("inquiry_articleTitle"));
 				inquiry.setInquiryContent(rs.getString("inquiry_content"));
-				inquiry.setInquiryWriter(rs.getString("inquiry_writer"));
+//				inquiry.setInquiryWriter(rs.getString("inquiry_writer"));
 				inquiry.setInquiryDate(rs.getDate("inquiry_date"));
 				inquiry.setAnswerWriter(rs.getString("answer_writer"));
 				inquiry.setAnswerContent(rs.getString("answer_content"));
@@ -147,7 +147,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		sql += "	SELECT rownum rnum, I.* FROM (";
 		sql += " 		SELECT";
 		sql += "			inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle,";
-		sql += "			inquiry_content, inquiry_writer, inquiry_date, answer_writer, answer_content, answer_date";
+		sql += "			inquiry_content, inquiry_date, answer_writer, answer_content, answer_date";
 		sql += " 		FROM cs_inquiry";
 		sql += " 		WHERE " + searchType + " LIKE ?";
 		sql += " 		ORDER BY inquiry_articleNumber DESC";
@@ -175,7 +175,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				i.setBoardCode(rs.getInt("board_code"));
 				i.setInquiryArticleTitle(rs.getString("inquiry_articleTitle"));
 				i.setInquiryContent(rs.getString("inquiry_content"));
-				i.setInquiryWriter(rs.getString("inquiry_writer"));
+//				i.setInquiryWriter(rs.getString("inquiry_writer"));
 				i.setInquiryDate(rs.getDate("inquiry_date"));
 				i.setAnswerWriter(rs.getString("answer_writer"));
 				i.setAnswerContent(rs.getString("answer_content"));
@@ -205,7 +205,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		sql += "	SELECT rownum rnum, I.* FROM (";
 		sql += "		SELECT";
 		sql += "			inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle, inquiry_content,";
-		sql += "			inquiry_writer, inquiry_date, answer_writer, answer_content, answer_date";
+		sql += "			inquiry_date, answer_writer, answer_content, answer_date";
 		sql += "		FROM cs_inquiry";
 		sql += "		WHERE " + searchType + " LIKE ?";
 		sql += "		) I";

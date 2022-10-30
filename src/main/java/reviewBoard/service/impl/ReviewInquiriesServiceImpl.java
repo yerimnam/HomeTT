@@ -73,6 +73,24 @@ public class ReviewInquiriesServiceImpl implements ReviewInquiriesService {
 	}
 
 	
+	@Override
+	public Paging getSearchPaging(HttpServletRequest req, String searchType, String keyword) {
+		int totalCount = boardDao.selectSearchCntAll(JDBCTemplate.getConnection() ,searchType ,keyword);
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param != null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+		Paging searchpaging = new Paging(totalCount, curPage);
+		return searchpaging;
+	}
+	
+	@Override
+	public List<ReviewBoard> getSearchList(Paging paging, String searchType, String keyword) {
+		return boardDao.selectSearchList(JDBCTemplate.getConnection(), paging, searchType, keyword);
+	}
+	
 
 	@Override
 	public ReviewBoard view(ReviewBoard reviewArticlenumber) {
@@ -217,7 +235,7 @@ public class ReviewInquiriesServiceImpl implements ReviewInquiriesService {
 		
 	
 	}
-
+		
 
 	
 }

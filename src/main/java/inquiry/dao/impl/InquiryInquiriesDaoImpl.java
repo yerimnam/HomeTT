@@ -91,7 +91,7 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 
 				inquiryBaord.setInquiryArticleNumber(rs.getInt("inquiry_articlenumber"));
 				inquiryBaord.setUserNo(rs.getInt("user_no"));
-				inquiryBaord.setAdminNo(rs.getInt("admin_no"));
+//				inquiryBaord.setAdminNo(rs.getInt("admin_no"));
 				inquiryBaord.setBoardCode(rs.getInt("board_code"));
 				inquiryBaord.setInquiryArticleTitle(rs.getString("inquiry_articletitle"));
 				inquiryBaord.setInquiryContent(rs.getString("inquiry_content"));

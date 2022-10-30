@@ -1,7 +1,7 @@
 <%@page import="partyExit.dto.PartyExit"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+  <%@ include file="../layout/header.jsp"  %>     
     
 <% PartyExit viewPartyExit = (PartyExit) request.getAttribute("viewPartyExit"); %>
 
@@ -28,5 +28,4 @@ $("#btnDelete").click(function() {
 	<button id="btnDelete" class="btn btn-danger">파티방 나가기</button>
 </div>
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

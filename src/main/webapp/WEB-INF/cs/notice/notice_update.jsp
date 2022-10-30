@@ -1,8 +1,8 @@
-<%@page import="reviewBoard.dto.ReviewBoard"%>
+<%@page import="notice.dto.NoticeBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% ReviewBoard updatecotent = (ReviewBoard)request.getAttribute("updatecontent");  %>    
+<% NoticeBoard updatecotent = (NoticeBoard)request.getAttribute("updatecontent");  %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,20 +90,20 @@ body{
 <h2>문의사항 작성하기</h2>
 
 <hr>
-<form action="/homett/reviewupdate" method="post" id="updatereview">
+<form action="/homett/noticeupdate" method="post" id="updatenotice">
 
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
-	<input type="text" hidden="" name="reviewNo" value="<%=updatecotent.getReviewArticlenumber() %>">
+	<input type="text" hidden="" name="noticeNo" value="<%=updatecotent.getNoticeArticlenumber() %>">
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
 	
 	
 	<div id="title">
 	<span>제목</span>
-	<input type="text" id="reviewTitle" name="reviewTitle" value="<%=updatecotent.getReviewArticletitle() %>">
+	<input type="text" id="noticeTitle" name="noticeTitle" value="<%=updatecotent.getNoticeArticletitle() %>">
 	</div>
 	
 	<br><br><br>
-	<textarea id="content" name="content" ><%= updatecotent.getReviewContent()%></textarea><br><br>
+	<textarea id="content" name="content" ><%= updatecotent.getNoticeContent()%></textarea><br><br>
 
 <button type="button" id="btnupdate" >수정완료</button>
 <button type="button" id="cancelwriter" onclick="history.back()">취소</button>
