@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="util.PbPaging"%>
 <%@page import="payment.dto.Payment"%>
 <%@page import="java.util.List"%>
@@ -160,7 +161,7 @@ th, td{
 }
 
 
-#party,#pay,#wishlist,#inquiry,#report{
+#myinfo,#party,#pay,#wishlist,#inquiry{
 border-bottom: 1px solid #bbbbbb;
 
 }
@@ -170,7 +171,7 @@ border-bottom: 1px solid #bbbbbb;
     margin: 24px 0 0;
     font-size: 18px;
 }
-.area li:hover{
+.area li a:hover{
 	color:#ff8c11 
 }
 .manage{
@@ -199,11 +200,28 @@ a:visited{
 
 
 	<div id="sidemenu">
+	
+	<div id="myinfo">
+			<ul>
+				<li class="myinfo manage">회원정보
+					<ul class="area">
+						<li><a href="/homett/editprofile">회원 정보 수정</a> </li>
+						<li><a href="/homett/dropuser">회원 탈퇴</a> </li>
+						
+					</ul>
+				</li>
+			</ul>
+		
+		</div>
+	
+	
+	
 		<div id="party">
 			<ul>
-				<li class="party manage">파티관리
+				<li class="party manage">PARTY
 					<ul class="area">
-						<li>파티관리 </li>
+						<li><a href="/homett/type">파티 권한 변경 </a> </li>
+						<li><a href="/homett/partyCheck">파티 조회</a> </li>
 						
 					</ul>
 				</li>
@@ -215,7 +233,7 @@ a:visited{
 			<ul>
 				<li class="pay manage">결제관리
 					<ul class="area">
-						<li><a href="/homett/paymentlist">결제내역</a> </li>
+						<li><a href="/homett/paymentlist">결제 내역</a> </li>
 					</ul>
 				</li>
 			</ul>
@@ -228,7 +246,7 @@ a:visited{
 			<li class="wishlist manage">찜하기관리
 			
 				<ul class="area">
-					<li>찜 목록 조회 
+					<li><a href="/homett/wishcheck">찜 목록 조회 </a></li>
 				
 				</ul>
 			
@@ -246,8 +264,8 @@ a:visited{
 			
 				<ul class="area">
 				
-					<li id="askinquiry"><a href="/homett/inquirycreate"">1:1문의하기</a></li>
-					<li id="inquirylist"><a href="/homett/inquirylist">1:1문의 내역</a></li>
+					<li id="inquirylist"><a href="/homett/inquirylist">1:1 문의 내역</a></li>
+					<li id="askinquiry"><a href="/homett/inquirycreate">1:1 문의하기</a></li>
 				</ul>
 			
 			</li>
@@ -256,25 +274,14 @@ a:visited{
 	
 	
 	</div>
-	
-	<div id="report">
-		<ul>
-			<li class="report manage">신고 관리
-				<ul class="area" >
-					<li id="leader">파티장 신고관리 </li>
-					<li id="member">파티원 신고관리 </li>
-				
-				</ul>
-			
-			</li>
-		
-		</ul>
-	
-	
-	</div>
+
 	
 </div>
 	
+
+	<% DecimalFormat format = new DecimalFormat("###,###"); %>
+	
+
 
 <div id="list">
 	<div id="title">
@@ -313,7 +320,7 @@ a:visited{
 					<td><%=paymentList.get(i).getPaymentDate() %></td>
 					<td><%=paymentList.get(i).getPartyName() %></td>
 					<td><%=paymentList.get(i).getPaymentMethod() %></td>
-					<td><%=paymentList.get(i).getPaymentAmount() %></td>
+					<td><%=format.format(paymentList.get(i).getPaymentAmount())%>원</td>
 			 	</tr>  
 					
 			<%} %>

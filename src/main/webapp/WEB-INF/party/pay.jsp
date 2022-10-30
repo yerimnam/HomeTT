@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="java.util.List"%>
 <%@page import="party.dto.Party"%>
@@ -354,7 +355,7 @@ button{
 
 <div id="payresult"></div>
 
-
+<% DecimalFormat format = new DecimalFormat("###,###"); %>
 
 	<div id="pay">
 		
@@ -377,7 +378,7 @@ button{
 				
 				<tr id="partypay">
 					<td class="party">참여 금액</td>
-					<td class="partyvalue"><%=party.getPaymentAmount() %> 원</td>
+					<td class="partyvalue"><%=format.format(party.getPaymentAmount()) %> 원</td>
 				</tr>	
 			
 			</table>
@@ -424,7 +425,7 @@ button{
 	
  				<div id="payment"> 
 				   <span id="willpay"><span>결제 금액</span></span> 
-					<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
+					<span id="totalPayment"> <%=format.format(party.getPaymentAmount()) %>원</span>
 				</div> 
  			</form> 
  		</div> 
