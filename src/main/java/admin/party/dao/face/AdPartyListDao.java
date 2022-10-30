@@ -32,7 +32,7 @@ public interface AdPartyListDao {
 	 * @param partyno - 조회할 게시글의 partyno를 가진 DTO객체
 	 * @return Party - 조회된 파티의 상세정보 DTO객체
 	 */
-	public Party selectPartyByPartyno(Connection conn, Party partyno);
+//	public Party selectPartyByPartyno(Connection conn, Party partyno);
 
 	/**
 	 * 총 파티 수 조회

@@ -42,9 +42,9 @@ public class AdPaymentListServiceImpl implements AdPaymentListService {
 
 		Payment payment = new Payment();
 		
-		String param = req.getParameter("reportno");
+		String param = req.getParameter("payNo");
 		if( null != param && !"".equals(param) ) { //전달파라미터가 null 또는 ""빈문자열이 아닐 때 처리 
-			payment.setPayNo( Integer.parseInt(param) );
+			payment.setPayNo(param);
 		}
 		
 		return payment;

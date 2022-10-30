@@ -1,8 +1,10 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="admin.party.dto.Party"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%	List<Party> partyList = (List) request.getAttribute("partyList"); %>
+<%	DecimalFormat format = new DecimalFormat("###,###"); %>
 
 <%@ include file="../layout/header.jsp" %>
 
@@ -59,7 +61,7 @@ th {
 	<td><%=partyList.get(i).getPartyCreDate() %></td>
 	<td><%=partyList.get(i).getPartyEndDate() %></td>
 	<td><%=partyList.get(i).getPartyMember() + "명" %></td>
-	<td><%=partyList.get(i).getPaymentAmount() + "원" %></td>
+	<td><%=format.format(partyList.get(i).getPaymentAmount())%>원</td>
 	<td><%=partyList.get(i).getOttId() %></td>
 	<td><%=partyList.get(i).getOttPw() %></td>
 </tr>

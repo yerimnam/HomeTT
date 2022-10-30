@@ -43,12 +43,12 @@
 	<table class="text-center table table-bordered" style="margin: 30px auto; width: 500px; font-size: 20px;">
 	<%	for(int i=0; i<dropuserinfo.size(); i++) { %>
 		<tr>
-			<th class="text-center" style="width: 100px; height: 50px; border-right: 0;">탈퇴 회원번호</th>
-			<td style="width: 200px; border-left: 0;"><%=dropuserinfo.get(i).getSecedeNo() %></td>
+			<th class="text-center" style="width: 100px; height: 50px; border-right: 0; color:red;">탈퇴 회원번호</th>
+			<td style="width: 200px; border-left: 0; color:red;"><%=dropuserinfo.get(i).getSecedeNo() %></td>
 		</tr>
 		<tr>
-			<th class="text-center" style="width: 100px; height: 50px; border-right: 0;">탈퇴일</th>
-			<td style="width: 200px; border-left: 0;"><%=dropuserinfo.get(i).getSecedeDate() %></td>
+			<th class="text-center" style="width: 100px; height: 50px; border-right: 0; color:red;">탈퇴일</th>
+			<td style="width: 200px; border-left: 0; color:red;"><%=dropuserinfo.get(i).getSecedeDate() %></td>
 		</tr>
 		<tr>
 			<th class="text-center" style="width: 100px; height: 50px; border-right: 0;">회원번호</th>

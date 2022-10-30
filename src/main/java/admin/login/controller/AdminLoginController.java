@@ -22,7 +22,7 @@ public class AdminLoginController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/adminlogin [GET]");
+//		System.out.println("/homett/adminlogin [GET]");
 
 		req.getRequestDispatcher("/WEB-INF/admin/login/adminlogin.jsp").forward(req, resp);
 
@@ -31,7 +31,7 @@ public class AdminLoginController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/login [POST]");
+//		System.out.println("/homett/login [POST]");
 
 		//요청 데이터의 한글 인코딩 방식 지정하기 : UTF-8
 		req.setCharacterEncoding("UTF-8");
@@ -40,7 +40,7 @@ public class AdminLoginController extends HttpServlet {
 		Admin admin = adminLoginService.getLoginParam(req);
 
 		//잘들어오는지 확인
-		System.out.println("MemberController doPost() - admin : " + admin);
+//		System.out.println("MemberController doPost() - admin : " + admin);
 
 		//관리자로그인 인증
 		boolean loginTF = adminLoginService.login(admin);
