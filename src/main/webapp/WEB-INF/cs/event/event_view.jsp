@@ -1,22 +1,18 @@
 <%@page import="event.dto.EventBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% EventBoard viewBoard = (EventBoard) request.getAttribute("viewBoard"); %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<% EventBoard viewBoard = (EventBoard) request.getAttribute("viewBoard"); %>
+<%@ include file="../../layout/header.jsp" %>
+
 <script type="text/javascript">
 
  function back (){
 	
- 	location.href="/homett/eventlist";
+	 location.href="/homett/eventlist";
  	console.log ("이전으로")
 	
- } 
+ }
 
  function update(){
 		console.log("수정하기")
@@ -32,58 +28,69 @@
 
  }
 </script> 
+<style>
+.text {
+	background-color: #ffde59;
+}
+
+#big{
+	width: 1600px;
+	margin: 0 auto;
+}
+
+</style>
+
+
+<title>Insert title here</title>
 </head>
 <body>
 
 
+
+<div id="big">
 <h1>게시글 상세보기</h1>
-<hr>
-
-
-
-<table>
+<table class="table table-bordered">
 
 <tr>
-	<td>글번호</td>
+	<td class= "text">글번호</td>
 	<td><%=viewBoard.getEventArticlenumber() %>
 
-	<td>작성일</td>
+	<td class= "text">작성일</td>
 	<td><%=viewBoard.getEventDate() %>
 
 </tr>
 <tr>
-	<td>작성자</td>
-	<td><%=viewBoard.getEventWriter() %></td>
-		<td><%=viewBoard.getUserName() %></td>
+	<td class= "text">작성자</td>
+	<td colspan="4"><%=viewBoard.getUserName() %></td>
+</tr>
+<tr>
+	<td class = "text">조회수</td>
+	<td colspan="4"><%=viewBoard.getHit() %>
 </tr>
 
-
 <tr>
-	<td>제목</td>
+	<td class= "text">제목</td>
 	<td><%=viewBoard.getEventArticletitle() %>
 </tr>
 
 <tr>
-	<td>이벤트내용</td>
-	<td><%=viewBoard.getEventContent() %></td>
-
-
+	<td class= "text" colspan="4">이벤트 내용</td>
+</tr>
+<tr>
+	<td colspan="4"><%=viewBoard.getEventContent() %></td>
 </tr>
 
 
 </table>
+</div>
 
-<div>
+<div class="text-center">
 
-	<button id="btnList" onclick="back()" >목록</button>
-	<button id="btnUpdate" onclick="update()">수정</button>
-	<button id="btnDelete" onclick="deleteevent()">삭제</button>
+	<button id="btnList" class="btn btn-primary" onclick="back()" >목록</button>
+	<button id="btnUpdate" class="btn btn-info" onclick="update()">수정</button>
+	<button id="btnDelete" class="btn btn-danger" onclick="deleteevent()">삭제</button>
 
 
 </div>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />
 
-
-
-
-</body>
-</html>
