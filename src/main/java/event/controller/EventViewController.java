@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import event.dto.EventBoard;
 import event.service.face.EventInquiriesService;
 import event.service.impl.EventInquiriesServiceImpl;
-import faq.dto.FaqBoard;
-import faq.service.face.FaqInquiriesService;
-import faq.service.impl.FaqInquiriesServiceImpl;
 
 /**
  * Servlet implementation class FaqViewController

@@ -46,6 +46,33 @@ public interface PartyModifyDao {
 	 */
 	public Party selectPartyByPartyRoomNo(Connection conn,Party partyRoomNo);
 
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	public int selectSearchCntAll(Connection conn, String searchType, String keyword);
+
+
+	/**
+	 * 검색한 게시글 목록 조회
+	 * @param conn
+	 * @param paging
+	 * @param searchType
+	 * @param keyword
+	 * @return
+	 */
+	public List<Party> selectSearchList(Connection conn, PrPaging paging, String searchType, String keyword);
+
 
 	
 	

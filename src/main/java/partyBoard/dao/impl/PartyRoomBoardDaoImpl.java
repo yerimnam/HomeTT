@@ -258,7 +258,7 @@ public class PartyRoomBoardDaoImpl implements PartyRoomBoardDao {
 
 
 	@Override
-	public int delete(Connection conn, PartyRoom partyroomno) {
+	public int Pbdelete(Connection conn, PartyRoom partyroomno) {
 		 		String sql = "";
 		sql += "DELETE party_room";
 		sql += " WHERE party_room_no = ?";
