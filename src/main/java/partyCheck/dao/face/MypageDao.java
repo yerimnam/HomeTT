@@ -6,7 +6,7 @@ import java.util.List;
 import partyCheck.dto.PartyCheck;
 import util.Paging5;
 
-public interface MyPageDao {
+public interface MypageDao {
 
 	/**
 	 * 파티 테이블 전체 조회

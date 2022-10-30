@@ -1,3 +1,4 @@
+<%@page import="partyCheck.dto.PartyCheckOwner"%>
 <%@page import="util.Paging5"%>
 <%@page import="partyCheck.dto.PartyCheck"%>
 <%@page import="java.util.List"%>
@@ -45,7 +46,13 @@
 .situation {
 	display: flex;
 	padding-top: 20px;
-	padding-left: 430px;
+	padding-left: 320px;
+	margin-bottom: -15px;
+}
+
+.situation h4 {
+	color: #1E3269;
+	font-weight: 700;
 }
 
 .invitation {
@@ -104,7 +111,7 @@ a:visited{
 	color: black;
 }
 a:hover { 
-	color:white;
+	color: #ffd925;
 	text-decoration: none;
 }
 a:active {
@@ -120,6 +127,8 @@ a:active {
 	background-color: rgba(0,0,0,0);
 	color: #585a72;
 	padding: 5px;
+	width: 195px;
+	height: 40px;
 }
 
 #btn:hover {
@@ -133,10 +142,6 @@ a:active {
 
 <body>
 
-<div class="situation">
-<h4>가입한 파티</h4>
-</div>
-<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
 
 <!--     <input type="button" onClick="sendLinkDefault();" value="친구선택"/> -->
 
@@ -157,7 +162,35 @@ a:active {
     }
 </script>
 
-<%@ include file="../layout/sidemenu.jsp" %>
+<!-- <div style="width: 240px; text-align: center; "> -->
+<!-- <span style="width: 240px; font-weight: 900; font-size: x-large; color: #ff8c11; ">반갑습니다 000님</span><br> -->
+<!-- <span style="width: 240px; font-weigth: 600; font-size: large; color: #ff8c11 ">ID : Trevi</span> -->
+<!-- </div><br> -->
+
+<%-- <%@ include file="../layout/sidemenu.jsp" %> --%>
+
+<div id="test" style="margin-top: -130px;">
+<div class="situation">
+	<h4>내 정보</h4>
+</div>
+<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
+
+<div style=" display: flex; justify-content: center;">
+<div style="border: 1px solid black; width: 830px; padding: 10px; height: 210px; background-color: #fffcee;
+	font-weight: 600; font-size: medium; color: #1E3269;">
+<span><%=session.getAttribute("userNick") %>님,환영합니다</span>
+<span>이메일 :  <%=session.getAttribute("userEmail") %></span>
+<span>아이디 :  <%=session.getAttribute("userId") %></span>
+<span>이름 :  <%=session.getAttribute("userName") %></span>
+<span>가입한 파티방 수 :  <%=ownerPartyList.size() %></span>
+</div>
+</div><br><br><br><br>
+
+
+<div class="situation">
+	<h4>가입한 파티</h4>
+</div>
+<hr align="center" style=" height: 1px; background-color: black; width: 60%;">
 
 <div class="main">
 	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
@@ -175,7 +208,6 @@ a:active {
 			<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
 			<hr style="background-color: black; border-style: dashed; width: 150px;">
 			<li>참여 금액 : <%=ownerPartyList.get(i).getPaymentamount() %> 원</li>
-			<li id="party_no" hidden><%=ownerPartyList.get(i).getPartyNo() %></li>
 		</ul></a>
 	</div>
 	<% } %>
@@ -184,6 +216,23 @@ a:active {
 <div class="invitation">
     <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
 </div>
+
+<div style=" display: flex; justify-content: center; gap: 50px; text-align: center; height: 120px; border: 1px solid white;
+	padding-top: 30px; margin-top: 105px; margin-bottom: -145px;">
+	<div style="border: 1px solid black; width: 220px; height: 90px; padding-top: 9px; 	border-radius: 5px;
+		border: 1px solid #ff8c11; background-color: #fffcee;">
+	<a href="./noticelist"><span style="font-size: medium; font-weight: 400">공지사항을 먼저 확인해주세요</span><br><br>
+	<span style="font-size: large; font-weight: 600">공지사항 보러가기</span></a>
+	</div>
+	
+	<div style="border: 1px solid black; width: 220px; height: 90px; padding-top: 9px;	border-radius: 5px;
+		border: 1px solid #ff8c11; background-color: #fffcee;">
+	<a href="./faqview"><span style="font-size: medium; font-weight: 400">궁금한 사항이 있으시나요?</span><br><br>
+	<span style="font-size: large; font-weight: 600">FAQ 보러가기</span></a>
+	</div>
+</div>
+
+</div> <!-- test div -->
 
 
 <%@ include file="../layout/footer.jsp" %>

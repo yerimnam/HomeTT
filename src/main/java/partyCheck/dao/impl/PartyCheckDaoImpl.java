@@ -9,7 +9,9 @@ import java.util.List;
 
 import common.JDBCTemplate;
 import partyCheck.dao.face.PartyCheckDao;
+import partyCheck.dto.MypageMember;
 import partyCheck.dto.PartyCheck;
+import user.dto.Member;
 import util.Paging5;
 
 public class PartyCheckDaoImpl implements PartyCheckDao {
@@ -248,6 +250,49 @@ public class PartyCheckDaoImpl implements PartyCheckDao {
 		
 		System.out.println("PartyCheckDao selectOwner() - end");
 		return ownerPartyList;
+	}
+
+	@Override
+	public Member selectMemberInfo(Connection conn, MypageMember mypageMember) {
+
+		System.out.println("MyPageDao selectLoginInfo() - 시작");
+		
+		String sql = "";
+		sql += "SELECT user_no, master_no, user_id, user_pw, user_name, user_nick,";
+		sql += " user_email, user_phone FROM member";
+		sql += " WHERE user_id = ?";
+		
+		Member result = null;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mypageMember.getUserId());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = new Member();
+				
+				result.setUserNo( rs.getInt("user_no") );
+				result.setMasterNo( rs.getInt("master_no") );
+				result.setUserId( rs.getString("user_id") );
+				result.setUserPw( rs.getString("user_pw") );
+				result.setUserName( rs.getString("user_name") );
+				result.setUserNick( rs.getString("user_nick") );
+				result.setUserEmail( rs.getString("user_email") );
+				result.setUserPhone( rs.getInt("user_phone") );
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+			
+		System.out.println("MypageDao selectLoginInfo() - 끝");
+		return result;
+		
 	}
 
 

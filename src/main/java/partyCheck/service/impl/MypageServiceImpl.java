@@ -9,12 +9,12 @@ import common.JDBCTemplate;
 import partyCheck.dao.face.PartyCheckDao;
 import partyCheck.dao.impl.PartyCheckDaoImpl;
 import partyCheck.dto.PartyCheck;
-import partyCheck.service.face.MyPageService;
+import partyCheck.service.face.MypageService;
 import util.Paging5;
 
-public class MyPageServiceImpl implements MyPageService {
+public class MypageServiceImpl implements MypageService {
 
-	// DAO객체
+		// DAO객체
 		private PartyCheckDao partyCheckDao = new PartyCheckDaoImpl();
 		
 		@Override
@@ -92,5 +92,9 @@ public class MyPageServiceImpl implements MyPageService {
 			// DB조회결과 반환
 			return partyCheckDao.selectOwner(JDBCTemplate.getConnection());
 		}
+
+
+		
+		
 	
 }

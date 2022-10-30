@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.JDBCTemplate;
-import partyCheck.dao.face.MyPageDao;
+import partyCheck.dao.face.MypageDao;
 import partyCheck.dto.PartyCheck;
 import util.Paging5;
 
-public class MyPageDaoImpl implements MyPageDao {
+public class MypageDaoImpl implements MypageDao {
 
 	// SQL 수행 객체
 	private PreparedStatement ps;

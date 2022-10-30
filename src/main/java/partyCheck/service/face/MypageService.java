@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import partyCheck.dto.PartyCheck;
 import util.Paging5;
 
-public interface MyPageService {
+public interface MypageService {
 
 	/**
 	 * 파티 목록 전체 조회
@@ -56,4 +56,7 @@ public interface MyPageService {
 	 */
 	public List<PartyCheck> getOwnerList();
 	
+
+	
 }
+

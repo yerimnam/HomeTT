@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import partyCheck.dto.MypageMember;
 import partyCheck.dto.PartyCheck;
 import partyCheck.service.face.PartyCheckService;
 import partyCheck.service.impl.PartyCheckServiceImpl;
 import util.Paging5;
 
 @WebServlet("/homett/mypage")
-public class MyPageController extends HttpServlet {
+public class MypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	// 서비스 객체
@@ -40,6 +41,8 @@ public class MyPageController extends HttpServlet {
 		// 파티 페이징 목록 조회
 		List<PartyCheck> partyList = partyCheckService.getList(paging);
 		
+		
+		
 		// [TEST] 조회결과 확인
 		for(PartyCheck p : partyList)	System.out.println(p);
 		System.out.println("-------------------");
@@ -51,10 +54,12 @@ public class MyPageController extends HttpServlet {
 		
 		PartyCheck partycheck = partyCheckService.getPartyNo(req);
 		
-		partyCheckService.delete(partycheck);		
+		partyCheckService.delete(partycheck);	
+		
 		
 		// view 지정
 		req.getRequestDispatcher("/WEB-INF/mypage/mypage.jsp").forward(req, resp);
 	}
+	
 
 }
