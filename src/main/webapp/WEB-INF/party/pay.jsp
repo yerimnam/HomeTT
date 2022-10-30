@@ -1,10 +1,11 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="java.util.List"%>
 <%@page import="party.dto.Party"%>
 <%@page import="user.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ include file="../layout/header.jsp"  %>
+  <%@ include file="../layout/header.jsp"  %> 
     
    <% Member member = (Member)request.getAttribute("userinfo");%>
    <% Party party = (Party)request.getAttribute("partyinfo");  %>
@@ -130,6 +131,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 div{
 
 	height: 300px;
+	width: 1600px;
 }
 
 table{
@@ -141,16 +143,15 @@ footer{
 	border: 1px solid black;
     position: relative;
     top: 1300px;
-    }
-body{
-		width: 1600px;
-		margin: 0 auto;
-	
-	}
+  }
+
 
 #pay{
 	position: relative;
+	 margin: 0 auto;
 }
+
+
 #partyinfotitle{
 
 	width: 200px;
@@ -167,6 +168,7 @@ body{
 	
 
 }
+
 #partyinfo {
     width: 1130px;
     height: 250px;
@@ -193,6 +195,7 @@ border-bottom:1px solid #666666;
     top: 49px;
 }
 
+
 #payinfotitle{
     width: 200px;
     height: 58px;
@@ -203,6 +206,7 @@ border-bottom:1px solid #666666;
     top: 123px;
 
 }
+
 #payinfotitle span{
     font-size: 40px;
     background-color: #ffd925;
@@ -222,6 +226,8 @@ border-bottom:1px solid #666666;
     border-top: 1px solid #666666;
     border-bottom: 1px solid #666666;
 }
+
+
 #userinfo{
 	font-weight: 500;
     width: 1130px;
@@ -305,7 +311,8 @@ border-bottom:1px solid #666666;
     top: 352px;
     width: 600px;
     height: 156px;
-    left: 518px;
+    left: 20px;
+    margin: 0 auto;
 
 }
 
@@ -333,6 +340,11 @@ button{
 	border: none;
 	
 }
+
+#partyinfotitle, #payinfotitle,#total_pay{
+	margin: 0px;
+
+}
 </style>
 
 </head>
@@ -343,7 +355,7 @@ button{
 
 <div id="payresult"></div>
 
-
+<% DecimalFormat format = new DecimalFormat("###,###"); %>
 
 	<div id="pay">
 		
@@ -366,7 +378,7 @@ button{
 				
 				<tr id="partypay">
 					<td class="party">참여 금액</td>
-					<td class="partyvalue"><%=party.getPaymentAmount() %> 원</td>
+					<td class="partyvalue"><%=format.format(party.getPaymentAmount()) %> 원</td>
 				</tr>	
 			
 			</table>
@@ -413,7 +425,7 @@ button{
 	
  				<div id="payment"> 
 				   <span id="willpay"><span>결제 금액</span></span> 
-					<span id="totalPayment"> <%=party.getPaymentAmount() %>원</span>
+					<span id="totalPayment"> <%=format.format(party.getPaymentAmount()) %>원</span>
 				</div> 
  			</form> 
  		</div> 

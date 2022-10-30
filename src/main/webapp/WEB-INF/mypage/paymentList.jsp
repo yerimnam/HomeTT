@@ -1,10 +1,11 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="util.PbPaging"%>
 <%@page import="payment.dto.Payment"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@ include file="../layout/header.jsp"  %>
-    
+    	<%@ include file="../layout/sidemenu.jsp" %>
  
  <% List<Payment> paymentList = (List)request.getAttribute("paymentList"); %>
  <% PbPaging paging = (PbPaging)request.getAttribute("paging"); %>
@@ -56,11 +57,7 @@ $(document).ready(function(){
 
 <style type="text/css">
 
-body {
-	width: 1600px;
-	margin: 0 auto;
 
-}
 
 #title{
 
@@ -84,9 +81,9 @@ body {
     left: 214px;
 }
 #paymentlist{
-   position: absolute;
+	position: absolute;
     top: 0px;
-    left: 1000px;
+    left: 950px;
 }
 
 #startdate, #enddate{
@@ -106,9 +103,50 @@ body {
 .text-center{
 
     position: relative;
-    top: 600px;
 }
 
+#payresult{
+
+  height: 800px;
+    position: relative;
+    top: 210px;
+    left: 558px;
+    width: 1033px;
+}
+
+table{
+
+    height: 236px;
+    text-align: center;
+
+}
+
+
+thead{
+    font-size: 20px;
+    color: #666666;
+
+}
+
+tbody{
+    font-size: 20px;
+    color: #666666;
+
+}
+
+#btnchkpay{
+	    width: 100px;
+    height: 30px;
+    border: none;
+    background-color: #ff8c11;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+
+}
+
+th, td{
+	text-align: center;
 }
 
 </style>
@@ -116,7 +154,16 @@ body {
 </head>
 <body>
 
+
+
+
 	
+
+	<% DecimalFormat format = new DecimalFormat("###,###"); %>
+	
+
+
+<div id="list">
 	<div id="title">
 		<span>결제내역 조회하기</span>
 	</div>
@@ -134,12 +181,12 @@ body {
 	
 	<div id="payresult">
 	
-	<table>
+	<table class="table table-hover" >
 		<thead>
 			<tr>
 				<th>주문번호</th>
 				<th>결제 날짜</th>
-				<th>Party 이름</th>
+				<th>Party</th>
 				<th>결제수단</th>
 				<th>결제금액</th>
 			</tr>
@@ -153,7 +200,7 @@ body {
 					<td><%=paymentList.get(i).getPaymentDate() %></td>
 					<td><%=paymentList.get(i).getPartyName() %></td>
 					<td><%=paymentList.get(i).getPaymentMethod() %></td>
-					<td><%=paymentList.get(i).getPaymentAmount() %></td>
+					<td><%=format.format(paymentList.get(i).getPaymentAmount())%>원</td>
 			 	</tr>  
 					
 			<%} %>
@@ -209,6 +256,6 @@ body {
 	      
 	   </ul>
 	</div>
-
+</div>
 </body>
 </html>
