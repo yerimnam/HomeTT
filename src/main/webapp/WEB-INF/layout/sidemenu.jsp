@@ -9,42 +9,55 @@
 
 <style type="text/css">
 
-
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
 
 
 #sidemenu{
 
-    width: 300px;
+    width: 240px;
     position: absolute;
-    left: 138px;
+    left: 160px;
     height: 1000px;
-    top:300px;
+    top:170px;
     color:#666666;
     
 }
 
 
 #myinfo,#party,#pay,#wishlist,#inquiry{
-border-bottom: 1px solid #bbbbbb;
-
+	border-bottom: 1px solid #dddddd;
+	padding-bottom: 10px;
 }
 
 .area{
 
-    margin: 24px 0 0;
-    font-size: 18px;
+    margin: 10px 0 0;
+    font-size: 16px;
 }
 .area li a:hover{
-	color:#ff8c11 
+	color:#ff8c11;
+	font-weight: 600;
 }
+
+
 .manage{
-	margin: 10px 0 0;
-	  font-size: 25px;
+	 margin: 18px 0 0;
+	 font-size: 20px;
+	 font-weight: 800;
+	 color: #222222;
+	 
 }
+
+.area li a {
+	font-weight: 400;
+}
+
 .area li{
-    margin: 0 0 10px;
+    margin: 0 0 4px;
 
 }
+
+
 
 a{
 	color:#666666;
@@ -87,7 +100,7 @@ a:visited{
 			<ul>
 				<li class="party manage">PARTY
 					<ul class="area">
-						<li><a href="/homett/type">파티 권한 변경 </a> </li>
+						<li><a href="/homett/type">파티장으로 권한 변경 </a> </li>
 						<li><a href="/homett/partyCheck">파티 조회</a> </li>
 						
 					</ul>
