@@ -200,25 +200,25 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 		System.out.println("selectBoardByNoticeArticlenumber - 시작");	
 		System.out.println("NoticeArticlenumber.getNoticeArticlenumber() : " + noticeArticlenumber.getNoticeArticlenumber());
 		String sql = "";
-	
-		sql += " SELECT * FROM (";
+		
+		sql += " SELECT * FROM * cs_notice (";
         sql += " 	SELECT R.*";
         sql += " 	,m.user_nick";
         sql += " 	FROM cs_notice R";
         sql += " 	inner join member m";
         sql += " 	on m.user_no = R.user_no";
         sql += " ) R ";
+//		sql += "SELECT * FROM cs_notice";
         sql += " WHERE notice_articlenumber = ?";
 		
-		NoticeBoard board= null;
+		NoticeBoard board= new NoticeBoard();
 		
 			try {
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, noticeArticlenumber.getNoticeArticlenumber());
 				rs = ps.executeQuery();
 				
-				while(rs.next() ) {
-					board = new NoticeBoard();
+				while( rs.next() ) {
 
 					board.setNoticeArticlenumber(rs.getInt("notice_articlenumber"));
 					board.setAdminNo(rs.getInt("admin_no"));

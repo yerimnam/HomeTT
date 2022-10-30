@@ -88,7 +88,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 //		sql += " 	SELECT *";
 //		sql += "		event_articlenumber,admin_no,board_code,event_articletitle ";
 //		sql += " 		,event_content,event_date,user_no,hit";
-//		sql += " 	FROM cs_event"; 
+//		sql += " 	FROM cs_event";
 		sql += " 		ORDER BY event_articlenumber DESC";
 		sql += " 	) R";
 		sql += " ) eventBaord";

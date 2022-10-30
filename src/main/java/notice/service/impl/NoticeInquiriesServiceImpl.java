@@ -10,10 +10,6 @@ import notice.dao.face.NoticeInquiriesDao;
 import notice.dao.impl.NoticeInquiriesDaoImpl;
 import notice.dto.NoticeBoard;
 import notice.service.face.NoticeInquiriesService;
-import reviewBoard.dao.face.ReviewInquiriesDao;
-import reviewBoard.dao.impl.ReviewInquiriesDaoImpl;
-import reviewBoard.dto.ReviewBoard;
-import reviewBoard.service.face.ReviewInquiriesService;
 import util.Paging;
 
 public class NoticeInquiriesServiceImpl implements  NoticeInquiriesService {

@@ -207,8 +207,8 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
         sql += " 	on m.user_no = R.user_no";
         sql += " ) R ";
         sql += " WHERE review_articlenumber = ?";
-		
-		
+
+
 //		sql += "SELECT";
 //		sql += " review_articlenumber,review_articletitle";
 //		sql += " ,review_content,hit,review_date ";

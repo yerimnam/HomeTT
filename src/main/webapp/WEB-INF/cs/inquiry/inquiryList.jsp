@@ -47,7 +47,7 @@
       <thead>
          <tr>
                <th>글 번호</th>
-               <th>작성자</th>
+<!--                <th>작성자</th> -->
                <th>작성일자</th>
                <th>제목</th>
                <th>문의 답변</th>
@@ -62,7 +62,7 @@
          <%for(int i=0;i<inquiryBoard.size();i++) { %>
             <tr>
                <td><%=inquiryBoard.get(i).getInquiryArticleNumber() %></td>
-               <td><%=inquiryBoard.get(i).getUserNick() %></td>
+<%--                <td><%=inquiryBoard.get(i).getUserNick() %></td> --%>
                <td><%=inquiryBoard.get(i).getInquiryDate() %></td>
                <td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>      <!--  상세보기 링크 걸기-->      
             
