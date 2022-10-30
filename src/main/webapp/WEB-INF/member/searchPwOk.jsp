@@ -7,6 +7,32 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	
+	//비밀번호 보여주는거
+    $('#i1').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"fa-solid fa-eye-slash")
+            .prev('#newPw').attr('type',"text");
+        }else{
+            $(this).attr('class',"fa-solid fa-eye")
+            .prev('#newPw').attr('type','password');
+        }
+    });
+    
+    $('#i2').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"fa-solid fa-eye-slash")
+            .prev('#newPw_check').attr('type',"text");
+        }else{
+            $(this).attr('class',"fa-solid fa-eye")
+            .prev('#newPw_check').attr('type','password');
+        }
+    });
+    
+    
+	
 	$("#newPwchk").click(function() {
 		
 		//비밀번호가 빈칸일때~~~~~~~~~~~~~~~~~!
@@ -92,6 +118,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 	margin-bottom: 46px;
 }
 
+
 /* input 박스 */
 div > input {
 	width: 380px;
@@ -115,6 +142,28 @@ div > input {
 	line-height: 54px;
 }
  
+ 
+#i1{
+	width: 32px;
+	right: 200px;
+	bottom: 250px;
+	font-size: 22px;
+	vertical-align: middle;
+	text-align: center;
+	color: #ffde59;
+	position: absolute;
+}
+
+#i2{
+	width: 32px;
+	right: 200px;
+	bottom: 186px;
+	font-size: 22px;
+	vertical-align: middle;
+	text-align: center;
+	color: #ffde59;
+	position: absolute;
+}
 
 </style>
 
@@ -138,9 +187,13 @@ div > input {
 			
 	<P id="subTxt">기존 비밀번호를 변경해야합니다. 아래에 새 비밀번호를 입력해 주세요.</P>
 	
-	<div>
-		<input type="text" id="newPw" name="newPw" placeholder="비밀번호">
-		<input type="text" id="newPw_check"name="newPw_check" placeholder="비밀번호 확인">
+	<div class="inputbox">
+		<input type="password" id="newPw" name="newPw" placeholder="비밀번호">
+		<i class="fa-solid fa-eye" id="i1"></i>
+	</div>
+	<div class="inputbox">
+		<input type="password" id="newPw_check"name="newPw_check" placeholder="비밀번호 확인">
+		<i class="fa-solid fa-eye" id="i2"></i>
 	</div>
 	
 	<div class="re">

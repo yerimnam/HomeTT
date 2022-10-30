@@ -50,13 +50,12 @@ public class SearchIdController extends HttpServlet {
 		// 아이디 찾기 service
 		Member result = userService.searchId(member);
 		
-		System.out.println( "result : " + result );
 		
 		//세션 객체 생성
 		HttpSession session = req.getSession();
 		System.out.println("아이디값 : " + result.getUserId() ); //아이디값 확인
 			
-		
+		session.setAttribute("userEmail", member.getUserEmail());
 		rannum = userService.sendMailRandomNum(req);
 			
 		//RanNum 에 ranNum 값이 잘 들어온지 확인
@@ -65,7 +64,7 @@ public class SearchIdController extends HttpServlet {
 		session.setAttribute("rannum", rannum.getRanNum() );
 		
 		session.setAttribute("userId", result.getUserId() );
-		session.setAttribute("userEmail", member.getUserEmail());
+		
 		
 //		req.setAttribute("ranNum", userService.sendMailRandomNum(req));
 

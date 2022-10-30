@@ -166,7 +166,6 @@ public class UserServiceImpl implements UserService {
 		
 		MailSmsOk RanNum = new MailSmsOk();
 		HttpSession ses = req.getSession();
-		
 		Random random = new Random();		//랜덤 함수 선언
 		int createNum = 0;  			//1자리 난수
 		String ranNum = ""; 			//1자리 난수 형변환 변수
