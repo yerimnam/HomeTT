@@ -29,27 +29,67 @@ public class PartyModifyController extends HttpServlet {
 		PrPaging paging = partyModifyService.getPrPaging(req);
 //		System.out.println("[Test]" + paging);
 
-		//페이징 객체를 MODEL값 전달
-		req.setAttribute("paging", paging);
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		String searchType = req.getParameter("searchType");
+		String keyword = req.getParameter("keyword");
+
+		if (searchType != null && keyword != null) {
+			paging = partyModifyService.getSearchPaging(req, searchType, keyword);
+		} else {
+			paging = partyModifyService.getPrPaging(req);
+		}
+
+		// 페이징 객체를 MODEL값 전달
+		req.setAttribute("paging", paging);
+
+		List<Party> partyList;
+		if (searchType != null && keyword != null) {
+			// 검색한 결과
+			partyList = partyModifyService.getSearchList(paging, searchType, keyword);
+			System.out.println("검색한 paging 결과 : " + paging);
+		} else {
+			// 검색 안한 결과
+			partyList = partyModifyService.getPrList(paging);
+			System.out.println("검색 안한 paging 결과 : " + paging);
+		}
+
+		req.setAttribute("partyList", partyList);
+
 		// 파티방 전체 조회
 //		List<Party> partyList = partyModifyService.getPrList();
 
 		System.out.println(paging);
 		// 파티방 페이징 목록 조회
-		List<Party> partyList = partyModifyService.getPrList(paging);
+		
+		
+		
+		
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//		List<Party> partyList = partyModifyService.getPrList(paging);
 
 		// [Test] 조회결과 확인
 //		for(Party p : partyList) System.out.println(p);
 
 		// 조회 결과를 MODEL값 전달
 		req.setAttribute("partyList", partyList);
-		
-		//파티룸에서 파티번호 조회하는메소드
+
+		// 파티룸에서 파티번호 조회하는메소드
 		Party partyNo = partyModifyService.getPartyNo(req);
 
 		// View 지정 및 응답
 		req.getRequestDispatcher("/WEB-INF/party/partyModify.jsp").forward(req, resp);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 }

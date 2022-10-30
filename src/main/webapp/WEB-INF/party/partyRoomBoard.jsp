@@ -301,9 +301,8 @@ textarea {
 				<div class="form-item">
 					<input type="submit" value="검색 ">
 				</div>
-				<!-- 				<form action="/homett/mbrreport" method="get" id="reportform"> -->
-				<button id="reportb" onclick="location.href = '/homett/mbrreport'">🔔</button>
-				<!-- 				</form> -->
+<!-- 				form으로하니까 이동이 안되서 이렇게 했는데..괜찮나요? -->
+				<button id="reportb"><a href="/homett/mbrreport">🔔</a></button>
 			</div>
 			<!-- 검색 종료  -->
 
@@ -396,9 +395,5 @@ textarea {
 	}
 </script>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/Jiwon
 
 </html>

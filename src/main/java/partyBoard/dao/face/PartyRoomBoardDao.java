@@ -87,7 +87,7 @@ public interface PartyRoomBoardDao {
 	 * @return
 	 */
 
-	public int delete(Connection conn, PartyRoom partyroomno);
+	public int Pbdelete(Connection conn, PartyRoom partyroomno);
 
 
 

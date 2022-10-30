@@ -17,7 +17,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 	private PreparedStatement ps; // SQL수행 객체
 	private ResultSet rs; // SQL 조회 결과 객체
 
-	//시퀀스 설정
+	// 시퀀스 설정
 	@Override
 	public int selectNextUserno(Connection conn, Party party) {
 		String sql = "SELECT party_seq.nextval FROM dual";
@@ -63,7 +63,7 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 
 			while (rs.next()) {
 				Party p = new Party();
-				
+
 				p.setPartyNo(rs.getInt("party_no"));
 				p.setPartyRoomNo(rs.getInt("party_room_no"));
 				p.setPartyKind(rs.getString("party_kind"));
@@ -92,34 +92,33 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 	@Override
 	public List<Party> selectAllPr(Connection conn, PrPaging paging) {
 		System.out.println("PartyModifyDao selectAllPr()- 시작");
-	
-		
+
 		// SQL작성
 		String sql = "";
-		sql += "SELECT * FROM(";    
+		sql += "SELECT * FROM(";
 		sql += "	SELECT rownum rnum, P.* FROM(";
 		sql += "			SELECT";
-		sql += "				party_no, party_room_no, party_kind, party_name, party_leader, party_creDate";      
+		sql += "				party_no, party_room_no, party_kind, party_name, party_leader, party_creDate";
 		sql += "					, party_endDate, party_period, party_member, paymentAmount";
 		sql += "	        FROM party";
 		sql += " 		    ORDER BY party_no DESC";
 		sql += "	)P";
 		sql += "  )PARTY";
 		sql += " WHERE rnum BETWEEN ? AND ?";
-		
+
 		// 결과 저장할 List
 		List<Party> partyList = new ArrayList<>();
 
 		try {
 			ps = conn.prepareStatement(sql);
-			
+
 			ps.setInt(1, paging.getStartNo());
 			ps.setInt(2, paging.getEndNo());
 			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
-			
-			while(rs.next()) {
-				Party p = new Party(); //조회 결과 행 저장 DTO객체
-				
+
+			while (rs.next()) {
+				Party p = new Party(); // 조회 결과 행 저장 DTO객체
+
 				p.setPartyNo(rs.getInt("party_no"));
 				p.setPartyRoomNo(rs.getInt("party_room_no"));
 				p.setPartyKind(rs.getString("party_kind"));
@@ -130,14 +129,14 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 				p.setPartyPeriod(rs.getDate("party_period"));
 				p.setPartyMember(rs.getInt("party_member"));
 				p.setPaymentAmount(rs.getInt("paymentAmount"));
-				
-				//리스트에 결과값 저장
+
+				// 리스트에 결과값 저장
 				partyList.add(p);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
@@ -181,24 +180,22 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 		sql += "	, party_creDate, party_endDate, party_period, party_member, paymentAmount";
 		sql += " FROM party";
 		sql += " WHERE party_no = ?";
-		
-		
+
 		Party party = null;
-		
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, partyNo.getPartyRoomNo());
-			
+
 			System.out.println(sql);
-			System.out.println( partyNo.getPartyRoomNo());
-			
+			System.out.println(partyNo.getPartyRoomNo());
+
 			System.out.println(ps);
 			rs = ps.executeQuery();
-			
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				party = new Party();
-				
+
 				party.setPartyNo(rs.getInt("party_no"));
 				party.setPartyKind(rs.getString("party_kind"));
 				party.setPartyName(rs.getString("party_name"));
@@ -215,12 +212,103 @@ public class PartyModifyDaoImpl implements PartyModifyDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
 		return party;
 	}
 
+	@Override
+	public List<Party> selectSearchList(Connection conn, PrPaging paging, String searchType, String keyword) {
+		keyword = '%' + keyword + '%';
+
+		String sql = "";
+		sql += "SELECT * FROM(";
+		sql += "	SELECT rownum rnum, P.* FROM(";
+		sql += "			SELECT";
+		sql += "				party_no, party_room_no, party_kind, party_name, party_leader, party_creDate";
+		sql += "					, party_endDate, party_period, party_member, paymentAmount";
+		sql += "	        FROM party";
+		sql += " 		    ORDER BY party_no DESC";
+		sql += "	)P";
+		sql += "  )PARTY";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+
+		List<Party> partyList = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+
+			rs = ps.executeQuery(); // SQL수행 및 결과 집합 저장
+
+			while (rs.next()) {
+				Party p = new Party(); // 조회 결과 행 저장 DTO객체
+
+				p.setPartyNo(rs.getInt("party_no"));
+				p.setPartyRoomNo(rs.getInt("party_room_no"));
+				p.setPartyKind(rs.getString("party_kind"));
+				p.setPartyName(rs.getString("party_name"));
+				p.setPartyLeader(rs.getString("party_leader"));
+				p.setPartyCreDate(rs.getDate("party_creDate"));
+				p.setPartyEndDate(rs.getDate("party_endDate"));
+				p.setPartyPeriod(rs.getDate("party_period"));
+				p.setPartyMember(rs.getInt("party_member"));
+				p.setPaymentAmount(rs.getInt("paymentAmount"));
+
+				// 리스트에 결과값 저장
+				partyList.add(p);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+
+		return partyList; // 최종 결과 반환
+	}
+
+	@Override
+	public int selectSearchCntAll(Connection conn, String searchType, String keyword) {
+		keyword = '%' + keyword + '%';
+
+		String sql = "";
+		sql += "SELECT * FROM(";
+		sql += "	SELECT rownum rnum, P.* FROM(";
+		sql += "			SELECT";
+		sql += "				party_no, party_room_no, party_kind, party_name, party_leader, party_creDate";
+		sql += "					, party_endDate, party_period, party_member, paymentAmount";
+		sql += "	        FROM party";
+		sql += "			WHERE " + searchType + " LIKE ?";
+		sql += "	)P";
+		sql += "  )PARTY";
+
+		int count = 0;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
+//		System.out.println("selectSearchCntAll" + count);
+		return count;
+	}
 
 }

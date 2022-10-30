@@ -10,6 +10,7 @@ import party.dao.face.PartyModifyDao;
 import party.dao.impl.PartyModifyDaoImpl;
 import party.dto.Party;
 import party.service.face.PartyModifyService;
+import util.Paging;
 import util.PrPaging;
 
 public class PartyModifyServiceImpl implements PartyModifyService {
@@ -87,6 +88,25 @@ public class PartyModifyServiceImpl implements PartyModifyService {
 		return party;
 	}
 
+	@Override
+	public PrPaging getSearchPaging(HttpServletRequest req, String searchType, String keyword) {
+		int totalCount = partyModifyDao.selectSearchCntAll(JDBCTemplate.getConnection() ,searchType ,keyword);
+		
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if( param != null && !"".equals(param) ) {
+			curPage = Integer.parseInt(param);
+		}
+		PrPaging searchpaging = new PrPaging(totalCount, curPage);
+		return searchpaging;
+	}
 
+
+
+
+	@Override
+	public List<Party> getSearchList(PrPaging paging, String searchType, String keyword) {
+		return partyModifyDao.selectSearchList(JDBCTemplate.getConnection(),paging, searchType, keyword);
+	}
 
 }

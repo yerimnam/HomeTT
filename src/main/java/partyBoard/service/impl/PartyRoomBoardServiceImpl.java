@@ -157,7 +157,7 @@ public class PartyRoomBoardServiceImpl implements PartyRoomBoardService {
 	public void dropParty(PartyRoom partyroomno) {
 		Connection conn = JDBCTemplate.getConnection();
 
-		if (partyRoomBoardDao.delete(conn, partyroomno) > 0) {
+		if (partyRoomBoardDao.Pbdelete(conn, partyroomno) > 0) {
 			JDBCTemplate.commit(conn);
 		} else {
 			JDBCTemplate.rollback(conn);
