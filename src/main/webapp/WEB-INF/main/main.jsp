@@ -26,18 +26,20 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
     font-family: 'SUIT';
 }
 
+#homett_area, #contents_area,#ott_area,#party_now,#party{
+	width: 1600px;
+	margin: 0 auto;
+}
+
+
 
 
 footer{
 	border: 1px solid black;
     position: relative;
     top: 1300px;
-    }
-body{
-		width: 1600px;
-		margin: 0 auto;
-	
-	}
+   }
+
 
 	
 ul{
@@ -46,32 +48,32 @@ ul{
 }
 
 #contents_area{
-    height: 423px;
+     height: 543px;
     position: relative;
+    width: 1600px;
 }
+
 .recommend_contents{
 
-    position: absolute;
-    top: 157px;
-    left: 207px;
-    height: 300px;
+     position: absolute;
     top: 74px;
     left: 24px;
     height: 398px;
-    width: 1500px;
+    width: 1600px;
 }
 
  .contents {
 
-     float: left;
+    float: left;
     position: relative;
     left: 0px;
     top: 27px;
-    margin-right: -51px;
+    margin-right: -23px;
     width: 337px;
     height: 242px;
     margin-left: -1px;
 }
+
 
 
 .01{
@@ -102,7 +104,7 @@ ul{
     color: #ffde59; 
 	left: -105px;
     font-weight: bold;
-    font-size: 33px;
+    font-size: 50px;
 
   
 
@@ -112,18 +114,10 @@ ul{
    position: relative;
     top: 64px;
     left: 166px;
-    width: 1213px;
+    width: 1600px;
 
 }
-a{
 
-	text-decoration: none;
-}
-
-a:visited {
-
-	color:black;
-}
 
 
 .content_title:hover{
@@ -136,7 +130,7 @@ a:visited {
     position: absolute;
     text-align: center;
     font-size: 20px;
-    padding-left: 20px];
+    padding-left: 20px;
     padding-top: 20px;
     left: 149px;
     top: 352px;
@@ -163,40 +157,44 @@ a:visited {
 
 #popular_ott{
    position: relative;
-    top: 272px;
-    background-color: #efefef;
+    top: 227px;
+    background-color: #fffcee;
     height: 351px;
+    maring: 0;
+    width: 100%;
 
 }
 
 .ottname{
 
-	float:left;
-    margin: 0 50px;
-    left: 164px;
+	float: left;
+    margin: 0 37px;
+    left: 346px;
     position: relative;
     width: 200px;
     height: 200px;
+    top: 100px;
+}
 	
 
-}
+
 #popular_ott ul {
 
-	float: left;
-    position: absolute;
-    top: 114px;
+	position: absolute;
+     left: -227px;
 }
+
 
 #ott_area{
   position: relative;
-    top: 194px;
-    left: 71px;
+    top: 106px;
+    left: 31px;
 }
 
 #ott{
 
     position: absolute;
-    font-size: 33px;
+    font-size: 50px;
     color: #ffde59;
     font-weight: 700;
 
@@ -207,51 +205,64 @@ a:visited {
 }
 
 
+
+
+
 #partylist_area {
-	float: left;
+    float: left;
     position: relative;
-    border: 1px solid #666666;
     margin: 45px;
-    height: 346px;
-    width: 275px;
+    border: 1px solid #bbbbbb;
+    color: #666666;
+    width: 300px;
+    padding: 0 20 0 20;
+    padding: 0 20px 0 20px;
+    border-radius: 40px;
 }
+#partylist_area:hover{
+
+background-color: #ff8c11;
+    border: none;
+}
+
+
+
+#partylist_area ul{
+  text-align: center;
+   padding: 5px;
+
+}
+
 .partylist .party {
 	float:right;
 	position: absolute;
 
-
 }
+
 
 #party {
 
     position: relative;
-    top: 614px;
-    left: 132px;
+    top: 364px;
+    left: 36px;
 }
+
 
 
 #party_now{
     position: relative;
-    top: 600px;
-    left: 66px;
+    top: 350px;
+    left: 75px;
 }
 
 #party_now span{
 
-    font-size: 33px;
+    font-size: 50px;
     font-weight: bold;
     color: #ffde59;
 }
 
-.partyName{
 
-	margin:19px;
-	font-size: 30px;
-	color:white;
-}
-.partyName>span{
-	background-color: #ffde59 ;
-}
 .party_li{
     margin: 17px;
     font-size: 20px;
@@ -259,17 +270,54 @@ a:visited {
     text-align: left;
 }
 
-	
+.partyName>span{
+	ext-align: center;
+    font-size: 20px;
+
+}
 .ottname.tving{
     height: 93px;
     position: relative;
-    top:26px;
+    top: 132px;
  
 }
 
 .ottname.tving>img{
 
     height: 100px;
+}
+
+
+.partyname{
+
+	text-align: center;
+}
+
+a:hover{
+	text-decoration: none;
+	
+}
+
+#partylist:hover span{
+	color:white;
+
+}
+.partyName span{
+
+	text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+}
+	
+}
+
+
+.partyKind span{
+  	text-align: center;
+    color: #ff8c11;
+    font-weight: 500;
+    position: relative;
+    top: 11px;
 }
 </style>
 
@@ -336,6 +384,8 @@ a:visited {
 		<li class="ottname watcha"><img src= "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTk2IiBoZWlnaHQ9IjU5IiB2aWV3Qm94PSIwIDAgMTk2IDU5IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTc4LjI3MTMgMTIuOTE4NFYyMC43NzFIODYuMDk0NlY1Ni4xOTU2SDk1Ljg0MzJWMjAuNzcxSDEwMy4yMThWMTIuOTE4NEg3OC4yNzEzWk0xNTMuNDY0IDI5LjYzODlIMTQ2LjAwNFYxMi45NzYzSDEzNi4yODVWNTYuMjUzMkgxNDYuMDA0VjM3LjQ5MTJIMTUzLjQ2NFY1Ni4yNTMySDE2My4xODNWMTIuOTc2M0gxNTMuNDY0VjI5LjYzODlaTTExOS42MTMgMTIuNDUyN0gxMTcuOTJDMTA5LjE0MiAxMi40NTI3IDEwNS42MzEgMTYuOTMxNiAxMDUuNjMxIDI0LjIwM1Y0NC44NTIxQzEwNS42MzEgNTIuMTIzOSAxMDkuMTQyIDU2Ljc3NyAxMTguMTA4IDU2Ljc3N0gxMTkuODAxQzEyOC43MDQgNTYuNzc3IDEzMS44MzkgNTEuNDI1MiAxMzEuODM5IDQ1LjM3NjNWMzcuOTg5MUgxMjIuMzA5VjQ0Ljg1MjFDMTIyLjMwOSA0Ny40MTIzIDEyMS40MzEgNDguOTgyNiAxMTguOTIzIDQ4Ljk4MjZDMTE2LjQ3NyA0OC45ODI2IDExNS42NjMgNDcuNTI4NiAxMTUuNjYzIDQ0Ljc5NDZWMjQuMTQ0NkMxMTUuNjYzIDIxLjQxMDUgMTE2LjQ3NyAyMC4wMTUgMTE4LjkyMyAyMC4wMTVDMTIxLjQ5MyAyMC4wMTUgMTIyLjMwOSAyMS41MjY5IDEyMi4zMDkgMjQuMTQ0NlYyOS4xNDdIMTMxLjgzOVYyMy42MjFDMTMxLjgzOSAxNi40MDg3IDEyOC40NTMgMTIuNDUyNyAxMTkuNjEzIDEyLjQ1MjdaTTY4Ljc4MiA0MS40MjI0TDY1Ljk1NTggMjMuMzMxNkg2NC4yODQxTDYxLjQ1NzYgNDEuNDIyNEg2OC43ODJaTTcyLjMyNjIgMTIuOTE4NEw3OS45NzU5IDU2LjE5NTZINzEuMDkwMkw3MC4wMDkgNDkuMjc1M0g2MC4yMzA4TDU5LjE0OTMgNTYuMTk1Nkg1MC4yNjM2TDU3LjkxMzYgMTIuOTE4NEg3Mi4zMjYyWk0xODQuMzkxIDQxLjQyMjRMMTgxLjU2NCAyMy4zMzE2SDE3OS44OTNMMTc3LjA2NiA0MS40MjI0SDE4NC4zOTFaTTE4Ny45MzUgMTIuOTE4NEwxOTUuNTg1IDU2LjE5NTZIMTg2LjY5OUwxODUuNjE4IDQ5LjI3NTNIMTc1Ljg0TDE3NC43NTkgNTYuMTk1NkgxNjUuODczTDE3My41MjIgMTIuOTE4NEgxODcuOTM1WiIgZmlsbD0iI0ZGMDU1OCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQyLjI1MDEgMC43NTc4MTJMMzkuMzUyMSA0Mi4yMDY3TDM4LjU3MzMgNDIuMjQ2NkwzMS42ODA3IDEyLjkyMjRIMjMuMTY0TDE4LjAwNzggNDMuMzA3MkwxNi45MDI3IDQzLjM2MzlMMTIuMjg2MiAxMi45MjI0SDAuNDE0MDYyTDExLjIxNTEgNTguMjM5N0wyMy4yODkxIDU3LjQ1NTdMMjcuMjE3MyAyOS4zMjY4TDI4LjM2OTQgMjkuMjY1M0wzMy42Mjk1IDU2Ljc3NjFMNDUuMTg1NSA1Ni4wMjA2TDU0LjM2MjUgMC43NTc4MTJINDIuMjUwMVoiIGZpbGw9IiNGRjA1NTgiLz4KPC9zdmc+Cg=="></li>
 		<li class="ottname wavve"><img src="https://w.namu.la/s/95e5f2c35a862a7cc599dcb8b3c385a9cf67a45967350973baf9f77c62bca575107bfcf4b1318b1c95af5a8faeb2bb1cae918a7745feea0b42f1b8ba495ad75a020b96491c0d4d404328a6c3c213082093f4fd545bccf3ac5aeecee2673c3198"></li>
 		<li class="ottname tving"><img src="https://play-lh.googleusercontent.com/SAHACJvEyKXM21vPswzPR1vtjp03AatvbyOAxc2pZRVQXnxrpQua5pAfQVvHP3QigU_q"></li>
+		<li class="ottname disney"><img src="https://w.namu.la/s/e53fcef546cc1b3f510694f331690215c764c0672c35dd34d207f29ed51c38de36e9f57e5bdd2ee05df77b4c1731d4ce840d3990860b959d27dc073339f94f076d05a7a2d0b71dceaf39797ebab10e848f569f1d8adade3224ad5b65ba4ad7b0"></li>
+		<li class="ottname apple"><img src="https://support.apple.com/content/dam/edam/applecare/images/en_US/psp_content/content-block-sm-tv-plus_2x.png"></li>
 	</ul>
 
 </div>
@@ -350,18 +400,22 @@ a:visited {
 <div id="party">	
 <% for(int i=0; i<partyList.size(); i++) { %>
 	  <div id="partylist_area">  
-	 	<ul id="partylist">   
-			<li class="partyName"><span><%=partyList.get(i).getPartyName() %></span></li>
-			<li class="party_li partyKind"><%=partyList.get(i).getPartyKind() %></li>
-			<li class="party_li Partyleader"><span>파티장 : </span> <span><%=partyList.get(i).getPartyLeader() %></span>
-			<li class="party_li endDate"><span>파티만료일 : </span><%=partyList.get(i).getPartyEndDate() %></li>
-			<li class="party_li period"><span>남은 파티 기간 : </span><%=partyList.get(i).getPartyPeriod() %></li>
-			<li class="party_li partymember"><span>모집인원 : </span><%=partyList.get(i).getPartyMember() %>명</li>
-			<li class="party_li paymentmount"><span>참여 금액 : </span> <%=partyList.get(i).getPaymentAmount() %>원</li>
-		</ul>  
+				 		<a href="/homett/partymodify">
+				<ul id="partylist">	  
+						<li class="party_li partyKind"><span><%=partyList.get(i).getPartyKind() %></span></li>
+						
+						<li class="party_li partyName" style="text-align:center;"><span ><%=partyList.get(i).getPartyName() %></span></li>
+					        <hr style="background-color: black; border-style: dashed; width: 100px;">
+						<li class="party_li Partyleader"><span>파티장 : </span> <span><%=partyList.get(i).getPartyLeader() %></span></li>
+						<li class="party_li endDate"><span>파티만료일 : </span><span><%=partyList.get(i).getPartyEndDate() %> </span></li>
+						<li class="party_li partymember"><span>모집인원 :</span> <span> <%=partyList.get(i).getPartyMember() %>명</span></li>
+					
+					         <hr style="background-color: black; border-style: dashed; width: 150px;">
+					<li class="party_li paymentmount"><span>참여 금액 : </span> <span> <%=partyList.get(i).getPaymentAmount() %>원</span></li>
+				</ul>  
+			</a>	
 	 </div> 
 <%} %>
-	
 </div>
 
 
