@@ -23,7 +23,7 @@ public interface PaymentListServcie {
 	 * @return -형식으로 변환된 날짜
 	 */
 	
-	public Date changeDate(HttpServletRequest reqq, String div);
+	public Date changeDate(HttpServletRequest req, String div);
 	
 	
 	

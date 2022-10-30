@@ -52,8 +52,37 @@ public interface PartyModifyService {
 	 */
 	public Party view(Party partyNo);
 
+
 //	public Party getPartyRoomNo(HttpServletRequest req);
 
 
 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public PrPaging getSearchPaging(HttpServletRequest req, String searchType, String keyword);
+
+	public List<Party> getSearchList(PrPaging paging, String searchType, String keyword);
+
+//	public List<Party> getList(PrPaging paging);
 }

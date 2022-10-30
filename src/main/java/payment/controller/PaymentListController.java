@@ -32,17 +32,9 @@ public class PaymentListController extends HttpServlet {
 		 
 		
 		HttpSession session = req.getSession();
-		//테스트로 넣을 userno =2번 데이터
-
-
-
-//		session.setAttribute("user_no",2);  
-
-
-
+		//테스트로 넣을 userno 
 
 //		session.setAttribute("userNo",24);  
-//		session.setAttribute("user_no",2);  
 
 
 
@@ -51,12 +43,7 @@ public class PaymentListController extends HttpServlet {
 		int userNo = Integer.parseInt(String.valueOf(session.getAttribute("userNo"))); 
 			
 		
-		
-//		String startDate = req.getParameter("startdate");
-//		String endDate = req.getParameter("enddate");
-		
-//		Date start = paymentListService.changestart(startDate);
-//		Date end = paymentListService.changeend(endDate);
+
 
 		Date start = paymentListService.changeDate(req, "start");
 		Date end = paymentListService.changeDate(req, "end");
@@ -77,7 +64,6 @@ public class PaymentListController extends HttpServlet {
 		//기간과 이름을 으로 게시글 조회
 		List<Payment> paymentList = paymentListService.getPaymentList(paging,userNo,start,end);
 
-//		for( Payment p : paymentList )	System.out.println(p.getOrderNo() + " : " + p.getPartyNo());
 		
 		//model값을 view로 보내기
 		req.setAttribute("paymentList", paymentList);
