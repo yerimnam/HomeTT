@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="party.dto.Party"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -397,6 +398,10 @@ a:hover{
 
 </div>
 
+	<% DecimalFormat format = new DecimalFormat("###,###"); %>
+
+
+
 <div id="party">	
 <% for(int i=0; i<partyList.size(); i++) { %>
 	  <div id="partylist_area">  
@@ -411,7 +416,7 @@ a:hover{
 						<li class="party_li partymember"><span>모집인원 :</span> <span> <%=partyList.get(i).getPartyMember() %>명</span></li>
 					
 					         <hr style="background-color: black; border-style: dashed; width: 150px;">
-					<li class="party_li paymentmount"><span>참여 금액 : </span> <span> <%=partyList.get(i).getPaymentAmount() %>원</span></li>
+					<li class="party_li paymentmount"><span>참여 금액 : </span> <span> <%=format.format(partyList.get(i).getPaymentAmount()) %>원</span></li>
 				</ul>  
 			</a>	
 	 </div> 
