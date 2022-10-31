@@ -26,6 +26,9 @@ public class PartyCheckController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/partycheck [GET]");
 		
+		//한글 인코딩
+		req.setCharacterEncoding("UTF-8");
+		
 		// 전달파라미터에서 현제 페이징 객체 계산하기
 		Paging5 paging = partyCheckService.getPaging(req);
 		

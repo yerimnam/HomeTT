@@ -4,7 +4,7 @@
 
 <jsp:include page="/WEB-INF/layout/header.jsp" />
     
-   <% ReviewBoard updatecotentReviewBoard = (ReviewBoard)request.getAttribute("updatecontent");  %>    
+<% ReviewBoard updatecotentReviewBoard = (ReviewBoard)request.getAttribute("updatecontent");  %>    
 <!DOCTYPE html>
 <html>
 
@@ -43,6 +43,8 @@ $(document).ready(function(){
 		//textarea#note에 웹 에디터 적용
 		$("#content").summernote()
 		$("user_id").summernote()
+		$('#content').summernote('fontSize', 18);
+		$('#content').summernote('fontSizeUnit', 'pt');
 						
 	})
 			
@@ -54,19 +56,13 @@ $(document).ready(function(){
 	$("#btinwrite").click(function(){
 		
 		$("#create").submit();
-	})		
+	});	
 	
 })
 
 </script>
 
 <style type="text/css">
-
-body{
-	width: 1600px;
-	margin: 0 auto;
-}
-
 #content {
 	width:  1000x;
 	hieght: 1000px;
@@ -79,8 +75,13 @@ body{
 	margin-left: 10px; 
 	margin-bottom: -50px; 
 	padding-left: 10px; 
-	padding-top: 15px;
-	border: 1px solid black;
+	padding-top: 11px;
+	border: 1px solid #ffd925;
+	border-radius: 10px;;
+}
+
+#title:hover {
+	border: 2px solid #ff8c11;
 }
 
 #subtitlebox {
@@ -89,7 +90,7 @@ body{
 	border-top-left-radius: 5px;
 	border-bottom-right-radius: 5px; 
 	margin: 5px; 
-	margin-left: 380px;
+	margin-left: 460px;
 	height: 100px; 
 	width: 1000px;
 	background-color: #ffeaa6;
@@ -100,9 +101,6 @@ body{
 	justify-content: center; 
 	margin-top: -30px; 
 	gap: 10px;
-}
-.note-editor note-frame panel panel-default {
-	margin-left: 115px;
 }
 
 .mybtn {
@@ -135,12 +133,13 @@ body{
 	background-color: #fffcee;
 	color: #585a72;
 	padding: 5px;
+	font-weight: 500;
 }
-#e0e0c4
 
 .btn:hover {
-	color: #ffeaa6;
+	color: #8f8378;
 	background-color: #ffd925;
+	font-weight: bold;
 	transition: 0.5s;
 }
 
@@ -160,15 +159,15 @@ body{
 	
 	<div id="title">
 		<label for="inquiryTitle">	
-		<span style="font-weight: bold; font-size: large; font-weight: bold; color: #0b3519; margin-left: 105px;">제목<span>
-		<input type="text" id="inquiryTitle" name="inquiryTitle" style="width: 300px;">
+		<span style="font-weight: bold; font-size: large; font-weight: bold; color: #0b3519; margin-left: -4px;">제목 : <span>
+		<input type="text" id="inquiryTitle" name="inquiryTitle" style="width: 530px; border:0px solid black;">
 		</label>
 	</div>
-	<tr>
+	
 	
 	<br><br><br>
 	<textarea id="content" name="content"></textarea><br><br>
-</table>
+
 
 <div id="allBtn">
 <button type="button" class="mybtn" id="btinwrite">작성완료</button>
@@ -176,8 +175,6 @@ body{
 <a href="/homett/inquirylist"><button type="button" class="mybtn" id="returnBList">목록</button></a>
 </div>
 </form>
-
-
 
 
 

@@ -32,6 +32,7 @@
 	border: 1px solid #00221b;
 	margin-top: 25px;
 	background-color: #fffcee;
+	border-radius: 10px;
 }
 
 #inquiryBoard thead {
@@ -64,7 +65,7 @@ tr {
 #titleBox {
 	display: flex; 
 	justify-content: flex-end; 
-	margin-right: 425px;
+	margin-right: 370px;
 }
 
 #titleBox h2 {
@@ -102,9 +103,12 @@ tr {
 }
 
 #linktd:hover { 
-	color: black;
+	color: #ff8c11;
 	background-color: #fffcee; 
 	text-decoration: none;
+	font-size: x-large;
+	font-weight: 900px;
+	transition : 0.4s;
 }
 
 #linktd:active {
@@ -115,7 +119,7 @@ tr {
 
 #writeBtnBox {
 	justify-content: flex-end; 
-	margin-right: 455px; 
+	margin-right: 355px; 
 	display: flex; 
 	margin-top: 15px;
 }

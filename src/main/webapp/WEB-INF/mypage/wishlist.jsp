@@ -123,6 +123,7 @@ a:active {
 
 
 <div class="main">
+<% if(wishList.size() > 0) { %>
 	<% for(int i = 0; i < wishList.size(); i++) { %>
 	<div id="wishlist">
 		<a href="./roomboard?partyno=<%=wishList.get(i).getPartyNo() %>"><ul>
@@ -141,6 +142,11 @@ a:active {
 		</ul></a>
 	</div>
 	<% } %>
+<% } else { %>
+	<div style="text-align: center;">
+		<h4 style="font-weight: 600; font-size: medium; color: #ff8c11;">찜하기 목록이 없습니다</h4>
+	</div>
+<% } %>
 </div>
 
 <%-- <div style="text-align: center;">

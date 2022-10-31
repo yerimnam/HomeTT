@@ -202,6 +202,7 @@ a {
 <hr align="center" style=" height: 1px; background-color: black; width: 45%;">
 
 <div class="main">
+<% if(ownerPartyList.size() > 0) { %>
 	<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
 	<div id="party_my">
 		<a id="listHover" href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
@@ -220,6 +221,12 @@ a {
 		</ul></a>
 	</div>
 	<% } %>
+<% } else { %>
+	<div style="text-align: center;">
+		<h4 style="font-weight: 600; font-size: medium; color: #ff8c11;">참여하신 파티방이 없습니다</h4>
+		<span style="font-weight: 600; font-size: medium; color: #ff8c11;">파티를 참여해 주세요!</span>
+	</div>
+<% } %>
 </div>
 
 <div class="invitation">
