@@ -31,6 +31,9 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
    width: 1600px;
    margin: 0 auto;
 }
+<<<<<<< HEAD
+	
+=======
 
 
 
@@ -42,6 +45,7 @@ footer{
 
 
    
+>>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
 ul{
    list-style: none;
    text-align: center;
@@ -427,9 +431,6 @@ a:hover{
 
 
 
-<%--   <%@ include file="../layout/footer.jsp"  %> --%>
-  
-<!-- </body> -->
-<!-- </html> -->
 
   <jsp:include page="/WEB-INF/layout/footer.jsp" />  
+

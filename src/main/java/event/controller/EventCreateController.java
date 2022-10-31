@@ -56,7 +56,7 @@ public class EventCreateController extends HttpServlet {
 		System.out.println(param);
 		
 		//회원번호 파라미터로 게시글 저장하기
-		EventBoard reBoard = eventinquiriesService.setEvent(param,userNo);
+		EventBoard reBoard = eventinquiriesService.setEvent(param);
 		System.out.println(reBoard);
 		
 		req.setAttribute("eventInsert", reBoard);
