@@ -178,12 +178,12 @@ a.heart {
 				</div>
 				<ul class="part-contents">
 
-					<%-- 					<%if((Integer.parseInt(partyList.get(i).getPartyNo())){ %> --%>
+<%-- 										<%if((Integer.parseInt(partyList.get(i).getPartyNo())){ %> --%>
 					<li><a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>">파티방 번호 : <%=partyList.get(i).getPartyNo()%></a></li>
-					<%-- 					<%}else{ %> --%>
-					<%-- 					<a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>"></a> --%>
-					<%-- 					<%} %> --%>
-					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
+<%-- 										<%}else{ %> --%>
+<%-- 										<a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>"></a> --%>
+<%-- 										<%} %> --%>
+<%-- 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li> --%>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>
 					<li style="border-bottom: 1px solid #333;">참여 금액 : <%=partyList.get(i).getPaymentAmount()%></li>
@@ -312,3 +312,4 @@ a.heart {
 
 </body>
 </html>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />
