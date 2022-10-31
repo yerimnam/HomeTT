@@ -42,7 +42,9 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 			JDBCTemplate.close(ps);
 		}
 	
+		System.out.println("번호 " + nextpartyno);
 		return nextpartyno;
+		
 	}
 	
 	@Override
@@ -94,8 +96,8 @@ public class CreatePartyDaoImpl implements CreatePartyDao {
 		//작성할 값 전부 적어야 함
 		String sql ="";
 		sql += "INSERT INTO party";
-		sql	+= " ( party_no, party_name, user_no, party_kind, party_leader, party_rule, party_member, paymentamount, party_enddate )";
-		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ? )";
+		sql	+= " ( party_no, party_name, user_no, party_kind, party_leader, party_rule, party_member, paymentamount, party_credate, party_enddate )";
+		sql += " VALUES ( party_seq.nextval, ?, ?, ?, ?, ?, ?, ?, sysdate, ? )";
 		
 		int result = 0;
 		

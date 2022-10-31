@@ -63,9 +63,6 @@ public class WishListController extends HttpServlet {
 			Member member = new Member();
 			member.setUserId((String) session.getAttribute("userNo"));
 			
-//			session.setAttribute("userNo", 1); // 테스트용 유저 정보 받아오기
-//			int userNo = Integer.parseInt(String.valueOf(session.getAttribute("userNo")));
-			
 			//추후 세션값으로 대치
 //			int userNo = 1;
 			String partyNo = req.getParameter("partyNo"); //파티 정보 받아오기

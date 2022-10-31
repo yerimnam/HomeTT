@@ -8,7 +8,8 @@
 @import url('https://webfontworld.github.io/sunn/SUIT.css');
 
 
-html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, blockquote, form, fieldset, legend, menu, nav, section, hgroup, article, header, aside, footer, input, select, textarea, button {
+html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, 
+blockquote, form, fieldset, legend, menu, nav, section, hgroup, article, header, aside, footer, input, select, textarea, button {
     margin: 0;
     padding: 0;
     font-family: ‘SUIT Variable’, sans-serif;
@@ -190,7 +191,7 @@ $(document).ready(function() {
 			
 			
 			
-			//이렇게 하면 12월 지났을때 년도가 올라가지 않는다..
+			//이렇게 하면 12월 지났을때 연도가 올라가지 않는다..
 			//var endMonth = parseInt(month) + parseInt(value)
 			//endDate = year+"/"+endMonth+"/"+date
 			
@@ -217,7 +218,7 @@ $(document).ready(function() {
 
 
 <label for="partykind">
-<input type="hidden" id ="partykind" name="partykind" value=""> <span id="ott">OTT 선택</span>
+<input type="hidden" class ="partykind" name="partykind" value=""> <span id="ott">OTT 선택</span>
 
 <ul id="ottMenu">
 	<li><a class="nf" data-value="넷플릭스">넷플릭스</a></li>
@@ -227,7 +228,6 @@ $(document).ready(function() {
 	<li><a class="wv" data-value="웨이브">웨이브</a></li>
 	<li><a class="wa" data-value="왓챠">왓챠</a></li>
 	<li><a class="la" data-value="라프텔">라프텔</a></li>
-
 </ul>
 
 </label>
