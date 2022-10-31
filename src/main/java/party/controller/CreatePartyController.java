@@ -51,26 +51,23 @@ public class CreatePartyController extends HttpServlet {
 		
 		//요청데이터 한글 인코딩 방식 지정하기 : UTF-8
 		req.setCharacterEncoding("UTF-8");
-
 		
 		
 		//파티 생성 전달 파라미터 추출
 		Party party = createpartyService.getCreateParty(req);
-	
-		
-		System.out.println("CreatePartyController doPost() - party : " + party);
 		
 		Party partyNo = createpartyService.create(party);
 		System.out.println("CreatePartyController doPost() - result : " + partyNo);
 		
 		
-		//JSP View로 객체 전달하기
-		req.setAttribute("partyNo", partyNo);
+		String partyNum = req.getParameter("partyNo");
 		
-		
-		//세션 객체 생성	-> user_no 세션값으로 유저 정보 조회하기 위해서
+		//세션 객체 생성
 		HttpSession session =req.getSession();
+		session.setAttribute("partyNo", partyNo);
 
+		System.out.println("------session " + session.getAttribute("partyNo"));
+		
 		
 		//세션 객체 가져오기
 		Member member = new Member();
@@ -83,32 +80,15 @@ public class CreatePartyController extends HttpServlet {
 		} else {
 			resp.sendRedirect("./login");
 		}
-			
-//		boolean loginSt = adminLoginService.login(admin);
-//		
-//		if ( loginSt ) {
-//		
-//			String searchType = req.getParameter("searchType");
-//			String keyword = req.getParameter("keyword");
-//			
-//			Paging paging;
-//			if ( searchType != null && keyword != null ) {
-//				paging = adReportListService.getSearchPaging(req, searchType, keyword);
-//			} else {
-//				paging = adReportListService.getPaging(req);
-//			}
+		
+		//partyLeader 파라미터 꺼내오기
 		
 		
 		
-		//실제 코드 // session 은 String타입
-//		int userno = (int) session.getAttribute("u");
-
 		
 		//로그인한 사람의 정보 조회
 //		Member user = createpartyService.getuserinfo(userno);		
 //		System.out.println("CreatePartyController doPost() - member : " + userinfo);
-		
-		
 		//JSP View 객체 전달하기
 //		req.setAttribute("userinfo", user);
 		

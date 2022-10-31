@@ -19,8 +19,8 @@ public class MemberReportDaoImpl implements MemberReportDao {
 	public int insert(Connection conn, Report report) {
 		
 		String sql = "";
-		sql += "INSERT INTO report ( report_no, report_content, reporter, report_target, report_party )";
-		sql += " VALUES (report_seq.nextval, ?, ?, ?, ?)";
+		sql += "INSERT INTO report ( report_no, report_content, reporter, report_target, report_party, report_date )";
+		sql += " VALUES (report_seq.nextval, ?, ?, ?, ?, sysdate)";
 		
 		int res = 0;
 
