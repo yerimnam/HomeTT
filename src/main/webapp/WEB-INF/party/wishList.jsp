@@ -79,9 +79,9 @@
 <!-- 	<span class="heart on"> 🧡 하트 </span> -->
 
 
-	<form action="homett/wishlist" method="post" id="wishlist_form">
-		<button type="button" id="wishlist" name="wishlist">🤍</button>	
-	</form>
+<!-- 	<form action="homett/wishlist" method="post" id="wishlist_form"> -->
+<!-- 		<button type="button" id="wishlist" name="wishlist">🤍</button>	 -->
+<!-- 	</form> -->
 	
 </body>
 

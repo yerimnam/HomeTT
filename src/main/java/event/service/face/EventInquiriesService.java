@@ -75,8 +75,9 @@ public interface EventInquiriesService {
 	 * @param userNo 
 	 * @return - 이벤트글 저장
 	 */
-	public EventBoard setEvent(EventBoard param, int userNo);
+//	public EventBoard setEvent(EventBoard param, int userNo);
 
+	public EventBoard setEvent(EventBoard param);
 	/**
 	 * 수정하기 파라미터 
 	 * @param req- 요청 파라미터
@@ -103,6 +104,8 @@ public interface EventInquiriesService {
 	 * @return
 	 */
 	public Void deleteEvent(EventBoard eventNo);
+
+
 
 
 		

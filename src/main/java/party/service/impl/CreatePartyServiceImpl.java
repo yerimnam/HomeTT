@@ -60,11 +60,11 @@ public class CreatePartyServiceImpl implements CreatePartyService {
 		
 		//party_seq의 nextval(nextpartyno) 조회하기
 		
-		int next = createpartyDao.selectNextPartyno(conn);
-		System.out.println("CreatePartyService create() - next : " + next);
+		int nextpartyno = createpartyDao.selectNextPartyno(conn);
+		System.out.println("CreatePartyService create() - next : " + nextpartyno);
 		
 		//조회된 enxtval party객체 저장하기
-		party.setPartyNo(next);
+		party.setPartyNo(nextpartyno);
 		System.out.println("CreatePartyService create() - next : " + party);
 		
 		//완성된 party객체 DB에 삽입

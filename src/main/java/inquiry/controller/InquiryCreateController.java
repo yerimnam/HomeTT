@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import inquiry.dto.InquiryBoard;
 import inquiry.service.face.InquiryInquiriesService;
 import inquiry.service.impl.InquiryInquiriesServiceImpl;
+
 import invitation.dto.Invitation;
 
 //1:1 문의 작성
