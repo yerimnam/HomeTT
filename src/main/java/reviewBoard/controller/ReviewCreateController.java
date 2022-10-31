@@ -44,18 +44,18 @@ public class ReviewCreateController extends HttpServlet {
 		
 		
 		//테스트용 세션
-		session.setAttribute("userNo", 0);						//<---지울것
+//		session.setAttribute("userNo", 0);						//<---지울것
 		//실제 작동
 		int userNo = (int)session.getAttribute("userNo");
 
 		//파라미터 추출하기 
 		ReviewBoard param = reviewinquiriesService.getparam(req);
 		
-		System.out.println(param);
+		System.out.println("param : " + param);
 		
 		//회원번호 파라미터로 게시글 저장하기
 		ReviewBoard reBoard = reviewinquiriesService.setReview(param,userNo);
-		System.out.println(reBoard);
+		System.out.println("reBoard : " + reBoard);
 		
 		req.setAttribute("reviewInsert", reBoard);
 		//작성글 삽입

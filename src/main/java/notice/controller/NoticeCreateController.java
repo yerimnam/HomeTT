@@ -34,8 +34,6 @@ public class NoticeCreateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		//한글 인코딩
-		req.setCharacterEncoding("UTF-8");
 		//model값 저장하여 view전달		
 		req.getRequestDispatcher("/WEB-INF/cs/notice/notice_create.jsp").forward(req, resp);
 	} 
@@ -45,6 +43,8 @@ public class NoticeCreateController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
 		
+		//한글 인코딩
+		req.setCharacterEncoding("UTF-8");
 		
 		//테스트용 세션
 		session.setAttribute("userNo", 0);						//<---지울것

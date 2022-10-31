@@ -46,6 +46,8 @@ public class ReviewInquiriesController extends HttpServlet {
 		//한글 인코딩 처리
 		req.setCharacterEncoding("UTF-8");
 		
+		
+		
 		String searchType = req.getParameter("searchType");
 		String keyword = req.getParameter("keyword");
 		

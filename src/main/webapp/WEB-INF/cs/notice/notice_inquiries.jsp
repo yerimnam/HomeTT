@@ -80,7 +80,7 @@ $(document).ready(function() {
 			<%=noticeboardList.get(i).getNoticeArticletitle() %>
 		</a>
 	</td>
-	<td><%=noticeboardList.get(i).getNoticeWriter() %></td>
+	<td>관리자</td>
 	<td><%=noticeboardList.get(i).getHit() %></td>
 	<td><%=noticeboardList.get(i).getNoticeDate() %></td>
 </tr>

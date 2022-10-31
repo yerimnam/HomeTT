@@ -46,7 +46,7 @@ public class EventCreateController extends HttpServlet {
 		
 		
 		//테스트용 세션
-		session.setAttribute("userNo", 0);						//<---지울것
+//		session.setAttribute("userId", 0);						//<---지울것
 		//실제 작동
 		int userNo = (int)session.getAttribute("userNo");
 

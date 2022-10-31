@@ -76,10 +76,6 @@
 			<td style="width: 200px; border-left: 0;"><%=userinfo.get(i).getUserJoin() %></td>
 		</tr>
 		<tr>
-			<th class="text-center" style="width: 100px; height: 50px; border-right: 0;" >결제수단</th>
-			<td style="width: 200px; border-left: 0;"><%=userinfo.get(i).getPaymentMethod() %></td>
-		</tr>
-		<tr>
 			<th class="text-center" style="width: 100px; height: 50px; border-right: 0;" >파티번호</th>
 			<td style="width: 200px; border-left: 0;"><%=userinfo.get(i).getPartyNo() %></td>
 		</tr>

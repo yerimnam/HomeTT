@@ -67,8 +67,6 @@
 <tr>
 	<td>리뷰 내용</td>
 	<td><%=viewBoard.getReviewContent() %></td>
-
-
 </tr>
 
 

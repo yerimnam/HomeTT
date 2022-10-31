@@ -24,7 +24,7 @@ public class AdUserDetailsDaoImpl implements AdUserDetailsDao {
 		
 		String sql = "";
 		sql += " SELECT";
-		sql += " user_no, paymentMethod, master_no, user_id, user_pw, user_name, user_nick, user_email, user_phone, user_join, party_no";
+		sql += " user_no, master_no, user_id, user_pw, user_name, user_nick, user_email, user_phone, user_join, party_no";
 		sql += " FROM member";
 		sql += " WHERE " + searchType + " LIKE ?";
 		
@@ -41,7 +41,7 @@ public class AdUserDetailsDaoImpl implements AdUserDetailsDao {
 				Member m = new Member();
 				
 				m.setUserNo(rs.getInt("user_no"));
-				m.setPaymentMethod(rs.getString("paymentMethod"));
+//				m.setPaymentMethod(rs.getString("paymentMethod"));
 				m.setMasterNo(rs.getInt("Master_no"));
 				m.setUserId(rs.getString("user_id"));
 				m.setUserPw(rs.getString("user_pw"));

@@ -61,7 +61,7 @@
 </tr>
 <tr>
 	<td class= "text">작성자</td>
-	<td colspan="4"><%=viewBoard.getUserName() %></td>
+	<td colspan="4">관리자</td>
 </tr>
 <tr>
 	<td class = "text">조회수</td>

@@ -122,8 +122,6 @@ public class NoticeInquiriesServiceImpl implements  NoticeInquiriesService {
 		NoticeBoard noticeBoard = new NoticeBoard();
 		noticeBoard.setNoticeArticletitle(req.getParameter("noticeTitle")); //글제목
 		
-		
-		
 		noticeBoard.setNoticeContent(req.getParameter("content"));// 글 본문 
 		
 		System.out.println("getparam 끝");
