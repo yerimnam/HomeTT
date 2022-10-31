@@ -29,12 +29,12 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 		//SQL작성
 		String sql = "";
 
-		
-        sql +=" SELECT N.*";
-        sql +=" ,m.user_nick";
-        sql +=" FROM cs_notice N";
-        sql +=" inner join member m";
-        sql +=" on m.user_no = N.user_no";
+		sql += "SELECT * FROM cs_notice";
+//        sql +=" SELECT N.*";
+//        sql +=" ,m.user_nick";
+//        sql +=" FROM cs_notice N";
+//        sql +=" inner join member m";
+//        sql +=" on m.user_no = N.user_no";
         
 
 		
@@ -50,14 +50,14 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 				NoticeBoard r = new NoticeBoard();//조회결과 행 저장 DTO 객체
 
 				r.setNoticeArticlenumber(rs.getInt("notice_articlenumber"));
-				r.setAdminNo(rs.getInt("admin_no"));
-				r.setBoardCode(rs.getInt("board_code"));
+//				r.setAdminNo(rs.getInt("admin_no"));
+//				r.setBoardCode(rs.getInt("board_code"));
 				r.setNoticeArticletitle(rs.getString("notice_articletitle"));
 				r.setNoticeContent(rs.getString("notice_content"));
 				r.setNoticeDate(rs.getDate("notice_date"));
-				r.setUserNo(rs.getInt("user_no"));
+//				r.setUserNo(rs.getInt("user_no"));
 				r.setHit(rs.getInt("hit"));
-				r.setUserName(rs.getString("user_nick"));
+//				r.setUserName(rs.getString("user_nick"));
 				
 				//리스트에 결과값 저장하기
 				noticeboardList.add(r);
@@ -83,10 +83,11 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 		String sql = "";
 		sql += "SELECT * FROM ( ";
 		sql += " 	SELECT rownum rnum, R.*FROM (";
-		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
-		sql += " 		FROM cs_notice RR";
-		sql += "		INNER JOIN member m";
-		sql += "		ON m.user_no = RR.user_no";
+//		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+		sql += "		SELECT * FROM cs_notice";
+//		sql += " 		FROM cs_notice RR";
+//		sql += "		INNER JOIN member m";
+//		sql += "		ON m.user_no = RR.user_no";
 //		sql += " 	SELECT *";
 //		sql += "		notice_articlenumber,admin_no,board_code,notice_articletitle ";
 //		sql += " 		,notice_content,notice_date,user_no,hit";
@@ -112,14 +113,14 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 				NoticeBoard r = new NoticeBoard();//조회결과 행 저장 DTO 객체
 
 				r.setNoticeArticlenumber(rs.getInt("notice_articlenumber"));
-				r.setAdminNo(rs.getInt("admin_no"));
-				r.setBoardCode(rs.getInt("board_code"));
+//				r.setAdminNo(rs.getInt("admin_no"));
+//				r.setBoardCode(rs.getInt("board_code"));
 				r.setNoticeArticletitle(rs.getString("notice_articletitle"));
 				r.setNoticeContent(rs.getString("notice_content")); 
 				r.setNoticeDate(rs.getDate("notice_date"));		
-				r.setNoticeWriter(rs.getString("user_nick"));
+//				r.setNoticeWriter(rs.getString("user_nick"));
 				r.setHit(rs.getInt("hit"));
-				r.setUserNo(rs.getInt("user_no"));
+//				r.setUserNo(rs.getInt("user_no"));
 				//리스트에 결과값 저장하기
 				noticeboardList.add(r);
 			}
@@ -201,13 +202,14 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 		System.out.println("NoticeArticlenumber.getNoticeArticlenumber() : " + noticeArticlenumber.getNoticeArticlenumber());
 		String sql = "";
 		
-		sql += " SELECT * FROM * cs_notice (";
-        sql += " 	SELECT R.*";
-        sql += " 	,m.user_nick";
-        sql += " 	FROM cs_notice R";
-        sql += " 	inner join member m";
-        sql += " 	on m.user_no = R.user_no";
-        sql += " ) R ";
+		sql += " SELECT * FROM cs_notice";
+//		sql	+= "SELECT * FROM cs_notice";
+//        sql += " 	SELECT R.*";
+//        sql += " 	,m.user_nick";
+//        sql += " 	FROM cs_notice R";
+//        sql += " 	inner join member m";
+//        sql += " 	on m.user_no = R.user_no";
+//        sql += " ) R ";
 //		sql += "SELECT * FROM cs_notice";
         sql += " WHERE notice_articlenumber = ?";
 		
@@ -221,14 +223,14 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 				while( rs.next() ) {
 
 					board.setNoticeArticlenumber(rs.getInt("notice_articlenumber"));
-					board.setAdminNo(rs.getInt("admin_no"));
-					board.setBoardCode(rs.getInt("board_code"));
+//					board.setAdminNo(rs.getInt("admin_no"));
+//					board.setBoardCode(rs.getInt("board_code"));
 					board.setNoticeArticletitle(rs.getString("notice_articletitle"));
 					board.setNoticeContent(rs.getString("notice_content")); 
 					board.setNoticeDate(rs.getDate("notice_date"));				
 					board.setHit(rs.getInt("hit"));
-					board.setUserNo(rs.getInt("user_no"));
-					board.setUserName(rs.getString("user_nick"));
+//					board.setUserNo(rs.getInt("user_no"));
+//					board.setUserName(rs.getString("user_nick"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -251,8 +253,8 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 		System.out.println("insertnotice시작");
 		
 		String sql ="";								
-		sql +="INSERT INTO cs_notice (notice_articlenumber,user_no,notice_articletitle,notice_content,notice_date, hit)";
-		sql +=" VALUES(cs_notice_SEQ.nextval,?,?,?,sysdate, 0)"; //<- 마지막 ?를 0으로 수정
+		sql +="INSERT INTO cs_notice (notice_articlenumber,notice_articletitle,notice_content,notice_date, hit)";
+		sql +=" VALUES(cs_notice_SEQ.nextval,?,?,sysdate, 0)"; //<- 마지막 ?를 0으로 수정
 		
 		
 
@@ -262,9 +264,8 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 			ps = conn.prepareStatement(sql);
 			
 		
-			ps.setInt(1, userNo);
-			ps.setString(2, param.getNoticeArticletitle());
-			ps.setString(3, param.getNoticeContent());
+			ps.setString(1, param.getNoticeArticletitle());
+			ps.setString(2, param.getNoticeContent());
 		 result = ps.executeUpdate();
 		 
 		} catch (SQLException e) {

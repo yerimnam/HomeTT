@@ -23,14 +23,26 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		String sql = "";
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, I.* FROM (";
-		sql += "		SELECT";
-		sql += "			inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle,";
-		sql += "			 inquiry_content, inquiry_date, answer_writer, answer_content, answer_date";
-		sql += "		FROM cs_inquiry";
+//		sql += "		SELECT";
+//		sql += "			inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle,";
+//		sql += "			inquiry_writer, inquiry_content, inquiry_date, answer_writer, answer_content, answer_date";
+//		sql += "		FROM cs_inquiry";
+		sql += "		SELECT II.*";
+		sql += " 		,m.user_nick";
+		sql += " 		FROM cs_inquiry II";
+		sql += " 		inner join member m";
+		sql += " 		on m.user_no = II.user_no";
 		sql += "		ORDER BY inquiry_articleNumber DESC";
 		sql += "	) I";
 		sql += " ) Inquiry";
 		sql += " WHERE rnum BETWEEN ? AND ?";
+		
+//		sql += "SELECT I.*";
+//		sql += " ,m.user_nick";
+//		sql += " FROM cs_inquiry I";
+//		sql += " inner join member m";
+//		sql += " on m.user_no = I.user_no";
+//		sql += " WHERE inquiry_articleNumber = ?";
 		
 		List<Inquiry> inquiryList = new ArrayList<>();
 		
@@ -47,11 +59,11 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				
 				i.setInquiryArticleNumber(rs.getInt("inquiry_articleNumber"));
 				i.setUserNo(rs.getInt("user_no"));
-				i.setAdminNo(rs.getInt("admin_no"));
-				i.setBoardCode(rs.getInt("board_code"));
+//				i.setAdminNo(rs.getInt("admin_no"));
+//				i.setBoardCode(rs.getInt("board_code"));
 				i.setInquiryArticleTitle(rs.getString("inquiry_articleTitle"));
 				i.setInquiryContent(rs.getString("inquiry_content"));
-//				i.setInquiryWriter(rs.getString("inquiry_writer"));
+				i.setInquiryWriter(rs.getString("user_nick"));
 				i.setInquiryDate(rs.getDate("inquiry_date"));
 				i.setAnswerWriter(rs.getString("answer_writer"));
 				i.setAnswerContent(rs.getString("answer_content"));
@@ -99,10 +111,11 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 	public Inquiry selectInquiryByInquiryno(Connection conn, Inquiry inquiryno) {
 //		System.out.println("selectInquiryByInquiryno : " + inquiryno);
 		String sql = "";
-		sql += "SELECT";
-		sql += "	inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle, inquiry_content,";
-		sql += "	inquiry_date, answer_writer, answer_content, answer_date";
-		sql += " FROM cs_inquiry";
+		sql += "SELECT I.*";
+		sql += " ,m.user_nick";
+		sql += " FROM cs_inquiry I";
+		sql += " inner join member m";
+		sql += " on m.user_no = I.user_no";
 		sql += " WHERE inquiry_articleNumber = ?";
 		
 		Inquiry inquiry = null;
@@ -118,11 +131,11 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				
 				inquiry.setInquiryArticleNumber(rs.getInt("inquiry_articleNumber"));
 				inquiry.setUserNo(rs.getInt("user_no"));
-				inquiry.setAdminNo(rs.getInt("admin_no"));
-				inquiry.setBoardCode(rs.getInt("board_code"));
+//				inquiry.setAdminNo(rs.getInt("admin_no"));
+//				inquiry.setBoardCode(rs.getInt("board_code"));
 				inquiry.setInquiryArticleTitle(rs.getString("inquiry_articleTitle"));
 				inquiry.setInquiryContent(rs.getString("inquiry_content"));
-//				inquiry.setInquiryWriter(rs.getString("inquiry_writer"));
+				inquiry.setInquiryWriter(rs.getString("user_nick"));
 				inquiry.setInquiryDate(rs.getDate("inquiry_date"));
 				inquiry.setAnswerWriter(rs.getString("answer_writer"));
 				inquiry.setAnswerContent(rs.getString("answer_content"));
@@ -147,7 +160,7 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 		sql += "	SELECT rownum rnum, I.* FROM (";
 		sql += " 		SELECT";
 		sql += "			inquiry_articleNumber, user_no, admin_no, board_code, inquiry_articleTitle,";
-		sql += "			inquiry_content, inquiry_date, answer_writer, answer_content, answer_date";
+		sql += "			inquiry_writer, inquiry_content, inquiry_date, answer_writer, answer_content, answer_date";
 		sql += " 		FROM cs_inquiry";
 		sql += " 		WHERE " + searchType + " LIKE ?";
 		sql += " 		ORDER BY inquiry_articleNumber DESC";
@@ -171,11 +184,11 @@ public class AdInquiryListDaoImpl implements AdInquiryListDao {
 				
 				i.setInquiryArticleNumber(rs.getInt("inquiry_articleNumber"));
 				i.setUserNo(rs.getInt("user_no"));
-				i.setAdminNo(rs.getInt("admin_no"));
-				i.setBoardCode(rs.getInt("board_code"));
+//				i.setAdminNo(rs.getInt("admin_no"));
+//				i.setBoardCode(rs.getInt("board_code"));
 				i.setInquiryArticleTitle(rs.getString("inquiry_articleTitle"));
 				i.setInquiryContent(rs.getString("inquiry_content"));
-//				i.setInquiryWriter(rs.getString("inquiry_writer"));
+				i.setInquiryWriter(rs.getString("inquiry_writer"));
 				i.setInquiryDate(rs.getDate("inquiry_date"));
 				i.setAnswerWriter(rs.getString("answer_writer"));
 				i.setAnswerContent(rs.getString("answer_content"));

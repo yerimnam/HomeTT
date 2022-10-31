@@ -115,6 +115,9 @@ public interface EventInquiriesDao {
 	public int deleteDo(Connection conn, EventBoard eventNo);
 
 
+	public int insertevent(Connection conn, EventBoard param, int userNo);
+
+
 	
 
 

@@ -406,7 +406,8 @@ a:hover{
 
 
 <div id="party">   
-<% for(int i=0; i<partyList.size(); i++) { %>
+<%-- <% for(int i=0; i<partyList.size(); i++) { %> --%>
+<% for(int i=0; i<4; i++) { %>
      <div id="partylist_area">  
                    <a href="/homett/partymodify">
             <ul id="partylist">     

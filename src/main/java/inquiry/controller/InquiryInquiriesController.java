@@ -58,7 +58,7 @@ public class InquiryInquiriesController extends HttpServlet {
 			} else {
 //				// 로그인 안되어있으면 로그인 페이지로 리다이렉트
 				resp.sendRedirect("/homett/login");
-				
+				return;
 			}
 			
 			

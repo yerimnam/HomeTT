@@ -27,14 +27,14 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		//SQL작성
 		String sql = "";
 
-		
+		sql += "SELECT * FROM cs_event";
 //        sql +=" SELECT N.*";
 //        sql +=" ,m.user_nick";
 //        sql +=" FROM cs_event N";
 //        sql +=" inner join member m";
 //        sql +=" on m.user_no = N.user_no";
         
-		sql +="SELECT * from cs_event";
+
 		
 		//결과 저장할 List
 		List<EventBoard> eventboardList = new ArrayList<>();
@@ -47,14 +47,14 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			while(rs.next()) {
 				EventBoard r = new EventBoard();//조회결과 행 저장 DTO 객체
 
-				r.setEventArticlenumber(rs.getInt("EVENT_ARTICLENUMBER"));
-				r.setAdminNo(rs.getInt("ADMIN_NO"));
+				r.setEventArticlenumber(rs.getInt("event_articlenumber"));
+//				r.setAdminNo(rs.getInt("admin_no"));
 //				r.setBoardCode(rs.getInt("board_code"));
-				r.setEventArticletitle(rs.getString("EVENT_ARTICLETITLE"));
-				r.setEventContent(rs.getString("EVENT_CONTENT"));
-				r.setEventDate(rs.getDate("EVENT_DATE"));
+				r.setEventArticletitle(rs.getString("event_articletitle"));
+				r.setEventContent(rs.getString("event_content"));
+				r.setEventDate(rs.getDate("event_date"));
 //				r.setUserNo(rs.getInt("user_no"));
-				r.setHit(rs.getInt("HIT"));
+				r.setHit(rs.getInt("hit"));
 //				r.setUserName(rs.getString("user_nick"));
 				
 				//리스트에 결과값 저장하기
@@ -81,10 +81,9 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		String sql = "";
 		sql += "SELECT * FROM ( ";
 		sql += " 	SELECT rownum rnum, R.*FROM (";
+		sql += "		SELECT * FROM cs_event";
 //		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
-		sql += " 		SELECT *";
 //		sql += " 		FROM cs_event RR";
-		sql += " 		FROM cs_event";
 //		sql += "		INNER JOIN member m";
 //		sql += "		ON m.user_no = RR.user_no";
 //		sql += " 	SELECT *";
@@ -112,7 +111,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 				EventBoard r = new EventBoard();//조회결과 행 저장 DTO 객체
 
 				r.setEventArticlenumber(rs.getInt("event_articlenumber"));
-				r.setAdminNo(rs.getInt("admin_no"));
+//				r.setAdminNo(rs.getInt("admin_no"));
 //				r.setBoardCode(rs.getInt("board_code"));
 				r.setEventArticletitle(rs.getString("event_articletitle"));
 				r.setEventContent(rs.getString("event_content")); 
@@ -202,18 +201,17 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		String sql = "";
 	
 //		sql += " SELECT * FROM (";
-		sql += " SELECT R.* FROM (";
-        sql += " 	SELECT *";
 //        sql += " 	SELECT R.*";
 //        sql += " 	,m.user_nick";
+//        sql += " 	FROM cs_event R";
 //        sql += " 	inner join member m";
-        sql += " 	FROM cs_event";
 //        sql += " 	on m.user_no = R.user_no";
-        sql += " ) R ";
+//        sql += " ) R ";
+		sql += "SELECT * FROM cs_event";
         sql += " WHERE event_articlenumber = ?";
 		
-// -> userno 매개 변수 없는데 써서 오류남.. 
-		//userno 테이븡ㄹ이 없눈데..?
+
+		
 		EventBoard board= null;
 		
 			try {
@@ -225,7 +223,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 					board = new EventBoard();
 
 					board.setEventArticlenumber(rs.getInt("event_articlenumber"));
-					board.setAdminNo(rs.getInt("admin_no"));
+//					board.setAdminNo(rs.getInt("admin_no"));
 //					board.setBoardCode(rs.getInt("board_code"));
 					board.setEventArticletitle(rs.getString("event_articletitle"));
 					board.setEventContent(rs.getString("event_content")); 
@@ -251,14 +249,12 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 
 
 	@Override
-//	public int insertevent(Connection conn, EventBoard param,int userNo) {
-		public int insertevent(Connection conn, EventBoard param) {
+	public int insertevent(Connection conn, EventBoard param, int userNo) {
 		System.out.println("insertevent시작");
 		
 		String sql ="";								
-//		sql +="INSERT INTO cs_event (event_articlenumber,user_no,event_articletitle,event_content,event_date, hit)";
-		sql +="INSERT INTO cs_event (event_articlenumber,admin_no,event_articletitle,event_content,event_date, hit)";
-		sql +=" VALUES(cs_event_SEQ.nextval,1,?,?,sysdate, 0)"; //<- 마지막 ?를 0으로 수정
+		sql +="INSERT INTO cs_event (event_articlenumber,event_articletitle,event_content,event_date, hit)";
+		sql +=" VALUES(cs_event_SEQ.nextval,?,?,sysdate, 0)"; //<- 마지막 ?를 0으로 수정
 		
 		
 
@@ -268,7 +264,6 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 			ps = conn.prepareStatement(sql);
 			
 		
-//			ps.setInt(1, userNo);
 			ps.setString(1, param.getEventArticletitle());
 			ps.setString(2, param.getEventContent());
 		 result = ps.executeUpdate();
@@ -286,7 +281,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 	@Override
 	public EventBoard selectcontent(Connection conn, EventBoard eventNo) {
 		System.out.println("selectcontent -start");
-		System.out.println("리뷰노 " + eventNo.getEventArticlenumber());
+		System.out.println("eventNo : " + eventNo.getEventArticlenumber());
 		String sql ="";
 		sql +="SELECT * FROM cs_event";
 		sql +=" WHERE event_articlenumber =?";
@@ -305,7 +300,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 				updateContent = new EventBoard();
 				updateContent.setEventArticlenumber(rs.getInt("event_articlenumber"));
 				updateContent.setEventArticletitle(rs.getString("event_articletitle"));
-//				updateContent.setUserNo(rs.getInt("user_no"));
+				updateContent.setUserNo(rs.getInt("user_no"));
 				updateContent.setEventContent(rs.getString("event_content"));
 				updateContent.setEventDate(rs.getDate("event_date"));;
 				
@@ -392,24 +387,21 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		String sql = "";
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += "		SELECT * FROM cs_event";
 //		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
-		sql +="          SELECT *";
 //		sql += " 		FROM cs_event RR";
-		sql += " 		FROM cs_event";
 //		sql += "		INNER JOIN member m";
 //		sql += "		ON m.user_no = RR.user_no";
 		sql += "		WHERE " + searchType + " LIKE ?";
 		sql += " 		ORDER BY Event_ARTICLENUMBER DESC";
 		sql += " 		) R";
-		sql += " 	) RIVIEW";
+		sql += " 	) EVENT";
 		sql += " WHERE rnum BETWEEN ? AND ?";
-	
-		
 		
 		List<EventBoard> eventBoardList = new ArrayList<>();
 		
 		try {
-			//키워드로 조회 
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, keyword);
 			ps.setInt(2, paging.getStartNo());
@@ -421,7 +413,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 				EventBoard r = new EventBoard();
 				
 				r.setEventArticlenumber(rs.getInt("event_articlenumber"));
-				r.setAdminNo(rs.getInt("admin_no"));
+//				r.setAdminNo(rs.getInt("admin_no"));
 //				r.setBoardCode(rs.getInt("board_code"));
 				r.setEventArticletitle(rs.getString("event_articletitle"));
 				r.setEventContent(rs.getString("event_content"));
@@ -450,14 +442,12 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		System.out.println("selectSearchCntAll 시작" + searchType + keyword);
 		keyword = '%' + keyword + '%';
 		
-		//
 		String sql = "";
 		sql += "SELECT count(*) cnt FROM (";
 		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += "		SELECT * FROM cs_event";
 //		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
-		sql += " 		SELECT *";
 //		sql += " 		FROM cs_event RR";
-		sql += " 		FROM cs_event";
 //		sql += "		INNER JOIN member m";
 //		sql += "		ON m.user_no = RR.user_no";
 		sql += "		WHERE " + searchType + " LIKE ?";
@@ -485,6 +475,13 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
 		System.out.println("selectSearchCntAll" + count);
 		return count;
+	}
+
+
+	@Override
+	public int insertevent(Connection conn, EventBoard param) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

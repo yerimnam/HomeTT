@@ -54,6 +54,7 @@
 		<th style="width: 10%; text-align: center">답변일</th>
 		<th style="width: 10%; text-align: center">처리 상태</th>
 	</tr>
+<%-- 	<%	for(int i=0; i<inquiryList.size(); i++) { %> --%>
 	<%	for(int i=0; i<5; i++) { %>
 	<tr>
 		<td><%=inquiryList.get(i).getInquiryArticleNumber() %></td>
@@ -106,6 +107,7 @@
 		<th style="width: 20%; text-align: center">신고 파티명</th>
 	</tr>
 	
+<%-- 	<%	for(int i=0; i<reportList.size(); i++) { %> --%>
 	<%	for(int i=0; i<5; i++) { %>
 	<tr>
 		<td><%=reportList.get(i).getReportNo() %></td>

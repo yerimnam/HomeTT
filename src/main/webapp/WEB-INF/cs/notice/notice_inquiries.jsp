@@ -1,16 +1,16 @@
-<%@page import="event.dto.EventBoard"%>
+<%@page import="notice.dto.NoticeBoard"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
- <% List<EventBoard> eventboardList = (List)request.getAttribute("eventboardList"); %>
+ <% List<NoticeBoard> noticeboardList = (List)request.getAttribute("noticeboardList"); %>
  
  <jsp:include page="/WEB-INF/layout/header.jsp" />
 
 
 <style>
 
-.eventmain {
+.noticemain {
 width: 68%;
     height: 750px;
     /* border: 1px solid #000; */
@@ -53,7 +53,7 @@ width: 68%;
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#btnWrite").click(function() {
-		location.href = "./eventcreate"
+		location.href = "./noticecreate"
 	})
 })
 </script>
@@ -72,17 +72,17 @@ $(document).ready(function() {
 	<th style="width: 20%;">작성일</th>
 </tr>
 
-<%	for(int i=0; i<eventboardList.size(); i++) { %>
+<%	for(int i=0; i<noticeboardList.size(); i++) { %>
 <tr>
-	<td><%=eventboardList.get(i).getEventArticlenumber() %></td>
+	<td><%=noticeboardList.get(i).getNoticeArticlenumber() %></td>
 	<td>
-		<a href="./eventview?eventArticlenumber=<%=eventboardList.get(i).getEventArticlenumber() %>">
-			<%=eventboardList.get(i).getEventArticletitle() %>
+		<a href="./noticeview?noticeArticlenumber=<%=noticeboardList.get(i).getNoticeArticlenumber() %>">
+			<%=noticeboardList.get(i).getNoticeArticletitle() %>
 		</a>
 	</td>
 	<td>관리자</td>
-	<td><%=eventboardList.get(i).getHit() %></td>
-	<td><%=eventboardList.get(i).getEventDate() %></td>
+	<td><%=noticeboardList.get(i).getHit() %></td>
+	<td><%=noticeboardList.get(i).getNoticeDate() %></td>
 </tr>
 <%	} %>
 </table>
@@ -97,12 +97,12 @@ $(document).ready(function() {
 <!-- ------------- -->
 
 		<div class="row">
-			<form action="./eventlist" method="post" name="search">
+			<form action="./noticelist" method="post" name="search">
 				<table class="pull-right">
 					<tr>
 						<td><select class="form-control" name="searchType">
 <!-- 								<option value="#">선택</option> -->
-								<option value="event_articletitle">제목</option>
+								<option value="notice_articletitle">제목</option>
 								<option value="user_nick">작성자</option>
 						</select></td>
 						<td><input type="text" class="form-control"
@@ -117,6 +117,6 @@ $(document).ready(function() {
 
 <!-- ------------- -->
 
-<%@ include file="../../layout/eventpaging.jsp" %>
+<%@ include file="../../layout/noticepaging.jsp" %>
 
 <jsp:include page="/WEB-INF/layout/footer.jsp" />
