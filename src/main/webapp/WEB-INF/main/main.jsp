@@ -430,12 +430,6 @@ a:hover{
 
 
 
-<<<<<<< HEAD
-<%--   <%@ include file="../layout/footer.jsp"  %> --%>
-  
-<!-- </body> -->
-<!-- </html> -->
-=======
 
   <jsp:include page="/WEB-INF/layout/footer.jsp" />  
->>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
+
