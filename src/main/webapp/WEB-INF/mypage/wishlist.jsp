@@ -173,11 +173,11 @@ a:active {
 	<div style="text-align: center;">
 		<h4 style="font-weight: 600; font-size: medium; color: #ff8c11;"><%=session.getAttribute("userName") %>님 찜하기 목록이 없습니다</h4>
 	</div>
+	
+	<div id="allBtn">
+		<a href="/homett/partycheck"><button type="button" class="mybtn" id="returnBList">파티 찾으로 가기</button></a>
+	</div>
 <% } %>
-</div>
-
-<div id="allBtn">
-<a href="/homett/partycheck"><button type="button" class="mybtn" id="returnBList">파티 찾으로 가기</button></a>
 </div>
 
 <%-- <div style="text-align: center;">
