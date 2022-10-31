@@ -21,6 +21,72 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+
+
+	// 	$(document).on('click', '.heart', function(){
+	// 		// 하트 상태 DB 저장
+	// 		$(this).toggleClass('on off');
+	// 	});
+
+	// });
+	
+window.onload = function () {
+	
+	wishlist.onclick = function () {
+		cosole.log("#wishlist click")
+		
+		//AJAX 요청 보낵
+		sendRequest("POST", "/homett/wishlist", "", callback)
+		
+	}
+}
+
+function sendHearth(e){
+	$.ajax({
+	    type: "post",
+	    url: '/homett/wishlist',
+	    data: {wishNo : e},
+	    success: function(data) {
+            console.log(data);     
+        }
+	    
+	});
+}
+	
+//AJAX 응답처리 콜백함수
+function callback() {
+	if(httpRequest.readyState ==4) {
+		if(httpRequest.status ==200){
+			console.log("AJAX 성공")
+			
+			printData()
+			
+		} else {
+			console.log("AJAX 실패")
+		}
+	}
+	
+}
+
+//응답결과 처리하는 함수
+	function prinData() {
+	
+	result.innerHTML = httpRequest.responseText
+	
+}
+
+
+// 	#(document).ready(function(){
+
+// 	$("#wishlist").click(function(){
+// 		$("#wishlist_form").submit();
+		
+// 	})
+	
+// })
+	
+</script>
 
 
 
@@ -183,7 +249,7 @@ a.heart {
 					<%-- 					<%}else{ %> --%>
 					<%-- 					<a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>"></a> --%>
 					<%-- 					<%} %> --%>
-					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
+<%-- 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li> --%>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>
 					<li style="border-bottom: 1px solid #333;">참여 금액 : <%=partyList.get(i).getPaymentAmount()%></li>
@@ -191,18 +257,12 @@ a.heart {
 					</li>
 				</ul>
 
-				<%-- 				<a href="./wishlist?wishNo=<%=wishList.get(i).getWishNo()%>"> --%>
-<!-- 				<span class="heart-area"> <span class="heart on"> 🧡 하트 </span> -->
-
 				<form action="/homett/wishlist" method="post" id="wishlist_form">
-					<!-- 						<button>하트</button> -->
 					<button type="button" id="wishlist"
 						onclick="sendHearth(<%=partyList.get(i).getPartyNo()%>)"
 						name="wishlist">🧡</button>
 					<div id="result"></div>
 				</form>
-				</span>
-				<!-- 				</a> -->
 			</div>
 			<%
 				}

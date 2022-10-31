@@ -427,5 +427,9 @@ a:hover{
 
 
 
+<%--   <%@ include file="../layout/footer.jsp"  %> --%>
+  
+<!-- </body> -->
+<!-- </html> -->
 
   <jsp:include page="/WEB-INF/layout/footer.jsp" />  
