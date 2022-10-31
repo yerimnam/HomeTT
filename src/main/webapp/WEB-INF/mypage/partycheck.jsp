@@ -152,7 +152,7 @@ a {
 	<div class="situation">
 		<h4>가입한 파티 목록</h4>
 	</div>
-	<hr align="center" style=" height: 1px; background-color: black; width: 55%;">
+	<hr align="center" style=" height: 1px; background-color: black; width: 58%; margin-left: 420px;">
 	
 	<!--     <input type="button" onClick="sendLinkDefault();" value="친구선택"/> -->
 	
@@ -188,14 +188,14 @@ a {
 			</div>
 		<% } %>
 	<% } else { %>
-		<div style="text-align: center;">
+		<div style="text-align: center; margin-left: 65px;">
 			<h4 style="font-weight: 600; font-size: medium; color: #ff8c11;">참여하신 파티방이 없습니다</h4>
 			<span style="font-weight: 600; font-size: medium; color: #ff8c11;">파티를 참여해 주세요!</span>
 		</div>
 	<% } %>
 	</div>
 	
-	<div class="invitation">
+	<div class="invitation" style="margin-left: 76px;">
 	    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
 	</div>
 	

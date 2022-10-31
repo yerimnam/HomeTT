@@ -105,6 +105,33 @@ a:active {
 	text-decoration: none;
 }
 
+#allBtn {
+	display: flex; 
+	justify-content: center; 
+	margin-top: -30px; 
+	gap: 10px;
+}
+
+.mybtn {
+	width: 175px;
+	height: 38px;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-right: -4;
+	border: 1px solid #ffeaa6;
+	background-color: rgba(0,0,0,0);
+	color: #585a72;
+	padding: 5px;
+	margin-top: 57px;
+}
+
+.mybtn:hover {
+/* 	color: #a9cd72; */
+	color: #ff8c11;
+/* 	background-color: #ffeaa6; */
+	background-color: #fffcee;
+	transition: 0.5s;	
+}
 
 
 
@@ -144,9 +171,13 @@ a:active {
 	<% } %>
 <% } else { %>
 	<div style="text-align: center;">
-		<h4 style="font-weight: 600; font-size: medium; color: #ff8c11;">찜하기 목록이 없습니다</h4>
+		<h4 style="font-weight: 600; font-size: medium; color: #ff8c11;"><%=session.getAttribute("userName") %>님 찜하기 목록이 없습니다</h4>
 	</div>
 <% } %>
+</div>
+
+<div id="allBtn">
+<a href="/homett/partycheck"><button type="button" class="mybtn" id="returnBList">파티 찾으로 가기</button></a>
 </div>
 
 <%-- <div style="text-align: center;">
