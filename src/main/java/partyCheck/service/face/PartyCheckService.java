@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import partyCheck.dto.MypageMember;
 import partyCheck.dto.PartyCheck;
 import util.Paging5;
 
@@ -55,5 +56,7 @@ public interface PartyCheckService {
 	 * @return - 파티장 파티 전제 조회 목록
 	 */
 	public List<PartyCheck> getOwnerList();
+
+
 
 }

@@ -146,7 +146,7 @@ public interface MonthlyStatisticsDao {
 	 * @param conn - DB 연결 객체
 	 * @return 당일 탈퇴한 회원 수
 	 */
-	public int selectCntDuser(Connection conn);
+//	public int selectCntDuser(Connection conn);
 
 	/**
 	 * 당일 탈퇴한 회원 수 DB에 저장
@@ -155,7 +155,7 @@ public interface MonthlyStatisticsDao {
 	 * @param nuser - 당일 탈퇴한 회원 수
 	 * @return update쿼리 수행 결과
 	 */
-	public int updateCntDuser(Connection conn, int duser);
+//	public int updateCntDuser(Connection conn, int duser);
 
 	/**
 	 * 당일 생성된 파티 수 조회

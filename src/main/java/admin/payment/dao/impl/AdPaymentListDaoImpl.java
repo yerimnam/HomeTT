@@ -44,7 +44,7 @@ public class AdPaymentListDaoImpl implements AdPaymentListDao {
 			while(rs.next()) {
 				Payment p = new Payment(); 
 				
-				p.setPayNo(rs.getInt("pay_no"));
+				p.setPayNo(rs.getString("pay_no"));
 				p.setOrderNo(rs.getString("order_no"));
 				p.setUserNo(rs.getInt("user_no"));
 				p.setPartyNo(rs.getInt("party_no"));
@@ -105,14 +105,14 @@ public class AdPaymentListDaoImpl implements AdPaymentListDao {
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, paymentno.getPayNo());
+			ps.setString(1, paymentno.getPayNo());
 			
 			rs = ps.executeQuery();
 			
 			while( rs.next() ) {
 				payment = new Payment();
 				
-				payment.setPayNo(rs.getInt("pay_no"));
+				payment.setPayNo(rs.getString("pay_no"));
 				payment.setOrderNo(rs.getString("order_no"));
 				payment.setUserNo(rs.getInt("user_no"));
 				payment.setPartyNo(rs.getInt("party_no"));
@@ -164,7 +164,7 @@ public class AdPaymentListDaoImpl implements AdPaymentListDao {
 			while(rs.next()) {
 				Payment p = new Payment();
 				
-				p.setPayNo(rs.getInt("pay_no"));
+				p.setPayNo(rs.getString("pay_no"));
 				p.setOrderNo(rs.getString("order_no"));
 				p.setUserNo(rs.getInt("user_no"));
 				p.setPartyNo(rs.getInt("party_no"));

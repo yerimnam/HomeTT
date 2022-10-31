@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% ReviewBoard updatecotentReviewBoard = (ReviewBoard)request.getAttribute("updatecontent");  %>    
+<% ReviewBoard updatecotent = (ReviewBoard)request.getAttribute("updatecontent");  %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,13 +48,13 @@ $(document).ready(function(){
 	})
 	
 	
-<script type="text/javascript">
 
 $(document).ready(function(){
 
 	$("#btnupdate").click(function(){
 		
-		$("#updateevent").submit();
+		console.log("click")
+		$(this).parents("form").submit();
 	})		
 	
 })
@@ -93,17 +93,17 @@ body{
 <form action="/homett/reviewupdate" method="post" id="updatereview">
 
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
-	<input type="text" hidden="" name="reviewNo" value="<%=updatecotentReviewBoard.getReviewArticlenumber() %>">
+	<input type="text" hidden="" name="reviewNo" value="<%=updatecotent.getReviewArticlenumber() %>">
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
 	
 	
 	<div id="title">
 	<span>제목</span>
-	<input type="text" id="reviewTitle" name="reviewTitle" value="<%=updatecotentReviewBoard.getReviewArticletitle() %>">
+	<input type="text" id="reviewTitle" name="reviewTitle" value="<%=updatecotent.getReviewArticletitle() %>">
 	</div>
 	
 	<br><br><br>
-	<textarea id="content" name="content" ><%= updatecotentReviewBoard.getReviewContent()%></textarea><br><br>
+	<textarea id="content" name="content" ><%= updatecotent.getReviewContent()%></textarea><br><br>
 
 <button type="button" id="btnupdate" >수정완료</button>
 <button type="button" id="cancelwriter" onclick="history.back()">취소</button>

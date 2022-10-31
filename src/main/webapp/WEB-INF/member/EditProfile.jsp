@@ -5,6 +5,7 @@
 <%	Member member = (Member) request.getAttribute("result"); %>
 <jsp:include page="/WEB-INF/layout/header.jsp" />
 
+<jsp:include page="/WEB-INF/layout/sidemenu.jsp" />
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -39,7 +40,7 @@ $(document).ready(function() {
 			, success: function( res ) {
 			console.log("AJAX 성공")
 			alert("고객님의 회원정보가 수정되었습니다");
-			window.location.href='/homett/partycheck'; //마이페이지 주소
+			window.location.href='/homett/mypage'; //마이페이지 주소
 			
 			}
 			, error: function() {

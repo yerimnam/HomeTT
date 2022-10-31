@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>HomeTT Admin</title>
+<title> : : : HomeTT Admin : : : </title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -47,14 +47,7 @@ header {
 		            <li><a href="./reviewlist">후기 관리(UserPage)</a></li>
 		        </ul>
 	        </li>
-	        <li role="presentation"class="dropdown" style="margin-right: 50px;">
-	    		<a style="color:black;" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-	      				회원정보 <span class="caret"></span></a>
-	    	  	<ul class="dropdown-menu" role="menu">
-		    	  	<li><a href="./aduserdetails">회원 정보 관리</a></li>
-		            <li><a href="./addropuserdetails">탈퇴 회원 관리</a></li>
-		        </ul>
-	        </li>
+	        <li role="presentation" style="margin-right: 50px;"><a style="color:black;" href="./aduserdetails">회원 관리</a></li>
 	        <li role="presentation"class="dropdown" style="margin-right: 50px;">
 	    		<a style="color:black;" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 	      				통계 <span class="caret"></span></a>

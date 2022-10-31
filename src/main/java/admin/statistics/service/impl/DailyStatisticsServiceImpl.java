@@ -178,24 +178,24 @@ public class DailyStatisticsServiceImpl implements DailyStatisticsService {
 		return nuser;
 	}
 	
-	@Override
-	public int getCntDDuser() {
-		//DB연결 객체
-		Connection conn = JDBCTemplate.getConnection();
-		
-		//당일 탈퇴한 회원 조회
-		int duser = dailyStatisticsDao.selectCntDuser(conn);
-		
-		//DB에 당일 탈퇴한 회원 수 저장 
-		if( dailyStatisticsDao.updateCntDuser(conn, duser) > 0 ) {
-			JDBCTemplate.commit(conn);
-		} else {
-			JDBCTemplate.rollback(conn);
-		}
-		
-		//조회된 당일 탈퇴한 회원 수 리턴
-		return duser;
-	}
+//	@Override
+//	public int getCntDDuser() {
+//		//DB연결 객체
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//		//당일 탈퇴한 회원 조회
+//		int duser = dailyStatisticsDao.selectCntDuser(conn);
+//		
+//		//DB에 당일 탈퇴한 회원 수 저장 
+//		if( dailyStatisticsDao.updateCntDuser(conn, duser) > 0 ) {
+//			JDBCTemplate.commit(conn);
+//		} else {
+//			JDBCTemplate.rollback(conn);
+//		}
+//		
+//		//조회된 당일 탈퇴한 회원 수 리턴
+//		return duser;
+//	}
 	
 	@Override
 	public int getCntDPartyCre() {

@@ -50,7 +50,6 @@ public class InquiryUpdateController extends HttpServlet {
 			//파라미터에서 글번호 추출하기
 			InquiryBoard inquiryNum = inquiryService.getdata(req);
 
-			//글번호로 업데이트하기 
 			InquiryBoard updateInquiry = inquiryService.setUpdate(inquiryNum);
 			
 

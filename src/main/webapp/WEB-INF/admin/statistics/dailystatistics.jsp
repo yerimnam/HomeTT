@@ -14,7 +14,7 @@
 <%	int watcha = (int)request.getAttribute("watcha"); %>
 <%	int laftel = (int)request.getAttribute("laftel"); %>
 <%	int nuser  = (int)request.getAttribute("nuser"); %>
-<%	int duser  = (int)request.getAttribute("duser"); %>
+<%-- <%	int duser  = (int)request.getAttribute("duser"); %> --%>
 <%	int partycre  = (int)request.getAttribute("partycre"); %>
 <%	int partyend  = (int)request.getAttribute("partyend"); %>
 
@@ -106,17 +106,15 @@ var ctx = document.getElementById('myChart2');
 var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['신규 가입 회원', '탈퇴 회원'],
+    labels: ['신규 가입 회원'],
     datasets: [{
       	label: '회원 통계',
-      	data: [<%=nuser %>, <%=duser %>],
+      	data: [<%=nuser %>],
       	backgroundColor: [
 	        'rgba(255, 99, 132, 0.2)',
-	        'rgba(54, 162, 235, 0.2)',
 	    ],
 	    borderColor: [
 	    	'rgba(255, 99, 132, 1)',
-	        'rgba(54, 162, 235, 1)',
 	    ],
 	    borderWidth: 1
     }]

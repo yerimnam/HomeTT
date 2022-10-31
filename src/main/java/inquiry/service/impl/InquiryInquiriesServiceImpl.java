@@ -1,6 +1,7 @@
 package inquiry.service.impl;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -203,4 +204,5 @@ public class InquiryInquiriesServiceImpl implements InquiryInquiriesService {
 		return null;
 		
 	}
+
 }

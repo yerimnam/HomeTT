@@ -35,10 +35,10 @@ public interface AdReportListDao {
 	public Report selectReportByReportno(Connection conn, Report reportno);
 
 	/**
-	 * 총 게시글 수 조회
+	 * 검색한 총 게시글 수 조회
 	 * 
 	 * @param conn - DB 연결 객체
-	 * @return int - 테이블의 전체 행 수
+	 * @return int - 검색한 테이블의 전체 행 수
 	 */
 	public int selectSearchCntAll(Connection conn, String searchType, String keyword);
 	

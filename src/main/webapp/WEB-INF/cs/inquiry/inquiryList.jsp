@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+    
     <%List<InquiryBoard> inquiryBoard = (List)request.getAttribute("inquiryview"); %>
     
 <!DOCTYPE html>
@@ -41,52 +43,51 @@
 
 <div>
 	<table id="inquiryBoard" >
-	
-		<thead>
-			<tr>
-					<th>글 번호</th>
-					<th>작성자</th>
-					<th>작성일자</th>
-					<th>제목</th>
-					<th>문의 답변</th>
-					<th>답변 날짜</th>
-					<th>답변자</th>
-			</tr>
-		</thead>
-		
-		
-		
-		<tbody>
-			<%for(int i=0;i<inquiryBoard.size();i++) { %>
-				<tr>
-					<td><%=inquiryBoard.get(i).getInquiryArticleNumber() %></td>
-					<td><%=inquiryBoard.get(i).getUserNick() %></td>
-					<td><%=inquiryBoard.get(i).getInquiryDate() %></td>
-					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>		<!--  상세보기 링크 걸기-->		
-				
-				<% if ( inquiryBoard.get(i).getAnswercontent() != null && !"".equals(inquiryBoard.get(i).getAnswercontent()))  { %>
-					<td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&<%=inquiryBoard.get(i).getAnswercontent() %>">
-						<%if(inquiryBoard.get(i).getAnswercontent().length() > 20) {%>
-						
-						<%=inquiryBoard.get(i).getAnswercontent().substring(0,20)+"..." %></a></td>
-						
-						<% }else {%>
-						<%=inquiryBoard.get(i).getAnswercontent()%>
-						
-						<% } %>
-				
-			
-					
-					<td> 답변예정</td>
-					<td> 답변예정</td>
-					<td> 미정</td>
-				<%} %>
-				</tr>
-		
-		
-		<%} %>	
-<!-- 		</tbody> -->
-	</table>
+   
+      <thead>
+         <tr>
+               <th>글 번호</th>
+<!--                <th>작성자</th> -->
+               <th>작성일자</th>
+               <th>제목</th>
+               <th>문의 답변</th>
+               <th>답변 날짜</th>
+               <th>답변자</th>
+         </tr>
+      </thead>
+      
+      
+      
+      <tbody>
+         <%for(int i=0;i<inquiryBoard.size();i++) { %>
+            <tr>
+               <td><%=inquiryBoard.get(i).getInquiryArticleNumber() %></td>
+<%--                <td><%=inquiryBoard.get(i).getUserNick() %></td> --%>
+               <td><%=inquiryBoard.get(i).getInquiryDate() %></td>
+               <td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>      <!--  상세보기 링크 걸기-->      
+            
+            <% if ( inquiryBoard.get(i).getAnswercontent() != null && !"".equals(inquiryBoard.get(i).getAnswercontent()))  { %>
+               <td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&content=<%=inquiryBoard.get(i).getAnswercontent() %>">
+                  <%if(inquiryBoard.get(i).getAnswercontent().length() > 20) {%>
+                  
+                     <%=inquiryBoard.get(i).getAnswercontent().substring(0,20)+"..." %>
+                     
+                     <% }else {%>
+                        <%=inquiryBoard.get(i).getAnswercontent()%>
+                     <%} %>   </a></td>
+                     <td><%=inquiryBoard.get(i).getAnswerdate() %></td>
+                     <td><%=inquiryBoard.get(i).getAnswerWriter() %></td>
+                  
+                  <% } else{ %>                
+                  <td> 답변예정</td>          
+                  <td> 미정</td> 
+            <%} %>
+            </tr>
+      
+      
+      <%} %>   
+       </tbody> 
+   </table>
 
 
 
@@ -105,5 +106,4 @@
 
 
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

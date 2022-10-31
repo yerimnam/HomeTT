@@ -42,7 +42,6 @@ public class PaymentServiceImpl implements PaymentService {
 		payment.setUserNo(Integer.parseInt(req.getParameter("user_no"))); //유저번호
 		payment.setPartyNo(Integer.parseInt(req.getParameter("party_no"))); //파티번호
 		payment.setPaymentMethod(req.getParameter("pay_method")); //결제수단
-//		payment.setPaymentAmount(Integer.parseInt( req.getParameter("paid_amount")));
 		payment.setPaymentAmount(Integer.parseInt( req.getParameter("paid_amount"))); //결제금액
 		payment.setUserCardCom(req.getParameter("card_name")); //카드 회사 
 		//결제 시각은 sql에서 sysdate로 대체 

@@ -11,6 +11,7 @@ import event.dto.EventBoard;
 import event.service.face.EventInquiriesService;
 import event.service.impl.EventInquiriesServiceImpl;
 
+
 /**
  * Servlet implementation class EventUpdateController
  */
@@ -47,7 +48,7 @@ public class EventUpdateController extends HttpServlet {
 		EventBoard eventNum = eventinquiriesService.getdata(req);
 
 		//글번호로 업데이트하기 
-		EventBoard updateEvent = eventinquiriesService.setUpdate(eventNum);
+		EventBoard updateevent = eventinquiriesService.setUpdate(eventNum);
 		
 
 		

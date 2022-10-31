@@ -2,6 +2,9 @@
 <%@page import="inquiry.dto.InquiryBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<jsp:include page="/WEB-INF/layout/header.jsp" />
+    
     <% InquiryBoard updatecotent = (InquiryBoard)request.getAttribute("updatecontent"); %>
 <!DOCTYPE html>
 <html>
@@ -127,5 +130,4 @@ body{
 
 
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

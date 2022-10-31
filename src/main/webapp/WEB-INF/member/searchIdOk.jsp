@@ -112,7 +112,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 		<P id="subTxt">회원님의 아이디는 <span>·<%=session.getAttribute("userId") %>·</span> 입니다.</P>
 		
 		<div id="btnDiv">
-			<button id="btnMain" onclick="location.href='/homett/searchpw'">비밀번호 찾기</button>
+			<button id="btnMain" onclick="location.href='/homett/searchid'">비밀번호 찾기</button>
 			<button id="btnLogin" onclick="location.href='/homett/login'">로그인</button>
 		</div>
 	</div> <!-- textArea -->

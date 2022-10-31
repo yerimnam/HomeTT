@@ -2,13 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    
-    <% EventBoard updatecotentEventBoard = (EventBoard)request.getAttribute("updatecontent");  %>
+<% EventBoard updatecotent = (EventBoard)request.getAttribute("updatecontent");  %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -48,13 +48,13 @@ $(document).ready(function(){
 	})
 	
 	
-<script type="text/javascript">
 
 $(document).ready(function(){
 
 	$("#btnupdate").click(function(){
 		
-		$("#updateevent").submit();
+		console.log("click")
+		$(this).parents("form").submit();
 	})		
 	
 })
@@ -83,10 +83,8 @@ body{
 }
 
 </style>
-
 </head>
 <body>
-
 
 
 <h2>문의사항 작성하기</h2>
@@ -95,25 +93,21 @@ body{
 <form action="/homett/eventupdate" method="post" id="updateevent">
 
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
-	<input type="text" hidden="" name="eventNo" value="<%=updatecotentEventBoard.getEventArticlenumber() %>">
+	<input type="text" hidden="" name="eventNo" value="<%=updatecotent.getEventArticlenumber() %>">
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
 	
 	
 	<div id="title">
 	<span>제목</span>
-	<input type="text" id="eventTitle" name="eventTitle" value="<%=updatecotentEventBoard.getEventArticletitle() %>">
+	<input type="text" id="eventTitle" name="eventTitle" value="<%=updatecotent.getEventArticletitle() %>">
 	</div>
 	
 	<br><br><br>
-	<textarea id="content" name="content" ><%= updatecotentEventBoard.getEventContent()%></textarea><br><br>
+	<textarea id="content" name="content" ><%= updatecotent.getEventContent()%></textarea><br><br>
 
 <button type="button" id="btnupdate" >수정완료</button>
 <button type="button" id="cancelwriter" onclick="history.back()">취소</button>
 </form>
-
-
-
-
 
 
 

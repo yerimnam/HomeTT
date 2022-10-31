@@ -63,7 +63,7 @@ public interface DailyStatisticsService {
 	 * 
 	 * @return 당일 탈퇴 회원 수
 	 */
-	public int getCntDDuser();
+//	public int getCntDDuser();
 
 	/**
 	 * 당일 생성된 파티 수를 구한다. 

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import event.common.JDBCTemplate;
+import common.JDBCTemplate;
 import reviewBoard.dao.face.ReviewInquiriesDao;
 import reviewBoard.dto.ReviewBoard;
 import util.Paging;
@@ -81,11 +81,15 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 		String sql = "";
 		sql += "SELECT * FROM ( ";
 		sql += " 	SELECT rownum rnum, R.*FROM (";
-		sql += " 	SELECT";
-		sql += "		review_articlenumber,admin_no,board_code,review_articletitle ";
-		sql += " 		,review_content,review_date,user_no,hit";
-		sql += " 	FROM board_review"; 
-		sql += " 	ORDER BY review_articlenumber DESC";
+		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+		sql += " 		FROM board_review RR";
+		sql += "		INNER JOIN member m";
+		sql += "		ON m.user_no = RR.user_no";
+//		sql += " 	SELECT *";
+//		sql += "		review_articlenumber,admin_no,board_code,review_articletitle ";
+//		sql += " 		,review_content,review_date,user_no,hit";
+//		sql += " 	FROM board_review"; 
+		sql += " 		ORDER BY review_articlenumber DESC";
 		sql += " 	) R";
 		sql += " ) reviewBaord";
 		sql += " WHERE rnum BETWEEN ? AND ?";
@@ -110,7 +114,8 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 				r.setBoardCode(rs.getInt("board_code"));
 				r.setReviewArticletitle(rs.getString("review_articletitle"));
 				r.setReviewContent(rs.getString("review_content")); 
-				r.setReviewDate(rs.getDate("review_date"));				
+				r.setReviewDate(rs.getDate("review_date"));		
+				r.setReviewWriter(rs.getString("user_nick"));
 				r.setHit(rs.getInt("hit"));
 				r.setUserNo(rs.getInt("user_no"));
 				//리스트에 결과값 저장하기
@@ -202,7 +207,13 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
         sql += " 	on m.user_no = R.user_no";
         sql += " ) R ";
         sql += " WHERE review_articlenumber = ?";
-		
+
+
+//		sql += "SELECT";
+//		sql += " review_articlenumber,review_articletitle";
+//		sql += " ,review_content,hit,review_date ";
+//		sql += " FROM board_review";
+//		sql += " WHERE review_articlenumber = ?";
 		
 		ReviewBoard board= null;
 		
@@ -245,8 +256,8 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 		System.out.println("insertreview시작");
 		
 		String sql ="";								
-		sql +="INSERT INTO board_review (review_articlenumber,user_no,review_articletitle,review_content,review_date)";
-		sql +=" VALUES(BOARD_REVIEW_SEQ.nextval,?,?,?,sysdate)";
+		sql +="INSERT INTO board_review (review_articlenumber,user_no,review_articletitle,review_content,review_date, hit)";
+		sql +=" VALUES(BOARD_REVIEW_SEQ.nextval,?,?,?,sysdate, 0)"; //<- 마지막 ?를 0으로 수정
 		
 		
 
@@ -274,7 +285,7 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 	@Override
 	public ReviewBoard selectcontent(Connection conn, ReviewBoard reviewNo) {
 		System.out.println("selectcontent -start");
-		
+		System.out.println("리뷰노 " + reviewNo.getReviewArticlenumber());
 		String sql ="";
 		sql +="SELECT * FROM board_review";
 		sql +=" WHERE review_articlenumber =?";
@@ -282,7 +293,8 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 		ReviewBoard updateContent = null;
 		try {
 			ps =conn.prepareStatement(sql);
-
+			
+			
 			ps.setInt(1, reviewNo.getReviewArticlenumber());
 			
 			rs= ps.executeQuery();
@@ -349,7 +361,7 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 		
 		String sql ="";
 		sql +="DELETE board_review";
-		sql +=" WHERE review_articlenumber =? ";
+		sql +=" WHERE review_articlenumber = ? ";
 		
 		int deletereview  =0;
 		
@@ -369,6 +381,138 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 		System.out.println("deleteDo 끝");
 		return deletereview;
 	}
+
+	
+	@Override
+	public List<ReviewBoard> selectSearchList(Connection conn, Paging paging, String searchType, String keyword) {
+		System.out.println("selectSearchList searchpaging 시작" + paging);
+		keyword = '%' + keyword + '%';
+		
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+		sql += " 		FROM board_review RR";
+		sql += "		INNER JOIN member m";
+		sql += "		ON m.user_no = RR.user_no";
+		sql += "		WHERE " + searchType + " LIKE ?";
+		sql += " 		ORDER BY REVIEW_ARTICLENUMBER DESC";
+		sql += " 		) R";
+		sql += " 	) RIVIEW";
+		sql += " WHERE rnum BETWEEN ? AND ?";
+		
+		List<ReviewBoard> reviewBoardList = new ArrayList<>();
+		
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ps.setInt(2, paging.getStartNo());
+			ps.setInt(3, paging.getEndNo());
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ReviewBoard r = new ReviewBoard();
+				
+				r.setReviewArticlenumber(rs.getInt("review_articlenumber"));
+				r.setAdminNo(rs.getInt("admin_no"));
+				r.setBoardCode(rs.getInt("board_code"));
+				r.setReviewArticletitle(rs.getString("review_articletitle"));
+				r.setReviewContent(rs.getString("review_content"));
+				r.setReviewWriter(rs.getString("user_nick"));
+				r.setReviewDate(rs.getDate("review_date"));
+				r.setHit(rs.getInt("hit"));
+				r.setUserName(rs.getString("user_name"));
+				r.setUserNo(rs.getInt("user_no"));
+				
+				reviewBoardList.add(r);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("selectSearchList searchpaging 끝" + paging);
+		System.out.println("selectSearchList()" + reviewBoardList);
+		return reviewBoardList;
+	}
+	
+	@Override
+	public int selectSearchCntAll(Connection conn, String searchType, String keyword) {
+		System.out.println("selectSearchCntAll 시작" + searchType + keyword);
+		keyword = '%' + keyword + '%';
+		
+		String sql = "";
+		sql += "SELECT count(*) cnt FROM (";
+		sql += "	SELECT rownum rnum, R.* FROM (";
+		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+		sql += " 		FROM board_review RR";
+		sql += "		INNER JOIN member m";
+		sql += "		ON m.user_no = RR.user_no";
+		sql += "		WHERE " + searchType + " LIKE ?";
+		sql += "		) R";
+		sql += "	) REVIEW";
+		
+		int count = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, keyword);
+
+			rs = ps.executeQuery();
+
+			while( rs.next() ) {
+				count = rs.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
+		System.out.println("selectSearchCntAll" + count);
+		return count;
+	}
+	
+	
+	//---------------------------------------------------------------------------------------
+//	public ArrayList<ReviewBoard> getSearch(String reviewArticletitle, String userName){//특정한 리스트를 받아서 반환
+//		List<ReviewBoard> reviewboardList = new ArrayList<ReviewBoard>();
+//	      String SQL ="select * from board_review WHERE "+reviewArticletitle.trim();//trim 문자열 앞 공백 제거
+//	      try {
+//	            if(userName != null && !userName.equals("") ){	//이거 빼면 안 나온다
+//	                SQL +=" LIKE '%"+ userName.trim()+"%' order by userName desc limit 10";
+//	            }
+////	            PreparedStatement pstmt=conn.prepareStatement(SQL);
+//	            reviewinquies pstmt=conn.prepareStatement(SQL);
+//				rs=pstmt.executeQuery();//select
+//	         while(rs.next()) {
+//	        	 ReviewBoard s = new ReviewBoard();
+//	            
+//	        	 
+//					s.setReviewArticlenumber(rs.getInt(1));
+//					s.setAdminNo(rs.getInt(2));
+//					s.setBoardCode(rs.getInt(3));
+//					s.setReviewArticletitle(rs.getString(4));
+//					s.setReviewContent(rs.getString(5)); 
+//					s.setReviewDate(rs.getDate(6));				
+//					s.setHit(rs.getInt(7));
+//					s.setUserNo(rs.getInt(8));
+//					s.setUserName(rs.getString(9));
+//	            list.add(s);//list에 해당 인스턴스를 담는다.
+//	         }         
+//	      } catch(Exception e) {
+//	         e.printStackTrace();
+//	      }
+//	      return list;//게시글 리스트 반환
+//	   }
+	//---------------------------------------------------------------------------------------
+
 	
 }
 

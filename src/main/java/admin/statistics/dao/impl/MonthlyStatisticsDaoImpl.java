@@ -435,56 +435,56 @@ public class MonthlyStatisticsDaoImpl implements MonthlyStatisticsDao {
 		return res;
 	}
 	
-	@Override
-	public int selectCntDuser(Connection conn) {
-		String sql = "";
-		sql += "SELECT count(*) cnt FROM secede_member";
-		sql += " WHERE TO_CHAR(Secede_date, 'YY/MM') = TO_CHAR(SYSDATE, 'YY/MM')";
-		
-		//당월 탈퇴한 회원 수
-		int count = 0;
-		
-		try {
-			ps = conn.prepareStatement(sql); //SQL수행 객체
-			rs = ps.executeQuery(); //SQL 수행 및 결과 집합 저장
-			
-			while( rs.next() ) {
-				count = rs.getInt("cnt");
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(ps);
-		}
-//		System.out.println("selectCntDuser() 수행 결과 : " + count);
-		return count;
-	}
+//	@Override
+//	public int selectCntDuser(Connection conn) {
+//		String sql = "";
+//		sql += "SELECT count(*) cnt FROM secede_member";
+//		sql += " WHERE TO_CHAR(Secede_date, 'YY/MM') = TO_CHAR(SYSDATE, 'YY/MM')";
+//		
+//		//당월 탈퇴한 회원 수
+//		int count = 0;
+//		
+//		try {
+//			ps = conn.prepareStatement(sql); //SQL수행 객체
+//			rs = ps.executeQuery(); //SQL 수행 및 결과 집합 저장
+//			
+//			while( rs.next() ) {
+//				count = rs.getInt("cnt");
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(rs);
+//			JDBCTemplate.close(ps);
+//		}
+////		System.out.println("selectCntDuser() 수행 결과 : " + count);
+//		return count;
+//	}
 	
-	@Override
-	public int updateCntDuser(Connection conn, int duser) {
-		String sql = "";
-		sql += "UPDATE monthlyetcstatistics";
-		sql += " SET monthly_dorpuser = ?";
-		
-		int res = 0;
-		
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, duser);
-			
-			res = ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(ps);
-		}
-		
-//		System.out.println("updateCntDuser() 수행 결과 : " + res);
-		return res;
-	}
+//	@Override
+//	public int updateCntDuser(Connection conn, int duser) {
+//		String sql = "";
+//		sql += "UPDATE monthlyetcstatistics";
+//		sql += " SET monthly_dorpuser = ?";
+//		
+//		int res = 0;
+//		
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			ps.setInt(1, duser);
+//			
+//			res = ps.executeUpdate();
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCTemplate.close(ps);
+//		}
+//		
+////		System.out.println("updateCntDuser() 수행 결과 : " + res);
+//		return res;
+//	}
 	
 	@Override
 	public int selectCntPartyCre(Connection conn) {

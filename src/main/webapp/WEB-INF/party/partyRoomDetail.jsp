@@ -90,6 +90,8 @@ ul {
 			</form>
 		</div>
 	</div>
+<<<<<<< HEAD
 </body>
 </html>
+	
 <jsp:include page="/WEB-INF/layout/footer.jsp" />
