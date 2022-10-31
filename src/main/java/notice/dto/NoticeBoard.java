@@ -13,14 +13,17 @@ public class NoticeBoard {
 	private String noticeWriter;			//Notice_WRITER				작성자
 	private Date noticeDate;				//Notice_DATE				작성일
 	private int hit;						//HIT						조회수
+	private String userName;
+	private int userNo;
 	@Override
 	public String toString() {
 		return "NoticeBoard [noticeArticlenumber=" + noticeArticlenumber + ", adminNo=" + adminNo + ", boardCode="
 				+ boardCode + ", noticeArticletitle=" + noticeArticletitle + ", noticeContent=" + noticeContent
-				+ ", noticeWriter=" + noticeWriter + ", noticeDate=" + noticeDate + ", hit=" + hit + "]";
+				+ ", noticeWriter=" + noticeWriter + ", noticeDate=" + noticeDate + ", hit=" + hit + ", userName="
+				+ userName + ", userNo=" + userNo + "]";
 	}
 	public NoticeBoard(int noticeArticlenumber, int adminNo, int boardCode, String noticeArticletitle,
-			String noticeContent, String noticeWriter, Date noticeDate, int hit) {
+			String noticeContent, String noticeWriter, Date noticeDate, int hit, String userName, int userNo) {
 		super();
 		this.noticeArticlenumber = noticeArticlenumber;
 		this.adminNo = adminNo;
@@ -30,9 +33,12 @@ public class NoticeBoard {
 		this.noticeWriter = noticeWriter;
 		this.noticeDate = noticeDate;
 		this.hit = hit;
+		this.userName = userName;
+		this.userNo = userNo;
 	}
-	public NoticeBoard() {	}
-	
+	public NoticeBoard() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getNoticeArticlenumber() {
 		return noticeArticlenumber;
 	}
@@ -81,6 +87,20 @@ public class NoticeBoard {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public int getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+	
+	
 	
 	
 	

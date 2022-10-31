@@ -23,26 +23,26 @@ public class ReviewViewController extends HttpServlet {
 	private ReviewInquiriesService reviewinquiriesService = new ReviewInquiriesServiceImpl();
 
 	@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("/homett/reviewview [GET]");
-		
-		System.out.println("ReviewViewController doGet() - reviewArticlenumber : " + req.getParameter("reviewArticlenumber"));
+	System.out.println("/homett/reviewview [GET]");
+	
+	System.out.println("ReviewViewController doGet() - reviewArticlenumber : " + req.getParameter("reviewArticlenumber"));
 
-		
-		
-		//전달 파라미터 객체 얻어오기
-		ReviewBoard reviewArticlenumber =reviewinquiriesService.getreviewArticlenumber(req);
-		System.out.println("ReviewViewController doGet() - reviewArticlenumber객체 : " + reviewArticlenumber);
-		
-		//게시글 상세보기 조회 결과 얻어오기
-		ReviewBoard viewBoard = reviewinquiriesService.view(reviewArticlenumber);
-		System.out.println("ReviewViewController doGet() - viewBoard : " + viewBoard);
-		
+	
+	
+	//전달 파라미터 객체 얻어오기
+	ReviewBoard reviewArticlenumber =reviewinquiriesService.getreviewArticlenumber(req);
+	System.out.println("ReviewViewController doGet() - reviewArticlenumber객체 : " + reviewArticlenumber);
+	
+	//게시글 상세보기 조회 결과 얻어오기
+	ReviewBoard viewBoard = reviewinquiriesService.view(reviewArticlenumber);
+	System.out.println("ReviewViewController doGet() - viewBoard : " + viewBoard);
+	
 //		//조회 결과를 MODEL값으로 전달
-		req.setAttribute("viewBoard", viewBoard);
-		req.getRequestDispatcher("/WEB-INF/board/review_view.jsp").forward(req, resp);
-		
+	req.setAttribute("viewBoard", viewBoard);
+	req.getRequestDispatcher("/WEB-INF/board/review_view.jsp").forward(req, resp);
 		
 	}
+	
 }

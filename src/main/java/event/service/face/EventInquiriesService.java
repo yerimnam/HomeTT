@@ -29,6 +29,24 @@ public interface EventInquiriesService {
 	 */
 	public Paging getPaging(HttpServletRequest req);
 	
+	
+	/**
+	 * 검색 게시글 페이징 객체 생성
+	 * 
+	 * @param req - 요청 정보 객체
+	 * @return Paging - 검색 게시글 페이징 계산이 완료된 객체
+	 */
+	public Paging getSearchPaging(HttpServletRequest req, String searchType, String keyword);
+	
+	/**
+	 * 검색한 게시글 목록 조회
+	 * 
+	 * @param paging - 페이징 계산이 완료된 객체
+	 * @param searchType - 검색 카테고리
+	 * @param keyword - 검색어 내용
+	 * @return 검색한 게시글 목록 전달
+	 */
+	public List<EventBoard> getSearchList(Paging paging, String searchType, String keyword);
 	 
 	
 	/**
@@ -40,42 +58,14 @@ public interface EventInquiriesService {
 	public EventBoard geteventArticlenumber(HttpServletRequest req);
 
 	/**
-	 * 전달된 faqArticlenumber를 이용하여 게시글을 조회한다
+	 * 전달된 eventArticlenumber를 이용하여 게시글을 조회한다
 	 * 조회된 게시글의 조회수를 1증가 시킨다
 	 * @param eventArticlenumber  조회할 eventArticlenumber를 가진 DTO객체
 	 * @return EventBoard - 조회된 게시글 정보
 	 */
 	public EventBoard view(EventBoard eventArticlenumber);
 
-	/**
-	 * 전달된 Board객체의 id를 이용하여 nick 조회
-	 * 
-	 * @param viewBoard - 조회할 게시글 정보
-	 * @return String - 게시글 작성자의 닉네임
-	 */
-//	public String getWriteNick(EventBoard viewBoard);
 
-	/**
-	 * 게시글 작성
-	 * 입력한 게시글을 DB에 저장한다
-	 * 
-	 * @param req - 요청 정보 객체
-	 */
-//	public void write(HttpServletRequest req);
-
-
-//	public void delete(EventBoard eventboard);
-
-
-
-
-	/**
-	 * 
-	 * 회원이 작성한 글의 파라미터 얻어오기
-	 * @param req 
-	 * @return 작성한 글 파라미터 
-	 */
-//	public EventBoard getparam(HttpServletRequest req);
 	public EventBoard getparam(HttpServletRequest req);
 
 
@@ -85,8 +75,9 @@ public interface EventInquiriesService {
 	 * @param userNo 
 	 * @return - 이벤트글 저장
 	 */
-	public EventBoard setEvent(EventBoard param, int userNo);
+//	public EventBoard setEvent(EventBoard param, int userNo);
 
+	public EventBoard setEvent(EventBoard param);
 	/**
 	 * 수정하기 파라미터 
 	 * @param req- 요청 파라미터
@@ -113,6 +104,8 @@ public interface EventInquiriesService {
 	 * @return
 	 */
 	public Void deleteEvent(EventBoard eventNo);
+
+
 
 
 		

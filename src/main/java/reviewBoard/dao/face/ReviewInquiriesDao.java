@@ -40,6 +40,26 @@ public interface ReviewInquiriesDao {
 
 	
 	/**
+	 * 검색한 총 게시글 수 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @return int - 검색한 테이블의 전체 행 수
+	 */
+	public int selectSearchCntAll(Connection conn, String searchType, String keyword);
+	
+	/**
+	 * 검색한 게시글 목록 조회
+	 * 
+	 * @param conn - DB 연결 객체
+	 * @param searchpaging - 페이징 정보 객체
+	 * @param searchType - 검색 카테고리
+	 * @param keyword - 검색어 내용
+	 * @return 검색한 게시글 목록 전달
+	 */
+	public List<ReviewBoard> selectSearchList(Connection conn, Paging paging, String searchType, String keyword);
+	
+	
+	/**
 	 * 조회된 게시글의 조회수 증가시키기
 	 * @param conn - DB연결 객체
 	 * @param reviewArticlenumber - 조회할 게시글의 reviewArticlenumber를 가진 DTO객체

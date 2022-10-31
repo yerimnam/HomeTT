@@ -14,6 +14,9 @@ import event.dto.EventBoard;
 import event.service.face.EventInquiriesService;
 import event.service.impl.EventInquiriesServiceImpl;
 
+
+
+
 /**
  * Servlet implementation class AdFaqcreateController
  */
@@ -34,7 +37,7 @@ public class EventCreateController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		//model값 저장하여 view전달		
 		req.getRequestDispatcher("/WEB-INF/cs/event/event_create.jsp").forward(req, resp);
-	}
+	} 
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,9 +46,9 @@ public class EventCreateController extends HttpServlet {
 		
 		
 		//테스트용 세션
-		session.setAttribute("userNo", 0);						//<---지울것
+//		session.setAttribute("userNo", 0);						//<---지울것
 		//실제 작동
-		int userNo = (int)session.getAttribute("userNo");
+//		int userNo = (int)session.getAttribute("userNo");
 
 		//파라미터 추출하기 
 		EventBoard param = eventinquiriesService.getparam(req);
@@ -53,12 +56,12 @@ public class EventCreateController extends HttpServlet {
 		System.out.println(param);
 		
 		//회원번호 파라미터로 게시글 저장하기
-		EventBoard reBoard = eventinquiriesService.setEvent(param,userNo);
+//		EventBoard reBoard = eventinquiriesService.setEvent(param,userNo);
+		EventBoard reBoard = eventinquiriesService.setEvent(param);
 		System.out.println(reBoard);
 		
 		req.setAttribute("eventInsert", reBoard);
-		//작성글 삽입
-//				eventinquiriesService.write(req);
+
 
 		resp.sendRedirect("/homett/eventlist");
 	
