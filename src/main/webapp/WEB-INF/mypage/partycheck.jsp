@@ -137,12 +137,9 @@ a {
 }
 
 #btn:hover {
-/* 	color: #a9cd72; */
 	color: #ff8c11;
-/* 	background-color: #ffeaa6; */
 	background-color: #fffcee;
-	transition: 1s;
-	
+	transition: 0.5s;	
 }
 
 </style>
@@ -155,7 +152,7 @@ a {
 	<div class="situation">
 		<h4>가입한 파티 목록</h4>
 	</div>
-	<hr align="center" style=" height: 1px; background-color: black; width: 55%;">
+	<hr align="center" style=" height: 1px; background-color: black; width: 58%; margin-left: 420px;">
 	
 	<!--     <input type="button" onClick="sendLinkDefault();" value="친구선택"/> -->
 	
@@ -171,27 +168,34 @@ a {
 	
 	
 	<div class="main">
+	<% if(ownerPartyList.size() > 0) { %>
 		<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
-		<div id="party_My">
-			<a id="listHover" href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
-				<div id="partyKind">
-					<%=ownerPartyList.get(i).getPartyKind() %>
-				</div>
-				<div id="partyName">
-					<%=ownerPartyList.get(i).getPartyName() %>
-				</div>
-				<hr style="background-color: black; border-style: dashed; width: 100px;">
-				<li>파티장 : <%=ownerPartyList.get(i).getPartyLeader() %></li>
-				<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
-				<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
-				<hr style="background-color: black; border-style: dashed; width: 150px;">
-				<li>참여 금액 : <%=format.format(ownerPartyList.get(i).getPaymentamount())%> 원</li>
-			</ul></a>
-		</div>
+			<div id="party_My">
+				<a id="listHover" href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
+					<div id="partyKind">
+						<%=ownerPartyList.get(i).getPartyKind() %>
+					</div>
+					<div id="partyName">
+						<%=ownerPartyList.get(i).getPartyName() %>
+					</div>
+					<hr style="background-color: black; border-style: dashed; width: 100px;">
+					<li>파티장 : <%=ownerPartyList.get(i).getPartyLeader() %></li>
+					<li>파티 만료일 : <%=ownerPartyList.get(i).getPartyEnddate() %></li>
+					<li>모집 인원 : <%=ownerPartyList.get(i).getPartyMember() %></li>
+					<hr style="background-color: black; border-style: dashed; width: 150px;">
+					<li>참여 금액 : <%=format.format(ownerPartyList.get(i).getPaymentamount())%> 원</li>
+				</ul></a>
+			</div>
 		<% } %>
+	<% } else { %>
+		<div style="text-align: center; margin-left: 65px;">
+			<h4 style="font-weight: 600; font-size: medium; color: #ff8c11;">참여하신 파티방이 없습니다</h4>
+			<span style="font-weight: 600; font-size: medium; color: #ff8c11;">파티를 참여해 주세요!</span>
+		</div>
+	<% } %>
 	</div>
 	
-	<div class="invitation">
+	<div class="invitation" style="margin-left: 76px;">
 	    <input type="button" id="btn" onClick="sendLinkCustom();" value="초대하기"/>
 	</div>
 	

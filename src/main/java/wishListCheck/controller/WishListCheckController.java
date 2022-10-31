@@ -27,6 +27,9 @@ public class WishListCheckController extends HttpServlet {
 		 
 			System.out.println("/homett/wishcheck [GET]");
 			
+			//한글 인코딩
+			req.setCharacterEncoding("UTF-8");
+			
 			// 찜 목록 전체 조회
 			List<WishListCheck> wishList = wishListCheckservice.getList();
 			
