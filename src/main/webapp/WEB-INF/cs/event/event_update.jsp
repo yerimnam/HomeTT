@@ -3,19 +3,11 @@
     pageEncoding="UTF-8"%>
     
 <% EventBoard updatecotent = (EventBoard)request.getAttribute("updatecontent");  %>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
+ <jsp:include page="/WEB-INF/layout/header.jsp" />
 
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<!-- bootstrap -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -26,21 +18,25 @@
 $(document).ready(function(){
 
 	$('#content').summernote({
-		  toolbar: [
+		minHeight: 500,
+        maxHeight: null,
+	  toolbar: [
 		    // [groupName, [list of button]]
-		    ['style', ['bold', 'italic', 'underline', 'clear']],
-		    ['font', ['strikethrough', 'superscript', 'subscript']],
-		    ['fontname',['fontname']],
+		    ['fontname', ['fontname']],
 		    ['fontsize', ['fontsize']],
-		    ['color', ['color']],
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    ['color', ['forecolor','color']],
+		    ['table', ['table']],
 		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']]
-		  ]
-		});
-				//textarea#note에 웹 에디터 적용
-				$("#content").summernote()
-				$("eventTitle").summernote()
-			
+		    ['height', ['height']],
+		    ['view', ['fullscreen', 'help']]
+		  ],
+		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+  });
+			//textarea#note에 웹 에디터 적용
+			$("#content").summernote()
+			$("user_id").summernote()
 				
 				
 	
@@ -87,29 +83,24 @@ body{
 <body>
 
 
-<h2>문의사항 작성하기</h2>
+<h2>이벤트 수정하기</h2>
 
 <hr>
 <form action="/homett/eventupdate" method="post" id="updateevent">
 
-	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
 	<input type="text" hidden="" name="eventNo" value="<%=updatecotent.getEventArticlenumber() %>">
-	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
 	
 	
 	<div id="title">
-	<span>제목</span>
-	<input type="text" id="eventTitle" name="eventTitle" value="<%=updatecotent.getEventArticletitle() %>">
+	<input type="text" id="eventTitle" name="eventTitle" value="<%=updatecotent.getEventArticletitle() %>" placeholder="제목">
 	</div>
 	
-	<br><br><br>
+
 	<textarea id="content" name="content" ><%= updatecotent.getEventContent()%></textarea><br><br>
 
-<button type="button" id="btnupdate" >수정완료</button>
-<button type="button" id="cancelwriter" onclick="history.back()">취소</button>
+<button type="button" id="btnupdate"  class="btn btn-info" >수정완료</button>
+<button type="button" id="cancelwriter" class="btn btn-danger" onclick="history.back()">취소</button>
 </form>
 
 
-
-</body>
-</html>
+ <jsp:include page="/WEB-INF/layout/footer.jsp" />

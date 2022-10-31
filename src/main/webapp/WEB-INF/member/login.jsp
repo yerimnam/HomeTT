@@ -147,6 +147,12 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
     font-family: 'SUIT';
 }
 
+#footerff {
+	position: relative;
+/*     top: 100px; */
+	margin-top: 1000px;
+}
+
 li{
 	list-style:none;
 }
@@ -161,6 +167,7 @@ a{
 
 	width: 380px;
 	margin: 0 auto;
+	margin-top: 100px;
 
 }
 

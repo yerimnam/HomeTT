@@ -131,8 +131,7 @@ public class EventInquiriesServiceImpl implements  EventInquiriesService {
 	}
 
 	@Override
-//	public EventBoard setEvent(EventBoard param,int userNo) {
-	public EventBoard setEvent(EventBoard param) {
+	public EventBoard setEvent(EventBoard param,int userNo) {
 		System.out.println("setEvent start");
 		
 		
@@ -140,8 +139,7 @@ public class EventInquiriesServiceImpl implements  EventInquiriesService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//DTO 정보를 DB에 저장
-//		int Eventinsert = boardDao.insertevent(conn,param,userNo);
-		int Eventinsert = boardDao.insertevent(conn,param);
+		int Eventinsert = boardDao.insertevent(conn,param,userNo);
 		
 		if(Eventinsert>0) {
 			 

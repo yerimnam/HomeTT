@@ -235,7 +235,17 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 					</li>
 					
 					<li class="gnb">
-						<a href="/homett/createparty">파티만들기 </a>
+						<a href="./eventlist">이벤트</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="./noticelist">공지사항</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="./reviewlist">후기게시판</a>
 						<p style=" display: none">●</p>
 					</li>
 					
@@ -245,17 +255,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 					</li>
 					
 					<li class="gnb">
-						<a href="/homett/reviewlist">후기게시판</a>
-						<p style=" display: none">●</p>
-					</li>
-					
-					<li class="gnb">
-						<a href="">가이드</a>
-						<p style=" display: none">●</p>
-					</li>
-					
-					<li class="gnb">
-						<a href="">고객센터</a>
+						<a href="/homett/createparty">파티만들기 </a>
 						<p style=" display: none">●</p>
 					</li>
 					
@@ -301,7 +301,17 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 					</li>
 					
 					<li class="gnb">
-						<a href="/homett/createparty">파티만들기 </a>
+						<a href="./eventlist">이벤트</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="./noticelist">공지사항</a>
+						<p style=" display: none">●</p>
+					</li>
+					
+					<li class="gnb">
+						<a href="./reviewlist">후기게시판</a>
 						<p style=" display: none">●</p>
 					</li>
 					
@@ -311,17 +321,7 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 					</li>
 					
 					<li class="gnb">
-						<a href="">후기게시판</a>
-						<p style=" display: none">●</p>
-					</li>
-					
-					<li class="gnb">
-						<a href="">가이드</a>
-						<p style=" display: none">●</p>
-					</li>
-					
-					<li class="gnb">
-						<a href="">고객센터</a>
+						<a href="/homett/createparty">파티만들기 </a>
 						<p style=" display: none">●</p>
 					</li>
 					

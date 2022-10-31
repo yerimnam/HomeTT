@@ -168,8 +168,9 @@ a {
 	
 	
 	<div class="main">
+<%-- 	<% if(ownerPartyList.size() > 0) { %> --%>
 	<% if(ownerPartyList.size() > 0) { %>
-		<% for(int i = 0; i < ownerPartyList.size(); i++) { %>
+		<% for(int i = 0; i < 4; i++) { %>
 			<div id="party_My">
 				<a id="listHover" href="./roomboard?partyno=<%=partyList.get(i).getPartyNo() %>"><ul>
 					<div id="partyKind">

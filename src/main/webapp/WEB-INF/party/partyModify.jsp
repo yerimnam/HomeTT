@@ -249,7 +249,7 @@ a.heart {
 					<%-- 					<%}else{ %> --%>
 					<%-- 					<a href="./partyroomdetail?partyNo=<%=partyList.get(i).getPartyNo()%>"></a> --%>
 					<%-- 					<%} %> --%>
-<%-- 					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li> --%>
+					<li>파티장 : <%=partyList.get(i).getPartyLeader()%></li>
 					<li>파티 만료일 : <%=partyList.get(i).getPartyEndDate()%></li>
 					<li>모집 인원 : <%=partyList.get(i).getPartyMember()%></li>
 					<li style="border-bottom: 1px solid #333;">참여 금액 : <%=partyList.get(i).getPaymentAmount()%></li>

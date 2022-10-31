@@ -182,7 +182,7 @@ public class UserServiceImpl implements UserService {
 		System.out.println("이이이메일 : " + ses.getAttribute("userEmail"));
 		String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
 	        String user = "wheodus628@naver.com"; // 패스워드
-	        String password = "aaa@4862795";
+	        String password = "Aa@4862795";
 
 	        // SMTP 서버 정보를 설정한다.
 	        Properties props = new Properties();

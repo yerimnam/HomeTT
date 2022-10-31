@@ -371,10 +371,10 @@ button{
 					<td class="partyvalue"><%=party.getPartyName() %></td>
 				</tr>
 					
-<!-- 				<tr id="partyleader">		 -->
-<!-- 					<td class="party">파티장 </td> -->
-<%-- 					<td class="partyvalue"><%=party.getPartyLeader() %></td> --%>
-<!-- 				</tr>		 -->
+				<tr id="partyleader">		
+					<td class="party">파티장 </td>
+					<td class="partyvalue"><%=party.getPartyLeader() %></td>
+				</tr>		
 				
 				<tr id="partypay">
 					<td class="party">참여 금액</td>

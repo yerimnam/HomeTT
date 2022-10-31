@@ -4,7 +4,7 @@
 
 <jsp:include page="/WEB-INF/layout/header.jsp" />
     
-<% ReviewBoard updatecotentReviewBoard = (ReviewBoard)request.getAttribute("updatecontent");  %>    
+   <% ReviewBoard updatecotentReviewBoard = (ReviewBoard)request.getAttribute("updatecontent");  %>    
 <!DOCTYPE html>
 <html>
 
@@ -27,7 +27,7 @@
 $(document).ready(function(){
 
 	$('#content').summernote({
-        	height: 400,
+        	height: 500,
         	lang: 'ko-KR',
 		    tollbar: [
 		    ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -43,8 +43,6 @@ $(document).ready(function(){
 		//textarea#note에 웹 에디터 적용
 		$("#content").summernote()
 		$("user_id").summernote()
-		$('#content').summernote('fontSize', 18);
-		$('#content').summernote('fontSizeUnit', 'pt');
 						
 	})
 			
@@ -56,13 +54,19 @@ $(document).ready(function(){
 	$("#btinwrite").click(function(){
 		
 		$("#create").submit();
-	});	
+	})		
 	
 })
 
 </script>
 
 <style type="text/css">
+
+body{
+	width: 1600px;
+	margin: 0 auto;
+}
+
 #content {
 	width:  1000x;
 	hieght: 1000px;
@@ -75,13 +79,7 @@ $(document).ready(function(){
 	margin-left: 10px; 
 	margin-bottom: -50px; 
 	padding-left: 10px; 
-	padding-top: 11px;
-	border: 1px solid #ffd925;
-	border-radius: 10px;;
-}
-
-#title:hover {
-	border: 2px solid #ff8c11;
+	padding-top: 15px;
 }
 
 #subtitlebox {
@@ -90,9 +88,7 @@ $(document).ready(function(){
 	border-top-left-radius: 5px;
 	border-bottom-right-radius: 5px; 
 	margin: 5px; 
-	margin-left: 460px;
 	height: 100px; 
-	width: 1000px;
 	background-color: #ffeaa6;
 }
 
@@ -116,15 +112,12 @@ $(document).ready(function(){
 }
 
 .mybtn:hover {
-/* 	color: #a9cd72; */
-	color: #ff8c11;
-/* 	background-color: #ffeaa6; */
-	background-color: #fffcee;
-	transition: 0.5s;	
+	color: #a9cd72;
+	background-color: #ffeaa6;
 }
 
 .btn {
-	width: 63px;
+	width: 96px;
 	height: 60px;
 	border-top-left-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -133,14 +126,12 @@ $(document).ready(function(){
 	background-color: #fffcee;
 	color: #585a72;
 	padding: 5px;
-	font-weight: 500;
 }
+#e0e0c4
 
 .btn:hover {
-	color: #8f8378;
+	color: #ffeaa6;
 	background-color: #ffd925;
-	font-weight: bold;
-	transition: 0.5s;
 }
 
 </style>
@@ -152,15 +143,14 @@ $(document).ready(function(){
 </div>
 <hr style="margin-bottom: 0px;">
 
-<form action="/homett/inquirycreate" method="post" id="create" style="margin: 0 auto; width: 1070px;">
+<form action="/homett/inquirycreate" method="post" id="create">
 
 	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
-	<span style="font-weight: bold; color: #ff8c11; font-size: x-large; font-weight: bold; margin-left: 975px;">1:1문의</span><br>
-	
+	<span style="font-weight: bold; color: #ffd925; font-size: x-large; font-weight: bold; margin-left: 20px;">1:1문의</span><br>
 	<div id="title">
 		<label for="inquiryTitle">	
-		<span style="font-weight: bold; font-size: large; font-weight: bold; color: #0b3519; margin-left: -4px;">제목 : <span>
-		<input type="text" id="inquiryTitle" name="inquiryTitle" style="width: 530px; border:0px solid black;">
+		<span style="font-weight: bold; font-size: large; font-weight: bold; ">제목<span>
+		<input type="text" id="inquiryTitle" name="inquiryTitle" style="width: 300px;">
 		</label>
 	</div>
 	
@@ -168,13 +158,19 @@ $(document).ready(function(){
 	<br><br><br>
 	<textarea id="content" name="content"></textarea><br><br>
 
-
 <div id="allBtn">
 <button type="button" class="mybtn" id="btinwrite">작성완료</button>
 <button type="button" class="mybtn" id="cancelwriter" onclick="history.back()">취소</button>
-<a href="/homett/inquirylist"><button type="button" class="mybtn" id="returnBList">목록</button></a>
+<button type="button" class="mybtn" id="returnBList">목록</button>
 </div>
 </form>
+
+
+
+</script>
+
+
+
 
 
 
