@@ -33,13 +33,6 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
 }
 
 
-     
-body{
-		width: 1600px;
-		margin: 0 auto;
-	
-	}
-
 	
 ul{
 	list-style: none;
@@ -425,7 +418,7 @@ a:hover{
 
 
 
-  <%@ include file="../layout/footer.jsp"  %>
+<%--   <%@ include file="../layout/footer.jsp"  %> --%>
   
 <!-- </body> -->
 <!-- </html> -->

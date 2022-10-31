@@ -277,7 +277,7 @@ a:hover {
 	font-weight: 600;
 	text-align: center;
 	line-height: 54px;
-	
+	margin-bottom: 76px;
 }
 
 #moveImg {
