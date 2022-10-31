@@ -418,8 +418,8 @@ public class ReviewInquiriesDaoImpl implements ReviewInquiriesDao {
 				ReviewBoard r = new ReviewBoard();
 				
 				r.setReviewArticlenumber(rs.getInt("review_articlenumber"));
-				r.setAdminNo(rs.getInt("admin_no"));
-				r.setBoardCode(rs.getInt("board_code"));
+//				r.setAdminNo(rs.getInt("admin_no"));
+//				r.setBoardCode(rs.getInt("board_code"));
 				r.setReviewArticletitle(rs.getString("review_articletitle"));
 				r.setReviewContent(rs.getString("review_content"));
 				r.setReviewWriter(rs.getString("user_nick"));

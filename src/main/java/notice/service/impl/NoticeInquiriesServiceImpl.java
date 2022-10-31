@@ -129,7 +129,7 @@ public class NoticeInquiriesServiceImpl implements  NoticeInquiriesService {
 	}
 
 	@Override
-	public NoticeBoard setNotice(NoticeBoard param,int userNo) {
+	public NoticeBoard setNotice(NoticeBoard param) {
 		System.out.println("setNotice start");
 		
 		
@@ -137,7 +137,7 @@ public class NoticeInquiriesServiceImpl implements  NoticeInquiriesService {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//DTO 정보를 DB에 저장
-		int Noticeinsert = boardDao.insertnotice(conn,param,userNo);
+		int Noticeinsert = boardDao.insertnotice(conn,param);
 		
 		if(Noticeinsert>0) {
 			 

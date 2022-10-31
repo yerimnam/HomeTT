@@ -85,7 +85,7 @@ public interface NoticeInquiriesDao {
 	 * @param board - 삽입될 게시글 내용
 	 * @return int - INSERT 쿼리 수행 결과
 	 */
-	public int insertnotice(Connection conn, NoticeBoard param, int userNo);
+	public int insertnotice(Connection conn, NoticeBoard param);
 
 
 	/**

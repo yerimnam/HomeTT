@@ -62,7 +62,10 @@ $(document).ready(function() {
 <body>
 
 <div id="big">
+<h2>이벤트 목록</h2>
+<br>
 <table class="table table-bordered">
+
 
 <tr id = "main">
 	<th style="width: 15%;">글번호</th>

@@ -69,10 +69,10 @@ body {
 
 		<div class="container">
 			<table>
-				<tr>
-					<td>작성자</td>
-					<td><%=session.getAttribute("userid")%></td>
-				</tr>
+<!-- 				<tr> -->
+<!-- 					<td>작성자</td> -->
+<%-- 					<td><%=session.getAttribute("userid")%></td> --%>
+<!-- 				</tr> -->
 
 
 				<tr>

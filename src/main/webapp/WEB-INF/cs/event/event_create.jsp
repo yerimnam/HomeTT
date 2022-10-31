@@ -19,6 +19,9 @@ $(document).ready(function(){
 	
 	
 	$('#content').summernote({
+
+		minHeight: 500,
+	        maxHeight: null,
 		  toolbar: [
 			    // [groupName, [list of button]]
 			    ['fontname', ['fontname']],
@@ -78,26 +81,28 @@ body{
 
 }
 
+#eventTitle{
+	width : 30%;
+}
 </style>
 
 
 </head>
 <body>
+<h3>이벤트 작성</h3>
 <form action="/homett/eventcreate" method="post" id="create">
 
 	
 
 	<div id="title">
-	<span>제목</span>
-	<input type="text" id="eventTitle" name="eventTitle">
+
+	<input type="text" id="eventTitle" name="eventTitle" placeholder="제목">
 	</div>
 	
-	<br><br><br>
 	<textarea id="content" name="content"></textarea><br><br>
 
-<button type="button" id="btinwrite" >작성완료</button>
-<button type="button" id="cancelwriter" onclick="history.back()">취소</button>
+<button type="button" id="btinwrite"  class="btn btn-info" >작성완료</button>
+<button type="button" id="cancelwriter" class="btn btn-danger" onclick="history.back()">취소</button>
 
 </form>
-</body>
-</html>
+ <jsp:include page="/WEB-INF/layout/footer.jsp" />

@@ -31,21 +31,13 @@ html, body, pre, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, li, ol, th, td, p, bloc
    width: 1600px;
    margin: 0 auto;
 }
-<<<<<<< HEAD
-	
-=======
 
-
-
-
-footer{
+#footerff {
     position: relative;
-    top: 800px;
-   }
-
-
+    top: 1000px;
+    margin-top: 1000px;
+}
    
->>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
 ul{
    list-style: none;
    text-align: center;

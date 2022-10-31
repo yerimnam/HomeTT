@@ -1,4 +1,4 @@
-<%@page import="inquiry.controller.InquiryUpdateController"%>
+i<%@page import="inquiry.controller.InquiryUpdateController"%>
 <%@page import="inquiry.dto.InquiryBoard"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -25,127 +25,127 @@
 
 $(document).ready(function(){
 
-	$('#content').summernote({
-        	height: 400,
-        	lang: 'ko-KR',
-		    tollbar: [
-		    ['style', ['bold', 'italic', 'underline', 'clear']],
-		    ['font', ['strikethrough', 'superscript', 'subscript']],
-		    ['fontname',['fontname']],
-		    ['fontsize', ['fontsize']],
-		    ['color', ['color']],
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']]
-		  ]
-		});
-	
-		//textarea#note에 웹 에디터 적용
-		$("#content").summernote()
-		$("user_id").summernote()
-		$('#content').summernote('fontSize', 18);
-		$('#content').summernote('fontSizeUnit', 'pt');
-						
-	})
-			
+   $('#content').summernote({
+           height: 400,
+           lang: 'ko-KR',
+          tollbar: [
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['font', ['strikethrough', 'superscript', 'subscript']],
+          ['fontname',['fontname']],
+          ['fontsize', ['fontsize']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['height', ['height']]
+        ]
+      });
+   
+      //textarea#note에 웹 에디터 적용
+      $("#content").summernote()
+      $("user_id").summernote()
+      $('#content').summernote('fontSize', 18);
+      $('#content').summernote('fontSizeUnit', 'pt');
+                  
+   })
+         
 </script>
 
 <script type="text/javascript">
 $(document).ready(function(){
 
-	$("#btnupdate").click(function(){
-		
-		$("#updateinquiry").submit();
-	})		
-	
+   $("#btinwrite").click(function(){
+      
+      $("#updateinquiry").submit();
+   })      
+   
 })
 
 function updatedone(){
-	
-	console.log("완료")
-		alert("수정완료")
-	
+   
+   console.log("완료")
+      alert("수정완료")
+   
 }
 </script>
 
 <style type="text/css">
 #content {
-	width:  1000x;
-	hieght: 1000px;
+   width:  1000x;
+   hieght: 1000px;
 }
 
 #title {
-	justify-content: flex-start; 
-	height: 50px; 
- 	width: 600px;
-	margin-left: 10px; 
-	margin-bottom: -50px; 
-	padding-left: 10px; 
-	padding-top: 11px;
-	border: 1px solid #ffd925;
-	border-radius: 10px;;
+   justify-content: flex-start; 
+   height: 50px; 
+    width: 600px;
+   margin-left: 10px; 
+   margin-bottom: -50px; 
+   padding-left: 10px; 
+   padding-top: 11px;
+   border: 1px solid #ffd925;
+   border-radius: 10px;;
 }
 
 #title:hover {
-	border: 2px solid #ff8c11;
+   border: 2px solid #ff8c11;
 }
 
 #subtitlebox {
-	text-align: center; 
-	border: 1px solid #ff9d76;
-	border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px; 
-	margin: 5px; 
-	margin-left: 460px;
-	height: 100px; 
-	width: 1000px;
-	background-color: #ffeaa6;
+   text-align: center; 
+   border: 1px solid #ff9d76;
+   border-top-left-radius: 5px;
+   border-bottom-right-radius: 5px; 
+   margin: 5px; 
+   margin-left: 460px;
+   height: 100px; 
+   width: 1000px;
+   background-color: #ffeaa6;
 }
 
 #allBtn {
-	display: flex; 
-	justify-content: center; 
-	margin-top: -30px; 
-	gap: 10px;
+   display: flex; 
+   justify-content: center; 
+   margin-top: -30px; 
+   gap: 10px;
 }
 
 .mybtn {
-	width: 75px;
-	height: 55px;
-	border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-right: -4;
-	border: 1px solid #ffeaa6;
-	background-color: rgba(0,0,0,0);
-	color: #585a72;
-	padding: 5px;
+   width: 75px;
+   height: 55px;
+   border-top-left-radius: 5px;
+   border-bottom-right-radius: 5px;
+   margin-right: -4;
+   border: 1px solid #ffeaa6;
+   background-color: rgba(0,0,0,0);
+   color: #585a72;
+   padding: 5px;
 }
 
 .mybtn:hover {
-/* 	color: #a9cd72; */
-	color: #ff8c11;
-/* 	background-color: #ffeaa6; */
-	background-color: #fffcee;
-	transition: 0.5s;	
+/*    color: #a9cd72; */
+   color: #ff8c11;
+/*    background-color: #ffeaa6; */
+   background-color: #fffcee;
+   transition: 0.5s;   
 }
 
 .btn {
-	width: 63px;
-	height: 60px;
-	border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-right: -4;
-	border: 1px solid #585a72;
-	background-color: #fffcee;
-	color: #585a72;
-	padding: 5px;
-	font-weight: 500;
+   width: 63px;
+   height: 60px;
+   border-top-left-radius: 5px;
+   border-bottom-right-radius: 5px;
+   margin-right: -4;
+   border: 1px solid #585a72;
+   background-color: #fffcee;
+   color: #585a72;
+   padding: 5px;
+   font-weight: 500;
 }
 
 .btn:hover {
-	color: #8f8378;
-	background-color: #ffd925;
-	font-weight: bold;
-	transition: 0.5s;
+   color: #8f8378;
+   background-color: #ffd925;
+   font-weight: bold;
+   transition: 0.5s;
 }
 
 </style>
@@ -153,31 +153,31 @@ function updatedone(){
 <body>
 
 <div id="subtitlebox">
-	<h2 style="padding-top: 15px; font-weight: 200; ">고객센터 / 1:1문의</h2>
+   <h2 style="padding-top: 15px; font-weight: 200; ">고객센터 / 1:1문의</h2>
 </div>
 <hr style="margin-bottom: 0px;">
 
 <form action="/homett/inquiryupdate" method="post" id="updateinquiry" style="margin: 0 auto; width: 1070px;">
-
-	<br><br> <!-- 나중에 마진 패딩 적용하기  -->
-	<span style="font-weight: bold; color: #ff8c11; font-size: x-large; font-weight: bold; margin-left: 870px;">1:1문의 수정하기</span><br>
-	
-	<div id="title">
-		<label for="inquiryTitle">	
-		<span style="font-weight: bold; font-size: large; font-weight: bold; color: #0b3519; margin-left: -4px;">제목 : <span>
-		<input type="text" id="inquiryTitle" name="inquiryTitle" style="border:0px solid black;" value="<%=updatecotent.getInquiryArticleTitle() %>">
-		</label>
-	</div>
-	
-	
-	<br><br><br>
-	<textarea id="content" name="content"><%=updatecotent.getInquiryContent()%></textarea><br><br>
+<input type="hidden" name="inquiryNo" value="<%=updatecotent.getInquiryArticleNumber() %>">
+   <br><br> <!-- 나중에 마진 패딩 적용하기  -->
+   <span style="font-weight: bold; color: #ff8c11; font-size: x-large; font-weight: bold; margin-left: 870px;">1:1문의 수정하기</span><br>
+   
+   <div id="title">
+      <label for="inquiryTitle">   
+      <span style="font-weight: bold; font-size: large; font-weight: bold; color: #0b3519; margin-left: -4px;">제목 : <span>
+      <input type="text" id="inquiryTitle" name="inquiryTitle" style="border:0px solid black;" value="<%=updatecotent.getInquiryArticleTitle() %>">
+      </label>
+   </div>
+   
+   
+   <br><br><br>
+   <textarea id="content" name="content"><%=updatecotent.getInquiryContent()%></textarea><br><br>
 
 
 <div id="allBtn">
-	<button type="button" class="mybtn" id="btinwrite">작성완료</button>
-	<button type="button" class="mybtn" id="cancelwriter" onclick="history.back()">취소</button>
-	<a href="/homett/inquirylist"><button type="button" class="mybtn" id="returnBList">목록</button></a>
+   <button type="button" class="mybtn" id="btinwrite">작성완료</button>
+   <button type="button" class="mybtn" id="cancelwriter" onclick="history.back()">취소</button>
+   <a href="/homett/inquirylist"><button type="button" class="mybtn" id="returnBList">목록</button></a>
 </div>
 
 </form>

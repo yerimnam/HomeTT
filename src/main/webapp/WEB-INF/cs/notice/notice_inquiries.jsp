@@ -62,6 +62,8 @@ $(document).ready(function() {
 <body>
 
 <div id="big">
+<h2>공지사항 목록</h2>
+<br>
 <table class="table table-bordered">
 
 <tr id = "main">

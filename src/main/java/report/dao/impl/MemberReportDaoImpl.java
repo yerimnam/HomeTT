@@ -17,10 +17,10 @@ public class MemberReportDaoImpl implements MemberReportDao {
 	
 	@Override
 	public int insert(Connection conn, Report report) {
-		
+		System.out.println("report:" + report);
 		String sql = "";
 		sql += "INSERT INTO report ( report_no, report_content, reporter, report_target, report_party, report_date )";
-		sql += " VALUES (report_seq.nextval, ?, ?, ?, ?, sysdate)";
+		sql += " VALUES (reportno_seq.nextval, ?, ?, ?, ?, sysdate)";
 		
 		int res = 0;
 
