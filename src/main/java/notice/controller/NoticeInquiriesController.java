@@ -21,31 +21,50 @@ import util.Paging;
 public class NoticeInquiriesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	//서비스 객체
-	private NoticeInquiriesService NoticeinquiriesService = new NoticeInquiriesServiceImpl();
+	private NoticeInquiriesService noticeinquiriesService = new NoticeInquiriesServiceImpl();
 	
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/homett/Noticelist [GET]");
+		System.out.println("/homett/noticelist [GET]");
 		
-		//전달 파라미터에서 현재 페이징 객체 계산하기
-		Paging paging = NoticeinquiriesService.getPaging(req);
-		System.out.println("[TEST]" + paging);
+
 		
-			//게시글 전체 조회
-//			List<NoticeBoard> noticeboardList = NoticeinquiriesService.getList();
-			
-			//게시글 페이징 목록 조회
-			List<NoticeBoard> noticeboardList = NoticeinquiriesService.getList(paging);
-				
-			//[TEST] 조회결과 확인
-			for(NoticeBoard b : noticeboardList)	System.out.println(b);
-				
-			//조회결과를 MODEL값 전달
-			req.setAttribute("noticeboardList", noticeboardList );
-				
-			//View 지정 및 응답
-			req.getRequestDispatcher("/WEB-INF/cs/faq/notice_inquiries.jsp").forward(req, resp);
+		//한글 인코딩 처리
+		req.setCharacterEncoding("UTF-8");
+		
+		String searchType = req.getParameter("searchType");
+		String keyword = req.getParameter("keyword");
+		
+		Paging paging;
+		if ( searchType != null && keyword != null ) {
+			paging = noticeinquiriesService.getSearchPaging(req, searchType, keyword);
+		} else {
+			paging = noticeinquiriesService.getPaging(req);
+		}
+		
+		req.setAttribute("paging", paging);
+		
+		List<NoticeBoard> noticeboardList;
+		if(searchType != null && keyword != null) {
+			// 검색한 결과
+			noticeboardList = noticeinquiriesService.getSearchList( paging, searchType, keyword );
+			System.out.println("검색한 paging 결과 : " + paging);
+		} else {
+			// 검색 안한 결과
+			noticeboardList = noticeinquiriesService.getList(paging);
+			System.out.println("검색 안한 paging 결과 : " + paging);
+		}
+		
+		req.setAttribute("noticeboardList", noticeboardList);
+		//-------------------------------------------------------------------
+		
+		//View 지정 및 응답
+		req.getRequestDispatcher("/WEB-INF/cs/notice/notice_inquiries.jsp").forward(req, resp);
 	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+	
 }

@@ -4,6 +4,7 @@
     
 <%	Member member = (Member) request.getAttribute("result"); %>
 <jsp:include page="/WEB-INF/layout/header.jsp" />
+<jsp:include page="/WEB-INF/layout/sidemenu.jsp" />
 
 <script type="text/javascript">
 $(document).ready(function() {

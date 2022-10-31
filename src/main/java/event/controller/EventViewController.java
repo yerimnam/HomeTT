@@ -23,24 +23,26 @@ public class EventViewController extends HttpServlet {
 	private EventInquiriesService eventinquiriesService = new EventInquiriesServiceImpl();
 
 	@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("/homett/eventview [GET]");
-		
-		System.out.println("EventViewController doGet() - eventArticlenumber : " + req.getParameter("eventArticlenumber"));
-		
-		//전달 파라미터 객체 얻어오기
-		EventBoard eventArticlenumber =eventinquiriesService.geteventArticlenumber(req);
-		System.out.println("EventViewController doGet() - eventArticlenumber객체 : " + eventArticlenumber);
-		
-		//게시글 상세보기 조회 결과 얻어오기
-		EventBoard viewBoard = eventinquiriesService.view(eventArticlenumber);
-		System.out.println("FaqViewController doGet() - viewBoard : " + viewBoard);
-		
+	System.out.println("/homett/eventview [GET]");
+	
+	System.out.println("EventViewController doGet() - eventArticlenumber : " + req.getParameter("eventArticlenumber"));
+
+	
+	
+	//전달 파라미터 객체 얻어오기
+	EventBoard eventArticlenumber =eventinquiriesService.geteventArticlenumber(req);
+	System.out.println("EventViewController doGet() - eventArticlenumber객체 : " + eventArticlenumber);
+	
+	//게시글 상세보기 조회 결과 얻어오기
+	EventBoard viewBoard = eventinquiriesService.view(eventArticlenumber);
+	System.out.println("EventViewController doGet() - viewBoard : " + viewBoard);
+	
 //		//조회 결과를 MODEL값으로 전달
-		req.setAttribute("viewBoard", viewBoard);
-		req.getRequestDispatcher("/WEB-INF/cs/event/event_view.jsp").forward(req, resp);
-		
+	req.setAttribute("viewBoard", viewBoard);
+	req.getRequestDispatcher("/WEB-INF/cs/event/event_view.jsp").forward(req, resp);
 		
 	}
+	
 }

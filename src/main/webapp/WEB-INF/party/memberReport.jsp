@@ -101,5 +101,4 @@ body {
 	</form>
 
 
-</body>
-</html>
+<jsp:include page="/WEB-INF/layout/footer.jsp" />

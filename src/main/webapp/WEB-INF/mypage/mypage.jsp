@@ -187,9 +187,13 @@ a {
 			<span><%=session.getAttribute("userName") %>'s  MyPage</span><br><br>
 		</div>
 		<span>아이디 :  <%=session.getAttribute("userId") %></span><br>
-		<span>회원권한 :  <%=session.getAttribute("masterNo") %></span><br>
+		<%	if((int)session.getAttribute("masterNo") == 1) { %>
+		<span>회원권한 : 파티장</span><br>
+		<%	} else { %>
+		<span>회원권한 : 파티원</span><br>
+		<%	} %>
 		<span>이메일 :  <%=session.getAttribute("userEmail") %></span><br>
-		<span>연락처 :  <%=session.getAttribute("userPhone") %></span><br>
+		<span>연락처 :  0<%=session.getAttribute("userPhone") %></span><br>
 		<span>가입한 파티방 수 :  <%=ownerPartyList.size() %></span><br>
 		<a href="./editprofile" style="margin-left: 575px;"><button id="btn">회원정보 수정하기</button></a>
 	</div>

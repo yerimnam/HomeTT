@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="payment.dto.Payment"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,9 +7,7 @@
     
     
   <% Payment paycomplete =(Payment)request.getAttribute("paycomplete");  %>
- 
-
-
+<% DecimalFormat format = new DecimalFormat("###,###"); %>
 <style type="text/css">
 
 
@@ -156,7 +155,7 @@ button{
 					
 					<tr id="payamount">
 						<td >결제 금액</td>
-						<td class='value'><%=paycomplete.getPaymentAmount() %></td>
+						<td class='value'><%=format.format(paycomplete.getPaymentAmount()) %></td>
 					</tr>
 				
 				</table>
@@ -164,5 +163,4 @@ button{
 	<div id="btnarea">
 		<button type="button" onclick="location.href='/homett/roomboard?partyNo=<%=paycomplete.getPartyNo()%>'" id="gotoparty"><span>파티로 가기</span></button>
 	</div>
-</body>
-</html>
+

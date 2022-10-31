@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import event.dto.EventBoard;
 import event.service.face.EventInquiriesService;
 import event.service.impl.EventInquiriesServiceImpl;
+import util.Paging;
 
 /**
  * Servlet implementation class AdFaqInquiriesController
@@ -26,20 +27,44 @@ public class EventInquiriesController extends HttpServlet {
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("/homett/eventlist [GET]");
-
-		//게시글 전체 조회
-		List<EventBoard> eventboardList = eventinquiriesService.getList();
-//		
-//		//게시글 페이징 목록 조회
-//		List<EventBoard> eventboardList = eventinquiriesService.getList( paging );
-//		
-		//[TEST] 조회결과 확인
-		for(EventBoard e : eventboardList)	System.out.println(e);
 		
-		//조회결과를 MODEL값 전달
-		req.setAttribute("eventboardList", eventboardList );
+
+		
+		//한글 인코딩 처리
+		req.setCharacterEncoding("UTF-8");
+		
+		String searchType = req.getParameter("searchType");
+		String keyword = req.getParameter("keyword");
+		
+		Paging paging;
+		if ( searchType != null && keyword != null ) {
+			paging = eventinquiriesService.getSearchPaging(req, searchType, keyword);
+		} else {
+			paging = eventinquiriesService.getPaging(req);
+		}
+		
+		req.setAttribute("paging", paging);
+		
+		List<EventBoard> eventboardList;
+		if(searchType != null && keyword != null) {
+			// 검색한 결과
+			eventboardList = eventinquiriesService.getSearchList( paging, searchType, keyword );
+			System.out.println("검색한 paging 결과 : " + paging);
+		} else {
+			// 검색 안한 결과
+			eventboardList = eventinquiriesService.getList(paging);
+			System.out.println("검색 안한 paging 결과 : " + paging);
+		}
+		
+		req.setAttribute("eventboardList", eventboardList);
+		//-------------------------------------------------------------------
 		
 		//View 지정 및 응답
 		req.getRequestDispatcher("/WEB-INF/cs/event/event_inquiries.jsp").forward(req, resp);
 	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+	
 }
