@@ -137,12 +137,9 @@ a {
 }
 
 #btn:hover {
-/* 	color: #a9cd72; */
 	color: #ff8c11;
-/* 	background-color: #ffeaa6; */
 	background-color: #fffcee;
-	transition: 1s;
-	
+	transition: 0.5s;	
 }
 
 </style>
