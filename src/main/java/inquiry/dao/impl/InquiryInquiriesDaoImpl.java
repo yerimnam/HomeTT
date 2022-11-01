@@ -92,10 +92,10 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 				inquiryBaord.setInquiryArticleNumber(rs.getInt("inquiry_articlenumber"));
 				inquiryBaord.setUserNo(rs.getInt("user_no"));
 //				inquiryBaord.setAdminNo(rs.getInt("admin_no"));
-				inquiryBaord.setBoardCode(rs.getInt("board_code"));
+//				inquiryBaord.setBoardCode(rs.getInt("board_code"));
 				inquiryBaord.setInquiryArticleTitle(rs.getString("inquiry_articletitle"));
 				inquiryBaord.setInquiryContent(rs.getString("inquiry_content"));
-				inquiryBaord.setInquiryWriter(rs.getString("inquiry_writer"));
+//				inquiryBaord.setInquiryWriter(rs.getString("inquiry_writer"));
 				inquiryBaord.setInquiryDate(rs.getDate("inquiry_date"));
 				inquiryBaord.setAnswerWriter(rs.getString("answer_writer"));
 				inquiryBaord.setAnswercontent(rs.getString("answer_content"));
@@ -144,11 +144,11 @@ public class InquiryInquiriesDaoImpl implements InquiryInquiriesDao {
 				inquiryDetail = new InquiryBoard();
 				inquiryDetail.setInquiryArticleNumber(rs.getInt("inquiry_articlenumber"));
 				inquiryDetail.setUserNo(rs.getInt("user_no"));
-				inquiryDetail.setAdminNo(rs.getInt("admin_no"));
-				inquiryDetail.setBoardCode(rs.getInt("board_code"));
+//				inquiryDetail.setAdminNo(rs.getInt("admin_no"));
+//				inquiryDetail.setBoardCode(rs.getInt("board_code"));
 				inquiryDetail.setInquiryArticleTitle(rs.getString("inquiry_articletitle"));
 				inquiryDetail.setInquiryContent(rs.getString("inquiry_content"));
-				inquiryDetail.setInquiryWriter(rs.getString("inquiry_writer"));
+//				inquiryDetail.setInquiryWriter(rs.getString("inquiry_writer"));
 				inquiryDetail.setInquiryDate(rs.getDate("inquiry_date"));
 				inquiryDetail.setAnswerWriter(rs.getString("answer_writer"));
 				inquiryDetail.setAnswercontent(rs.getString("answer_content"));

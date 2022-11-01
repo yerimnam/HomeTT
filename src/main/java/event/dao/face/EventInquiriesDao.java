@@ -85,9 +85,8 @@ public interface EventInquiriesDao {
 	 * @param board - 삽입될 게시글 내용
 	 * @return int - INSERT 쿼리 수행 결과
 	 */
-//	public int insertevent(Connection conn, EventBoard param, int userNo);
+	public int insertevent(Connection conn, EventBoard param, int userNo);
 
-	int insertevent(Connection conn, EventBoard param);
 
 	/**
 	 * 수정할 내용 가져와서 먼저 보여주기
@@ -113,11 +112,6 @@ public interface EventInquiriesDao {
 	 * @return
 	 */
 	public int deleteDo(Connection conn, EventBoard eventNo);
-
-
-	public int insertevent(Connection conn, EventBoard param, int userNo);
-
-
 	
 
 

@@ -75,7 +75,7 @@ public interface NoticeInquiriesService {
 	 * @param userNo 
 	 * @return - 이벤트글 저장
 	 */
-	public NoticeBoard setNotice(NoticeBoard param, int userNo);
+	public NoticeBoard setNotice(NoticeBoard param);
 
 	/**
 	 * 수정하기 파라미터 

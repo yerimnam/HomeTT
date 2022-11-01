@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 
 <% NoticeBoard viewBoard = (NoticeBoard) request.getAttribute("viewBoard"); %>
-<%@ include file="../../layout/header.jsp" %>
+<jsp:include page="/WEB-INF/layout/header.jsp" />
 
 <script type="text/javascript">
 
@@ -38,6 +38,10 @@
 	margin: 0 auto;
 }
 
+#main {
+	height:500px;
+}
+
 </style>
 
 
@@ -48,7 +52,7 @@
 
 
 <div id="big">
-<h1>게시글 상세보기</h1>
+<h1>공지사항</h1>
 <table class="table table-bordered">
 
 <tr>
@@ -70,14 +74,14 @@
 
 <tr>
 	<td class= "text">제목</td>
-	<td><%=viewBoard.getNoticeArticletitle() %>
+	<td colspan="4"><%=viewBoard.getNoticeArticletitle() %>
 </tr>
 
 <tr>
 	<td class= "text" colspan="4">이벤트 내용</td>
 </tr>
 <tr>
-	<td colspan="4"><%=viewBoard.getNoticeContent() %></td>
+	<td colspan="4" id="main"><%=viewBoard.getNoticeContent() %></td>
 </tr>
 
 

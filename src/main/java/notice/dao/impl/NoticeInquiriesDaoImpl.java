@@ -249,7 +249,7 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 
 
 	@Override
-	public int insertnotice(Connection conn, NoticeBoard param,int userNo) {
+	public int insertnotice(Connection conn, NoticeBoard param) {
 		System.out.println("insertnotice시작");
 		
 		String sql ="";								
@@ -300,7 +300,7 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 				updateContent = new NoticeBoard();
 				updateContent.setNoticeArticlenumber(rs.getInt("notice_articlenumber"));
 				updateContent.setNoticeArticletitle(rs.getString("notice_articletitle"));
-				updateContent.setUserNo(rs.getInt("user_no"));
+//				updateContent.setUserNo(rs.getInt("user_no"));
 				updateContent.setNoticeContent(rs.getString("notice_content"));
 				updateContent.setNoticeDate(rs.getDate("notice_date"));;
 				
@@ -387,10 +387,11 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 		String sql = "";
 		sql += "SELECT * FROM (";
 		sql += "	SELECT rownum rnum, R.* FROM (";
-		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
-		sql += " 		FROM cs_notice RR";
-		sql += "		INNER JOIN member m";
-		sql += "		ON m.user_no = RR.user_no";
+		sql += "		SELECT * FROM cs_notice";
+//		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+//		sql += " 		FROM cs_notice RR";
+//		sql += "		INNER JOIN member m";
+//		sql += "		ON m.user_no = RR.user_no";
 		sql += "		WHERE " + searchType + " LIKE ?";
 		sql += " 		ORDER BY Notice_ARTICLENUMBER DESC";
 		sql += " 		) R";
@@ -412,15 +413,15 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 				NoticeBoard r = new NoticeBoard();
 				
 				r.setNoticeArticlenumber(rs.getInt("notice_articlenumber"));
-				r.setAdminNo(rs.getInt("admin_no"));
-				r.setBoardCode(rs.getInt("board_code"));
+//				r.setAdminNo(rs.getInt("admin_no"));
+//				r.setBoardCode(rs.getInt("board_code"));
 				r.setNoticeArticletitle(rs.getString("notice_articletitle"));
 				r.setNoticeContent(rs.getString("notice_content"));
 				r.setNoticeWriter(rs.getString("user_nick"));
 				r.setNoticeDate(rs.getDate("notice_date"));
 				r.setHit(rs.getInt("hit"));
 				r.setUserName(rs.getString("user_name"));
-				r.setUserNo(rs.getInt("user_no"));
+//				r.setUserNo(rs.getInt("user_no"));
 				
 				noticeBoardList.add(r);
 			}
@@ -444,10 +445,11 @@ public class NoticeInquiriesDaoImpl implements NoticeInquiriesDao {
 		String sql = "";
 		sql += "SELECT count(*) cnt FROM (";
 		sql += "	SELECT rownum rnum, R.* FROM (";
-		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
-		sql += " 		FROM cs_notice RR";
-		sql += "		INNER JOIN member m";
-		sql += "		ON m.user_no = RR.user_no";
+		sql += "		SELECT * FROM cs_notice";
+//		sql += " 		SELECT RR.*,m.user_nick,m.user_name";
+//		sql += " 		FROM cs_notice RR";
+//		sql += "		INNER JOIN member m";
+//		sql += "		ON m.user_no = RR.user_no";
 		sql += "		WHERE " + searchType + " LIKE ?";
 		sql += "		) R";
 		sql += "	) Notice";

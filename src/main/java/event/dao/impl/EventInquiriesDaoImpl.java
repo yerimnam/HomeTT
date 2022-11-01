@@ -249,7 +249,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 
 
 	@Override
-	public int insertevent(Connection conn, EventBoard param, int userNo) {
+	public int insertevent(Connection conn, EventBoard param,int userNo) {
 		System.out.println("insertevent시작");
 		
 		String sql ="";								
@@ -300,7 +300,7 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 				updateContent = new EventBoard();
 				updateContent.setEventArticlenumber(rs.getInt("event_articlenumber"));
 				updateContent.setEventArticletitle(rs.getString("event_articletitle"));
-				updateContent.setUserNo(rs.getInt("user_no"));
+//				updateContent.setUserNo(rs.getInt("user_no"));
 				updateContent.setEventContent(rs.getString("event_content"));
 				updateContent.setEventDate(rs.getDate("event_date"));;
 				
@@ -475,13 +475,6 @@ public class EventInquiriesDaoImpl implements EventInquiriesDao {
 		System.out.println("selectSearchCntAll 끝" + searchType + keyword);
 		System.out.println("selectSearchCntAll" + count);
 		return count;
-	}
-
-
-	@Override
-	public int insertevent(Connection conn, EventBoard param) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 	
 	

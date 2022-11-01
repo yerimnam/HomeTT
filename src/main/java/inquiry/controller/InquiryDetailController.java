@@ -38,7 +38,7 @@ public class InquiryDetailController extends HttpServlet {
 		
 		//파라미터에서 클릭한 글 제목 얻어 오기
 		InquiryBoard inquiryTitle = inquiryService.getTitle(req);
-		
+		System.out.println("userNo : " + userNo);
 		
 		//글 상세 보기 
 		InquiryBoard inquiryDetail = inquiryService.getDetail(userNo, inquiryTitle);

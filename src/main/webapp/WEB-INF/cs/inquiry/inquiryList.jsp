@@ -25,123 +25,123 @@
 
 <style type="text/css">
 #inquiryBoard {
-	justify-content: center;
-	text-align: center;
-	width: 1100px;
-	height: 60px;
-	border: 1px solid #00221b;
-	margin-top: 25px;
-	background-color: #fffcee;
-	border-radius: 10px;
+   justify-content: center;
+   text-align: center;
+   width: 1100px;
+   height: 60px;
+   border: 1px solid #00221b;
+   margin-top: 25px;
+   background-color: #fffcee;
+   border-radius: 10px;
 }
 
 #inquiryBoard thead {
-	font-weight: 600; 
-	font-size: large; 
-	color: #ff8c11;
+   font-weight: 600; 
+   font-size: large; 
+   color: #ff8c11;
 }
 
 #inquiryBoard tbody {
-	font-weight: 500; 
-	font-size: medium; 
-	color: #002541;
+   font-weight: 500; 
+   font-size: medium; 
+   color: #002541;
 }
 
 table { 
-	table-layout:fixed;
-	border-collapse: collapse;
+   table-layout:fixed;
+   border-collapse: collapse;
 }
 
 tr {
-	border-top: 1px solid #00221b;
-	border-bottom: 1px solid #00221b;
+   border-top: 1px solid #00221b;
+   border-bottom: 1px solid #00221b;
 }
 
 #tableBox {
-	display: flex; 
-	justify-content: center;
+   display: flex; 
+   justify-content: center;
 }
 
 #titleBox {
-	display: flex; 
-	justify-content: flex-end; 
-	margin-right: 370px;
+   display: flex; 
+   justify-content: flex-end; 
+   margin-right: 370px;
 }
 
 #titleBox h2 {
-	font-weight: 900; 
-	font-size: xx-large; 
-	color: #ff8c11;
+   font-weight: 900; 
+   font-size: xx-large; 
+   color: #ff8c11;
 }
 
 #th {
-	text-align: center;
-	padding: 5px;
-	background-color: #f4df93;
-	border: 1px solid #00221b;
+   text-align: center;
+   padding: 5px;
+   background-color: #f4df93;
+   border: 1px solid #00221b;
 }
 
 #td {
-	text-align: center;
-	padding: 10px;
+   text-align: center;
+   padding: 10px;
 }
 
 #linktd {
-	text-decoration: none !important;
-	color: black;
+   text-decoration: none !important;
+   color: black;
 }
 
 #linktd:link{
-	color: black;
-	background-color: #fffcee; 
+   color: black;
+   background-color: #fffcee; 
     transition : 0.5s; /* 속성 변경할 때 효과의 속도 조절 */
 }
 
 #linktd:visited{
-	color: black;
-	background-color: #fffcee; 
+   color: black;
+   background-color: #fffcee; 
 }
 
 #linktd:hover { 
-	color: #ff8c11;
-	background-color: #fffcee; 
-	text-decoration: none;
-	font-size: x-large;
-	font-weight: 900px;
-	transition : 0.4s;
+   color: #ff8c11;
+   background-color: #fffcee; 
+   text-decoration: none;
+   font-size: x-large;
+   font-weight: 900px;
+   transition : 0.4s;
 }
 
 #linktd:active {
-	color: black;
-	background-color: #fffcee; 
-	text-decoration: none;
+   color: black;
+   background-color: #fffcee; 
+   text-decoration: none;
 }
 
 #writeBtnBox {
-	justify-content: flex-end; 
-	margin-right: 355px; 
-	display: flex; 
-	margin-top: 15px;
+   justify-content: flex-end; 
+   margin-right: 355px; 
+   display: flex; 
+   margin-top: 15px;
 }
 
 #btn {
-	border-top-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-right: -4;
-	border: 1px solid #ffeaa6;
-	background-color: rgba(0,0,0,0);
-	color: #585a72;
-	padding: 5px;
-	font-weight: 700;
-	font-size: medium;
-	width: 210px;
-	height: 40px;
+   border-top-left-radius: 5px;
+   border-bottom-right-radius: 5px;
+   margin-right: -4;
+   border: 1px solid #ffeaa6;
+   background-color: rgba(0,0,0,0);
+   color: #585a72;
+   padding: 5px;
+   font-weight: 700;
+   font-size: medium;
+   width: 210px;
+   height: 40px;
 }
 
 #btn:hover {
-	color: #ff8c11;
-	background-color: #fffcee;
-	transition: 0.5s;	
+   color: #ff8c11;
+   background-color: #fffcee;
+   transition: 0.5s;   
 }
 
 
@@ -157,11 +157,16 @@ tr {
 
 <div id="contatiner" style="margin-left: 120px;">
 <div id="titleBox">
-	<h2>1:1문의 게시판</h2>
+   <h2>1:1문의 게시판</h2>
 </div>
 <hr style="width: 60%; height: 2px; background-color: #ff8c11;">
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
 <div id="tableBox">
+<<<<<<< HEAD
 <table id="inquiryBoard" >	
 	<thead>
 		<tr>
@@ -186,7 +191,35 @@ tr {
 			<% if ( inquiryBoard.get(i).getAnswercontent() != null && !"".equals(inquiryBoard.get(i).getAnswercontent())) { %>
 				<td id="td"><a id="linktd" href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&<%=inquiryBoard.get(i).getAnswercontent() %>">
 				     <%if(inquiryBoard.get(i).getAnswercontent().length() > 20) {%>                 
+=======
+<table id="inquiryBoard" >   
+   <thead>
+      <tr>
+         <th style="width: 5%;" id="th">번호</th>
+         <th style="width: 15%;" id="th">작성자</th>
+         <th style="width: 15%;" id="th">작성일자</th>
+         <th style="width: 20%;" id="th">제목</th>
+         <th style="width: 20%;" id="th">문의 답변</th>
+         <th style="width: 15%;" id="th">답변일자</th>
+         <th style="width: 10%;" id="th">답변자</th>
+      </tr>
+   </thead>
+            
+   <tbody>
+         <%for(int i=0;i<inquiryBoard.size();i++) { %>
+            <tr>
+               <td><%=inquiryBoard.get(i).getInquiryArticleNumber() %></td>
+               <td><%=inquiryBoard.get(i).getUserNick() %></td>
+               <td><%=inquiryBoard.get(i).getInquiryDate() %></td>
+               <td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>"><%=inquiryBoard.get(i).getInquiryArticleTitle() %></a></td>      <!--  상세보기 링크 걸기-->
+
+            <% if ( inquiryBoard.get(i).getAnswercontent() != null && !"".equals(inquiryBoard.get(i).getAnswercontent()))  { %>
+               <td><a href="./inquirydetail?inquiryTitle=<%=inquiryBoard.get(i).getInquiryArticleTitle()%>&content=<%=inquiryBoard.get(i).getAnswercontent() %>">
+                  <%if(inquiryBoard.get(i).getAnswercontent().length() > 20) {%>
+
+>>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
                      <%=inquiryBoard.get(i).getAnswercontent().substring(0,20)+"..." %>
+<<<<<<< HEAD
                      
                   <% } else {%>
                  		<%=inquiryBoard.get(i).getAnswercontent()%>
@@ -209,8 +242,37 @@ tr {
  		<button type="button" id="btn" name="btnwrite" onclick ="location.href='/homett/inquirycreate'">글쓰기</button> 
  	</form> 
  </div> 
+=======
+
+                     <% }else {%>
+                        <%=inquiryBoard.get(i).getAnswercontent()%>
+                     <%} %>   </a></td>
+                     <td><%=inquiryBoard.get(i).getAnswerdate() %></td>
+                     <td><%=inquiryBoard.get(i).getAnswerWriter() %></td>
+
+                  <% } else{ %>
+                  <td> 답변예정</td>
+                  <td> 미정</td> 
+            <%} %>
+            </tr>
+>>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
 
 
+<<<<<<< HEAD
+=======
+      <%} %>
+       </tbody>
+  </table>
+</div> <!-- test div end -->
+
+ <div id="writeBtnBox"> 
+    <form action="/homett/inquirycreate"  method="get"> 
+       <button type="button" id="btn" name="btnwrite" onclick ="location.href='/homett/inquirycreate'">글쓰기</button> 
+    </form> 
+ </div> 
+
+
+>>>>>>> branch 'master' of https://github.com/yerimnam/HomeTT.git
 <%@ include file="./inquirypaging.jsp" %><%-- 페이징 --%>
 
 <jsp:include page="/WEB-INF/layout/footer.jsp" />

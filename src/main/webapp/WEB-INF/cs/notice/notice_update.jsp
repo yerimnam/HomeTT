@@ -1,8 +1,8 @@
-<%@page import="reviewBoard.dto.ReviewBoard"%>
+<%@page import="notice.dto.NoticeBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% ReviewBoard updatecotent = (ReviewBoard)request.getAttribute("updatecontent");  %>    
+<% NoticeBoard updatecotent = (NoticeBoard)request.getAttribute("updatecontent");  %>    
  <jsp:include page="/WEB-INF/layout/header.jsp" />
 
 
@@ -82,20 +82,20 @@ body{
 <body>
 
 
-<h2>후기 수정하기</h2>
+<h2>공지사항 수정하기</h2>
 
 <hr>
-<form action="/homett/reviewupdate" method="post" id="updatereview">
+<form action="/homett/noticeupdate" method="post" id="updatenotice">
 
-	<input type="text" hidden="" name="reviewNo" value="<%=updatecotent.getReviewArticlenumber() %>">
+	<input type="text" hidden="" name="noticeNo" value="<%=updatecotent.getNoticeArticlenumber() %>">
 	
 	
 	<div id="title">
-	<input type="text" id="reviewTitle" name="reviewTitle" value="<%=updatecotent.getReviewArticletitle() %>" placeholder="제목">
+	<input type="text" id="noticeTitle" name="noticeTitle" value="<%=updatecotent.getNoticeArticletitle() %>" placeholder="제목">
 	</div>
 	
 
-	<textarea id="content" name="content" ><%= updatecotent.getReviewContent()%></textarea><br><br>
+	<textarea id="content" name="content" ><%= updatecotent.getNoticeContent()%></textarea><br><br>
 
 <button type="button" id="btnupdate"  class="btn btn-info" >수정완료</button>
 <button type="button" id="cancelwriter" class="btn btn-danger" onclick="history.back()">취소</button>
