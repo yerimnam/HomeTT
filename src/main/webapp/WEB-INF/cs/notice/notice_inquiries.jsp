@@ -117,6 +117,6 @@ $(document).ready(function() {
 
 <!-- ------------- -->
 
-<%@ include file="../../layout/noticepaging.jsp" %>
+<%-- <%@ include file="../../layout/noticepaging.jsp" %> --%>
 
 <jsp:include page="/WEB-INF/layout/footer.jsp" />
